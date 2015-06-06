@@ -1,3 +1,5 @@
+(load-file "~/.emacs.d/helpers.el")
+
 ;; Required if any of the third party packages are to be
 ;; called/initialized in this file.
 (package-initialize)
@@ -14,38 +16,35 @@
 		  ("melpa"     . "http://melpa.milkbox.net/packages/")))
 
 ;; Ensure the required packages are loaded, and install them if not.
-(setq required-packages
-		'(cider 
-		  clojure-mode
-		  clojurescript-mode
-		  company
-		  company-go
-		  exec-path-from-shell
-		  flx
-		  flx-ido
-		  go-mode
-		  paredit
-		  pkg-info
-		  powerline
-		  markdown-mode))
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(dolist (p required-packages)
-  (unless (package-installed-p p)
-	 (package-install p)))
+(helper-install-packages '(company
+									exec-path-from-shell
+									flx
+									flx-ido
+									paredit
+									pkg-info
+									powerline
+									markdown-mode))
 
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
 
 ;; Appearance tidy ups
 (custom-set-variables
- '(inhibit-startup-message t)
- '(scroll-conservatively 1)
- '(mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+	(quote
+	 ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
+ '(ido-enable-flex-matching t)
+ '(ido-everywhere t)
+ '(inhibit-startup-screen t)
  '(mouse-wheel-progressive-speed nil)
- '(ring-bell-function 'ignore)
+ '(mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
+ '(ns-command-modifier (quote meta))
+ '(ring-bell-function (quote ignore) t)
+ '(scroll-conservatively 1)
  '(tab-width 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -62,14 +61,11 @@
 		(set-face-bold f nil)))
 
 ;; IDO mode
-(custom-set-variables
- '(ido-enable-flex-matching t)
- '(ido-everywhere t))
+
 (ido-mode t)
 
 ;; Global editing defaults
-(custom-set-variables
- '(ns-command-modifier 'meta))
+
 (show-paren-mode t)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
@@ -109,6 +105,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (load-file "~/.emacs.d/textSettings.el")
-(load-file "~/.emacs.d/goSettings.el")
+;;(load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/orgSettings.el")
-(load-file "~/.emacs.d/clojureSettings.el")
+;;(load-file "~/.emacs.d/clojureSettings.el")
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-scrollbar-bg ((t (:background "#454e51"))))
+ '(company-scrollbar-fg ((t (:background "#394143"))))
+ '(company-tooltip ((t (:inherit default :background "#32393b"))))
+ '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
+ '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))
