@@ -36,7 +36,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
 	(quote
-	 ("a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
+	 ("cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379"
+	  "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0"
+	  default)))
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(inhibit-startup-screen t)
@@ -48,8 +50,7 @@
  '(tab-width 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
-(load-theme 'tango-dark)
+(load-theme 'tronesque)
 (display-time)
 (powerline-center-theme)
 (set-default 'cursor-type 'bar)
