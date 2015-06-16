@@ -109,14 +109,4 @@
 ;;(load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/orgSettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-scrollbar-bg ((t (:background "#454e51"))))
- '(company-scrollbar-fg ((t (:background "#394143"))))
- '(company-tooltip ((t (:inherit default :background "#32393b"))))
- '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
- '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))
+(load-file "~/.emacs.d/schemeSettings.el")
