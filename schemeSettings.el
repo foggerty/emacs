@@ -1,3 +1,5 @@
+(helper-install-packages '(geiser))
+
 (add-hook 'scheme-hook-mode
 			 (lambda ()
 				(enable-paredit-mode)
