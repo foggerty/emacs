@@ -16,7 +16,8 @@
 		  ("melpa"     . "http://melpa.milkbox.net/packages/")))
 
 ;; Ensure the required packages are loaded, and install them if not.
-(helper-install-packages '(company
+(helper-install-packages '(afternoon-theme
+									company
 									exec-path-from-shell
 									flx
 									flx-ido
@@ -36,9 +37,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
 	(quote
-	 ("cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379"
-	  "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0"
-	  default)))
+	 ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53"
+	  "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379"
+	  "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(inhibit-startup-screen t)
@@ -50,7 +51,7 @@
  '(tab-width 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(load-theme 'tronesque)
+(load-theme 'afternoon)
 (display-time)
 (powerline-center-theme)
 (set-default 'cursor-type 'bar)
@@ -107,7 +108,17 @@
 
 (load-file "~/.emacs.d/textSettings.el")
 (load-file "~/.emacs.d/orgSettings.el")
-(load-file "~/.emacs.d/goSettings.el")
+;;(load-file "~/.emacs.d/goSettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
-;;(load-file "~/.emacs.d/schemeSettings.el")
+(load-file "~/.emacs.d/schemeSettings.el")
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-scrollbar-bg ((t (:background "#2b2f45"))))
+ '(company-scrollbar-fg ((t (:background "#212435"))))
+ '(company-tooltip ((t (:inherit default :background "#1b1e2c"))))
+ '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
+ '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))
