@@ -106,8 +106,8 @@
 ;;;; Specific editing modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;(load-file "~/.emacs.d/textSettings.el")
-;;(load-file "~/.emacs.d/orgSettings.el")
-;;(load-file "~/.emacs.d/goSettings.el")
+(load-file "~/.emacs.d/textSettings.el")
+(load-file "~/.emacs.d/orgSettings.el")
+(load-file "~/.emacs.d/goSettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
