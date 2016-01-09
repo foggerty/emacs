@@ -11,20 +11,20 @@
 ;; Extra repositories for packages
 (require 'package)
 (setq package-archives
-      '(("gnu"       . "http://elpa.gnu.org/packages/")
-		  ("marmalade" . "http://marmalade-repo.org/packages/")
-		  ("melpa"     . "http://melpa.milkbox.net/packages/")))
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+	("marmalade" . "http://marmalade-repo.org/packages/")
+	("melpa"     . "http://melpa.milkbox.net/packages/")))
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages '(afternoon-theme
-									company
-									exec-path-from-shell
-									flx
-									flx-ido
-									paredit
-									pkg-info
-									powerline
-									markdown-mode))
+			   company
+			   exec-path-from-shell
+			   flx
+			   flx-ido
+			   paredit
+			   pkg-info
+			   powerline
+			   markdown-mode))
 
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
@@ -55,12 +55,12 @@
 (display-time)
 (powerline-center-theme)
 (set-default 'cursor-type 'bar)
-(set-default-font "Source Code Pro Light")
+;;(set-default-font "Source Code Pro Light")
 (set-face-attribute 'default nil :height 140 :weight 'light :width 'normal)
 (set-face-bold-p 'bold nil) 
 (dolist (f (face-list))
   (if (face-bold-p f)
-		(set-face-bold f nil)))
+      (set-face-bold f nil)))
 
 ;; IDO mode
 
@@ -85,15 +85,15 @@
 ;; Gobal auto-complete (Company mode)
 (add-hook 'after-init-hook 'global-company-mode)
 (if (display-graphic-p)
-	 (progn
-		(require 'color)
-		(let ((bg (face-attribute 'default :background)))
-		  (custom-set-faces
-			`(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 2)))))
-			`(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
-			`(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
-			`(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
-			`(company-tooltip-common ((t (:inherit font-lock-constant-face))))))))
+    (progn
+      (require 'color)
+      (let ((bg (face-attribute 'default :background)))
+	(custom-set-faces
+	 `(company-tooltip           ((t (:inherit default :background ,(color-lighten-name bg 2)))))
+	 `(company-scrollbar-bg      ((t (:background ,(color-lighten-name bg 10)))))
+	 `(company-scrollbar-fg      ((t (:background ,(color-lighten-name bg 5)))))
+	 `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+	 `(company-tooltip-common    ((t (:inherit font-lock-constant-face))))))))
 
 ;; Location of ispell binary
 (setq ispell-program-name "/usr/local/bin/ispell")
@@ -106,8 +106,8 @@
 ;;;; Specific editing modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(load-file "~/.emacs.d/textSettings.el")
-(load-file "~/.emacs.d/orgSettings.el")
+;;(load-file "~/.emacs.d/textSettings.el")
+;;(load-file "~/.emacs.d/orgSettings.el")
 ;;(load-file "~/.emacs.d/goSettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
-(load-file "~/.emacs.d/schemeSettings.el")
+;;(load-file "~/.emacs.d/schemeSettings.el")
