@@ -52,7 +52,7 @@
 ;;(display-time)
 (powerline-center-theme)
 (set-default 'cursor-type 'bar)
-;;(set-default-font "Source Code Pro Light")
+(set-default-font "Source Code Pro Light")
 (set-face-attribute 'default nil :height 140 :weight 'light :width 'normal)
 (set-face-bold-p 'bold nil) 
 (dolist (f (face-list))
