@@ -11,30 +11,27 @@
 ;; Extra repositories for packages
 (require 'package)
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-	("marmalade" . "http://marmalade-repo.org/packages/")
-	("melpa"     . "http://melpa.milkbox.net/packages/")))
+      '(("gnu"       . "https://elpa.gnu.org/packages/")
+		  ("marmalade" . "https://marmalade-repo.org/packages/")
+		  ("melpa"     . "https://melpa.org/packages/")))
 
 ;; Ensure the required packages are loaded, and install them if not.
-(helper-install-packages '(afternoon-theme
-			   company
-			   exec-path-from-shell
-			   flx
-			   flx-ido
-			   paredit
-			   pkg-info
-			   powerline
-			   markdown-mode))
+(helper-install-packages
+ '(afternoon-theme
+	company
+	exec-path-from-shell
+	flx
+	flx-ido
+	paredit
+	pkg-info
+	powerline
+	markdown-mode))
 
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
 
 ;; Appearance tidy ups
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(custom-safe-themes
 	(quote
 	 ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53"
@@ -52,7 +49,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (load-theme 'afternoon)
-(display-time)
+;;(display-time)
 (powerline-center-theme)
 (set-default 'cursor-type 'bar)
 ;;(set-default-font "Source Code Pro Light")
@@ -95,13 +92,16 @@
 	 `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
 	 `(company-tooltip-common    ((t (:inherit font-lock-constant-face))))))))
 
-;; Location of ispell binary
-(setq ispell-program-name "/usr/local/bin/ispell")
+;; Spell checking
+(setq ispell-program-name "/usr/local/bin/aspell")
+(setq ispell-dictionary "british")
 
 ;; Flyspell for comments (prog-mode is the parent
 ;; of all programming hook modes.)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
+(add-hook 'prog-mode-hook
+			 (lambda ()
+				(flyspell-prog-mode)))
+			 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Specific editing modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

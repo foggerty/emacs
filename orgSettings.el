@@ -5,7 +5,7 @@
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (org-indent-mode)
-;	    (setq org-hide-emphasis-markers f)
+	    (setq org-hide-emphasis-markers t)
 		 (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
 		 (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)))
 
