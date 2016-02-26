@@ -99,6 +99,8 @@
 	 `(company-scrollbar-fg      ((t (:background ,(color-lighten-name bg 5)))))
 	 `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
 	 `(company-tooltip-common    ((t (:inherit font-lock-constant-face))))))))
+(global-set-key (kbd "C-<return>") 'company-complete)
+(setq company-idle-delay nil) ;; don't auto show, use key defined above.
 
 ;; Spell checking
 (setq ispell-program-name "/usr/local/bin/aspell")

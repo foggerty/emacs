@@ -2,7 +2,7 @@
 
 (require 'flyspell)
 
-(add-hook 'text-mode-hook  ; Disable auto-complete for text moade
+(add-hook 'text-mode-hook  
 			 (lambda ()
 				(company-mode -1)
 				(flyspell-mode)
