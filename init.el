@@ -48,9 +48,8 @@
  '(tab-width 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(load-theme 'afternoon)
-;;(display-time)
 (powerline-center-theme)
+(load-theme 'afternoon)
 (set-default 'cursor-type 'bar)
 (set-default-font "Source Code Pro Light")
 (set-face-attribute 'default nil :height 140 :weight 'light :width 'normal)
@@ -59,14 +58,23 @@
   (if (face-bold-p f)
       (set-face-bold f nil)))
 
-;; IDO mode
-
+;; Global settings, defaults, and replacements for standard settings
 (ido-mode t)
-
-;; Global editing defaults
-
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (show-paren-mode t)
 (global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(setq hippie-expand-try-functions-list
+		'(try-expand-dabbrev
+		  try-expand-dabbrev-all-buffers
+		  try-expand-dabbrev-from-kill
+		  try-complete-file-name-partially
+		  try-complete-file-name
+		  try-expand-all-abbrevs
+		  try-expand-list
+		  try-expand-line
+		  try-complete-lisp-symbol-partially
+		  try-complete-lisp-symbol))
 
 ;; Help
 (define-key 'help-command (kbd "C-l") 'find-library)  ; C-h C-l
