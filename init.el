@@ -40,11 +40,9 @@
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(inhibit-startup-screen t)
- '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
  '(ns-command-modifier (quote meta))
  '(ring-bell-function (quote ignore) t)
- '(scroll-conservatively 1)
  '(tab-width 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -57,6 +55,21 @@
 (dolist (f (face-list))
   (if (face-bold-p f)
       (set-face-bold f nil)))
+
+;; Better (and smoother) scrolling
+(setq scroll-conservatively 1)
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
+(setq hscroll-step 1)
+(setq truncate-lines 1)
+(global-set-key (kbd "<S-wheel-down>")
+					 (lambda ()
+						(interactive)
+						(scroll-left 1)))
+(global-set-key (kbd "<S-wheel-up>")
+					 (lambda ()
+						(interactive)
+						(scroll-right 1)))
 
 ;; Global settings, defaults, and replacements for standard settings
 (ido-mode t)
