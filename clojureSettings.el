@@ -1,6 +1,3 @@
-;; Clojure mode
-
-;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages '(cider
 									clojure-mode
 									clojurescript-mode)

@@ -8,12 +8,15 @@
 ;;;; GLobal defaults
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Save desktop on exit
+(desktop-save-mode 1)
+
 ;; Extra repositories for packages
-(require 'package)
 (setq package-archives
       '(("gnu"       . "https://elpa.gnu.org/packages/")
 		  ("marmalade" . "https://marmalade-repo.org/packages/")
 		  ("melpa"     . "https://melpa.org/packages/")))
+(require 'package)
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
@@ -34,13 +37,10 @@
 (custom-set-variables
  '(custom-safe-themes
 	(quote
-	 ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53"
-	  "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379"
-	  "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
+	 ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default)))
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(inhibit-startup-screen t)
- '(mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
  '(ns-command-modifier (quote meta))
  '(ring-bell-function (quote ignore) t)
  '(tab-width 3))
@@ -49,12 +49,8 @@
 (powerline-center-theme)
 (load-theme 'afternoon)
 (set-default 'cursor-type 'bar)
-(set-default-font "Source Code Pro Light")
-(set-face-attribute 'default nil :height 140 :weight 'light :width 'normal)
-(set-face-bold-p 'bold nil) 
-(dolist (f (face-list))
-  (if (face-bold-p f)
-      (set-face-bold f nil)))
+(set-default-font "Courier New")
+(set-face-attribute 'default nil :height 145 :weight 'light :width 'normal)
 
 ;; Better (and smoother) scrolling
 (setq scroll-conservatively 1)
@@ -74,6 +70,7 @@
 ;; Global settings, defaults, and replacements for standard settings
 (ido-mode t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-z") 'undo)
 (show-paren-mode t)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -102,16 +99,6 @@
 
 ;; Gobal auto-complete (Company mode)
 (add-hook 'after-init-hook 'global-company-mode)
-(if (display-graphic-p)
-    (progn
-      (require 'color)
-      (let ((bg (face-attribute 'default :background)))
-	(custom-set-faces
-	 `(company-tooltip           ((t (:inherit default :background ,(color-lighten-name bg 2)))))
-	 `(company-scrollbar-bg      ((t (:background ,(color-lighten-name bg 10)))))
-	 `(company-scrollbar-fg      ((t (:background ,(color-lighten-name bg 5)))))
-	 `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
-	 `(company-tooltip-common    ((t (:inherit font-lock-constant-face))))))))
 (global-set-key (kbd "C-<return>") 'company-complete)
 (setq company-idle-delay nil) ;; don't auto show, use key defined above.
 
@@ -129,8 +116,17 @@
 ;;;; Specific editing modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(load-file "~/.emacs.d/randomFunctions.el")
 (load-file "~/.emacs.d/textSettings.el")
 (load-file "~/.emacs.d/orgSettings.el")
 (load-file "~/.emacs.d/goSettings.el")
+(load-file "~/.emacs.d/elispSettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
