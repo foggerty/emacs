@@ -47,7 +47,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (powerline-center-theme)
-(load-theme 'afternoon)
+(load-theme 'deeper-blue)
 (set-default 'cursor-type 'bar)
 (set-default-font "Courier New")
 (set-face-attribute 'default nil :height 145 :weight 'light :width 'normal)
@@ -69,6 +69,7 @@
 
 ;; Global settings, defaults, and replacements for standard settings
 (ido-mode t)
+(electric-pair-mode)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-z") 'undo)
 (show-paren-mode t)
@@ -124,9 +125,3 @@
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
