@@ -8,8 +8,10 @@
 ;;;; GLobal defaults
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
 ;; Save desktop on exit
 (desktop-save-mode 1)
+
 
 ;; Extra repositories for packages
 (setq package-archives
@@ -17,6 +19,7 @@
 		  ("marmalade" . "https://marmalade-repo.org/packages/")
 		  ("melpa"     . "https://melpa.org/packages/")))
 (require 'package)
+
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
@@ -30,8 +33,10 @@
 	powerline
 	markdown-mode))
 
+
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
+
 
 ;; Appearance tidy ups
 (custom-set-variables
@@ -58,14 +63,19 @@
 (setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
 (setq hscroll-step 1)
 (setq truncate-lines 1)
-(global-set-key (kbd "<S-wheel-down>")
-					 (lambda ()
-						(interactive)
-						(scroll-left 1)))
-(global-set-key (kbd "<S-wheel-up>")
-					 (lambda ()
-						(interactive)
-						(scroll-right 1)))
+(defun fog-scroll-left ()
+  "Scrolls left."
+  (interactive)
+  (scroll-left 1))
+(defun fog-scroll-right ()
+  "Scrolls right."
+  (interactive)
+  (scroll-right 1))
+(global-set-key (kbd "<S-wheel-down>") 'fog-scroll-left)
+(global-set-key (kbd "<triple-wheel-right>") 'fog-scroll-left)
+(global-set-key (kbd "<S-wheel-up>") 'fog-scroll-right)
+(global-set-key (kbd "<triple-wheel-left>") 'fog-scroll-right)
+
 
 ;; Global settings, defaults, and replacements for standard settings
 (ido-mode t)
@@ -87,25 +97,31 @@
 		  try-complete-lisp-symbol-partially
 		  try-complete-lisp-symbol))
 
+
 ;; Help
 (define-key 'help-command (kbd "C-l") 'find-library)  ; C-h C-l
 (define-key 'help-command (kbd "C-f") 'find-function) ; C-h C-f
 (define-key 'help-command (kbd "C-k") 'find-function-on-key) ; C-h C-k
 
+
 ;; Centralised backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+
 ;; Replace yes/no with y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
+
 
 ;; Gobal auto-complete (Company mode)
 (add-hook 'after-init-hook 'global-company-mode)
 (global-set-key (kbd "C-<return>") 'company-complete)
 (setq company-idle-delay nil) ;; don't auto show, use key defined above.
 
+
 ;; Spell checking
 (setq ispell-program-name "/usr/local/bin/aspell")
 (setq ispell-dictionary "british")
+
 
 ;; Flyspell for comments (prog-mode is the parent
 ;; of all programming hook modes.)
@@ -113,6 +129,7 @@
 			 (lambda ()
 				(flyspell-prog-mode)))
 			 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Specific editing modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
