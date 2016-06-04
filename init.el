@@ -55,9 +55,10 @@
 (load-theme 'deeper-blue)
 (set-default 'cursor-type 'bar)
 (set-default-font "Courier New")
-(set-face-attribute 'default nil :height 145 :weight 'light :width 'normal)
+(set-face-attribute 'default nil :height 145)
 
-;; Better (and smoother) scrolling
+
+;; Better (smoother) scrolling
 (setq scroll-conservatively 1)
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
@@ -71,10 +72,21 @@
   "Scrolls right."
   (interactive)
   (scroll-right 1))
-(global-set-key (kbd "<S-wheel-down>") 'fog-scroll-left)
-(global-set-key (kbd "<triple-wheel-right>") 'fog-scroll-left)
-(global-set-key (kbd "<S-wheel-up>") 'fog-scroll-right)
-(global-set-key (kbd "<triple-wheel-left>") 'fog-scroll-right)
+(setq go-left '((kbd "<S-wheel-down>")
+					 (kbd "<triple-wheel-right>")
+					 (kbd "<double-wheel-right>")
+					 (kbd "<wheel-right>")))
+(setq go-right '((kbd "<S-wheel-up>")
+					  (kbd "<triple-wheel-left>")
+					  (kbd "<double-wheel-left>")
+					  (kbd "<wheel-left>")))
+
+;; Note to self, we need to eval key-press here because it will be
+;; passed to global-set-key as is - i.e. a list.
+(dolist (key-press go-left)
+  (global-set-key (eval key-press) 'fog-scroll-left))
+(dolist (key-press go-right)
+  (global-set-key (eval key-press) 'fog-scroll-right))
 
 
 ;; Global settings, defaults, and replacements for standard settings
