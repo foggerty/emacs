@@ -23,15 +23,14 @@
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
- '(afternoon-theme
-	company
-	exec-path-from-shell
-	flx
-	flx-ido
-	paredit
-	pkg-info
-	powerline
-	markdown-mode))
+ '(	company
+		exec-path-from-shell
+		flx
+		flx-ido
+		paredit
+		pkg-info
+		powerline
+		markdown-mode))
 
 
 ;; Use the same path you'd get in a standard shell
@@ -40,9 +39,6 @@
 
 ;; Appearance tidy ups
 (custom-set-variables
- '(custom-safe-themes
-	(quote
-	 ("28ec8ccf6190f6a73812df9bc91df54ce1d6132f18b4c8fcc85d45298569eb53" default)))
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(inhibit-startup-screen t)
