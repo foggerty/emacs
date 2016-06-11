@@ -47,6 +47,7 @@
  '(tab-width 3))
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(scroll-bar-mode -1)
 (powerline-center-theme)
 (load-theme 'deeper-blue)
 (set-default 'cursor-type 'bar)
