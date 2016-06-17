@@ -7,3 +7,4 @@
   (flyspell-mode)
   (visual-line-mode))
  
+(add-hook 'text-mode-hook 'my-text-mode)
