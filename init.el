@@ -32,7 +32,26 @@
 		powerline
 		markdown-mode
 		projectile
-		move-line))
+		move-line
+		async
+		helm
+		helm-company
+		helm-flx
+		helm-projectile
+		helm-anything))
+
+
+;; Helm
+(require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+(helm-projectile-on)
+(helm-autoresize-mode nil)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t)
 
 
 ;; Projectile mode everywhere
@@ -46,8 +65,6 @@
 
 ;; Appearance tidy ups
 (custom-set-variables
- '(ido-enable-flex-matching t)
- '(ido-everywhere t)
  '(inhibit-startup-screen t)
  '(ns-command-modifier (quote meta))
  '(ring-bell-function (quote ignore) t)
@@ -56,7 +73,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (powerline-center-theme)
-(load-theme 'deeper-blue)
+(load-theme 'tango-dark)
 (set-default 'cursor-type 'bar)
 (set-default-font "Courier New")
 (set-face-attribute 'default nil :height 145)
@@ -85,6 +102,7 @@
 					  (kbd "<double-wheel-left>")
 					  (kbd "<wheel-left>")))
 
+
 ;; Note to self, we need to eval key-press here because it will be
 ;; passed to global-set-key as is - i.e. a list.
 (dolist (key-press go-left)
@@ -101,7 +119,7 @@
 (setq ido-use-faces nil) ; use highlighting from flx
 
 
-;; flx settings, defaults, and replacements for standard settings
+;; Global settings, defaults, and replacements for standard settings
 (require 'move-line)
 (electric-pair-mode)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -147,8 +165,8 @@
 (setq ispell-dictionary "british")
 
 
-;; Flyspell for comments (prog-mode is the parent
-;; of all programming hook modes.)
+;; Flyspell for comments (prog-mode is the parent of all programming
+;; hook modes.
 (add-hook 'prog-mode-hook
 			 (lambda ()
 				(flyspell-prog-mode)))

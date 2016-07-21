@@ -1,10 +1,8 @@
 (helper-install-packages '(flymake-ruby
 									inf-ruby
 									projectile-rails
-									;ruby-eletric
-									robe))
-;(require 'robe)
-;(require 'ruby-electric)
+									robe
+									helm-rails))
 
 (defun custom-ruby-mode ()
   (flymake-ruby-load)
