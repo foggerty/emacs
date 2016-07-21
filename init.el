@@ -11,14 +11,14 @@
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
-
+; Some random comment
 
 ;; Extra repositories for packages
+(require 'package)
 (setq package-archives
       '(("gnu"       . "https://elpa.gnu.org/packages/")
 		  ("marmalade" . "https://marmalade-repo.org/packages/")
 		  ("melpa"     . "https://melpa.org/packages/")))
-(require 'package)
 
 
 ;; Ensure the required packages are loaded, and install them if not.
@@ -30,7 +30,14 @@
 		paredit
 		pkg-info
 		powerline
-		markdown-mode))
+		markdown-mode
+		projectile
+		move-line))
+
+
+;; Projectile mode everywhere
+(projectile-global-mode)
+(setq projectile-enable-caching t)
 
 
 ;; Use the same path you'd get in a standard shell
@@ -86,8 +93,16 @@
   (global-set-key (eval key-press) 'fog-scroll-right))
 
 
-;; Global settings, defaults, and replacements for standard settings
+;; IDO - use flx
 (ido-mode t)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil) ; use highlighting from flx
+
+
+;; flx settings, defaults, and replacements for standard settings
+(require 'move-line)
 (electric-pair-mode)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-z") 'undo)
@@ -148,6 +163,6 @@
 (load-file "~/.emacs.d/orgSettings.el")
 (load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
+(load-file "~/.emacs.d/rubySettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
-
