@@ -38,7 +38,17 @@
 		helm-company
 		helm-flx
 		helm-projectile
-		helm-anything))
+		helm-anything
+		neotree
+		smartparens))
+
+;; Smart Parens
+(smartparens-global-mode)
+
+;; NeoTree
+(global-set-key (kbd "<f8>") 'neotree-toggle)
+(setq neo-smart-open t)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 
 
 ;; Helm
@@ -57,6 +67,9 @@
 ;; Projectile mode everywhere
 (projectile-global-mode)
 (setq projectile-enable-caching t)
+(setq projectile-indexing-method 'alien)
+(setq projectile-enable-caching nil)
+(global-set-key (kbd "<f12>") 'projectile-find-file)
 
 
 ;; Use the same path you'd get in a standard shell
@@ -101,8 +114,6 @@
 					  (kbd "<triple-wheel-left>")
 					  (kbd "<double-wheel-left>")
 					  (kbd "<wheel-left>")))
-
-
 ;; Note to self, we need to eval key-press here because it will be
 ;; passed to global-set-key as is - i.e. a list.
 (dolist (key-press go-left)
@@ -124,9 +135,11 @@
 (electric-pair-mode)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-z") 'undo)
-(show-paren-mode t)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-<tab>") 'other-window)
+(global-set-key (kbd "<f2> e") 'flymake-popup-current-error-menu)
+(show-paren-mode t)
 (setq hippie-expand-try-functions-list
 		'(try-expand-dabbrev
 		  try-expand-dabbrev-all-buffers
