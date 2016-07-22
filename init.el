@@ -43,7 +43,8 @@
 		smartparens))
 
 ;; Smart Parens
-(smartparens-global-mode)
+(smartparens-global-strict-mode)
+
 
 ;; NeoTree
 (global-set-key (kbd "<f8>") 'neotree-toggle)
