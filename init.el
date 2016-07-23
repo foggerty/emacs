@@ -21,10 +21,14 @@
 		  ("melpa"     . "https://melpa.org/packages/")))
 
 
+;; Major mode overrides
+(helper-swap-major-mode 'ruby-mode 'enh-ruby-mode)
+
+
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(	company
-		exec-path-from-shell
+	exec-path-from-shell
 		flx
 		flx-ido
 		paredit
@@ -40,10 +44,11 @@
 		helm-projectile
 		helm-anything
 		neotree
-		smartparens))
+		smartparens
+		yaml-mode))
 
 ;; Smart Parens
-(smartparens-global-strict-mode)
+(smartparens-global-mode)
 
 
 ;; NeoTree
@@ -69,7 +74,6 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-indexing-method 'alien)
-(setq projectile-enable-caching nil)
 (global-set-key (kbd "<f12>") 'projectile-find-file)
 
 
