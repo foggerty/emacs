@@ -32,6 +32,15 @@
 
 
 ;; E-Shell customisation
+(custom-set-variables
+'(eshell-visual-options (quote (("git" "log" "diff" "show")))))
+
+;; ansi colors...
+(add-hook 'eshell-mode-hook
+			 (lambda ()
+				(setenv "TERM" "emacs")))
+
+;; Coloured prompt (kinda)
 (setq eshell-prompt-function
 		(lambda ()
 		  (propertize 
