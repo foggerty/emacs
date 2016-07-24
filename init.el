@@ -11,7 +11,7 @@
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
-; Some random comment
+
 
 ;; Extra repositories for packages
 (require 'package)
@@ -21,14 +21,29 @@
 		  ("melpa"     . "https://melpa.org/packages/")))
 
 
+;; Split windows (i.e. help) should be side by side, I mean seriously,
+;; laptop screens are stupidly wide :-)
+(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+
+
 ;; Major mode overrides
 (helper-swap-major-mode 'ruby-mode 'enh-ruby-mode)
+
+
+;; E-Shell customisation
+(setq eshell-prompt-function
+		(lambda ()
+		  (propertize 
+			(concat (eshell/dirs) " $ ")
+			'face
+			`(:foreground "green"))))
 
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(	company
-	exec-path-from-shell
+		exec-path-from-shell
 		flx
 		flx-ido
 		paredit
