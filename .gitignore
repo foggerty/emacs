@@ -7,3 +7,9 @@ ido.last
 .emacs.desktop
 .emacs.desktop.lock
 url/
+projectile*
+project*
+eshell*
+bookmarks
+helm*
+recentf
