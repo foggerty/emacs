@@ -9,6 +9,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
+;; Ensure the required packages are loaded, and install them if not.
+(helper-install-packages
+ '(	company
+		exec-path-from-shell
+		flx
+		flx-ido
+		paredit
+		pkg-info
+		markdown-mode
+		projectile
+		move-line
+		async
+		helm
+		helm-company
+		helm-flx
+		helm-projectile
+		helm-anything
+		neotree
+		smartparens
+		yaml-mode
+		spaceline))
+
+
 ;; Save desktop on exit
 (desktop-save-mode 1)
 
@@ -33,14 +56,12 @@
 
 ;; E-Shell customisation
 (custom-set-variables
-'(eshell-visual-options (quote (("git" "log" "diff" "show")))))
+ '(eshell-visual-options (quote (("git" "log" "diff" "show")))))
 
-;; ansi colors...
 (add-hook 'eshell-mode-hook
 			 (lambda ()
 				(setenv "TERM" "emacs")))
 
-;; Coloured prompt (kinda)
 (setq eshell-prompt-function
 		(lambda ()
 		  (propertize 
@@ -48,28 +69,6 @@
 			'face
 			`(:foreground "green"))))
 
-
-;; Ensure the required packages are loaded, and install them if not.
-(helper-install-packages
- '(	company
-		exec-path-from-shell
-		flx
-		flx-ido
-		paredit
-		pkg-info
-		powerline
-		markdown-mode
-		projectile
-		move-line
-		async
-		helm
-		helm-company
-		helm-flx
-		helm-projectile
-		helm-anything
-		neotree
-		smartparens
-		yaml-mode))
 
 ;; Smart Parens
 (smartparens-global-mode)
@@ -111,11 +110,12 @@
  '(ns-command-modifier (quote meta))
  '(ring-bell-function (quote ignore) t)
  '(tab-width 3))
+(require 'spaceline-config)
+(load-theme 'spacemacs-dark)
+(spaceline-spacemacs-theme)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(powerline-center-theme)
-(load-theme 'tango-dark)
 (set-default 'cursor-type 'bar)
 (set-default-font "Courier New")
 (set-face-attribute 'default nil :height 145)
