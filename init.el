@@ -32,6 +32,13 @@
 		spaceline))
 
 
+;; 'Safe' themese
+(custom-set-variables
+ '(custom-safe-themes
+       (quote
+        ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))))
+
+
 ;; Save desktop on exit
 (desktop-save-mode 1)
 
