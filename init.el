@@ -1,5 +1,12 @@
 (load-file "~/.emacs.d/helpers.el")
 
+;; Extra repositories for packages
+(require 'package)
+(setq package-archives
+      '(("gnu"       . "https://elpa.gnu.org/packages/")
+	("marmalade" . "https://marmalade-repo.org/packages/")))
+
+
 ;; Required if any of the third party packages are to be
 ;; called/initialized in this file.
 (package-initialize)
@@ -11,25 +18,25 @@
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
- '(	company
-		exec-path-from-shell
-		flx
-		flx-ido
-		paredit
-		pkg-info
-		markdown-mode
-		projectile
-		move-line
-		async
-		helm
-		helm-company
-		helm-flx
-		helm-projectile
-		helm-anything
-		neotree
-		smartparens
-		yaml-mode
-		spaceline))
+ '(company
+   exec-path-from-shell
+   flx
+   flx-ido
+   paredit
+   pkg-info
+   markdown-mode
+   projectile
+   move-line
+   async
+   helm
+   helm-company
+   helm-flx
+   helm-projectile
+   helm-anything
+   neotree
+   smartparens
+   yaml-mode
+   spaceline))
 
 
 ;; 'Safe' themese
@@ -41,14 +48,6 @@
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
-
-
-;; Extra repositories for packages
-(require 'package)
-(setq package-archives
-      '(("gnu"       . "https://elpa.gnu.org/packages/")
-		  ("marmalade" . "https://marmalade-repo.org/packages/")
-		  ("melpa"     . "https://melpa.org/packages/")))
 
 
 ;; Split windows (i.e. help) should be side by side, I mean seriously,
