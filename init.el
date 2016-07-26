@@ -78,7 +78,7 @@
 
 
 ;; Smart Parens
-(smartparens-global-mode)
+;;(smartparens-global-mode)
 
 
 ;; NeoTree
@@ -115,11 +115,12 @@
 (custom-set-variables
  '(inhibit-startup-screen t)
  '(ns-command-modifier (quote meta))
- '(ring-bell-function (quote ignore) t)
+ '(ring-bell-function 'ignore t)
  '(tab-width 3))
 (require 'spaceline-config)
 (load-theme 'spacemacs-dark)
 (spaceline-spacemacs-theme)
+(spaceline-helm-mode)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -134,14 +135,6 @@
 (setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
 (setq hscroll-step 1)
 (setq truncate-lines 1)
-(defun fog-scroll-left ()
-  "Scrolls left."
-  (interactive)
-  (scroll-left 1))
-(defun fog-scroll-right ()
-  "Scrolls right."
-  (interactive)
-  (scroll-right 1))
 (setq go-left '((kbd "<S-wheel-down>")
 					 (kbd "<triple-wheel-right>")
 					 (kbd "<double-wheel-right>")
@@ -153,9 +146,9 @@
 ;; Note to self, we need to eval key-press here because it will be
 ;; passed to global-set-key as is - i.e. a list.
 (dolist (key-press go-left)
-  (global-set-key (eval key-press) 'fog-scroll-left))
+  (global-set-key (eval key-press) #'((interactive) (scroll-left 1))))
 (dolist (key-press go-right)
-  (global-set-key (eval key-press) 'fog-scroll-right))
+  (global-set-key (eval key-press) #'((interactive) (scroll-right 1))))
 
 
 ;; IDO - use flx
