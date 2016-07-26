@@ -1,15 +1,13 @@
 (load-file "~/.emacs.d/helpers.el")
 
 ;; Extra repositories for packages
-(require 'package)
 (setq package-archives
       '(("gnu"       . "https://elpa.gnu.org/packages/")
-	("marmalade" . "https://marmalade-repo.org/packages/")))
-
-
-;; Required if any of the third party packages are to be
-;; called/initialized in this file.
+	("marmalade" . "https://marmalade-repo.org/packages/")
+	("melpa"     . "https://melpa.org/packages/")))
+(require 'package)
 (package-initialize)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; GLobal defaults
