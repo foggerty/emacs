@@ -3,8 +3,8 @@
 ;; Extra repositories for packages
 (setq package-archives
       '(("gnu"       . "https://elpa.gnu.org/packages/")
-	("marmalade" . "https://marmalade-repo.org/packages/")
-	("melpa"     . "https://melpa.org/packages/")))
+		  ("marmalade" . "https://marmalade-repo.org/packages/")
+		  ("melpa"     . "https://melpa.org/packages/")))
 (require 'package)
 (package-initialize)
 
@@ -17,41 +17,47 @@
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(company
+	spaceline
+	spacemacs-theme
+   async
    exec-path-from-shell
+	flycheck
    flx
    flx-ido
-   paredit
-   pkg-info
-   markdown-mode
-   projectile
-   move-line
-   async
    helm
+   helm-anything
    helm-company
    helm-flx
    helm-projectile
-   helm-anything
+   markdown-mode
+   move-line
    neotree
+   paredit
+   pkg-info
+   projectile
    smartparens
-   yaml-mode
-   spaceline))
+   yaml-mode))
 
 
-;; 'Safe' themese
+;; 'Safe' themes
+;; Note to self: only have ONE custom-set-variables thingy.
 (custom-set-variables
  '(custom-safe-themes
-       (quote
-        ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))))
+	(quote
+	 ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))))
 
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
 
 
-;; Split windows (i.e. help) should be side by side, I mean seriously,
-;; laptop screens are stupidly wide :-)
+;; Playing with these - right now will not split vertically, so always
+;; get side by side screens (screens are wide, not deep).  I still
+;; want to know if I can set it up so that tab completions are in the
+;; bottom half of the screen, _no matter how may horizontal splits
+;; there are._
 (setq split-height-threshold nil)
-(setq split-width-threshold 0)
+(setq split-width-threshold 1000)
 
 
 ;; Major mode overrides
@@ -59,8 +65,8 @@
 
 
 ;; E-Shell customisation
-(custom-set-variables
- '(eshell-visual-options (quote (("git" "log" "diff" "show")))))
+(setq eshell-visual-options
+		(quote (("git" "log" "diff" "show"))))
 
 (add-hook 'eshell-mode-hook
 			 (lambda ()
@@ -75,7 +81,18 @@
 
 
 ;; Smart Parens
-;;(smartparens-global-mode)
+(smartparens-global-mode)
+
+
+;; Flycheck - replacement for flymake
+(global-flycheck-mode)
+
+
+;; Create dir if 'finding' a non-existent file
+(defun make-parent-directory ()
+  "Create parent directory of current buffer."
+  (make-directory (file-name-directory buffer-file-name) t))
+(helper-add-to-list 'find-file-not-found-functions 'make-parent-directory)
 
 
 ;; NeoTree
@@ -109,20 +126,21 @@
 
 
 ;; Appearance tidy ups
-(custom-set-variables
- '(inhibit-startup-screen t)
- '(ns-command-modifier (quote meta))
- '(ring-bell-function 'ignore t)
- '(tab-width 3))
+(setq inhibit-startup-screen t)
+(setq ns-command-modifier (quote meta))
+(setq org-agenda-files (quote ("~/projects/eLisp.org")))
+(setq ring-bell-function 'ignore)
+(setq tab-width 3)
 (require 'spaceline-config)
 (load-theme 'spacemacs-dark)
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
+(spaceline-toggle-minor-modes-off)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (set-default 'cursor-type 'bar)
-(set-default-font "Courier New")
+(set-frame-font "Courier New")
 (set-face-attribute 'default nil :height 145)
 
 
@@ -132,20 +150,21 @@
 (setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
 (setq hscroll-step 1)
 (setq truncate-lines 1)
-(setq go-left '((kbd "<S-wheel-down>")
-					 (kbd "<triple-wheel-right>")
-					 (kbd "<double-wheel-right>")
-					 (kbd "<wheel-right>")))
-(setq go-right '((kbd "<S-wheel-up>")
+(let 
+	 ((go-left '((kbd "<S-wheel-down>")
+						(kbd "<triple-wheel-right>")
+						(kbd "<double-wheel-right>")
+						(kbd "<wheel-right>")))
+	  (go-right '((kbd "<S-wheel-up>")
 					  (kbd "<triple-wheel-left>")
 					  (kbd "<double-wheel-left>")
-					  (kbd "<wheel-left>")))
-;; Note to self, we need to eval key-press here because it will be
-;; passed to global-set-key as is - i.e. a list.
-(dolist (key-press go-left)
-  (global-set-key (eval key-press) #'((interactive) (scroll-left 1))))
-(dolist (key-press go-right)
-  (global-set-key (eval key-press) #'((interactive) (scroll-right 1))))
+					  (kbd "<wheel-left>"))))
+  ;; Note to self, we need to eval key-press here because it will be
+  ;; passed to global-set-key as is - i.e. a list.
+  (dolist (key-press go-left)
+	 (global-set-key (eval key-press) #'((interactive) (scroll-left 1))))
+  (dolist (key-press go-right)
+	 (global-set-key (eval key-press) #'((interactive) (scroll-right 1)))))
 
 
 ;; IDO - use flx
@@ -164,7 +183,6 @@
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'other-window)
-(global-set-key (kbd "<f2> e") 'flymake-popup-current-error-menu)
 (show-paren-mode t)
 (setq hippie-expand-try-functions-list
 		'(try-expand-dabbrev
@@ -205,10 +223,11 @@
 
 
 ;; Flyspell for comments (prog-mode is the parent of all programming
-;; hook modes.
+;; hook modes).
 (add-hook 'prog-mode-hook
 			 (lambda ()
 				(flyspell-prog-mode)))
+(global-set-key (kbd "M-$") 'helm-flyspell-correct)
 			 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -223,3 +242,4 @@
 (load-file "~/.emacs.d/rubySettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
+

@@ -5,7 +5,6 @@
 									enh-ruby-mode))
 
 (defun custom-ruby-mode ()
-  (flymake-ruby-load)
   (global-set-key (kbd "C-c r r") 'inf-ruby-console-auto)
   ;; todo - add these to prog-mode-hook, but NOT when in lisp?
   (local-set-key (kbd "M-<up>") 'move-line-up)

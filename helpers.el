@@ -9,15 +9,21 @@
 
 (defun helper-swap-major-mode (original new)
   "Swaps out one major mode (if found) for another."
-  ;; Cannot rely on shadowing I don't think; whatever sets up the
-  ;; file/mode associations, probably just walks the lists,
-  ;; overwriting whatever is now at the front.  i.e. shadowing only
-  ;; works if someone is searching on key/value.
+  ;; Cannot rely on shadowing, I don't think; whatever sets up the
+  ;; file/mode associations probably just walks the list, overwriting
+  ;; whatever is now at the front.  i.e. shadowing only works if
+  ;; someone is searching on key/value, as it will be added to the
+  ;; front of the list.
   (let ((hold (rassoc original auto-mode-alist)))
     (if hold
-	(progn
-	  (rassq-delete-all 'original auto-mode-alist)
-	  (add-to-list 'auto-mode-alist
-		       (cons (car hold) new))))))
+		  (progn
+			 (rassq-delete-all 'original auto-mode-alist)
+			 (add-to-list 'auto-mode-alist
+							  (cons (car hold) new))))))
 
-
+(defun helper-add-to-list (lst fun)
+  "Adds fun to list unless it is already contained.  If list is
+nil, returns a new list containing fun. (Works with functions.)"
+  (cond ((not lst) (list fun))
+		  ((member fun lst)	lst)
+		  (t (add-to-list lst fun))))
