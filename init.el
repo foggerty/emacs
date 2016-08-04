@@ -1,10 +1,15 @@
+;;; Package --- My init file.  Not a package.  Why is the linter insisting on this?
+;;; Commentary:
+;;; Not available for commentary.
+;;; Code:
+
 (load-file "~/.emacs.d/helpers.el")
 
 ;; Extra repositories for packages
 (setq package-archives
       '(("gnu"       . "https://elpa.gnu.org/packages/")
-		  ("marmalade" . "https://marmalade-repo.org/packages/")
-		  ("melpa"     . "https://melpa.org/packages/")))
+	("marmalade" . "https://marmalade-repo.org/packages/")
+	("melpa"     . "https://melpa.org/packages/")))
 (require 'package)
 (package-initialize)
 
@@ -16,18 +21,21 @@
 
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
- '(company
-	spaceline
-	spacemacs-theme
+ '(atom-one-dark-theme
+   company
+   spaceline
+   spacemacs-theme
    async
    exec-path-from-shell
-	flycheck
+   flycheck
+   flycheck-pos-tip
    flx
    flx-ido
    helm
    helm-anything
    helm-company
    helm-flx
+   helm-flyspell
    helm-projectile
    markdown-mode
    move-line
@@ -43,8 +51,9 @@
 ;; Note to self: only have ONE custom-set-variables thingy.
 (custom-set-variables
  '(custom-safe-themes
-	(quote
-	 ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))))
+   (quote
+    ("4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278"
+     "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476"))))
 
 
 ;; Save desktop on exit
@@ -65,6 +74,7 @@
 
 
 ;; E-Shell customisation
+(require 'eshell)
 (setq eshell-visual-options
 		(quote (("git" "log" "diff" "show"))))
 
@@ -85,8 +95,8 @@
 
 
 ;; Flycheck - replacement for flymake
-(global-flycheck-mode)
-
+(global-flycheck-mode 1)
+(with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
 
 ;; Create dir if 'finding' a non-existent file
 (defun make-parent-directory ()
@@ -96,12 +106,15 @@
 
 
 ;; NeoTree
+(require 'neotree)
+(require 'projectile)
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (setq neo-smart-open t)
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
 
 ;; Helm
+(require 'helm)
 (require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "C-x b") 'helm-mini)
@@ -126,16 +139,21 @@
 
 
 ;; Appearance tidy ups
+(require 'org)
 (setq inhibit-startup-screen t)
 (setq ns-command-modifier (quote meta))
 (setq org-agenda-files (quote ("~/projects/eLisp.org")))
 (setq ring-bell-function 'ignore)
 (setq tab-width 3)
 (require 'spaceline-config)
-(load-theme 'spacemacs-dark)
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
 (spaceline-toggle-minor-modes-off)
+;; By first loading tangotango and then loading atom-one-dark, I get
+;; the org-mode embedded code highlights, the org-mode fonts from
+;; tangotango, and the nice colors from atom-one-dark :)
+(load-theme 'tangotango)
+(load-theme 'atom-one-dark)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -151,23 +169,24 @@
 (setq hscroll-step 1)
 (setq truncate-lines 1)
 (let 
-	 ((go-left '((kbd "<S-wheel-down>")
-						(kbd "<triple-wheel-right>")
-						(kbd "<double-wheel-right>")
-						(kbd "<wheel-right>")))
-	  (go-right '((kbd "<S-wheel-up>")
-					  (kbd "<triple-wheel-left>")
-					  (kbd "<double-wheel-left>")
-					  (kbd "<wheel-left>"))))
+    ((go-left '((kbd "<S-wheel-down>")
+		(kbd "<triple-wheel-right>")
+		(kbd "<double-wheel-right>")
+		(kbd "<wheel-right>")))
+     (go-right '((kbd "<S-wheel-up>")
+		 (kbd "<triple-wheel-left>")
+		 (kbd "<double-wheel-left>")
+		 (kbd "<wheel-left>"))))
   ;; Note to self, we need to eval key-press here because it will be
   ;; passed to global-set-key as is - i.e. a list.
   (dolist (key-press go-left)
-	 (global-set-key (eval key-press) #'((interactive) (scroll-left 1))))
+    (global-set-key (eval key-press) #'((interactive) (scroll-left 1))))
   (dolist (key-press go-right)
-	 (global-set-key (eval key-press) #'((interactive) (scroll-right 1)))))
+    (global-set-key (eval key-press) #'((interactive) (scroll-right 1)))))
 
 
 ;; IDO - use flx
+(require 'ido)
 (ido-mode t)
 (ido-everywhere 1)
 (flx-ido-mode 1)
@@ -212,12 +231,14 @@
 
 
 ;; Gobal auto-complete (Company mode)
+(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (global-set-key (kbd "C-<return>") 'company-complete)
 (setq company-idle-delay nil) ;; don't auto show, use key defined above.
 
 
 ;; Spell checking
+(require 'ispell)
 (setq ispell-program-name "/usr/local/bin/aspell")
 (setq ispell-dictionary "british")
 
@@ -225,8 +246,8 @@
 ;; Flyspell for comments (prog-mode is the parent of all programming
 ;; hook modes).
 (add-hook 'prog-mode-hook
-			 (lambda ()
-				(flyspell-prog-mode)))
+	  (lambda ()
+	    (flyspell-prog-mode)))
 (global-set-key (kbd "M-$") 'helm-flyspell-correct)
 			 
 
@@ -242,4 +263,3 @@
 (load-file "~/.emacs.d/rubySettings.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
-
