@@ -16,6 +16,7 @@
   (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
   (setq org-src-fontify-natively 1)
   (org-bullets-mode 1)
+  (org-toggle-pretty-entities)
   ;; HACK!  This is to allow for quotes to be used inside verbatim
   ;; tags.  What's happening here is that the variable
   ;; org-emphasis-regexp-components holds five 'parts' each of which
