@@ -50,9 +50,16 @@
 ;; 'Safe' themes
 ;; Note to self: only have ONE custom-set-variables thingy.
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-safe-themes
    (quote
-    ("4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278"
+    ("2f78d26d64f922b3c4959ed2581a60ac905b29aa9b4e59c9e6bc5bec390176f7"
+     "4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278"
      "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476"))))
 
 
@@ -76,22 +83,22 @@
 ;; E-Shell customisation
 (require 'eshell)
 (setq eshell-visual-options
-		(quote (("git" "log" "diff" "show"))))
+      (quote (("git" "log" "diff" "show"))))
 
 (add-hook 'eshell-mode-hook
-			 (lambda ()
-				(setenv "TERM" "emacs")))
+	  (lambda ()
+	    (setenv "TERM" "emacs")))
 
 (setq eshell-prompt-function
-		(lambda ()
-		  (propertize 
-			(concat (eshell/dirs) " $ ")
-			'face
-			`(:foreground "green"))))
+      (lambda ()
+	(propertize 
+	 (concat (eshell/dirs) " $ ")
+	 'face
+	 `(:foreground "green"))))
 
 
 ;; Smart Parens
-(smartparens-global-mode)
+;(smartparens-global-mode)
 
 
 ;; Flycheck - replacement for flymake
@@ -149,10 +156,6 @@
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
 (spaceline-toggle-minor-modes-off)
-;; By first loading tangotango and then loading atom-one-dark, I get
-;; the org-mode embedded code highlights, the org-mode fonts from
-;; tangotango, and the nice colors from atom-one-dark :)
-(load-theme 'tangotango)
 (load-theme 'atom-one-dark)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -204,16 +207,16 @@
 (global-set-key (kbd "C-<tab>") 'other-window)
 (show-paren-mode t)
 (setq hippie-expand-try-functions-list
-		'(try-expand-dabbrev
-		  try-expand-dabbrev-all-buffers
-		  try-expand-dabbrev-from-kill
-		  try-complete-file-name-partially
-		  try-complete-file-name
-		  try-expand-all-abbrevs
-		  try-expand-list
-		  try-expand-line
-		  try-complete-lisp-symbol-partially
-		  try-complete-lisp-symbol))
+      '(try-expand-dabbrev
+	try-expand-dabbrev-all-buffers
+	try-expand-dabbrev-from-kill
+	try-complete-file-name-partially
+	try-complete-file-name
+	try-expand-all-abbrevs
+	try-expand-list
+	try-expand-line
+	try-complete-lisp-symbol-partially
+	try-complete-lisp-symbol))
 
 
 ;; Help
@@ -249,7 +252,7 @@
 	  (lambda ()
 	    (flyspell-prog-mode)))
 (global-set-key (kbd "M-$") 'helm-flyspell-correct)
-			 
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Specific editing modes
@@ -261,5 +264,12 @@
 (load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
 (load-file "~/.emacs.d/rubySettings.el")
+(load-file "~/.emacs.d/nand2Tetris.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

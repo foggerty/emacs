@@ -28,18 +28,10 @@
 
 ;; Syntax highlighting
 (defconst n2t-asm-font-lock
-  (let ((registers
-	 (regexp-opt '("R0" "R1" "R2" "R3"
-		       "R4" "R5" "R6" "R7"
-		       "R8" "R9" "R10" "R11"
-		       "R12" "R13"
-		       "SPC" "LCL" "ARG"
-		       "THIS" "THAT"
-		       "SCREEN" "KEYBOARD")))
-	(labels "(.*)")
+  (let ((labels "(.*)")
 	(symbols "@\\sw+"))
+    ;; Needs to be an a-list
     (list
-     (cons registers  font-lock-constant-face)
      (cons labels     font-lock-function-name-face)
      (cons symbols    font-lock-builtin-face)))
   "Font-lock keywords for n2t-asm-mode.")
@@ -61,15 +53,14 @@
       (indent-line-to 3))))
 
 
-;; Syntax table - lets Emacs know what comments look like.
+;; Syntax table - lets Emacs know what comments, words, operators etc
+;; look like.
 (defvar n2t-asm-syntax-table
   (let ((st (make-syntax-table)))
-
-    (modify-syntax-entry ?/ "<" st)
+    (modify-syntax-entry ?/ ". 12b" st)
     (modify-syntax-entry ?\n ">" st)
-
     st)
-  "Syntax table for wpdl-mode")
+  "Syntax table for nt2-asm-mode")
 
 
 ;; The actual mode that ties it all together.
@@ -83,8 +74,7 @@
   (set (make-local-variable 'indent-line-function) 'n2t-indent-line)
   (setq major-mode 'n2t-asm-mode)
   (setq mode-name "N2T ASM")
-  ;;  (run-hooks 'n2t-asm-mode-hook)
-(message "ARGH!")  )
+  (run-hooks 'n2t-asm-mode-hook))
 
 (provide 'n2t-asm-mode)
 
