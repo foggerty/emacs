@@ -3,6 +3,15 @@
 ;;;; single tab.
 
 
+(defun n2t-screen-address (x y)
+  "Given x/y coordinates, will calculate the bit in RAM."
+  (interactive "nX: \nnY: ")
+  (message "%d" 
+	   (+ 16384
+	      (* y 32)
+	      (% x 16))))
+
+
 (defun n2t-asm-align-buffer ()
   "Indents the whole buffer."
   (interactive)
@@ -22,20 +31,17 @@
 (defvar n2t-asm-mode-map
   (let ((map (make-keymap)))
     (define-key map (kbd "C-M-q") 'n2t-asm-align-buffer)
+    (define-key map (kbd "M-s M-s") 'n2t-screen-address)
     map)
   "Keymap for n2t-asm-mode")
 
 
 ;; Syntax highlighting
 (defconst n2t-asm-font-lock
-  (let ((labels "(.*)")
-	(symbols "@\\sw+"))
-    ;; Needs to be an a-list
-    (list
-     (cons labels     font-lock-function-name-face)
-     (cons symbols    font-lock-builtin-face)))
+  (list
+   (cons "(.*)"            font-lock-function-name-face)
+   (cons "@[0-9a-zA-Z-]+"  font-lock-builtin-face))
   "Font-lock keywords for n2t-asm-mode.")
-
 
 
 ;; Indentation - labels hard left, everything else one tab in.

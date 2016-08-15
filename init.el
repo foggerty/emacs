@@ -44,7 +44,8 @@
    pkg-info
    projectile
    smartparens
-   yaml-mode))
+   yaml-mode
+   hungry-delete))
 
 
 ;; 'Safe' themes
@@ -65,6 +66,10 @@
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
+
+
+;; Typing over selected text deletes it
+(delete-selection-mode 1)
 
 
 ;; Playing with these - right now will not split vertically, so always
@@ -199,12 +204,16 @@
 
 ;; Global settings, defaults, and replacements for standard settings
 (require 'move-line)
+(require 'hungry-delete)
+(global-hungry-delete-mode)
 (electric-pair-mode)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'other-window)
+(global-set-key (kbd "C-x K") 'other-window-kill-buffer)
+(global-set-key (kbd "M-z") 'foggerty-zap-to-char)
 (show-paren-mode t)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev

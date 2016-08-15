@@ -1,11 +1,10 @@
 (defun helper-install-packages (packages)
   "Install a package if it is not already installed."
   (unless package-archive-contents
-	 (package-refresh-contents))
-
+    (package-refresh-contents))
   (dolist (p packages)
-	 (unless (package-installed-p p)
-		(package-install p))))
+    (unless (package-installed-p p)
+      (package-install p))))
 
 (defun helper-swap-major-mode (original new)
   "Swaps out one major mode (if found) for another."
@@ -16,14 +15,40 @@
   ;; front of the list.
   (let ((hold (rassoc original auto-mode-alist)))
     (if hold
-		  (progn
-			 (rassq-delete-all 'original auto-mode-alist)
-			 (add-to-list 'auto-mode-alist
-							  (cons (car hold) new))))))
+	(progn
+	  (rassq-delete-all 'original auto-mode-alist)
+	  (add-to-list 'auto-mode-alist
+		       (cons (car hold) new))))))
 
 (defun helper-add-to-list (lst fun)
   "Adds fun to list unless it is already contained.  If list is
 nil, returns a new list containing fun. (Works with functions.)"
   (cond ((not lst) (list fun))
-		  ((member fun lst)	lst)
-		  (t (add-to-list lst fun))))
+	((member fun lst)	lst)
+	(t (add-to-list lst fun))))
+
+
+;; Ripped from Stack Overflow
+(defun other-window-kill-buffer ()
+  "Kill the buffer in the other window"
+  (interactive)
+  ;; Window selection is used because point goes to a different window
+  ;; if more than 2 windows are present
+  (let ((win-curr (selected-window))
+        (win-other (next-window)))
+    (select-window win-other)
+    (kill-this-buffer)
+    (select-window win-curr)))
+
+
+;; Want a zap-to-char that doesn't kill the char!
+(defun foggerty-zap-to-char (arg char)
+  "Replacement for zap-to-char that doesn't also kill char."
+  (interactive "p\ncZap to char: ")
+  (save-excursion
+    (kill-region
+     (point)
+     (if current-prefix-arg
+	 (1+ (search-backward (char-to-string char)))
+	 (1- (search-forward (char-to-string char)))))))
+
