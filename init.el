@@ -64,6 +64,10 @@
      "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476"))))
 
 
+;; Shits and giggles
+(setq garbage-collection-messages t)
+
+
 ;; Save desktop on exit
 (desktop-save-mode 1)
 
@@ -214,6 +218,7 @@
 (global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "C-x K") 'other-window-kill-buffer)
 (global-set-key (kbd "M-z") 'foggerty-zap-to-char)
+(global-set-key (kbd "C-`") 'toggle-eshell)
 (show-paren-mode t)
 (setq hippie-expand-try-functions-list
       '(try-expand-dabbrev

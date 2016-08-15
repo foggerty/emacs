@@ -52,3 +52,13 @@ nil, returns a new list containing fun. (Works with functions.)"
 	 (1+ (search-backward (char-to-string char)))
 	 (1- (search-forward (char-to-string char)))))))
 
+
+;; EShell - always in the same frame
+(defun toggle-eshell ()
+  (interactive)
+  (let ((shell (get-buffer "*eshell*")))
+    (cond ((eq shell (current-buffer))
+	   (switch-to-buffer (previous-buffer)))
+	  (shell
+	   (switch-to-buffer shell))
+	  (t (eshell)))))
