@@ -1,5 +1,5 @@
 backups/*
-elpa/*
+elpa*
 auto-save-list/*
 \#*
 .\#*

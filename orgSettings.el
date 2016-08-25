@@ -19,6 +19,7 @@
 
   (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
   (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
+	(local-set-key (kbd "<f5>") 'map-maori-vowel)
 
   ;; HACK!  This is to allow for quotes to be used inside verbatim
   ;; tags.  What's happening here is that the variable

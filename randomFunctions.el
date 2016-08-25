@@ -5,11 +5,11 @@
 
 (defun adjust-margins (amount)
 	"Adjust current buffer's margin by +/- amount."
-	;; note to self: the set-window-margins will no longer be applied
-	;; once the current buffer no longer has focus.  Instead, set the
-	;; buffer-local variables left/right-margin-width and then set the
-	;; window's buffer to be the current buffer, which forces an
-	;; update/redraw.
+	;; note to self: the margins set by the set-window-margins function
+	;; will no longer be applied once the current buffer no longer has
+	;; focus.  Instead, set the buffer-local variables
+	;; left/right-margin-width and then set the window's buffer to be
+	;; the current buffer, which forces an update/redraw.
 	(let* ((margins (window-margins))
 				 (left  (if (-cons-pair? margins) (car margins) 0))
 				 (right (if (-cons-pair? margins) (cdr margins) 0)))
@@ -46,3 +46,26 @@
 	(interactive)
 	(adjust-font-size -0.10))
 
+(setq māori-vowels
+			'(("a" . "\u0101")
+				("e" . "\u0113")
+				("i" . "\u012B")
+				("o" . "\u014D")
+				("u" . "\u016B")
+				("A" . "\u0100")
+				("E" . "\u0112")
+				("I" . "\u012A")
+				("O" . "\u014C")
+				("U" . "\u016A")))
+
+(defun map-character (map)
+	"Maps next key-press using the provided map."
+	(let* ((char (char-to-string (read-key)))
+				 (test (assoc char map)))
+		(if test (cdr test)
+			char)))
+
+(defun map-maori-vowel () 
+	"Maps a,e,i,o,u to the Māori equivalents."
+	(interactive)
+	(insert (map-character māori-vowels)))
