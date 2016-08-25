@@ -19,18 +19,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; Ensure the required packages are loaded, and install them if not.
+;; ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(atom-one-dark-theme
-   company
-   spaceline
-   spacemacs-theme
    async
-   exec-path-from-shell
-   flycheck
-   flycheck-pos-tip
+   company
+	 dash
+	 exec-path-from-shell
    flx
    flx-ido
+   flycheck
+   flycheck-pos-tip
    helm
    helm-anything
    helm-company
@@ -44,28 +43,25 @@
    pkg-info
    projectile
    smartparens
+   spaceline
+   spacemacs-theme
    yaml-mode
-   hungry-delete))
+	 hungry-delete))
 
 
-;; 'Safe' themes
-;; Note to self: only have ONE custom-set-variables thingy.
+;; ;; 'Safe' themes
+;; ;; Note to self: only have ONE custom-set-variables thingy.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+	["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-safe-themes
-   (quote
-    ("2f78d26d64f922b3c4959ed2581a60ac905b29aa9b4e59c9e6bc5bec390176f7"
-     "4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278"
-     "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476"))))
-
-
-;; Shits and giggles
-(setq garbage-collection-messages t)
+	(quote
+	 ("2f78d26d64f922b3c4959ed2581a60ac905b29aa9b4e59c9e6bc5bec390176f7" "4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278" "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476")))
+ '(org-agenda-files nil))
 
 
 ;; Save desktop on exit
@@ -95,24 +91,22 @@
       (quote (("git" "log" "diff" "show"))))
 
 (add-hook 'eshell-mode-hook
-	  (lambda ()
-	    (setenv "TERM" "emacs")))
+			 (lambda ()
+				(setenv "TERM" "emacs")
+				(exec-path-from-shell-initialize)))
 
 (setq eshell-prompt-function
       (lambda ()
-	(propertize 
-	 (concat (eshell/dirs) " $ ")
-	 'face
-	 `(:foreground "green"))))
-
-
-;; Smart Parens
-;(smartparens-global-mode)
+		  (propertize 
+			(concat (eshell/dirs) " $ ")
+			'face
+			`(:foreground "green"))))
 
 
 ;; Flycheck - replacement for flymake
 (global-flycheck-mode 1)
 (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
+
 
 ;; Create dir if 'finding' a non-existent file
 (defun make-parent-directory ()
@@ -121,12 +115,12 @@
 (helper-add-to-list 'find-file-not-found-functions 'make-parent-directory)
 
 
-;; NeoTree
-(require 'neotree)
-(require 'projectile)
-(global-set-key (kbd "<f8>") 'neotree-toggle)
-(setq neo-smart-open t)
-(setq projectile-switch-project-action 'neotree-projectile-action)
+;; ;; NeoTree
+;; (require 'neotree)
+;; (require 'projectile)
+;; (global-set-key (kbd "<f8>") 'neotree-toggle)
+;; (setq neo-smart-open t)
+;; (setq projectile-switch-project-action 'neotree-projectile-action)
 
 
 ;; Helm
@@ -145,7 +139,7 @@
 
 ;; Projectile mode everywhere
 (projectile-global-mode)
-(setq projectile-enable-caching t)
+(setq projectile-enable-caching nil)
 (setq projectile-indexing-method 'alien)
 (global-set-key (kbd "<f12>") 'projectile-find-file)
 
@@ -165,6 +159,7 @@
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
 (spaceline-toggle-minor-modes-off)
+(load-theme 'tangotango)
 (load-theme 'atom-one-dark)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -182,13 +177,13 @@
 (setq truncate-lines 1)
 (let 
     ((go-left '((kbd "<S-wheel-down>")
-		(kbd "<triple-wheel-right>")
-		(kbd "<double-wheel-right>")
-		(kbd "<wheel-right>")))
+					 (kbd "<triple-wheel-right>")
+					 (kbd "<double-wheel-right>")
+					 (kbd "<wheel-right>")))
      (go-right '((kbd "<S-wheel-up>")
-		 (kbd "<triple-wheel-left>")
-		 (kbd "<double-wheel-left>")
-		 (kbd "<wheel-left>"))))
+					  (kbd "<triple-wheel-left>")
+					  (kbd "<double-wheel-left>")
+					  (kbd "<wheel-left>"))))
   ;; Note to self, we need to eval key-press here because it will be
   ;; passed to global-set-key as is - i.e. a list.
   (dolist (key-press go-left)
@@ -214,29 +209,16 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "C-x K") 'other-window-kill-buffer)
 (global-set-key (kbd "M-z") 'foggerty-zap-to-char)
 (global-set-key (kbd "C-`") 'toggle-eshell)
+(global-set-key (kbd "C-_") 'decrease-margin)
+(global-set-key (kbd "C-+") 'increase-margin)
+(global-set-key (kbd "M-_") 'decrease-font-size)
+(global-set-key (kbd "M-+") 'increase-font-size)
+(setq default-tab-width 2)
 (show-paren-mode t)
-(setq hippie-expand-try-functions-list
-      '(try-expand-dabbrev
-	try-expand-dabbrev-all-buffers
-	try-expand-dabbrev-from-kill
-	try-complete-file-name-partially
-	try-complete-file-name
-	try-expand-all-abbrevs
-	try-expand-list
-	try-expand-line
-	try-complete-lisp-symbol-partially
-	try-complete-lisp-symbol))
-
-
-;; Help
-(define-key 'help-command (kbd "C-l") 'find-library)  ; C-h C-l
-(define-key 'help-command (kbd "C-f") 'find-function) ; C-h C-f
-(define-key 'help-command (kbd "C-k") 'find-function-on-key) ; C-h C-k
 
 
 ;; Centralised backup directory
@@ -262,10 +244,15 @@
 
 ;; Flyspell for comments (prog-mode is the parent of all programming
 ;; hook modes).
+;; Also show popup with Mouse3 (right click)
 (add-hook 'prog-mode-hook
-	  (lambda ()
-	    (flyspell-prog-mode)))
+			 (lambda ()
+				(flyspell-prog-mode)))
 (global-set-key (kbd "M-$") 'helm-flyspell-correct)
+(eval-after-load "flyspell"
+  '(progn
+	  (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+	  (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -275,12 +262,14 @@
 (load-file "~/.emacs.d/randomFunctions.el")
 (load-file "~/.emacs.d/textSettings.el")
 (load-file "~/.emacs.d/orgSettings.el")
-(load-file "~/.emacs.d/goSettings.el")
+;; (load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
 (load-file "~/.emacs.d/rubySettings.el")
 (load-file "~/.emacs.d/nand2Tetris.el")
-;;(load-file "~/.emacs.d/clojureSettings.el")
-;;(load-file "~/.emacs.d/schemeSettings.el")
+;; ;;(load-file "~/.emacs.d/clojureSettings.el")
+;; ;;(load-file "~/.emacs.d/schemeSettings.el")
+
+;; I cannot get rid of this....
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

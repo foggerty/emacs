@@ -7,9 +7,9 @@
   "Given x/y coordinates, will calculate the bit in RAM."
   (interactive "nX: \nnY: ")
   (message "%d" 
-	   (+ 16384
-	      (* y 32)
-	      (% x 16))))
+					 (+ 16384
+							(* y 32)
+							(% x 16))))
 
 
 (defun n2t-asm-align-buffer ()
@@ -52,18 +52,18 @@
     (beginning-of-line)
     ;; loop symbol and one-line comments
     (if (or 
-	 (looking-at "^[ \t]*(")
-	 (looking-at "^[ \t]*//"))
-	(indent-line-to 0)
+				 (looking-at "^[ \t]*(")
+				 (looking-at "^[ \t]*//"))
+				(indent-line-to 0)
       ;; everything else
-      (indent-line-to 3))))
+      (indent-line-to default-tab-width))))
 
 
 ;; Syntax table - lets Emacs know what comments, words, operators etc
 ;; look like.
 (defvar n2t-asm-syntax-table
   (let ((st (make-syntax-table)))
-    (modify-syntax-entry ?/ ". 12b" st)
+    (modify-syntax-entry ?/ ". 12" st)
     (modify-syntax-entry ?\n ">" st)
     st)
   "Syntax table for nt2-asm-mode")

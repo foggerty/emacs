@@ -11,12 +11,15 @@
 
 (defun my-org-mode ()
   (org-indent-mode)
-  (setq org-hide-emphasis-markers t)
-  (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
-  (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
-  (setq org-src-fontify-natively 1)
   (org-bullets-mode 1)
   (org-toggle-pretty-entities)
+
+  (setq org-src-fontify-natively 1)
+  (setq org-hide-emphasis-markers t)
+
+  (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
+  (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
+
   ;; HACK!  This is to allow for quotes to be used inside verbatim
   ;; tags.  What's happening here is that the variable
   ;; org-emphasis-regexp-components holds five 'parts' each of which
