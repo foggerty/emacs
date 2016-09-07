@@ -7,9 +7,10 @@
 
 ;; Extra repositories for packages
 (setq package-archives
-      '(("gnu"       . "https://elpa.gnu.org/packages/")
-	("marmalade" . "https://marmalade-repo.org/packages/")
-	("melpa"     . "https://melpa.org/packages/")))
+      '(;;("gnu"       . "https://elpa.gnu.org/packages/")
+		  ("marmalade" . "https://marmalade-repo.org/packages/")
+		  ("melpa"     . "https://melpa.org/packages/")
+		  ))
 (require 'package)
 (package-initialize)
 
@@ -24,8 +25,8 @@
  '(atom-one-dark-theme
    async
    company
-	 dash
-	 exec-path-from-shell
+	dash
+	exec-path-from-shell
    flx
    flx-ido
    flycheck
@@ -46,7 +47,7 @@
    spaceline
    spacemacs-theme
    yaml-mode
-	 hungry-delete))
+	hungry-delete))
 
 
 ;; ;; 'Safe' themes
@@ -60,7 +61,10 @@
 	["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-safe-themes
 	(quote
-	 ("2f78d26d64f922b3c4959ed2581a60ac905b29aa9b4e59c9e6bc5bec390176f7" "4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278" "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476")))
+	 ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476"
+	  "2f78d26d64f922b3c4959ed2581a60ac905b29aa9b4e59c9e6bc5bec390176f7"
+	  "4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278"
+	  "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476")))
  '(org-agenda-files nil))
 
 
@@ -92,8 +96,7 @@
 
 (add-hook 'eshell-mode-hook
 			 (lambda ()
-				(setenv "TERM" "emacs")
-				(exec-path-from-shell-initialize)))
+				(setenv "TERM" "emacs")))
 
 (setq eshell-prompt-function
       (lambda ()
@@ -149,23 +152,29 @@
 
 
 ;; Appearance tidy ups
-(require 'org)
+(load-theme 'tangotango) ; get the org bullets from tangotango...
+(load-theme 'atom-one-dark) ; and the colors from atom-one-dark
 (setq inhibit-startup-screen t)
 (setq ns-command-modifier (quote meta))
-(setq org-agenda-files (quote ("~/projects/eLisp.org")))
 (setq ring-bell-function 'ignore)
 (setq tab-width 3)
+(temp-buffer-resize-mode t)
+(setq temp-buffer-max-height 12)
+(setq compilation-window-height 12)
+(setq compilation-he)
+
 (require 'spaceline-config)
-(spaceline-spacemacs-theme)
+(setq powerline-default-separator 'bar)
+(spaceline-emacs-theme)
 (spaceline-helm-mode)
 (spaceline-toggle-minor-modes-off)
-(load-theme 'tangotango)
-(load-theme 'atom-one-dark)
+(spaceline-compile)
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (set-default 'cursor-type 'bar)
-(set-frame-font "Courier New")
+(set-frame-font "Inconsolata")
 (set-face-attribute 'default nil :height 145)
 
 
@@ -236,6 +245,10 @@
 (setq company-idle-delay nil) ;; don't auto show, use key defined above.
 
 
+;; yasnippet
+(yas-global-mode 1)
+
+
 ;; Spell checking
 (require 'ispell)
 (setq ispell-program-name "/usr/local/bin/aspell")
@@ -262,7 +275,7 @@
 (load-file "~/.emacs.d/randomFunctions.el")
 (load-file "~/.emacs.d/textSettings.el")
 (load-file "~/.emacs.d/orgSettings.el")
-;; (load-file "~/.emacs.d/goSettings.el")
+(load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
 (load-file "~/.emacs.d/rubySettings.el")
 (load-file "~/.emacs.d/nand2Tetris.el")

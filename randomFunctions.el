@@ -47,16 +47,16 @@
 	(adjust-font-size -0.10))
 
 (setq māori-vowels
-			'(("a" . "\u0101")
-				("e" . "\u0113")
-				("i" . "\u012B")
-				("o" . "\u014D")
-				("u" . "\u016B")
-				("A" . "\u0100")
-				("E" . "\u0112")
-				("I" . "\u012A")
-				("O" . "\u014C")
-				("U" . "\u016A")))
+			'(("a" . "ā")
+				("e" . "ē")
+				("i" . "ī")
+				("o" . "ō")
+				("u" . "ū")
+				("A" . "Ā")
+				("E" . "Ē")
+				("I" . "Ī")
+				("O" . "Ō")
+				("U" . "Ū")))
 
 (defun map-character (map)
 	"Maps next key-press using the provided map."

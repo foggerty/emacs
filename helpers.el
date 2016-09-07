@@ -49,8 +49,8 @@ nil, returns a new list containing fun. (Works with functions.)"
     (kill-region
      (point)
      (if current-prefix-arg
-	 (1+ (search-backward (char-to-string char)))
-	 (1- (search-forward (char-to-string char)))))))
+				 (1+ (search-backward (char-to-string char)))
+			 (1- (search-forward (char-to-string char)))))))
 
 
 ;; EShell - always in the same frame
@@ -58,7 +58,9 @@ nil, returns a new list containing fun. (Works with functions.)"
   (interactive)
   (let ((shell (get-buffer "*eshell*")))
     (cond ((eq shell (current-buffer))
-	   (switch-to-buffer (previous-buffer)))
-	  (shell
-	   (switch-to-buffer shell))
-	  (t (eshell)))))
+					 (switch-to-buffer (previous-buffer)))
+					(shell
+					 (switch-to-buffer shell))
+					(t (eshell)))))
+
+
