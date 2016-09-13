@@ -21,7 +21,9 @@
 
 	;; go-def
 	(local-set-key (kbd "M-.") 'godef-jump)
-	(local-set-key (kbd "M->") 'pop-tag-mark)
+	(local-set-key (kbd "M-,") 'pop-tag-mark)
+	(local-set-key (kbd "C-/") 'comment-region)
+	(local-set-key (kbd "C-?") 'uncomment-region)
 
 	;; Autocomplete setting for go only (move to main if I like these)
 	(setq-local company-tooltip-limit 20) ; bigger popup window
@@ -31,12 +33,12 @@
 
 	;; requires go guru
 	(go-guru-hl-identifier-mode)
-
+	
 	;; thinking of making this global.....
 	(aggressive-indent-mode)
 
 	;; compiler / test / vet (linter)
-	(if (not (string-match "go" 'compile-command))
+	(if (not (string-match "go" compile-command))
 			(set (make-local-variable 'compile-command)
 					 "go build -v && go test && go vet"))
 
@@ -45,7 +47,6 @@
 				 (path (concat home "/go"))
 				 (bin (concat path "/bin")))
 		(setenv "GOPATH" path)
-		(setenv "GOBIN" bin))
-	)
+		(setenv "GOBIN" bin)))
 
-(add-hook 'go-mode-hook 'custom-go-mode-hook)
+(helper-add-hook 'go-mode-hook 'custom-go-mode-hook)

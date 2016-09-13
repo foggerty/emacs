@@ -69,3 +69,11 @@
 	"Maps a,e,i,o,u to the Māori equivalents."
 	(interactive)
 	(insert (map-character māori-vowels)))
+
+(defun set-org-tags-from-anywhere ()
+  "Sets the tags for the headline of whatever text you're in."
+  (interactive)
+	(if (string-match "org.*mode" (symbol-name major-mode))
+			(save-excursion
+				(org-previous-visible-heading 1)
+				(org-set-tags))))

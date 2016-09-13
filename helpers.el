@@ -64,3 +64,8 @@ nil, returns a new list containing fun. (Works with functions.)"
 					(t (eshell)))))
 
 
+;; Add a mod hook, but first remove if already there
+(defun helper-add-hook (hook fun)
+	"Adds hook, after first removing it if it's already there."
+	(remove-hook hook fun)
+	(add-hook hook fun))

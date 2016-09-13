@@ -6,13 +6,10 @@
 (load-file "~/.emacs.d/helpers.el")
 
 ;; Extra repositories for packages
-(setq package-archives
-      '(;;("gnu"       . "https://elpa.gnu.org/packages/")
-		  ("marmalade" . "https://marmalade-repo.org/packages/")
-		  ("melpa"     . "https://melpa.org/packages/")
-		  ))
 (require 'package)
 (package-initialize)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -22,21 +19,19 @@
 
 ;; ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
- '(atom-one-dark-theme
-   async
+ '(async
    company
-	dash
-	exec-path-from-shell
+	 counsel
+	 dash
+	 exec-path-from-shell
    flx
    flx-ido
    flycheck
    flycheck-pos-tip
    helm
-   helm-anything
-   helm-company
-   helm-flx
-   helm-flyspell
-   helm-projectile
+	 helm-projectile
+	 ivy
+	 flyspell-correct-ivy
    markdown-mode
    move-line
    neotree
@@ -45,27 +40,23 @@
    projectile
    smartparens
    spaceline
-   spacemacs-theme
    yaml-mode
-	hungry-delete))
+	 hungry-delete))
 
 
-;; ;; 'Safe' themes
-;; ;; Note to self: only have ONE custom-set-variables thingy.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-	["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-safe-themes
-	(quote
-	 ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476"
-	  "2f78d26d64f922b3c4959ed2581a60ac905b29aa9b4e59c9e6bc5bec390176f7"
-	  "4f0f2f5ec60a4c6881ba36ffbfef31b2eea1c63aad9fe3a4a0e89452346de278"
-	  "5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476")))
- '(org-agenda-files nil))
+;; DISABLE the bloody command key (again)
+(setq ns-command-modifier 'meta)
+
+
+;; Org capture template for journal
+(setq org-capture-templates  
+			;;		'(("j" "Journal entry"
+			;;		entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
+			;;		"* %?\n%U\n"))
+			'(("j" "Journal Entry"
+				 entry (file+datetree "~/journal.org")
+				 "* Event: %?\n\n  %i\n\n  From: %a"
+				 :empty-lines 1)))
 
 
 ;; Save desktop on exit
@@ -76,34 +67,8 @@
 (delete-selection-mode 1)
 
 
-;; Playing with these - right now will not split vertically, so always
-;; get side by side screens (screens are wide, not deep).  I still
-;; want to know if I can set it up so that tab completions are in the
-;; bottom half of the screen, _no matter how may horizontal splits
-;; there are._
-(setq split-height-threshold nil)
-(setq split-width-threshold 1000)
-
-
 ;; Major mode overrides
 (helper-swap-major-mode 'ruby-mode 'enh-ruby-mode)
-
-
-;; E-Shell customisation
-(require 'eshell)
-(setq eshell-visual-options
-      (quote (("git" "log" "diff" "show"))))
-
-(add-hook 'eshell-mode-hook
-			 (lambda ()
-				(setenv "TERM" "emacs")))
-
-(setq eshell-prompt-function
-      (lambda ()
-		  (propertize 
-			(concat (eshell/dirs) " $ ")
-			'face
-			`(:foreground "green"))))
 
 
 ;; Flycheck - replacement for flymake
@@ -118,26 +83,17 @@
 (helper-add-to-list 'find-file-not-found-functions 'make-parent-directory)
 
 
-;; ;; NeoTree
-;; (require 'neotree)
-;; (require 'projectile)
-;; (global-set-key (kbd "<f8>") 'neotree-toggle)
-;; (setq neo-smart-open t)
-;; (setq projectile-switch-project-action 'neotree-projectile-action)
-
-
 ;; Helm
-(require 'helm)
-(require 'helm-config)
-(helm-mode 1)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(helm-projectile-on)
-(helm-autoresize-mode nil)
-(setq helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match t)
+;; (require 'helm)
+;; (require 'helm-config)
+;; (helm-mode 1)
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+;; (helm-projectile-on)
+;; (setq helm-buffers-fuzzy-matching t
+;;       helm-recentf-fuzzy-match t)
 
 
 ;; Projectile mode everywhere
@@ -152,21 +108,17 @@
 
 
 ;; Appearance tidy ups
-(load-theme 'tangotango) ; get the org bullets from tangotango...
-(load-theme 'atom-one-dark) ; and the colors from atom-one-dark
-(setq inhibit-startup-screen t)
-(setq ns-command-modifier (quote meta))
-(setq ring-bell-function 'ignore)
-(setq tab-width 3)
+(load-file "~/.emacs.d/tangotango2.el") ; autoloads theme, not bothered to find our why
 (temp-buffer-resize-mode t)
-(setq temp-buffer-max-height 12)
-(setq compilation-window-height 12)
-(setq compilation-he)
+(setq inhibit-startup-screen t
+		ns-command-modifier (quote super)
+		ring-bell-function 'ignore
+		tab-width 3
+		temp-buffer-max-height 12
+		compilation-window-height 12)
 
 (require 'spaceline-config)
 (setq powerline-default-separator 'bar)
-(spaceline-emacs-theme)
-(spaceline-helm-mode)
 (spaceline-toggle-minor-modes-off)
 (spaceline-compile)
 
@@ -174,16 +126,16 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (set-default 'cursor-type 'bar)
-(set-frame-font "Inconsolata")
+(set-frame-font "Source Code Pro")
 (set-face-attribute 'default nil :height 145)
 
 
 ;; Better (smoother) scrolling
-(setq scroll-conservatively 1)
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount (quote (2 ((shift) . 1))))
-(setq hscroll-step 1)
-(setq truncate-lines 1)
+(setq scroll-conservatively 1
+		mouse-wheel-progressive-speed nil
+		mouse-wheel-scroll-amount (quote (2 ((shift) . 1)))
+		hscroll-step 1
+		truncate-lines 1)
 (let 
     ((go-left '((kbd "<S-wheel-down>")
 					 (kbd "<triple-wheel-right>")
@@ -210,6 +162,14 @@
 (setq ido-use-faces nil) ; use highlighting from flx
 
 
+;; Ivy / Swiper / Counsel / Helm
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(helm-projectile-on)
+
 ;; Global settings, defaults, and replacements for standard settings
 (require 'move-line)
 (require 'hungry-delete)
@@ -226,6 +186,9 @@
 (global-set-key (kbd "C-+") 'increase-margin)
 (global-set-key (kbd "M-_") 'decrease-font-size)
 (global-set-key (kbd "M-+") 'increase-font-size)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c /") 'comment-region)
+(global-set-key (kbd "C-c ?") 'uncomment-region)
 (setq default-tab-width 2)
 (show-paren-mode t)
 
@@ -251,8 +214,8 @@
 
 ;; Spell checking
 (require 'ispell)
-(setq ispell-program-name "/usr/local/bin/aspell")
-(setq ispell-dictionary "british")
+(setq ispell-program-name "/usr/local/bin/aspell"
+		ispell-dictionary "british")
 
 
 ;; Flyspell for comments (prog-mode is the parent of all programming
@@ -277,15 +240,8 @@
 (load-file "~/.emacs.d/orgSettings.el")
 (load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
-(load-file "~/.emacs.d/rubySettings.el")
-(load-file "~/.emacs.d/nand2Tetris.el")
-;; ;;(load-file "~/.emacs.d/clojureSettings.el")
-;; ;;(load-file "~/.emacs.d/schemeSettings.el")
+;;(load-file "~/.emacs.d/rubySettings.el")
+;;(load-file "~/.emacs.d/nand2Tetris.el")
+;;(load-file "~/.emacs.d/clojureSettings.el")
+;;(load-file "~/.emacs.d/schemeSettings.el")
 
-;; I cannot get rid of this....
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
