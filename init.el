@@ -17,21 +17,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-;; ;; Ensure the required packages are loaded, and install them if not.
+;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
- '(async
+ '(
+   counsel
+   dash
+   exec-path-from-shell
+   flyspell-correct-ivy
+	helm
+   hungry-delete
+   ivy
    company
-	 counsel
-	 dash
-	 exec-path-from-shell
    flx
    flx-ido
    flycheck
    flycheck-pos-tip
-   helm
-	 helm-projectile
-	 ivy
-	 flyspell-correct-ivy
    markdown-mode
    move-line
    neotree
@@ -39,9 +39,9 @@
    pkg-info
    projectile
    smartparens
-   spaceline
    yaml-mode
-	 hungry-delete))
+   async
+   ))
 
 
 ;; DISABLE the bloody command key (again)
@@ -49,14 +49,10 @@
 
 
 ;; Org capture template for journal
-(setq org-capture-templates  
-			;;		'(("j" "Journal entry"
-			;;		entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
-			;;		"* %?\n%U\n"))
-			'(("j" "Journal Entry"
-				 entry (file+datetree "~/journal.org")
-				 "* Event: %?\n\n  %i\n\n  From: %a"
-				 :empty-lines 1)))
+(setq org-capture-templates
+      '(("j" "Journal entry"
+	 entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
+	 "* %?\n%U\n")))
 
 
 ;; Save desktop on exit
@@ -83,24 +79,11 @@
 (helper-add-to-list 'find-file-not-found-functions 'make-parent-directory)
 
 
-;; Helm
-;; (require 'helm)
-;; (require 'helm-config)
-;; (helm-mode 1)
-;; (global-set-key (kbd "C-x b") 'helm-mini)
-;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
-;; (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-;; (helm-projectile-on)
-;; (setq helm-buffers-fuzzy-matching t
-;;       helm-recentf-fuzzy-match t)
-
-
 ;; Projectile mode everywhere
 (projectile-global-mode)
 (setq projectile-enable-caching nil)
 (setq projectile-indexing-method 'alien)
-(global-set-key (kbd "<f12>") 'projectile-find-file)
+(global-set-key (kbd "<f12>") 'counsel-projectile-find-file)
 
 
 ;; Use the same path you'd get in a standard shell
@@ -109,6 +92,8 @@
 
 ;; Appearance tidy ups
 (load-file "~/.emacs.d/tangotango2.el") ; autoloads theme, not bothered to find our why
+(setq powerline-default-separator 'bar)
+(powerline-default-theme)
 (temp-buffer-resize-mode t)
 (setq inhibit-startup-screen t
 		ns-command-modifier (quote super)
@@ -116,12 +101,6 @@
 		tab-width 3
 		temp-buffer-max-height 12
 		compilation-window-height 12)
-
-(require 'spaceline-config)
-(setq powerline-default-separator 'bar)
-(spaceline-toggle-minor-modes-off)
-(spaceline-compile)
-
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -162,13 +141,16 @@
 (setq ido-use-faces nil) ; use highlighting from flx
 
 
-;; Ivy / Swiper / Counsel / Helm
+;; Ivy / Swiper / Counsel
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(helm-projectile-on)
+(global-set-key (kbd "C-s")     'swiper)
+;;(global-set-key (kbd "M-x")     'counsel-M-x)
+;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;; (global-set-key (kbd "C-c p d") 'counsel-projectile-find-dir)
+;; (global-set-key (kbd "C-c p p") 'counsel-projectile)
+;; (global-set-key (kbd "C-x r b") 'counsel-bookmark) ; C-c r m = create bookmark
+(counsel-mode 1)
 
 ;; Global settings, defaults, and replacements for standard settings
 (require 'move-line)
@@ -224,7 +206,6 @@
 (add-hook 'prog-mode-hook
 			 (lambda ()
 				(flyspell-prog-mode)))
-(global-set-key (kbd "M-$") 'helm-flyspell-correct)
 (eval-after-load "flyspell"
   '(progn
 	  (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
@@ -237,7 +218,7 @@
 
 (load-file "~/.emacs.d/randomFunctions.el")
 (load-file "~/.emacs.d/textSettings.el")
-(load-file "~/.emacs.d/orgSettings.el")
+;(load-file "~/.emacs.d/orgSettings.el")
 (load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
 ;;(load-file "~/.emacs.d/rubySettings.el")

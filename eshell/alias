@@ -1,9 +1,0 @@
-alias all-dirs {ls -1d *}
-alias all-dirs={ls -1d *}
-alias gtlt git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s" | less
-alias gtl git log --graph --decorate=full
-alias gtc git checkout
-alias gts git status -s -b --column
-alias gtb git branch -vva
-alias ff find-file $1
-alias d dired $1

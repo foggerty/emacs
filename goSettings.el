@@ -40,7 +40,7 @@
 	;; compiler / test / vet (linter)
 	(if (not (string-match "go" compile-command))
 			(set (make-local-variable 'compile-command)
-					 "go build -v && go test && go vet"))
+					 "go build -v && go test ./.. && go vet"))
 
 	;; Finally, the ENV variables required by the go tools.
 	(let* ((home (getenv "HOME"))
