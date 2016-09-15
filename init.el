@@ -20,7 +20,9 @@
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(
-   counsel
+	aggressive-indent
+	counsel
+	counsel-projectile
    dash
    exec-path-from-shell
    flyspell-correct-ivy
@@ -37,9 +39,11 @@
    neotree
    paredit
    pkg-info
+   powerline
    projectile
    smartparens
    yaml-mode
+ 	yasnippet
    async
    ))
 
@@ -51,8 +55,8 @@
 ;; Org capture template for journal
 (setq org-capture-templates
       '(("j" "Journal entry"
-	 entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
-	 "* %?\n%U\n")))
+			entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
+			"* %?\n%U\n")))
 
 
 ;; Save desktop on exit
@@ -84,7 +88,6 @@
 (setq projectile-enable-caching nil)
 (setq projectile-indexing-method 'alien)
 (global-set-key (kbd "<f12>") 'counsel-projectile-find-file)
-
 
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
@@ -143,14 +146,10 @@
 
 ;; Ivy / Swiper / Counsel
 (ivy-mode 1)
+(counsel-mode 1)
 (setq ivy-use-virtual-buffers t)
 (global-set-key (kbd "C-s")     'swiper)
-;;(global-set-key (kbd "M-x")     'counsel-M-x)
-;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-;; (global-set-key (kbd "C-c p d") 'counsel-projectile-find-dir)
-;; (global-set-key (kbd "C-c p p") 'counsel-projectile)
-;; (global-set-key (kbd "C-x r b") 'counsel-bookmark) ; C-c r m = create bookmark
-(counsel-mode 1)
+
 
 ;; Global settings, defaults, and replacements for standard settings
 (require 'move-line)
@@ -218,7 +217,7 @@
 
 (load-file "~/.emacs.d/randomFunctions.el")
 (load-file "~/.emacs.d/textSettings.el")
-;(load-file "~/.emacs.d/orgSettings.el")
+(load-file "~/.emacs.d/orgSettings.el")
 (load-file "~/.emacs.d/goSettings.el")
 (load-file "~/.emacs.d/elispSettings.el")
 ;;(load-file "~/.emacs.d/rubySettings.el")

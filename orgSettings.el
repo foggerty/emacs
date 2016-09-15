@@ -34,7 +34,7 @@
 	(local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
 	(local-set-key (kbd "<f5>") 'map-maori-vowel)
 	(local-set-key (kbd "C-<tab>") 'other-window)
-	(local-set-key (kbd "C--c t") 'set-org-tags-from-anywhere)
+	(local-set-key (kbd "C-c t") 'set-org-tags-from-anywhere)
 
 	;; HACK!  This is to allow for quotes to be used inside verbatim
 	;; tags.  What's happening here is that the variable
