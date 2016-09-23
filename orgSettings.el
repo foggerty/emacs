@@ -9,15 +9,10 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "IN PROGRESS(p)" "BLOCKED(b)" "DONE(d)")))
 
-(setq org-tag-alist '(("ADD" . ?a)
-											("Code" . ?c)
-											("Meditation" . ?t)
-											("Mood" . ?m)
-											("Organising" . ?o)
-											("Work" . ?w)
-											("Rennovation" . ?r)
-											("Upskilling" . ?u)))
-
+(setq org-tag-alist '(("Code" . ?c)
+                      ("Organising" . ?o)
+                      ("Work" . ?w)
+                      ("Rennovation" . ?r)))
 
 (defun my-org-mode ()
 	(require 'ox-md nil t)
@@ -28,7 +23,8 @@
 
 	(setq org-src-fontify-natively 1)
 	(setq org-hide-emphasis-markers t)
-
+	(setq org-export-coding-system 'utf-8)
+	
 	(local-set-key (kbd "C-c C-a") 'org-agenda)
 	(local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
 	(local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
@@ -47,6 +43,20 @@
 	(org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
 
 	;; Org journal
-	(setq org-journal-dir "~/Google Drive/Documents/Journal Entries"))
+	(setq org-journal-dir "~/Google Drive/Documents/Journal Entries")
+
+	;; Org-capture templates 
+	(setq org-capture-templates
+
+				'(("j" "Journal entry"
+					 entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
+					 "* %?")
+
+					("c" "CBT"
+					 entry (file+datetree "~/Google Drive/Documents/Journal Entries/cbt.org")
+					 "* What happened: %?\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]")))
+
+	;; Org-capture template for CBT 
+	)
 
 (helper-add-hook 'org-mode-hook 'my-org-mode)

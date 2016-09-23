@@ -1,9 +1,14 @@
 (helper-install-packages
  '(company-go
 	 go-eldoc
-	 go-guru))
+	 go-guru
+	 go-rename))
 
 (require 'go-mode)
+(require 'company-go)
+
+(exec-path-from-shell-copy-env "GOPATH")
+(exec-path-from-shell-copy-env "GOROOT")
 
 (defun custom-go-mode-hook ()
 	;; requires goimports
@@ -40,13 +45,14 @@
 	;; compiler / test / vet (linter)
 	(if (not (string-match "go" compile-command))
 			(set (make-local-variable 'compile-command)
-					 "go build -v && go test ./.. && go vet"))
+					 "../build.sh"))
 
 	;; Finally, the ENV variables required by the go tools.
-	(let* ((home (getenv "HOME"))
-				 (path (concat home "/go"))
-				 (bin (concat path "/bin")))
-		(setenv "GOPATH" path)
-		(setenv "GOBIN" bin)))
+	;; (let* ((home (getenv "HOME"))
+	;; 			 (path (concat home "/go"))
+	;; 			 (bin (concat path "/bin")))
+	;; 	(setenv "GOPATH" path)
+	;; 	(setenv "GOBIN" bin))
+	)
 
 (helper-add-hook 'go-mode-hook 'custom-go-mode-hook)

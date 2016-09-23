@@ -70,10 +70,15 @@
 	(interactive)
 	(insert (map-character māori-vowels)))
 
-(defun set-org-tags-from-anywhere ()
-  "Sets the tags for the headline of whatever text you're in."
-  (interactive)
-	(if (string-match "org.*mode" (symbol-name major-mode))
-			(save-excursion
-				(org-previous-visible-heading 1)
-				(org-set-tags))))
+(defun kill-to-beginning-of-line ()
+	"Kills from current point, to the beginning of the line.
+Takes visual-line-mode into account; if it is enabled, only deletes
+to the beginning of the screen line, otherwise deletes until the
+beginning of the logical line."
+	(interactive)
+	(save-excursion
+		(push-mark)
+		(if visual-line-mode
+				(beginning-of-visual-line)
+			(beginning-of-line))
+		(kill-region (point) (mark))))

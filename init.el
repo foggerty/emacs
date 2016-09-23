@@ -52,13 +52,6 @@
 (setq ns-command-modifier 'meta)
 
 
-;; Org capture template for journal
-(setq org-capture-templates
-      '(("j" "Journal entry"
-			entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
-			"* %?\n%U\n")))
-
-
 ;; Save desktop on exit
 (desktop-save-mode 1)
 
@@ -88,6 +81,7 @@
 (setq projectile-enable-caching nil)
 (setq projectile-indexing-method 'alien)
 (global-set-key (kbd "<f12>") 'counsel-projectile-find-file)
+
 
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
@@ -148,7 +142,8 @@
 (ivy-mode 1)
 (counsel-mode 1)
 (setq ivy-use-virtual-buffers t)
-(global-set-key (kbd "C-s")     'swiper)
+(global-set-key (kbd "C-s") 'swiper)
+(setq projectile-completion-system 'ivy-completing-read)
 
 
 ;; Global settings, defaults, and replacements for standard settings
@@ -168,8 +163,8 @@
 (global-set-key (kbd "M-_") 'decrease-font-size)
 (global-set-key (kbd "M-+") 'increase-font-size)
 (global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c /") 'comment-region)
-(global-set-key (kbd "C-c ?") 'uncomment-region)
+(global-set-key (kbd "<s-backspace>") 'kill-to-beginning-of-line)
+(global-set-key (kbd "C-M-g") 'counsel-git-grep)
 (setq default-tab-width 2)
 (show-paren-mode t)
 
@@ -225,3 +220,20 @@
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+	(quote
+	 ("16241cf61a64014901a8dfb661cff9e5d9702f743f4e888c26de8c92267242d6" default)))
+ '(package-selected-packages
+	(quote
+	 (multiple-cursors avy doom-themes go-direx go-playground go-dlv rich-minority yasnippet yaml-mode smartparens powerline paredit org-bullets neotree move-line markdown-mode hungry-delete helm go-rename go-guru go-eldoc flyspell-correct-ivy flycheck-pos-tip flx-ido exec-path-from-shell counsel-projectile company-go aggressive-indent))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fringe ((t (:background "#181818")))))
