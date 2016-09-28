@@ -2,7 +2,8 @@
 
 (require 'org)
 
-(helper-install-packages '(org-bullets))
+(helper-install-packages
+ '(org-bullets))
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 

@@ -7,9 +7,9 @@
 
 ;; Extra repositories for packages
 (require 'package)
-(package-initialize)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
+(package-initialize)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -20,13 +20,13 @@
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(
-	aggressive-indent
-	counsel
-	counsel-projectile
+   aggressive-indent
+   counsel
+   counsel-projectile
    dash
    exec-path-from-shell
    flyspell-correct-ivy
-	helm
+   helm
    hungry-delete
    ivy
    company
@@ -43,7 +43,7 @@
    projectile
    smartparens
    yaml-mode
- 	yasnippet
+   yasnippet
    async
    ))
 
