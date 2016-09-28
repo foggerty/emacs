@@ -102,7 +102,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (set-default 'cursor-type 'bar)
-(set-frame-font "Source Code Pro")
+(helper-set-font '("Source Code Pro" "Courier New"))
 (set-face-attribute 'default nil :height 145)
 
 
@@ -165,6 +165,11 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "<s-backspace>") 'kill-to-beginning-of-line)
 (global-set-key (kbd "C-M-g") 'counsel-git-grep)
+(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+(global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
+(global-set-key (kbd "<home>") 'mwim-beginning-of-code-or-line)
+(global-set-key (kbd "<end>") 'mwim-end-of-code-or-line)
+(global-set-key (kbd "M-<tab>") 'helper-hs-toggle-hiding)
 (setq default-tab-width 2)
 (show-paren-mode t)
 
@@ -219,21 +224,3 @@
 ;;(load-file "~/.emacs.d/nand2Tetris.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-	(quote
-	 ("16241cf61a64014901a8dfb661cff9e5d9702f743f4e888c26de8c92267242d6" default)))
- '(package-selected-packages
-	(quote
-	 (multiple-cursors avy doom-themes go-direx go-playground go-dlv rich-minority yasnippet yaml-mode smartparens powerline paredit org-bullets neotree move-line markdown-mode hungry-delete helm go-rename go-guru go-eldoc flyspell-correct-ivy flycheck-pos-tip flx-ido exec-path-from-shell counsel-projectile company-go aggressive-indent))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(fringe ((t (:background "#181818")))))

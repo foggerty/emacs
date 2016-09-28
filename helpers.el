@@ -69,3 +69,11 @@ nil, returns a new list containing fun. (Works with functions.)"
 	"Adds hook, after first removing it if it's already there."
 	(remove-hook hook fun)
 	(add-hook hook fun))
+
+(defun helper-set-font (flist)
+	"Set font to the first that it finds in flist."
+	(if (not (eq nil flist))
+			(let ((font (car flist)))
+				(if (x-list-fonts font)
+						(set-frame-font font)
+					(helper-set-font (cdr flist))))))

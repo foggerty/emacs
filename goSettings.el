@@ -1,5 +1,6 @@
 (helper-install-packages
- '(company-go
+ '(go-mode
+	 company-go
 	 go-eldoc
 	 go-guru
 	 go-rename))
@@ -9,6 +10,16 @@
 
 (exec-path-from-shell-copy-env "GOPATH")
 (exec-path-from-shell-copy-env "GOROOT")
+
+;; to do : make this more general, pass in the various folding
+;; characters, and move into random-functions.el.
+(defun helper-hs-toggle-hiding ()
+	(interactive)
+	(save-excursion
+		(let ((test (thing-at-point 'line t)))
+			(when (string-match "{" test)
+				(search-forward "{"))
+			(hs-toggle-hiding))))
 
 (defun custom-go-mode-hook ()
 	;; requires goimports
@@ -39,14 +50,15 @@
 	;; requires go guru
 	(go-guru-hl-identifier-mode)
 	
-	;; thinking of making this global.....
-	(aggressive-indent-mode)
-
 	;; compiler / test / vet (linter)
 	(if (not (string-match "go" compile-command))
 			(set (make-local-variable 'compile-command)
 					 "../build.sh"))
 
+	;; enable code folding
+	(hs-minor-mode)
+	(local-set-key (kbd "M-<tab>") 'helper-hs-toggle-hiding)
+	
 	;; Finally, the ENV variables required by the go tools.
 	;; (let* ((home (getenv "HOME"))
 	;; 			 (path (concat home "/go"))
