@@ -102,7 +102,8 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (set-default 'cursor-type 'bar)
-(helper-set-font '("Source Code Pro" "Courier New"))
+(if window-system
+    (helper-set-font '("Source Code Pro" "Courier New")))
 (set-face-attribute 'default nil :height 145)
 
 
