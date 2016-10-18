@@ -11,4 +11,3 @@
   (smartparens-mode 0))
 
 (add-hook 'emacs-lisp-mode-hook 'my-lisp-mode)
-

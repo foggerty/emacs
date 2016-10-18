@@ -25,6 +25,7 @@
 	(setq org-src-fontify-natively 1)
 	(setq org-hide-emphasis-markers t)
 	(setq org-export-coding-system 'utf-8)
+	(setq org-list-description-max-indent 5)
 	
 	(local-set-key (kbd "C-c C-a") 'org-agenda)
 	(local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
@@ -55,7 +56,7 @@
 
 					("c" "CBT"
 					 entry (file+datetree "~/Google Drive/Documents/Journal Entries/cbt.org")
-					 "* What happened: %?\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]")))
+					 "* What happened: %?\n\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]")))
 
 	;; Org-capture template for CBT 
 	)

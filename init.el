@@ -20,31 +20,35 @@
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(
-   aggressive-indent
+	 aggressive-indent
+	 async
+   company
+   company-go
+   company-quickhelp   
    counsel
    counsel-projectile
    dash
    exec-path-from-shell
-   flyspell-correct-ivy
-   helm
-   hungry-delete
-   ivy
-   company
    flx
    flx-ido
    flycheck
+   flycheck-gometalinter
    flycheck-pos-tip
+   flyspell-correct-ivy 
+   helm
+   hungry-delete
+   ivy
    markdown-mode
    move-line
    neotree
    paredit
    pkg-info
    powerline
+   project-explorer
    projectile
    smartparens
    yaml-mode
-   yasnippet
-   async
+   yasnippet 
    ))
 
 
@@ -76,12 +80,12 @@
 (helper-add-to-list 'find-file-not-found-functions 'make-parent-directory)
 
 
-;; Projectile mode everywhere
+;; Projectile mode everywhere and project explorer
 (projectile-global-mode)
 (setq projectile-enable-caching nil)
 (setq projectile-indexing-method 'alien)
 (global-set-key (kbd "<f12>") 'counsel-projectile-find-file)
-
+(global-set-key (kbd "<f8>") 'project-explorer-toggle)
 
 ;; Use the same path you'd get in a standard shell
 (exec-path-from-shell-initialize)
@@ -151,7 +155,7 @@
 (require 'move-line)
 (require 'hungry-delete)
 (global-hungry-delete-mode)
-(electric-pair-mode)
+;;(electric-pair-mode)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "RET") 'newline-and-indent)
@@ -188,6 +192,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (global-set-key (kbd "C-<return>") 'company-complete)
 (setq company-idle-delay nil) ;; don't auto show, use key defined above.
+(company-quickhelp-mode 1)
 
 
 ;; yasnippet
@@ -225,3 +230,18 @@
 ;;(load-file "~/.emacs.d/nand2Tetris.el")
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+	 (quote
+		(go-company go-flycheck go-fkycheck go-meta-linter go-metalinter go-projectile flycheck-gometalinter project-explorer popwin popup-complete go-errcheck go-playground company-quickhelp company-quichelp ag go-dlv zenburn-theme mwim go-rename go-guru go-eldoc company-go go-mode org-bullets yasnippet yaml-mode smartparens powerline paredit neotree move-line markdown-mode flycheck-pos-tip flycheck flx-ido flx company hungry-delete helm flyspell-correct-ivy exec-path-from-shell dash counsel-projectile counsel aggressive-indent))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

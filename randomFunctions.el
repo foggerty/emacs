@@ -68,7 +68,9 @@
 (defun map-maori-vowel () 
 	"Maps a,e,i,o,u to the Māori equivalents."
 	(interactive)
-	(insert (map-character māori-vowels)))
+	(let ((vowel (map-character māori-vowels)))
+		(insert vowel)
+		vowel))
 
 (defun kill-to-beginning-of-line ()
 	"Kills from current point, to the beginning of the line.
@@ -82,3 +84,38 @@ beginning of the logical line."
 				(beginning-of-visual-line)
 			(beginning-of-line))
 		(kill-region (point) (mark))))
+
+;; Ripped from Stack Overflow
+(defun other-window-kill-buffer ()
+  "Kill the buffer in the other window"
+  (interactive)
+  ;; Window selection is used because point goes to a different window
+  ;; if more than 2 windows are present
+  (let ((win-curr (selected-window))
+        (win-other (next-window)))
+    (select-window win-other)
+    (kill-this-buffer)
+    (select-window win-curr)))
+
+
+;; Want a zap-to-char that doesn't kill the char!
+(defun foggerty-zap-to-char (arg char)
+  "Replacement for zap-to-char that doesn't also kill char."
+  (interactive "p\ncZap to char: ")
+  (save-excursion
+    (kill-region
+     (point)
+     (if current-prefix-arg
+				 (1+ (search-backward (char-to-string char)))
+			 (1- (search-forward (char-to-string char)))))))
+
+
+;; EShell - always in the same frame
+(defun toggle-eshell ()
+  (interactive)
+  (let ((shell (get-buffer "*eshell*")))
+    (cond ((eq shell (current-buffer))
+					 (switch-to-buffer (previous-buffer)))
+					(shell
+					 (switch-to-buffer shell))
+					(t (eshell)))))
