@@ -10,6 +10,8 @@
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
 (package-initialize)
+;; Note to self: after a feesh install, will still need to rehresh packages.
+;; Is there a way to find out if it's never been done?
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -20,11 +22,11 @@
 ;; Ensure the required packages are loaded, and install them if not.
 (helper-install-packages
  '(
-	 aggressive-indent
-	 async
+   aggressive-indent
+   async
    company
    company-go
-   company-quickhelp   
+   company-quickhelp
    counsel
    counsel-projectile
    dash
@@ -34,12 +36,13 @@
    flycheck
    flycheck-gometalinter
    flycheck-pos-tip
-   flyspell-correct-ivy 
+   flyspell-correct-ivy
    helm
    hungry-delete
    ivy
    markdown-mode
    move-line
+	mwim
    neotree
    paredit
    pkg-info
@@ -47,8 +50,9 @@
    project-explorer
    projectile
    smartparens
+	whole-line-or-region
    yaml-mode
-   yasnippet 
+   yasnippet
    ))
 
 
@@ -62,6 +66,12 @@
 
 ;; Typing over selected text deletes it
 (delete-selection-mode 1)
+
+
+;; whole-line-or-region : cut/copy works on current line if no region
+;; is highlighted, or region if there is one.  ONLY works if
+;; transient-mark-mode is on (I think).
+(whole-line-or-region-modqe)
 
 
 ;; Major mode overrides
@@ -231,14 +241,15 @@
 ;;(load-file "~/.emacs.d/clojureSettings.el")
 ;;(load-file "~/.emacs.d/schemeSettings.el")
 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-	 (quote
-		(go-company go-flycheck go-fkycheck go-meta-linter go-metalinter go-projectile flycheck-gometalinter project-explorer popwin popup-complete go-errcheck go-playground company-quickhelp company-quichelp ag go-dlv zenburn-theme mwim go-rename go-guru go-eldoc company-go go-mode org-bullets yasnippet yaml-mode smartparens powerline paredit neotree move-line markdown-mode flycheck-pos-tip flycheck flx-ido flx company hungry-delete helm flyspell-correct-ivy exec-path-from-shell dash counsel-projectile counsel aggressive-indent))))
+	(quote
+	 (mwim whole-line-or-region yasnippet yaml-mode smartparens project-explorer powerline paredit org-bullets neotree move-line markdown-mode hungry-delete helm go-rename go-playground go-guru go-errcheck go-eldoc go-dlv flyspell-correct-ivy flycheck-pos-tip flycheck-gometalinter flx-ido exec-path-from-shell counsel-projectile company-quickhelp company-go aggressive-indent))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

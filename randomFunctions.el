@@ -85,6 +85,7 @@ beginning of the logical line."
 			(beginning-of-line))
 		(kill-region (point) (mark))))
 
+
 ;; Ripped from Stack Overflow
 (defun other-window-kill-buffer ()
   "Kill the buffer in the other window"
