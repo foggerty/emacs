@@ -71,7 +71,7 @@
 ;; whole-line-or-region : cut/copy works on current line if no region
 ;; is highlighted, or region if there is one.  ONLY works if
 ;; transient-mark-mode is on (I think).
-(whole-line-or-region-modqe)
+(whole-line-or-region-mode)
 
 
 ;; Major mode overrides
@@ -242,17 +242,4 @@
 ;;(load-file "~/.emacs.d/schemeSettings.el")
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-	(quote
-	 (mwim whole-line-or-region yasnippet yaml-mode smartparens project-explorer powerline paredit org-bullets neotree move-line markdown-mode hungry-delete helm go-rename go-playground go-guru go-errcheck go-eldoc go-dlv flyspell-correct-ivy flycheck-pos-tip flycheck-gometalinter flx-ido exec-path-from-shell counsel-projectile company-quickhelp company-go aggressive-indent))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
