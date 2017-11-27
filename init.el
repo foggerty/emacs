@@ -24,11 +24,11 @@
 ;; All config is loaded from ~/.emacs.d
 (add-to-list 'load-path "/users/matt/.emacs.d")
 
+(load "helpers.el")
 (load "theme.el")
 (load "global-settings.el")
+(load "elisp-settings.el") 
 (load "scheme-settings.el")
-
-
 
 
 
@@ -53,7 +53,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (paredit paredit-mode geiser guile counsel ivy exec-path-from-shell flycheck flyckeck use-package atom-one-dark-theme))))
+    (srefactor-lisp srefactor elisp-format company flyspell-correct-ivy paredit paredit-mode geiser guile counsel ivy exec-path-from-shell flycheck flyckeck use-package atom-one-dark-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

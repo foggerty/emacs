@@ -7,6 +7,6 @@
 ;;; Theme
 (use-package atom-one-dark-theme
   :ensure t
-  :config
-  (load-theme 'atom-one-dark :no-comfirm))
+  :config (load-theme 'atom-one-dark :no-comfirm))
 
+(set-default 'cursor-type 'bar)

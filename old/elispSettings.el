@@ -1,6 +1,6 @@
 (defun my-lisp-mode ()
   (paredit-mode 1)
-	(aggressive-indent-mode)
+  (aggressive-indent-mode)
   (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
   (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
