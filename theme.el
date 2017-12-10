@@ -8,7 +8,7 @@
 (require 'color)
 
 (load-file "~/.emacs.d/old/tangotango2.el")
-(set)
+
 (let ((bg (face-attribute 'default :background)))
     (custom-set-faces
      `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
