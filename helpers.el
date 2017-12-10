@@ -6,9 +6,21 @@
 	    (set-frame-font font)
 	  (helper-set-font (cdr flist))))))
 
-(defun helper-align-buffer ()
+(defun helper-parent-modes (mode)
+  "Returns a list containing mode, and its parent modes."
+  (if mode
+      (cons mode (helper-parent-modes (get mode 'derived-mode-parent)))))
+
+(defun helper-any-in-list (source test)
+  "Return t if any of the items in sourece are found in test.
+   Todo - check that parameters are both lists!"
+  (cond ((null source) nil)
+	((member (car source) test) t)
+	(t (helper-any-in-list (cdr source test)))))
+
+(defun helper-indent-buffer ()
+  "Indents the entire buffer."
   (interactive)
-  "Aligns the entire buffer."
   (save-excursion
-    (mark-whole-buffer)
-    (indent-region)))
+    (indent-region (point-min) (point-max))))
+

@@ -14,8 +14,8 @@
 
 ;; Make sure temp buffers don't steal all of the screen
 (temp-buffer-resize-mode t)
-(setq temp-buffer-max-height 12 compilation-window-height
-      12)
+(setq temp-buffer-max-height 20
+      compilation-window-height 20)
 
 ;; Centralised backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -28,6 +28,12 @@
 (setq ispell-program-name "/usr/local/bin/aspell"
       ispell-dictionary "british")
 (show-paren-mode 1)
+
+;; Hungry-delete: backspace kills all whitespace until it eaches next
+;; character.
+(use-package hungry-delete
+  :init
+  (global-hungry-delete-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Navigation / searching.
@@ -51,11 +57,23 @@
 ;;;; Company settings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package company :diminish company-mode)
+(use-package company
+  :diminish company-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Mouse settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Better (smoother) scrolling
+(setq scroll-conservatively 1
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount (quote (2 ((shift) . 1)))
+      hscroll-step 1
+      truncate-lines 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(global-set-key (kbd "C-c C-q")
-		'helper-align-buffer)
+(global-set-key (kbd "C-c C-q")	'helper-indent-buffer)
+(global-set-key (kbd "C-z") 'undo)

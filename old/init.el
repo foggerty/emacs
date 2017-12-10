@@ -42,7 +42,7 @@
    ivy
    markdown-mode
    move-line
-	mwim
+   mwim
    neotree
    paredit
    pkg-info
@@ -50,7 +50,7 @@
    project-explorer
    projectile
    smartparens
-	whole-line-or-region
+   whole-line-or-region
    yaml-mode
    yasnippet
    ))
@@ -107,11 +107,11 @@
 (powerline-default-theme)
 (temp-buffer-resize-mode t)
 (setq inhibit-startup-screen t
-		ns-command-modifier (quote super)
-		ring-bell-function 'ignore
-		tab-width 3
-		temp-buffer-max-height 12
-		compilation-window-height 12)
+      ns-command-modifier (quote super)
+      ring-bell-function 'ignore
+      tab-width 3
+      temp-buffer-max-height 12
+      compilation-window-height 12)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -123,19 +123,19 @@
 
 ;; Better (smoother) scrolling
 (setq scroll-conservatively 1
-		mouse-wheel-progressive-speed nil
-		mouse-wheel-scroll-amount (quote (2 ((shift) . 1)))
-		hscroll-step 1
-		truncate-lines 1)
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount (quote (2 ((shift) . 1)))
+      hscroll-step 1
+      truncate-lines 1)
 (let 
     ((go-left '((kbd "<S-wheel-down>")
-					 (kbd "<triple-wheel-right>")
-					 (kbd "<double-wheel-right>")
-					 (kbd "<wheel-right>")))
+		(kbd "<triple-wheel-right>")
+		(kbd "<double-wheel-right>")
+		(kbd "<wheel-right>")))
      (go-right '((kbd "<S-wheel-up>")
-					  (kbd "<triple-wheel-left>")
-					  (kbd "<double-wheel-left>")
-					  (kbd "<wheel-left>"))))
+		 (kbd "<triple-wheel-left>")
+		 (kbd "<double-wheel-left>")
+		 (kbd "<wheel-left>"))))
   ;; Note to self, we need to eval key-press here because it will be
   ;; passed to global-set-key as is - i.e. a list.
   (dolist (key-press go-left)
@@ -212,19 +212,19 @@
 ;; Spell checking
 (require 'ispell)
 (setq ispell-program-name "/usr/local/bin/aspell"
-		ispell-dictionary "british")
+      ispell-dictionary "british")
 
 
 ;; Flyspell for comments (prog-mode is the parent of all programming
 ;; hook modes).
 ;; Also show popup with Mouse3 (right click)
 (add-hook 'prog-mode-hook
-			 (lambda ()
-				(flyspell-prog-mode)))
+	  (lambda ()
+	    (flyspell-prog-mode)))
 (eval-after-load "flyspell"
   '(progn
-	  (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
-	  (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+     (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+     (define-key flyspell-mouse-map [mouse-3] #'undefined)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
