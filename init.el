@@ -6,6 +6,8 @@
 
 ;; Helpful function to find shadowing packages: list-load-path-shadows
 
+;; Stop Emacs from writing that bloody custom-set-variables stuff.
+(setq custom-file (make-temp-file "emacs-custom"))
 
 ;; Packages setup
 (require 'package)
@@ -30,26 +32,11 @@
 ;; Load global settings and major-mode settings
 (mapcar (lambda (file)
 	  (load (concat "~/.emacs.d/" file)))
-	'(	  "helpers.el"
-		
-
+	'("helpers.el"
 	  "global-settings.el"
 	  "dev-settings.el" ; sould come before all other dev related modes
 	  "elisp-settings.el" 
 	  "scheme-settings.el"
 	  "text-settings.el"
 	  "theme.el")) ; theme may be setting variables defined in ther packages, always call last
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (geiser paredit company counsel hungry-delete exec-path-from-shell use-package diminish))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
