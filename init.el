@@ -30,13 +30,15 @@
 ;; Load global settings and major-mode settings
 (mapcar (lambda (file)
 	  (load (concat "~/.emacs.d/" file)))
-	'("theme.el"
-	  "helpers.el"
+	'(	  "helpers.el"
+		
+
 	  "global-settings.el"
 	  "dev-settings.el" ; sould come before all other dev related modes
 	  "elisp-settings.el" 
 	  "scheme-settings.el"
-	  "text-settings.el"))
+	  "text-settings.el"
+	  "theme.el")) ; theme may be setting variables defined in ther packages, always call last
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
