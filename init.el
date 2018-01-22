@@ -27,7 +27,7 @@
 	  use-package))
 
 ;; Configure use-package
-(setq use-package-always-ensure t)
+;;(setq use-package-always-ensure t)
 
 ;; Load global settings and major-mode settings
 (mapcar (lambda (file)
@@ -38,5 +38,6 @@
 	  "elisp-settings.el" 
 	  "scheme-settings.el"
 	  "text-settings.el"
+	  "org-settings.el"
 	  "theme.el")) ; theme may be setting variables defined in ther packages, always call last
 

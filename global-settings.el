@@ -2,6 +2,11 @@
 ;;;; Basic tidy ups.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; On Mac, use Command key as Meta when not in terminal.
+(when (and (eq system-type 'darwin)
+	   (display-graphic-p))
+  (setq mac-command-modifier 'meta))
+
 ;; Save desktop on edit
 (desktop-save-mode 1)
 
@@ -42,7 +47,8 @@
 ;; Note to self: use C-o in the minibuffer to get documentation.
 
 (use-package counsel ; will bring in both Ivy and Swiper
-  :config (ivy-mode 1)
+  :config
+  (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
 	ivy-count-format "(%d/%d) ")
   :bind
@@ -50,7 +56,8 @@
    ("C-x C-f" . counsel-find-file)
    ("M-x" . counsel-M-x)
    ("C-h f" . counsel-describe-function)
-   ("C-h v" . counsel-describe-variable))
+   ("C-h v" . counsel-describe-variable)
+   ("C-c g" . counsel-git-grep))
   :diminish ivy-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -58,7 +65,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package company
+  :config
+  (setq company-idle-delay 0)
+  (add-to-list 'completion-styles 'partial-completion t)
   :diminish company-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Projectile - project management
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+					;(use-package projectile)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings
@@ -77,3 +93,4 @@
 
 (global-set-key (kbd "C-c C-q")	'helper-indent-buffer)
 (global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-<tab>") 'other-window)

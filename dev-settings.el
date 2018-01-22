@@ -2,6 +2,8 @@
 
 (use-package paredit)
 
+(use-package aggressive-indent)
+
 (defun foggerty-dev-mode ()
   (company-mode-on)
   (flyspell-prog-mode)

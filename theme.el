@@ -32,15 +32,16 @@
 (let ((bg (face-attribute 'default :background)))
   (custom-set-faces
    `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
-   `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
-   `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 50)))))
-   `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+   `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 50)))))
+   `(company-scrollbar-fg ((t (:foreground ,(color-lighten-name bg 10)))))
+   `(company-tooltip-selection ((t (:inherit font-lock-string-face))))
    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
 
 ;; Cursor
 (set-default 'cursor-type 'bar)
 
 ;; Fonts/faces
-(helper-set-font '("Source code pro light" "Monaco"))
-(set-face-attribute 'default nil
-		    :height 145)
+(when (display-graphic-p)
+  (helper-set-font '("Source code pro light" "Monaco"))
+  (set-face-attribute 'default nil
+		      :height 145))
