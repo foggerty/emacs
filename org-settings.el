@@ -1,11 +1,20 @@
 (use-package org
   :hook (org-mode)
+  :commands (org
+             org-capture
+             org-mode
+             org-store-link
+             update-org-hours
+             my-term-agenda
+             dired-notes
+             jump-to-org-agenda)
   :bind (("C-c C-a" . 'org-agenda)
 	 ("C-<up>" . 'outline-previous-visible-heading)
 	 ("C-<down>" . 'outline-next-visible-heading)
 	 ("<f5>" . 'map-maori-vowel)
 	 ("C-<tab>" . 'other-window)
-	 ("C-c t" . 'set-org-tags-from-anywhere))
+	 ("C-c t" . 'set-org-tags-from-anywhere)
+         ("C-c c" . org-capture))
   :custom
   (org-journal-dir "~/Google Drive/Documents/Journal Entries")
   (org-src-fontify-natively 1)
@@ -31,4 +40,6 @@
   (use-package org-bullets)
   (org-indent-mode)
   (org-bullets-mode)
-  (org-toggle-pretty-entities))
+  (org-toggle-pretty-entities)
+  :diminish
+  org-indent-mode)

@@ -17,6 +17,7 @@
   (beacon-mode 1))
 
 ;; A tree-view on the side of the frame
+;; ToDO - close tree once a file is selected to be opened.
 (use-package neotree
   :config
   (global-set-key [f8] 'neotree-toggle)

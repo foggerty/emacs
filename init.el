@@ -12,7 +12,9 @@
 ;; Packages setup
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/") t) 
+	     '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("org" . "https://orgmode.org/elpa/") t)
 
 (package-initialize)
 
@@ -27,7 +29,7 @@
 	  use-package))
 
 ;; Configure use-package
-;;(setq use-package-always-ensure t)
+(setq use-package-always-ensure t)
 
 ;; Load global settings and major-mode settings
 (mapcar (lambda (file)

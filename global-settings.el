@@ -14,8 +14,8 @@
 (delete-selection-mode 1)
 
 ;; Same path you'd get in a shell
-(use-package exec-path-from-shell
-  :init (exec-path-from-shell-initialize))
+;;(use-package exec-path-from-shell
+;;  :init (exec-path-from-shell-initialize))
 
 ;; Make sure temp buffers don't steal all of the screen
 (temp-buffer-resize-mode t)
@@ -41,11 +41,11 @@
   (global-hungry-delete-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Navigation / searching.
+;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Note to self: use C-o in the minibuffer to get documentation.
-
+;; ToDo - move into own config file
 (use-package counsel ; will bring in both Ivy and Swiper
   :config
   (ivy-mode 1)
@@ -63,18 +63,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company settings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+;; ToDo - move into own config file.
 (use-package company
   :config
   (setq company-idle-delay 0)
   (add-to-list 'completion-styles 'partial-completion t)
   :diminish company-mode)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-					;(use-package projectile)
+(use-package projectile)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings

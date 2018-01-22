@@ -1,4 +1,5 @@
 ;; Settings that apply to all programming modes.
+;; ToDo - wrap in use-package
 
 (use-package paredit)
 
