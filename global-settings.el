@@ -13,10 +13,6 @@
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
 
-;; Same path you'd get in a shell
-;;(use-package exec-path-from-shell
-;;  :init (exec-path-from-shell-initialize))
-
 ;; Make sure temp buffers don't steal all of the screen
 (temp-buffer-resize-mode t)
 (setq temp-buffer-max-height 20
@@ -63,19 +59,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company settings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ToDo - move into own config file.
+
 (use-package company
   :config
   (setq company-idle-delay 0)
   (add-to-list 'completion-styles 'partial-completion t)
   :diminish company-mode)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package projectile)
+(use-package counsel-projectile
+  :bind
+  ("<f12>" . counsel-projectile-find-file))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings
@@ -95,3 +93,4 @@
 (global-set-key (kbd "C-c C-q")	'helper-indent-buffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-<tab>") 'other-window)
+(global-set-key (kbd "C-c c") 'org-capture)
