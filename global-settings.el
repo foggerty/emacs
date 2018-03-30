@@ -40,8 +40,6 @@
 ;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Note to self: use C-o in the minibuffer to get documentation.
-;; ToDo - move into own config file
 (use-package counsel ; will bring in both Ivy and Swiper
   :config
   (ivy-mode 1)
@@ -53,7 +51,8 @@
    ("M-x" . counsel-M-x)
    ("C-h f" . counsel-describe-function)
    ("C-h v" . counsel-describe-variable)
-   ("C-c g" . counsel-git-grep))
+   ("C-c g" . counsel-git-grep)
+   ("C-c f" . counsel-projectile-grep))
   :diminish ivy-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -94,3 +93,5 @@
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-x C-k") 'helper-kill-buffer)
+(global-set-key (kbd "C-x k") (q-funk (kill-buffer (current-buffer))))

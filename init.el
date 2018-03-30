@@ -53,6 +53,7 @@
 	"ruby-settings.el"
 	"text-settings.el"
 	"org-settings.el"
+	"dart-settings.el"
 	"theme.el"))
 
 (dolist (file setup--the-rest)
