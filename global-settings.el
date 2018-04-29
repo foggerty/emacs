@@ -36,6 +36,9 @@
   :init
   (global-hungry-delete-mode))
 
+;; LESS cow-bell.
+(setq ring-bell-function 'ignore)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -65,6 +68,7 @@
   (add-to-list 'completion-styles 'partial-completion t)
   :diminish company-mode)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -74,6 +78,7 @@
   :bind
   ("<f12>" . counsel-projectile-find-file))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -81,17 +86,25 @@
 ;; Better (smoother) scrolling
 (setq scroll-conservatively 1
       mouse-wheel-progressive-speed nil
-      mouse-wheel-scroll-amount (quote (2 ((shift) . 1)))
+      mouse-wheel-scroll-amount '(2 ((shift) . 1))
       hscroll-step 1
       truncate-lines 1)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-c C-q")	'helper-indent-buffer)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-x C-k") 'helper-kill-buffer)
 (global-set-key (kbd "C-x k") (q-funk (kill-buffer (current-buffer))))
+(global-set-key (kbd "C-M-=") 'increase-margin)
+(global-set-key (kbd "C-M--") 'decrease-margin)
+(global-set-key (kbd "C-x C-k") 'other-window-kill-buffer)
+(global-set-key (kbd "<s-backspace>") 'kill-to-beginning-of-line)
+;;(global-set-key (kbd "C-x 5") ) TODO - q-funk to set margin to 50% of window
+

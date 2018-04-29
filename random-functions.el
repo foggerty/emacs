@@ -95,7 +95,7 @@ beginning of the logical line."
   (let ((win-curr (selected-window))
         (win-other (next-window)))
     (select-window win-other)
-    (kill-this-buffer)
+    (kill-buffer-and-window)
     (select-window win-curr)))
 
 

@@ -1,8 +1,16 @@
+;;; Trusted themes
+(custom-set-variables
+ '(custom-safe-themes
+   (quote
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
+
+
 ;;; Basic tidy up
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
 
 ;; Spaceline theme (i.e. the mode-line)
 (use-package spaceline
@@ -10,6 +18,7 @@
   (require 'spaceline-config)
   (setq powerline-default-separator 'utf-8)
   (spaceline-emacs-theme))
+
 
 ;; Beacon - show where the cursor is after scrolling.
 (use-package beacon
@@ -25,6 +34,7 @@
   (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action))
 
+
 ;; Theme
 (require 'color)
 
@@ -38,8 +48,12 @@
    `(company-tooltip-selection ((t (:inherit font-lock-string-face))))
    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
 
+
 ;; Cursor
+(set-default 'blink-cursor-blinks 0) ; always blink
+(set-default 'blink-cursor-interval 0.3) ; blink faster!
 (set-default 'cursor-type 'bar)
+
 
 ;; Fonts/faces
 (when (display-graphic-p)

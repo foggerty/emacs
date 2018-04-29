@@ -57,4 +57,10 @@ pairs or single strings."
        ("Savings: %#.2f\n" ,savings)
        ("left-with: %#.2f\n" ,left-with)))))
 
-
+(defmacro q-funk (commands)
+  "Quick-Function: Creates an interactive function that runs COMMANDS."
+  `(lambda ()
+     (interactive)
+     (progn ,commands)))
+(helper-messages '(("Moose\n") ("%s" abuse)))
+(message "Moose")

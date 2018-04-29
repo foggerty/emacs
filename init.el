@@ -46,6 +46,7 @@
 ;; Load global settings and major-mode settings
 (setq setup--the-rest
       '("helpers.el"
+	"random-functions.el"
 	"global-settings.el"
 	"dev-settings.el" ; sould come before all other dev related modes
 	"elisp-settings.el" 
