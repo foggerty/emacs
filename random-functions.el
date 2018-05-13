@@ -1,3 +1,24 @@
+(defun foggerty-do-my-tax (rate hours)
+  "Calculate how much tax to pay, and how much to put into savings etc."
+  (interactive "nRate: \nnHours: ")
+  (let* ((total (* rate hours))
+	 (gst (* total .15))
+	 (withholding (* total .26))
+	 (paid (- total withholding))
+	 (extra-tax (* total .04))
+	 (kiwisaver (* total 0.1))
+	 (savings (* total .2))
+	 (left-with (- total withholding extra-tax kiwisaver savings)))
+    (helper-messages
+     `(("Total: %#.2f\n" ,total)
+       ("GST: %#.2f\n" ,gst)
+       ("Withholding tax: %#.2f\n" ,withholding)
+       ("Paid (ex GST): %#.2f\n" ,paid)
+       ("Extra tax: %#.2f\n" ,extra-tax)
+       ("Kiwisaver: %#.2f\n" ,kiwisaver)
+       ("Savings: %#.2f\n" ,savings)
+       ("left-with: %#.2f\n" ,left-with)))))
+
 (defun count-bytes (buffer)
   (interactive "bCount bytes in buffer: ")
   (with-current-buffer (get-buffer buffer)
@@ -58,21 +79,21 @@
 	("O" . "Ō")
 	("U" . "Ū")))
 
-(defun map-character (map)
+(defun foggerty-map-character (map)
   "Maps next key-press using the provided map."
   (let* ((char (char-to-string (read-key)))
 	 (test (assoc char map)))
     (if test (cdr test)
       char)))
 
-(defun map-maori-vowel () 
+(defun foggerty-map-maori-vowel () 
   "Maps a,e,i,o,u to the Māori equivalents."
   (interactive)
   (let ((vowel (map-character māori-vowels)))
     (insert vowel)
     vowel))
 
-(defun kill-to-beginning-of-line ()
+(defun foggerty-kill-to-beginning-of-line ()
   "Kills from current point, to the beginning of the line.
 Takes visual-line-mode into account; if it is enabled, only deletes
 to the beginning of the screen line, otherwise deletes until the
@@ -87,7 +108,7 @@ beginning of the logical line."
 
 
 ;; Ripped from Stack Overflow
-(defun other-window-kill-buffer ()
+(defun foggerty-other-window-kill-buffer ()
   "Kill the buffer in the other window"
   (interactive)
   ;; Window selection is used because point goes to a different window
@@ -112,7 +133,7 @@ beginning of the logical line."
 
 
 ;; EShell - always in the same frame
-(defun toggle-eshell ()
+(defun foggerty-toggle-eshell ()
   (interactive)
   (let ((shell (get-buffer "*eshell*")))
     (cond ((eq shell (current-buffer))
