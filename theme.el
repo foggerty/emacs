@@ -25,6 +25,15 @@
   :config
   (beacon-mode 1))
 
+
+;; Transparent title bar in OSX
+(if (eq 'ns (window-system))
+    (progn 
+      (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+      (setq frame-title-format '(" "))
+      (setq icon-title-format '(""))))
+
+
 ;; A tree-view on the side of the frame
 ;; ToDO - close tree once a file is selected to be opened.
 (use-package neotree

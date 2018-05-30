@@ -25,6 +25,12 @@ A constant work in progress :-)
 - [ ] Test.
 - [ ] Add in the more complex stuff like popup menu etc.
 - [ ] Test again.
+** Dart / Flutter
+- [ ] Nuke it all!
+- [ ] Get /just/ Dart up and running with a demo console app.
+- [ ] Ask on the Reddit forum how to get the fucking analysis server up and running.  I'm missing something blinfly obvious, I konw :-(
+- [ ] Get Flutter up and running.
+- [ ] Demo app.
 ** Scheme
 - [ ] Reinstall Guile.
 - [ ] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...

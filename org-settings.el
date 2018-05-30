@@ -21,16 +21,16 @@
   (org-bullets-mode 1)
   (org-toggle-pretty-entities)
 
-  (setq org-src-fontify-natively 1)
-  (setq org-hide-emphasis-markers t)
-  (setq org-export-coding-system 'utf-8)
-  (setq org-list-description-max-indent 5)
+  (setq org-src-fontify-natively 1
+	org-hide-emphasis-markers t
+	org-export-coding-system 'utf-8
+	org-list-description-max-indent 5
+	org-use-sub-superscripts '{})
   
   (local-set-key (kbd "C-c C-a") 'org-agenda)
   (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
   (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
-  (local-set-key (kbd "<f5>") 'map-maori-vowel)
-  (local-set-key (kbd "C-<tab>") 'other-window)
+  (local-set-key (kbd "<f5>") 'foggerty-map-maori-vowel)
   (local-set-key (kbd "C-c t") 'set-org-tags-from-anywhere)
 
   ;; HACK!  This is to allow for quotes to be used inside verbatim

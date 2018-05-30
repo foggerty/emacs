@@ -89,7 +89,7 @@
 (defun foggerty-map-maori-vowel () 
   "Maps a,e,i,o,u to the Māori equivalents."
   (interactive)
-  (let ((vowel (map-character māori-vowels)))
+  (let ((vowel (foggerty-map-character māori-vowels)))
     (insert vowel)
     vowel))
 

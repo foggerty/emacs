@@ -83,13 +83,7 @@
 ;;;; Mouse settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Better (smoother) scrolling
-(setq scroll-conservatively 1
-      mouse-wheel-progressive-speed nil
-      mouse-wheel-scroll-amount '(2 ((shift) . 1))
-      hscroll-step 1
-      truncate-lines 1)
-
+(setq mouse-wheel-tilt-scroll t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.
