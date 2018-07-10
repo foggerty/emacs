@@ -7,6 +7,11 @@
 	   (display-graphic-p))
   (setq mac-command-modifier 'meta))
 
+;; TEST - trigger garbage collection after 20MB allocated instead of
+;; .76MB.  According to someone on the interweb, this should make my
+;; life just better all around.
+(setq gc-cons-threshold 20000000)
+
 ;; Save desktop on edit
 (desktop-save-mode 1)
 
@@ -47,7 +52,9 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
-	ivy-count-format "(%d/%d) ")
+	ivy-count-format "(%d/%d) "
+	ivy-initial-inputs-alist nil
+	ivy-use-selectable-prompt t)
   :bind
   (("C-s" . swiper)
    ("C-x C-f" . counsel-find-file)
@@ -58,15 +65,26 @@
    ("C-c f" . counsel-projectile-grep))
   :diminish ivy-mode)
 
+(use-package flx
+  :config
+  (setq ivy-re-builders-alist
+	'((t . ivy--regex-plus))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Company settings.
+;;;; Company (auto-complete) settings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package company
   :config
-  (setq company-idle-delay 0)
-  (add-to-list 'completion-styles 'partial-completion t)
+  (setq company-idle-delay 0
+	company-auto-complete-chars '(40 41 46)
+	company-search-regexp-function 'company-search-flex-regexp
+	company-require-match nil
+	company-auto-complete t)  
+  (add-to-list 'completion-styles 'completion-initials-try-completion t)
   :diminish company-mode)
+
+(use-package company-flx)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -75,15 +93,18 @@
 
 (use-package projectile)
 (use-package counsel-projectile
+  :config
+  (add-hook 'after-init-hook 'counsel-projectile-mode)
   :bind
   ("<f12>" . counsel-projectile-find-file))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Mouse settings
+;;;; Mouse settings - Yay 26.1!
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq mouse-wheel-tilt-scroll t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.
@@ -94,11 +115,13 @@
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-<tab>") 'other-window)
 (global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-x C-k") 'helper-kill-buffer)
+(global-set-key (kbd "C-x C-k") 'foggerty-other-window-kill-buffer)
 (global-set-key (kbd "C-x k") (q-funk (kill-buffer (current-buffer))))
 (global-set-key (kbd "C-M-=") 'increase-margin)
 (global-set-key (kbd "C-M--") 'decrease-margin)
 (global-set-key (kbd "C-x C-k") 'other-window-kill-buffer)
 (global-set-key (kbd "<s-backspace>") 'kill-to-beginning-of-line)
-;;(global-set-key (kbd "C-x 5") ) TODO - q-funk to set margin to 50% of window
+(global-set-key (kbd "M-_") 'decrease-font-size)
+(global-set-key (kbd "M-+") 'increase-font-size)
+
 

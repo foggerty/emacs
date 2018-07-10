@@ -32,7 +32,7 @@ A constant work in progress :-)
 - [ ] Get Flutter up and running.
 - [ ] Demo app.
 ** Scheme
-- [ ] Reinstall Guile.
+- [X] Reinstall Guile.
 - [ ] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...
 ** Org
 - [ ] Look into having a central agenda file.
@@ -44,3 +44,11 @@ A constant work in progress :-)
 - [ ] Get rid of all bloody versions other than default OSX one.
 - [ ] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.
 - [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it).
+** Global
+ - [-] Abbrev mode
+   - [X] Turn on.....
+   - [ ] Endlessly add new abbreviations
+ - [ ] Setup [[http://ergoemacs.org/emacs/emacs_templates.html][YaSnippet]]
+   - [ ] Setup some basic config templates, i.e. gsk -> (glob-set-key (kbd "$1") '$2)
+   - [ ] Create some Golang templates
+   - [ ] Spend far too long playing around with this feature

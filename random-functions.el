@@ -109,7 +109,7 @@ beginning of the logical line."
 
 ;; Ripped from Stack Overflow
 (defun foggerty-other-window-kill-buffer ()
-  "Kill the buffer in the other window"
+  "Kill the buffer in the other window - i.e. last window visited."
   (interactive)
   ;; Window selection is used because point goes to a different window
   ;; if more than 2 windows are present

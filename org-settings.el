@@ -25,7 +25,12 @@
 	org-hide-emphasis-markers t
 	org-export-coding-system 'utf-8
 	org-list-description-max-indent 5
-	org-use-sub-superscripts '{})
+	org-use-sub-superscripts '{}
+	org-special-ctrl-a/e t
+	org-special-ctrl-k t
+	org-blank-before-new-entry
+	'((heading . t)
+	  (plain-list-item auto-coding-alist)))
   
   (local-set-key (kbd "C-c C-a") 'org-agenda)
   (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
