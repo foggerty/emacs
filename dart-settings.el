@@ -1,6 +1,7 @@
 (use-package dart-mode  
+  :hook
+  (dart-mode . flycheck-mode)
+  (dart-mode . electric-pair-local-mode)
+
   :config
-  (company-mode-on)
-  (electric-pair-local-mode)
-  (add-hook 'dart-mode-hook 'flycheck-mode)
   (setq dart-enable-analysis-server t))

@@ -4,30 +4,37 @@
 
 ;; On Mac, use Command key as Meta when not in terminal.
 (when (and (eq system-type 'darwin)
-	   (display-graphic-p))
+	  (display-graphic-p))
   (setq mac-command-modifier 'meta))
+
 
 ;; TEST - trigger garbage collection after 20MB allocated instead of
 ;; .76MB.  According to someone on the interweb, this should make my
 ;; life just better all around.
 (setq gc-cons-threshold 20000000)
 
+
 ;; Save desktop on edit
 (desktop-save-mode 1)
 
+
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
+
 
 ;; Make sure temp buffers don't steal all of the screen
 (temp-buffer-resize-mode t)
 (setq temp-buffer-max-height 20
       compilation-window-height 20)
 
+
 ;; Centralised backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
+
 ;; Yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
+
 
 ;; Use aspell over ispell
 (require 'ispell)
@@ -35,11 +42,13 @@
       ispell-dictionary "british")
 (show-paren-mode 1)
 
+
 ;; Hungry-delete: backspace kills all whitespace until it eaches next
 ;; character.
 (use-package hungry-delete
   :init
   (global-hungry-delete-mode))
+
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
@@ -52,9 +61,9 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
-	ivy-count-format "(%d/%d) "
-	ivy-initial-inputs-alist nil
-	ivy-use-selectable-prompt t)
+        ivy-count-format "(%d/%d) "
+        ivy-initial-inputs-alist nil
+        ivy-use-selectable-prompt t)
   :bind
   (("C-s" . swiper)
    ("C-x C-f" . counsel-find-file)
@@ -68,7 +77,7 @@
 (use-package flx
   :config
   (setq ivy-re-builders-alist
-	'((t . ivy--regex-plus))))
+        '((t . ivy--regex-plus))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company (auto-complete) settings.
@@ -76,13 +85,11 @@
 
 (use-package company
   :config
-  (setq company-idle-delay 0
-	company-auto-complete-chars '(40 41 46)
-	company-search-regexp-function 'company-search-flex-regexp
-	company-require-match nil
-	company-auto-complete t)  
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
-  :diminish company-mode)
+  (setq company-idle-delay 0)
+
+  :diminish
+  company-mode)
 
 (use-package company-flx)
 
@@ -95,6 +102,7 @@
 (use-package counsel-projectile
   :config
   (add-hook 'after-init-hook 'counsel-projectile-mode)
+  
   :bind
   ("<f12>" . counsel-projectile-find-file))
 
@@ -123,5 +131,4 @@
 (global-set-key (kbd "<s-backspace>") 'kill-to-beginning-of-line)
 (global-set-key (kbd "M-_") 'decrease-font-size)
 (global-set-key (kbd "M-+") 'increase-font-size)
-
-
+(global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)

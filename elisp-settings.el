@@ -1,7 +1,6 @@
 (defun foggerty-elisp-mode ()
   (enable-paredit-mode)
   (turn-on-eldoc-mode)
-  (company-mode)
   (local-set-key (kbd "C-c C-r") 'eval-region)
   (local-set-key (kbd "C-c C-b") 'eval-buffer)
   (local-set-key (kbd "C-h C-l") 'find-library)

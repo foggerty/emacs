@@ -2,9 +2,9 @@
   "Set font to the first that it finds in flist."
   (if (not (eq nil flist))
       (let ((font (car flist)))
-	(if (x-list-fonts font)
-	    (set-frame-font font)
-	  (helper-set-font (cdr flist))))))
+		  (if (x-list-fonts font)
+				(set-frame-font font)
+			 (helper-set-font (cdr flist))))))
 
 (defun helper-parent-modes (mode)
   "Returns a list containing mode, and its parent modes."
@@ -15,8 +15,8 @@
   "Return t if any of the items in sourece are found in test.
    Todo - check that parameters are both lists!"
   (cond ((null source) nil)
-	((member (car source) test) t)
-	(t (helper-any-in-list (cdr source test)))))
+		  ((member (car source) test) t)
+		  (t (helper-any-in-list (cdr source test)))))
 
 (defun helper-indent-buffer ()
   "Indents the entire buffer."
@@ -30,11 +30,11 @@
   "Uses the message function to display a list of format-value
 pairs or single strings."
   (message (apply 'concat (mapcar
-			   (lambda (msg)
-			     (if (atom msg)
-				 msg
-			       (format (car msg) (cadr msg))))
-			   messages))))
+									(lambda (msg)
+									  (if (atom msg)
+											msg
+										 (format (car msg) (cadr msg))))
+									messages))))
 
 (defmacro q-funk (commands)
   "Quick-Function: Creates an interactive function that runs COMMANDS."

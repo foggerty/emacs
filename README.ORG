@@ -19,10 +19,12 @@ A constant work in progress :-)
 
 * ToDo!
 ** Golang
-- [ ] Ensure using latest version of golang.
-- [ ] Copy old settings.
-- [ ] Update to use use-package for the basics.
-- [ ] Test.
+- [X] Ensure using latest version of golang.
+- [X] Copy old settings.
+- [X] Update to use use-package for the basics.
+- [X] Test.
+- [ ] Make a simple example of the weird-possible-maybe-bug that I encountered when using defer with
+- [ ] If i can recreate it simply enough, post a question on go-nuts.
 - [ ] Add in the more complex stuff like popup menu etc.
 - [ ] Test again.
 ** Dart / Flutter
@@ -38,12 +40,14 @@ A constant work in progress :-)
 - [ ] Look into having a central agenda file.
 - [ ] Learn how to use tags!  Seriously, it's been how long?
 ** Elisp / Emacs
-- [ ] When running ansi-term, should source ~/.profile.
+- [X] When running ansi-term, should source ~/.profile. (Doh, I just had shit bash config...)
+- [ ] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
 - [ ] Dig out old Emacs-notes org file, dust off and update with what I learnt on debugging elisp code.
+- [ ] New wrapper function, that only runs config code if it can find the required command-line tool, i.e. goimports.  Should raise a warning that cannot find, and provide the required command to install it if it's a one-liner.
 ** Ruby
-- [ ] Get rid of all bloody versions other than default OSX one.
-- [ ] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.
-- [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it).
+- [X] Get rid of all bloody versions other than default OSX one.
+- [X] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.
+- [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it - I hope).
 ** Global
  - [-] Abbrev mode
    - [X] Turn on.....
