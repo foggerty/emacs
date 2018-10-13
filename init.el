@@ -47,12 +47,13 @@
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el" 
         "scheme-settings.el"
-        ;; "ruby-settings.el" - now realising just how much I don't know about Emacs config...
+        "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
         "dart-settings.el"
         "go-settings.el"
-        "theme.el"))
+		  "theme.el"))
 
+;; ToDo - get the absolute path of this file instead of hard-coding
 (dolist (file setup--the-rest)
-  (load (concat "~/.emacs.d/" file)))
+(load (concat "~/.emacs.d/" file)))

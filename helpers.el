@@ -36,6 +36,15 @@ pairs or single strings."
 										 (format (car msg) (cadr msg))))
 									messages))))
 
+(defun helper-run-if-found (name func)
+  "Will call test to see if name is found on the current path,
+  and will pass in the full path to func if so.  Otherwise logs a
+  warning."
+  (let ((path (shell-command-to-string (concat "printf \"$(which " name ")\""))))
+	 (if (string= "" path)
+		  (warn (concat "Cannot find " name " on path.  Config is unhappy :-("))
+		(funcall func path))))
+
 (defmacro q-funk (commands)
   "Quick-Function: Creates an interactive function that runs COMMANDS."
   `(lambda ()

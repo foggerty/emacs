@@ -34,16 +34,6 @@
       (setq icon-title-format '(""))))
 
 
-;; A tree-view on the side of the frame
-;; ToDO - close tree once a file is selected to be opened.
-(use-package neotree
-  :config
-  (global-set-key [f8] 'neotree-toggle)
-  (setq neo-theme 'ascii)
-  (setq neo-smart-open t)
-  (setq projectile-switch-project-action 'neotree-projectile-action))
-
-
 ;; Theme
 (require 'color)
 
@@ -68,4 +58,4 @@
 (when (display-graphic-p)
   (helper-set-font '("Source code pro light" "Monaco"))
   (set-face-attribute 'default nil
-		      :height 145))
+		      :height 115))
