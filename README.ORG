@@ -56,3 +56,4 @@ A constant work in progress :-)
    - [ ] Setup some basic config templates, i.e. gsk -> (glob-set-key (kbd "$1") '$2)
    - [ ] Create some Golang templates
    - [ ] Spend far too long playing around with this feature
+ - [ ] Update helper-run-if-found to use executable-find

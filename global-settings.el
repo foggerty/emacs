@@ -38,6 +38,7 @@
 
 ;; Use aspell over ispell
 (require 'ispell)
+<<<<<<< HEAD
 (let ((aspell (executable-find "aspell")))
   (if aspell
 		(setq ispell-program-name aspell
@@ -46,9 +47,17 @@
 
 ;; I cannot remember what this does.
 (show-paren-mode 1)
+=======
+>>>>>>> c2a3c5b9502dc6c7bf0869e72b02465afd625164
+
+(setq  ispell-dictionary "british")
+
+(helper-run-if-found "aspell"
+							(lambda (path)
+							  (setq ispell-program-name path)))
 
 
-;; Hungry-delete: backspace kills all whitespace until it eaches next
+;; Hungry-delete: backspace kills all whitespace until it reaches next
 ;; character.
 (use-package hungry-delete
   :init
@@ -80,10 +89,21 @@
    ("C-c f" . counsel-projectile-grep))
   :diminish ivy-mode)
 
+
 (use-package flx
   :config
   (setq ivy-re-builders-alist
         '((t . ivy--regex-plus))))
+
+
+;; A tree-view on the side of the frame
+;; ToDO - close tree once a file is selected to be opened.
+(use-package neotree
+  :config
+  (global-set-key [f8] 'neotree-toggle)
+  (setq neo-theme 'ascii)
+  (setq neo-smart-open t)
+  (setq projectile-switch-project-action 'neotree-projectile-action))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company (auto-complete) settings.
@@ -107,8 +127,7 @@
 (use-package projectile)
 (use-package counsel-projectile
   :config
-  (add-hook 'after-init-hook 'counsel-projectile-mode)
-  
+  (add-hook 'after-init-hook 'counsel-projectile-mode)  
   :bind
   ("<f12>" . counsel-projectile-find-file))
 
