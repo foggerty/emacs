@@ -23,34 +23,34 @@ A constant work in progress :-)
 - [X] Copy old settings.
 - [X] Update to use use-package for the basics.
 - [X] Test.
-- [ ] Make a simple example of the weird-possible-maybe-bug that I encountered when using defer with
-- [ ] If i can recreate it simply enough, post a question on go-nuts.
 - [ ] Add in the more complex stuff like popup menu etc.
 - [ ] Test again.
+- [X] Sadly wonder if I'll ever get to use an interesting language like this or Clojure professionally :-(
 ** Dart / Flutter
-- [ ] Nuke it all!
+- [X] Nuke it all!
 - [ ] Get /just/ Dart up and running with a demo console app.
-- [ ] Ask on the Reddit forum how to get the fucking analysis server up and running.  I'm missing something blinfly obvious, I konw :-(
+- [ ] Ask on the Reddit forum how to get the fucking analysis server up and running.  I'm missing something blindingly obvious, I konw :-(
 - [ ] Get Flutter up and running.
 - [ ] Demo app.
 ** Scheme
 - [X] Reinstall Guile.
-- [ ] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...
+- [X] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...
 ** Org
 - [ ] Look into having a central agenda file.
 - [ ] Learn how to use tags!  Seriously, it's been how long?
+- [ ] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
 ** Elisp / Emacs
 - [X] When running ansi-term, should source ~/.profile. (Doh, I just had shit bash config...)
-- [ ] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
-- [ ] Dig out old Emacs-notes org file, dust off and update with what I learnt on debugging elisp code.
+- [X] Dig out old Emacs-notes org file, dust off and update with what I learnt on debugging elisp code.
 - [ ] New wrapper function, that only runs config code if it can find the required command-line tool, i.e. goimports.  Should raise a warning that cannot find, and provide the required command to install it if it's a one-liner.
 ** Ruby
 - [X] Get rid of all bloody versions other than default OSX one.
 - [X] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.
-- [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it - I hope).
+- [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it - I hope).  At the least, should be able to evaluate functions/buffer in the Ruby process.
 ** Global
  - [-] Abbrev mode
    - [X] Turn on.....
+   - [ ] Remind self what this is cos I've forgotten sine I wrote this.....
    - [ ] Endlessly add new abbreviations
  - [ ] Setup [[http://ergoemacs.org/emacs/emacs_templates.html][YaSnippet]]
    - [ ] Setup some basic config templates, i.e. gsk -> (glob-set-key (kbd "$1") '$2)

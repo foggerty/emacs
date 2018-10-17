@@ -6,6 +6,10 @@
 ;;; other scripts.
 
 
+;; Always use newer source over old byte-compiled.
+(setq load-prefer-newer t)
+
+
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file (make-temp-file "emacs-custom"))
 
@@ -31,12 +35,6 @@
 
 ;; Configure use-package
 (setq use-package-always-ensure t)
-
-
-;; Use the same path you'd get in a standard shell
-(use-package exec-path-from-shell
-  :init 
-  (exec-path-from-shell-initialize))
 
 
 ;; Load global settings and major-mode settings
