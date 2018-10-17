@@ -1,17 +1,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Basic tidy ups.
+;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Use the same path you'd get in a standard shell
+(use-package exec-path-from-shell
+  :init 
+  (exec-path-from-shell-initialize))
+
 
 ;; On Mac, use Command key as Meta when not in terminal.
 (when (and (eq system-type 'darwin)
-	  (display-graphic-p))
+			  (display-graphic-p))
   (setq mac-command-modifier 'meta))
-
-
-;; TEST - trigger garbage collection after 20MB allocated instead of
-;; .76MB.  According to someone on the interweb, this should make my
-;; life just better all around.
-(setq gc-cons-threshold 20000000)
 
 
 ;; Save desktop on edit
@@ -38,6 +38,17 @@
 
 ;; Use aspell over ispell
 (require 'ispell)
+<<<<<<< HEAD
+(let ((aspell (executable-find "aspell")))
+  (if aspell
+		(setq ispell-program-name aspell
+				ispell-dictionary "british")))
+
+
+;; I cannot remember what this does.
+(show-paren-mode 1)
+=======
+>>>>>>> c2a3c5b9502dc6c7bf0869e72b02465afd625164
 
 (setq  ispell-dictionary "british")
 
@@ -71,8 +82,9 @@
   (("C-s" . swiper)
    ("C-x C-f" . counsel-find-file)
    ("M-x" . counsel-M-x)
-   ("C-h f" . counsel-describe-function)
-   ("C-h v" . counsel-describe-variable)
+   ("C-h f" . helpful-function)
+   ("C-h v" . helpful-variable)
+	("C-h k" . helpful-key)
    ("C-c g" . counsel-git-grep)
    ("C-c f" . counsel-projectile-grep))
   :diminish ivy-mode)
@@ -125,6 +137,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq mouse-wheel-tilt-scroll t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Let me know what to press next....
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package which-key
+  :init
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Helpful - better help screens.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package helpful)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
