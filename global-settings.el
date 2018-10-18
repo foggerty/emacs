@@ -38,17 +38,6 @@
 
 ;; Use aspell over ispell
 (require 'ispell)
-<<<<<<< HEAD
-(let ((aspell (executable-find "aspell")))
-  (if aspell
-		(setq ispell-program-name aspell
-				ispell-dictionary "british")))
-
-
-;; I cannot remember what this does.
-(show-paren-mode 1)
-=======
->>>>>>> c2a3c5b9502dc6c7bf0869e72b02465afd625164
 
 (setq  ispell-dictionary "british")
 
