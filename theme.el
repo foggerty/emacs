@@ -56,6 +56,6 @@
 
 ;; Fonts/faces
 (when (display-graphic-p)
-  (helper-set-font '("Source code pro light" "Monaco"))
+  (helper-set-font '("Source code pro light" "Hack"))
   (set-face-attribute 'default nil
 		      :height 115))
