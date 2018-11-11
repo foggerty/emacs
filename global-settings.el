@@ -38,23 +38,19 @@
 
 ;; Use aspell over ispell
 (require 'ispell)
-<<<<<<< HEAD
+
 (let ((aspell (executable-find "aspell")))
   (if aspell
-		(setq ispell-program-name aspell
+      (setq ispell-program-name aspell
 				ispell-dictionary "british")))
 
 
 ;; I cannot remember what this does.
 (show-paren-mode 1)
-=======
->>>>>>> c2a3c5b9502dc6c7bf0869e72b02465afd625164
-
-(setq  ispell-dictionary "british")
 
 (helper-run-if-found "aspell"
-							(lambda (path)
-							  (setq ispell-program-name path)))
+		     (lambda (path)
+		       (setq ispell-program-name path)))
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
@@ -66,6 +62,15 @@
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; More helpful help.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package helpful)
+
+(use-package which-key)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; navigation / searching.
@@ -152,6 +157,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Helpful - better help screens.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package helpful)
 
 
