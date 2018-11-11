@@ -45,14 +45,6 @@
 				ispell-dictionary "british")))
 
 
-;; I cannot remember what this does.
-(show-paren-mode 1)
-
-(helper-run-if-found "aspell"
-		     (lambda (path)
-		       (setq ispell-program-name path)))
-
-
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
 ;; character.
 (use-package hungry-delete
