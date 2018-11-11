@@ -1,0 +1,141 @@
+* Debugging
+ - ~debug-on-message~ (and a few other ~debug-on-*~ variables) being set to non-nil will trigger the debugger when a message matching a given regex appears in the message buffer.
+* Org-mode
+** Capture Templates
+This lets you save notes while working, then get back to whatever else you were doing.
+
+[[http://orgmode.org/manual/Capture-templates.html#Capture-templates][Config summary is here.]]
+
+* eShell
+
+use ~$(...)~ to execute lisp commands and use the output as parameters. e.g. ~echo $(emacs-version~)
+
+/Aliasing/ - note that elisp commands can also be aliased, as well as the usual shell commands.  However, unlike say, Bash, you cannot just alias something like:
+
+~alias ff 'find-file'~
+
+as it will expect an argument.  Instead use the following:
+
+~alias ff 'find-file $1'~
+
+Useful commands:
+- ~listify ARGS~ :: turn args into a Lisp list
+- ~find-file FILE~ :: opens FILE in a new buffer
+- ~dired~ DIR :: open DIR in dired mode
+
+* e-lisp basics
+** Symbols
+
+Can both point to a function and a variable:
+
+#+BEGIN_SRC elisp
+  (defun fred (x) (* x x))
+  (setq fred 10)
+  (fred fred)  ; 100
+  (setq counter 0)
+  (defun counter ()
+    (setq counter (+ 1 counter)))
+  (counter) ; 1
+  (counter) ; 2
+#+END_SRC
+
+** String formatting
+
+#+BEGIN_SRC elisp
+  ;; %s = anything, but convention is strings
+  ;; %d = integer part of a number
+  (message "Current buffer is %s, fill-column is %d."
+           (current-buffer)
+           fill-column)
+#+END_SRC
+
+** TODO Variables
+
+'setq' is basically a wrapper around 'set' that quotes the variable for you, and allows multiple variables to be set, as well as using previously defined variables in subsequent settings.
+
+Write something re defvar, the docuemtation, when to use etc.
+
+** Buffers
+
+#+BEGIN_SRC elisp
+  (current-buffer) ; returns buffer
+  (other-buffer)   ; previously visited buffer /that you cannot see/
+  (switch-to-buffer (other-buffer)) ; changes the buffer that's being viewed
+  (set-buffer ...) ; changes the buffer that the /program/ is working on
+#+END_SRC
+
+- (point) :: point in current buffer.
+- (buffer-size) :: size of current buffer.
+- (point-min) :: min possible value for point.  1, unless narrowing is in effect.
+- (point-max) :: max possible value for point.  Equals buffer-size unless narowing is in effect.
+- save-excursion :: saves, point, mark, region and current buffer, and will also recover from any errors that occur.  Note that it's more idiomatic to put a save-excursion inside a let, than the other way around.
+- push-mark :: sets mark at current location, and pushes previous one onto a stack.  Note that its position will be adjusted as text is added/deleted.
+- set-buffer :: sets the buffer that the code is looking at; user's buffer remains on the screen.
+- get-buffer / get-buffer-create :: gets or creates a buffer if it doesn't exist.
+- with-current-buffer :: Badly named!  Actually works with a provided buffer.x
+
+** Functions
+
+Use the function ~interactive~ to make a function callable in the mini-buffer:
+
+#+BEGIN_SRC elisp
+  (defun mult-by-4 (x)
+    "Mult by 4"
+    (interactive "nEnter a number: ")
+    (message "Result is %d" (* 4 x)))
+#+END_SRC
+
+as well as being able to bind it to a key chord.
+
+There are about twenty possible inputs to ~interactive~, and inputs are separated by ~\n.~  In this case, 'n' prompts for a number.  Note that you can have several strings in the interactive function.
+
+~(defun fred (&optional arg))~ -> indicates that arg is optional (well duh).
+
+Use "P" (raw) or "p" (number) to get the prefix argument.  Still not sure what the difference is.
+
+#+BEGIN_SRC elisp
+  (defun fred (raw)
+    (interactive "P")
+    (message "Prefix value was %s" raw))
+#+END_SRC
+
+** Let statements
+
+#+BEGIN_SRC elisp
+  (let ((variable1 value1)
+        (variable2 value2)
+        this-will-be-bound-to-nill-and-doesnt-reqire-parenthesies
+        (variable3 value3))
+    (body-expression1)
+    (body-expression2))
+#+END_SRC
+
+Note that ~let~ will evaluate all of the values, and /then/ assign them to the variables.  To have them all evaluated as they bind, and therefore allow you to use them in subsequent bindings, use ~let*~:
+
+#+BEGIN_SRC elisp
+  (setq x 1)
+
+  (let ((x 2)
+        (y x)) ; will be bound to existing 'x', as no evaluation yet
+    (list x y)) ; (2 1)
+
+  (let* ((x 2)
+         (y x))
+    (list x y)) ; (2 2)
+#+END_SRC
+
+** Equality
+
+Nil is false.  Everything else is true.
+Except the empty list, which is equivalent to nil:
+
+#+BEGIN_SRC elisp
+  (equal nil '())  ; t
+#+END_SEC
+* Writing a major mode
+
+ 1) Not required, but can create a hook with =defvar= (just assign it nil) for others to use.  Then at some point in the mode's function, call =run-hooks= with the variable.  Any functions that have been added, will then be run.
+ 2) Also not required, is a mode key-map.  Create using =make-keymap= and in pass it to the =use-local-map= function.
+ 3) Required (if you want things to look pretty) is a font-lock collection.  It's a list of cons (dotted pair) cells.  The =car= of each cell is a regex (use regexp-opt to help make an optimised version) and the =cdr= is a variable like =font-lock-builtin-face=.  These are variables that refer to them selves.  I have /no/ idea how these work :-)
+ 4) Make an =indent-line= function that indents a single line, and in the major mode function assign it to a /local/ variable called =indent-line-function=.  Use the =make-local-variable= function to create it (creates a buffer-local function).
+ 5) Create a syntax table (=make-syntax-table=) and assign it with =set-syntax-table=.  This tells Emacs how to treat code, i.e. how to skip over 'words', what constitutes punctuation, what delimits string, comments etc.  Its a PITA.
