@@ -12,14 +12,6 @@
 (scroll-bar-mode -1)
 
 
-;; Spaceline theme (i.e. the mode-line)
-;; (use-package spaceline
-;;   :config
-;;   (require 'spaceline-config)
-;;   (setq powerline-default-separator 'utf-8)
-;;   (spaceline-emacs-theme))
-
-
 ;; Beacon - show where the cursor is after scrolling.
 (use-package beacon
   :config
@@ -56,6 +48,6 @@
 
 ;; Fonts/faces
 (when (display-graphic-p)
-  (helper-set-font '("Source code pro light" "Hack"))
+  (helper-set-font '("Monospace Regular" "Source code pro light" "Hack"))
   (set-face-attribute 'default nil
-		      :height 115))
+		      :height 125))

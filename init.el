@@ -17,9 +17,11 @@
 ;; Packages setup
 (require 'package)
 (add-to-list 'package-archives
-				 '("melpa" . "https://melpa.org/packages/") t)
+				 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("org" . "https://orgmode.org/elpa/") t)
+
+
 (package-initialize)
 
 (unless package-archive-contents
@@ -34,7 +36,12 @@
 
 
 ;; Configure use-package
-(setq use-package-always-ensure t)
+(setq use-package-always-ensure t
+		package-user-dir "~/.emacs.d/elpa"
+		package--init-file-ensured t)
+
+(unless (file-directory-p package-user-dir)
+  (make-directory package-user-dir t))
 
 
 ;; Load global settings and major-mode settings
@@ -48,10 +55,10 @@
         "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
-        "dart-settings.el"
+        "flutter-settings.el"
         "go-settings.el"
 		  "theme.el"))
 
 ;; ToDo - get the absolute path of this file instead of hard-coding
 (dolist (file setup--the-rest)
-(load (concat "~/.emacs.d/" file)))
+  (load (concat "~/.emacs.d/" file)))

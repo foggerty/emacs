@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+q;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -60,7 +60,10 @@
 ;;;; More helpful help.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package helpful)
+(use-package helpful
+  :bind (("C-h f" . helpful-function)
+			("C-h v" . helpful-variable)
+			("C-h k" . helpful-key)))
 
 (use-package which-key)
 
@@ -75,15 +78,11 @@
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
-  :bind
-  (("C-s" . swiper)
-   ("C-x C-f" . counsel-find-file)
-   ("M-x" . counsel-M-x)
-   ("C-h f" . helpful-function)
-   ("C-h v" . helpful-variable)
-	("C-h k" . helpful-key)
-   ("C-c g" . counsel-git-grep)
-   ("C-c f" . counsel-projectile-grep))
+  :bind (("C-s" . swiper)
+			("C-x C-f" . counsel-find-file)
+			("M-x"     . counsel-M-x)
+			("C-c g"   . counsel-git-grep)
+			("C-c f"   . counsel-projectile-grep))
   :diminish ivy-mode)
 
 
@@ -93,14 +92,13 @@
         '((t . ivy--regex-plus))))
 
 
-;; A tree-view on the side of the frame
-;; ToDO - close tree once a file is selected to be opened.
-(use-package neotree
-  :config
-  (global-set-key [f8] 'neotree-toggle)
-  (setq neo-theme 'ascii)
-  (setq neo-smart-open t)
-  (setq projectile-switch-project-action 'neotree-projectile-action))
+;; Treemacs - treeview that hooks into Projectile.
+(use-package treemacs)
+;;(use-package treeemacs-icons-dired)
+(use-package treemacs-magit)
+(use-package treemacs-projectile
+  :requires projectile)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company (auto-complete) settings.
@@ -114,7 +112,7 @@
   :diminish
   company-mode)
 
-(use-package company-flx)
+;;(use-package company-flx)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,7 +122,8 @@
 (use-package projectile)
 (use-package counsel-projectile
   :config
-  (add-hook 'after-init-hook 'counsel-projectile-mode)  
+  (add-hook 'after-init-hook 'counsel-projectile-mode)
+  (setq projectile-use-git-grep t)
   :bind
   ("<f12>" . counsel-projectile-find-file))
 
@@ -147,13 +146,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Helpful - better help screens.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package helpful)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -171,3 +163,4 @@
 (global-set-key (kbd "M-_") 'decrease-font-size)
 (global-set-key (kbd "M-+") 'increase-font-size)
 (global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
+(global-set-key (kbd "<f8>") 'treemacs)
