@@ -160,7 +160,7 @@
  `(message-header-to ((t (:foreground "white"))))
  `(message-header-cc ((t (:foreground "white"))))
  `(org-hide ((t (:foreground "#2e3436"))))
- `(org-level-1 ((t (:bold t :foreground "dodger blue" :height 1.5))))
+ `(org-level-1 ((t (:bold t :foreground "dodger blue" :height 1.3))))
  `(org-level-2 ((t (:bold t :foreground "#edd400" :height 1.2))))
  `(org-level-3 ((t (:bold t :foreground "#6ac214" :height 1.0))))
  `(org-level-4 ((t (:bold nil :foreground "tomato" :height 1.0))))

@@ -58,4 +58,4 @@
 (when (display-graphic-p)
   (helper-set-font '("Source code pro light" "Hack"))
   (set-face-attribute 'default nil
-		      :height 115))
+							 :height 115))

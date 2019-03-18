@@ -41,17 +41,18 @@
 (setq setup--the-rest
       '("helpers.el"
         "random-functions.el"
+		  "theme.el"
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el" 
         "scheme-settings.el"
-        "ruby-settings.el"
+;;        "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
         "dart-settings.el"
-        "go-settings.el"
-		  "theme.el"))
+        "go-settings.el"))
+
 
 ;; ToDo - get the absolute path of this file instead of hard-coding
 (dolist (file setup--the-rest)
-(load (concat "~/.emacs.d/" file)))
+  (load (concat "~/.emacs.d/" file)))
