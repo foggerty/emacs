@@ -16,7 +16,7 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- 'g((scheme . t)))
+ '((scheme . t)))
 
 (defun my-org-mode ()
   (require 'ox-md nil t)

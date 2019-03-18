@@ -1,6 +1,9 @@
-(use-package company-go)			  ; go get github.com/mdempsky/gocode
-(use-package go-eldoc)
-(use-package go-playground)
+(use-package company-go
+  :requires go-mode)			  ; go get github.com/mdempsky/gocode
+(use-package go-eldoc
+  :requires go-mode)
+(use-package go-playground
+  :requires go-mode)
 
 (use-package go-mode
   :config

@@ -15,3 +15,14 @@
 ;; Various Lisp modes - to do, try out parinfer.
 (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
 (add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
+
+
+;; LSP (Language Server protocol) support.
+(use-package lsp-mode)
+(use-package lsp-ui)
+(use-package company-lsp
+  :after company)
+
+
+;; The new shiny
+(use-package yaml-mode)

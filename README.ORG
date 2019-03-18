@@ -29,7 +29,7 @@ A constant work in progress :-)
 ** Dart / Flutter
 - [X] Nuke it all!
 - [ ] Get /just/ Dart up and running with a demo console app.
-- [ ] Ask on the Reddit forum how to get the fucking analysis server up and running.  I'm missing something blindingly obvious, I konw :-(
+- [ ] Get the bloody language server running.
 - [ ] Get Flutter up and running.
 - [ ] Demo app.
 ** Scheme
