@@ -5,11 +5,21 @@
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
 
 
-;;; Basic tidy up
+;;; Basic tidy ups
 (setq inhibit-startup-screen t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+
+;;; Highlighting
+(use-package highlight-parentheses
+  :init
+  (highlight-parentheses-mode))
+
+(use-package highlight-quoted
+  :init
+  (highlight-quoted-mode))
 
 
 ;; Beacon - show where the cursor is after scrolling.

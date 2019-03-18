@@ -24,3 +24,5 @@
   :after company)
 
 
+;; The new shiny
+(use-package yaml)

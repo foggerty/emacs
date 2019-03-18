@@ -1,4 +1,4 @@
-q;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -16,28 +16,6 @@ q;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Save desktop on edit
 (desktop-save-mode 1)
-
-
-;; Highlighted region is deleted when typing
-(delete-selection-mode 1)
-
-
-;; Make sure temp buffers don't steal all of the screen
-(temp-buffer-resize-mode t)
-(setq temp-buffer-max-height 20
-      compilation-window-height 20)
-
-
-;; Centralised backup directory
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-
-
-;; Yes/no to y/n
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-
-;; Use aspell over ispell
-(require 'ispell)
 
 (let ((aspell (executable-find "aspell")))
   (if aspell
@@ -108,11 +86,8 @@ q;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
   (setq company-idle-delay 0)
-
   :diminish
   company-mode)
-
-;;(use-package company-flx)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
