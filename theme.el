@@ -28,12 +28,23 @@
   (beacon-mode 1))
 
 
-;; Transparent title bar in OSX
-(if (eq 'ns (window-system))
-    (progn 
-      (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-      (setq frame-title-format '(" "))
-      (setq icon-title-format '(""))))
+;; OS Specific config - OSX
+(setq osx-specific-config
+      '(progn
+         (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+         (setq frame-title-format '(" "))
+         (setq icon-title-format '(""))))
+
+
+;; OS specific config - WSL
+(setq wsl-specific-config
+      (progn
+        (set-mouse-color "green")
+        (set-cursor-color "green")))
+
+
+(cond ((eq 'ns (window-system)) (eval osx-specific-config)
+       (string-match "Microsoft" operating-system-release) (eval wsl-specific-config)))
 
 
 ;; Theme
@@ -60,4 +71,4 @@
 (when (display-graphic-p)
   (helper-set-font '("Monospace Regular" "Source code pro light" "Hack"))
   (set-face-attribute 'default nil
-		      :height 115))
+							 :height 115))
