@@ -17,10 +17,33 @@
 ;; Save desktop on edit
 (desktop-save-mode 1)
 
-(let ((aspell (executable-find "aspell")))
-  (if aspell
-      (setq ispell-program-name aspell
-				ispell-dictionary "british")))
+
+;; Highlighted region is deleted when typing
+(delete-selection-mode 1)
+
+
+;; Make sure temp buffers don't steal all of the screen
+(temp-buffer-resize-mode t)
+(setq temp-buffer-max-height 20
+      compilation-window-height 20)
+
+
+;; Centralised backup directory
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+
+;; Yes/no to y/n
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+
+;; Use aspell over ispell
+(require 'ispell)
+
+(setq  ispell-dictionary "british")
+
+(helper-run-if-found "aspell"
+							(lambda (path)
+							  (setq ispell-program-name path)))
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
@@ -71,8 +94,10 @@
 
 
 ;; Treemacs - treeview that hooks into Projectile.
-(use-package treemacs)
-;;(use-package treeemacs-icons-dired)
+(use-package treemacs
+  :bind
+  ("<f8>" . (q-funk (if (and ("not in treemacs window")
+									  ("treemacs window exists"))))))
 (use-package treemacs-magit)
 (use-package treemacs-projectile
   :requires projectile)

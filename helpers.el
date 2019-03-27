@@ -25,7 +25,7 @@
     (indent-region (point-min) (point-max))))
 
 ;;; TODO - write a sting-interpolation function to automatically add
-;;; newlines.
+;;; newlines - or figure out how to use build in string formatting.
 (defun helper-messages (messages)
   "Uses the message function to display a list of format-value
 pairs or single strings."
