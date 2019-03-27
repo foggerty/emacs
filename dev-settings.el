@@ -21,8 +21,7 @@
 (use-package lsp-mode)
 (use-package lsp-ui)
 (use-package company-lsp
-  :after company)
+  :after company
+  :config
+  (setq lsp-auto-guess-root t))
 
-
-;; The new shiny
-(use-package yaml-mode)
