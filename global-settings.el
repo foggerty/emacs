@@ -94,10 +94,7 @@
 
 
 ;; Treemacs - treeview that hooks into Projectile.
-(use-package treemacs
-  :bind
-  ("<f8>" . (q-funk (if (and ("not in treemacs window")
-									  ("treemacs window exists"))))))
+(use-package treemacs)
 (use-package treemacs-magit)
 (use-package treemacs-projectile
   :requires projectile)

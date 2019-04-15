@@ -8,7 +8,7 @@
   
   :config
   (setq dart-format-on-save t
-		  dart-sdk-path "~/Development/flutter/bin/cache/dart-sdk/bin")
+		  dart-sdk-path "~/Development/flutter/bin/cache/dart-sdk/")
 
   (with-eval-after-load "projectile"
 	 (add-to-list 'projectile-project-root-files-bottom-up "pubspec.yaml")
