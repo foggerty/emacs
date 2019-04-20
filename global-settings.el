@@ -94,10 +94,10 @@
 
 
 ;; Treemacs - treeview that hooks into Projectile.
-(use-package treemacs)
-(use-package treemacs-magit)
-(use-package treemacs-projectile
-  :requires projectile)
+;; (use-package treemacs)
+;; (use-package treemacs-magit)
+;; (use-package treemacs-projectile
+;;   :requires projectile)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

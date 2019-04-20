@@ -17,10 +17,9 @@
 ;; Packages setup
 (require 'package)
 (add-to-list 'package-archives
-				 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("org" . "https://orgmode.org/elpa/") t)
-
 
 (package-initialize)
 
@@ -48,12 +47,12 @@
 (setq setup--the-rest
       '("helpers.el"
         "random-functions.el"
-		  "theme.el"
+        "theme.el"
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el" 
         "scheme-settings.el"
-;;        "ruby-settings.el"
+	;;        "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
         "flutter-settings.el"

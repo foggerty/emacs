@@ -23,5 +23,5 @@
 (use-package company-lsp
   :after company
   :config
-  (setq lsp-auto-guess-root t))
-
+  (setq lsp-auto-guess-root t)
+  (setq lsp-ui-mode nil))

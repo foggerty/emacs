@@ -1,5 +1,5 @@
 (use-package company-go
-  :requires go-mode)			  ; go get github.com/mdempsky/gocode
+  :requires go-mode)         ; go get github.com/mdempsky/gocode
 (use-package go-eldoc
   :requires go-mode)
 (use-package go-playground
@@ -14,10 +14,10 @@
   
   :bind
   (:map go-mode-map
-		  ("C-<return>" . company-go) ; I CANNOT bloody get this to work automatically :-(
-		  ("M-." . godef-jump)			; go get github.com/rogpeppe/godef
-		  ("M-," . pop-tag-mark)
-		  ("C-c C-p" . go-playground)
-		  ("C-c C-c C-d" . godoc-at-point)))
+        ("C-<return>" . company-go) ; I CANNOT bloody get this to work automatically :-(
+        ("M-." . godef-jump)        ; go get github.com/rogpeppe/godef
+        ("M-," . pop-tag-mark)
+        ("C-c C-p" . go-playground)
+        ("C-c C-c C-d" . godoc-at-point)))
 
 (add-hook 'before-save-hook 'gofmt-before-save)
