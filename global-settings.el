@@ -4,6 +4,7 @@
 
 ;; Use the same path you'd get in a standard shell
 (use-package exec-path-from-shell
+  :ensure t
   :init 
   (exec-path-from-shell-initialize))
 
@@ -62,6 +63,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package helpful
+  :ensure t
   :bind (("C-h f" . helpful-function)
 			("C-h v" . helpful-variable)
 			("C-h k" . helpful-key)))
@@ -73,6 +75,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package counsel ; will bring in both Ivy and Swiper
+  :ensure t
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
@@ -88,6 +91,7 @@
 
 
 (use-package flx
+  :ensure t
   :config
   (setq ivy-re-builders-alist
         '((t . ivy--regex-plus))))
@@ -105,6 +109,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package company
+  :ensure t
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
   (setq company-idle-delay 0)
@@ -169,6 +174,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.
+;;;; Run these after ALL other packages have been loaded, to avoid
+;;;; things like org-mode clobbering them.
+;;;; Note that still have to do some extra work, as org-mode will
+;;;; refuse to play nice with other packages.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)

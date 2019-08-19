@@ -56,7 +56,9 @@
         "text-settings.el"
         "org-settings.el"
         "flutter-settings.el"
-        "go-settings.el"))
+        "go-settings.el"
+		  "clojure-settings.el"
+		  "global-key-settings.el"))
 
 
 ;; ToDo - get the absolute path of this file instead of hard-coding
