@@ -17,7 +17,7 @@
 ;; Packages setup
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("org" . "https://orgmode.org/elpa/") t)
 
@@ -57,8 +57,8 @@
         "org-settings.el"
         "flutter-settings.el"
         "go-settings.el"
-		  "clojure-settings.el"
-		  "global-key-settings.el"))
+	"clojure-settings.el"
+	"global-key-bindings.el"))
 
 
 ;; ToDo - get the absolute path of this file instead of hard-coding

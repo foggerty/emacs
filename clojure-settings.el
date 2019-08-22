@@ -4,7 +4,6 @@
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (use-package cider
-  :ensure t
-  :pin melpa-stable)
+  :ensure t)
 
 
