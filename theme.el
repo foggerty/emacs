@@ -50,7 +50,7 @@
 ;; Theme
 (require 'color)
 
-(load-file "~/.emacs.d/old/tangotango2.el")
+(load-file "~/.emacs.d/tangotango2.el")
 
 (let ((bg (face-attribute 'default :background)))
   (custom-set-faces
