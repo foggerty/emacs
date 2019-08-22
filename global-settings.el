@@ -2,9 +2,12 @@
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Fine, I'll go with spaces :-(
+(setq-default indent-tabs-mode nil)
+
+
 ;; Use the same path you'd get in a standard shell
 (use-package exec-path-from-shell
-  :ensure t
   :init 
   (exec-path-from-shell-initialize))
 
@@ -63,7 +66,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package helpful
-  :ensure t
   :bind (("C-h f" . helpful-function)
 			("C-h v" . helpful-variable)
 			("C-h k" . helpful-key)))
@@ -75,7 +77,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package counsel ; will bring in both Ivy and Swiper
-  :ensure t
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
@@ -91,7 +92,6 @@
 
 
 (use-package flx
-  :ensure t
   :config
   (setq ivy-re-builders-alist
         '((t . ivy--regex-plus))))
@@ -109,7 +109,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package company
-  :ensure t
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
   (setq company-idle-delay 0)
@@ -171,27 +170,3 @@
   :init
   (golden-ratio-mode))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Global key bindings.
-;;;; Run these after ALL other packages have been loaded, to avoid
-;;;; things like org-mode clobbering them.
-;;;; Note that still have to do some extra work, as org-mode will
-;;;; refuse to play nice with other packages.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-c C-q")	'helper-indent-buffer)
-(global-set-key (kbd "C-z") 'undo)
-(global-set-key (kbd "C-<tab>") 'other-window)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-x C-k") 'foggerty-other-window-kill-buffer)
-(global-set-key (kbd "C-x k") (q-funk (kill-buffer (current-buffer))))
-(global-set-key (kbd "C-M-=") 'increase-margin)
-(global-set-key (kbd "C-M--") 'decrease-margin)
-(global-set-key (kbd "C-x C-k") 'other-window-kill-buffer)
-(global-set-key (kbd "<s-backspace>") 'kill-to-beginning-of-line)
-(global-set-key (kbd "M-_") 'decrease-font-size)
-(global-set-key (kbd "M-+") 'increase-font-size)
-(global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
-(global-set-key (kbd "<f8>") 'treemacs)
