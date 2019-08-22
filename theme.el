@@ -71,4 +71,4 @@
 (when (display-graphic-p)
   (helper-set-font '("Source code pro" "Monospace Regular" "Hack"))
   (set-face-attribute 'default nil
-							 :height 115))
+                      :height 115))

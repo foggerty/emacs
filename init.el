@@ -35,7 +35,7 @@
 
 ;; Required packages for boot-strap
 (dolist (package '(diminish
-		   use-package))
+         use-package))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -58,13 +58,13 @@
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el" 
         "scheme-settings.el"
-		  "ruby-settings.el"
+        "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
         "flutter-settings.el"
         "go-settings.el"
-		  "clojure-settings.el"
-		  "global-key-bindings.el"))
+        "clojure-settings.el"
+        "global-key-bindings.el"))
 
 
 ;; ToDo - get the absolute path of this file instead of hard-coding

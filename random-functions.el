@@ -2,13 +2,13 @@
   "Calculate how much tax to pay, and how much to put into savings etc."
   (interactive "nRate: \nnHours: ")
   (let* ((total (* rate hours))
-			(gst (* total .15))
-			(withholding (* total .26))
-			(paid (- total withholding))
-			(extra-tax (* total .04))
-			(kiwisaver (* total 0.1))
-			(savings (* total .2))
-			(left-with (- total withholding extra-tax kiwisaver savings)))
+         (gst (* total .15))
+         (withholding (* total .26))
+         (paid (- total withholding))
+         (extra-tax (* total .04))
+         (kiwisaver (* total 0.1))
+         (savings (* total .2))
+         (left-with (- total withholding extra-tax kiwisaver savings)))
     (helper-messages
      `(("Total: %#.2f\n" ,total)
        ("GST: %#.2f\n" ,gst)
@@ -32,12 +32,12 @@
   ;; left/right-margin-width and then set the window's buffer to be
   ;; the current buffer, which forces an update/redraw.
   (let* ((margins (window-margins))
-			(left  (if (-cons-pair? margins) (car margins) 0))
-			(right (if (-cons-pair? margins) (cdr margins) 0)))
+         (left  (if (-cons-pair? margins) (car margins) 0))
+         (right (if (-cons-pair? margins) (cdr margins) 0)))
     (setq left-margin-width
-			 (max 0 (+ amount left)))
+          (max 0 (+ amount left)))
     (setq right-margin-width
-			 (max 0 (+ amount right)))
+          (max 0 (+ amount right)))
     (set-window-buffer nil (current-buffer))))
 
 (defun increase-margin ()
@@ -57,7 +57,7 @@
   ;; wee while :-)
   (let ((current (face-attribute 'default :height)))
     (set-face-attribute 'default nil :height
-								(min 310 (truncate (* (+ amount 1) current))))))
+                        (min 310 (truncate (* (+ amount 1) current))))))
 
 (defun increase-font-size ()
   (interactive)
@@ -69,20 +69,20 @@
 
 (setq māori-vowels
       '(("a" . "ā")
-		  ("e" . "ē")
-		  ("i" . "ī")
-		  ("o" . "ō")
-		  ("u" . "ū")
-		  ("A" . "Ā")
-		  ("E" . "Ē")
-		  ("I" . "Ī")
-		  ("O" . "Ō")
-		  ("U" . "Ū")))
+        ("e" . "ē")
+        ("i" . "ī")
+        ("o" . "ō")
+        ("u" . "ū")
+        ("A" . "Ā")
+        ("E" . "Ē")
+        ("I" . "Ī")
+        ("O" . "Ō")
+        ("U" . "Ū")))
 
 (defun foggerty-map-character (map)
   "Maps next key-press using the provided map."
   (let* ((char (char-to-string (read-key)))
-			(test (assoc char map)))
+         (test (assoc char map)))
     (if test (cdr test)
       char)))
 
@@ -102,7 +102,7 @@ beginning of the logical line."
   (save-excursion
     (push-mark)
     (if visual-line-mode
-		  (beginning-of-visual-line)
+        (beginning-of-visual-line)
       (beginning-of-line))
     (kill-region (point) (mark))))
 
@@ -128,7 +128,7 @@ beginning of the logical line."
     (kill-region
      (point)
      (if current-prefix-arg
-			(1+ (search-backward (char-to-string char)))
+         (1+ (search-backward (char-to-string char)))
        (1- (search-forward (char-to-string char)))))))
 
 
@@ -137,7 +137,17 @@ beginning of the logical line."
   (interactive)
   (let ((shell (get-buffer "*eshell*")))
     (cond ((eq shell (current-buffer))
-			  (switch-to-buffer (previous-buffer)))
-			 (shell
-			  (switch-to-buffer shell))
-			 (t (eshell)))))
+           (switch-to-buffer (previous-buffer)))
+          (shell
+           (switch-to-buffer shell))
+          (t (eshell)))))
+
+(defun untabify-files (files)
+  "Just to remind myself how to batch-process files in Emacs :-)"
+  (dolist (file files)
+    (with-current-buffer (find-file-noselect file)
+      (indent-region (point-min) (point-max))    
+      (untabify (point-min) (point-max))
+      (save-buffer)
+      (kill-buffer (current-buffer)))))
+

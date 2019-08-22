@@ -14,7 +14,7 @@
 
 ;; On Mac, use Command key as Meta when not in terminal.
 (when (and (eq system-type 'darwin)
-			  (display-graphic-p))
+           (display-graphic-p))
   (setq mac-command-modifier 'meta))
 
 
@@ -46,8 +46,8 @@
 (setq  ispell-dictionary "british")
 
 (helper-run-if-found "aspell"
-							(lambda (path)
-							  (setq ispell-program-name path)))
+                     (lambda (path)
+                       (setq ispell-program-name path)))
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
@@ -67,8 +67,8 @@
 
 (use-package helpful
   :bind (("C-h f" . helpful-function)
-			("C-h v" . helpful-variable)
-			("C-h k" . helpful-key)))
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)))
 
 (use-package which-key)
 
@@ -84,10 +84,10 @@
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
   :bind (("C-s" . swiper)
-			("C-x C-f" . counsel-find-file)
-			("M-x"     . counsel-M-x)
-			("C-c g"   . counsel-git-grep)
-			("C-c f"   . counsel-projectile-grep))
+         ("C-x C-f" . counsel-find-file)
+         ("M-x"     . counsel-M-x)
+         ("C-c g"   . counsel-git-grep)
+         ("C-c f"   . counsel-projectile-grep))
   :diminish ivy-mode)
 
 

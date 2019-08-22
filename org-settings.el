@@ -26,15 +26,15 @@
   (org-toggle-pretty-entities)
 
   (setq org-src-fontify-natively 1
-		  org-hide-emphasis-markers t
-		  org-export-coding-system 'utf-8
-		  org-list-description-max-indent 5
-		  org-use-sub-superscripts '{}
-		  org-special-ctrl-a/e t
-		  org-special-ctrl-k t
-		  org-blank-before-new-entry
-		  '((heading . t)
-			 (plain-list-item auto-coding-alist)))
+        org-hide-emphasis-markers t
+        org-export-coding-system 'utf-8
+        org-list-description-max-indent 5
+        org-use-sub-superscripts '{}
+        org-special-ctrl-a/e t
+        org-special-ctrl-k t
+        org-blank-before-new-entry
+        '((heading . t)
+          (plain-list-item auto-coding-alist)))
   
   (local-set-key (kbd "C-c C-a") 'org-agenda)
   (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
@@ -58,12 +58,12 @@
   ;; Org-capture templates 
   (setq org-capture-templates
 
-		  '(("j" "Journal entry"
-			  entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
-			  "* %?")
+        '(("j" "Journal entry"
+           entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
+           "* %?")
 
-			 ("c" "CBT"
-			  entry (file+datetree "~/Google Drive/Documents/Journal Entries/cbt.org")
-			  "* What happened: %?\n\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]"))))
+          ("c" "CBT"
+           entry (file+datetree "~/Google Drive/Documents/Journal Entries/cbt.org")
+           "* What happened: %?\n\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]"))))
 
 (add-hook 'org-mode-hook 'my-org-mode)
