@@ -11,7 +11,7 @@
 (use-package inf-ruby
   :hook ruby-mode
   :bind (("C-c r r" . inf-ruby)
-			("C-c C-b" . ruby-send-buffer)))
+         ("C-c C-b" . ruby-send-buffer)))
 
 ;;; Todo - enh-ruby-mode
 

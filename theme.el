@@ -50,7 +50,7 @@
 ;; Theme
 (require 'color)
 
-(load-file "~/.emacs.d/old/tangotango2.el")
+(load-file "~/.emacs.d/tangotango2.el")
 
 (let ((bg (face-attribute 'default :background)))
   (custom-set-faces
@@ -69,6 +69,6 @@
 
 ;; Fonts/faces
 (when (display-graphic-p)
-  (helper-set-font '("Monospace Regular" "Source code pro light" "Hack"))
+  (helper-set-font '("Source code pro" "Monospace Regular" "Hack"))
   (set-face-attribute 'default nil
-							 :height 115))
+                      :height 115))

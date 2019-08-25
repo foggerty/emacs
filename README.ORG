@@ -7,11 +7,13 @@ init.el will:
 2. Load all settings from their individual files.
 3. That's pretty much it.
 
+
 - globals.el :: use for anything that has global use.
 - helpers.el :: helper functions for config.
 - random-functions.el :: as it says, stuff I occasionally use :-)
 - theme.el :: not just the visual theme, but settings like hiding tool bars etc.
 - dev-settings.el :: anything that effects the top-level development config.
+
 
 A constant work in progress :-)
 
@@ -28,17 +30,17 @@ A constant work in progress :-)
 - [X] Sadly wonder if I'll ever get to use an interesting language like this or Clojure professionally :-(
 ** Dart / Flutter
 - [X] Nuke it all!
-- [ ] Get /just/ Dart up and running with a demo console app.
-- [ ] Get the bloody language server running.
-- [ ] Get Flutter up and running.
-- [ ] Demo app.
+- [X] Get /just/ Dart up and running with a demo console app.
+- [X] Get the bloody language server running.
+- [X] Get Flutter up and running.
+- [X] Demo app.
 ** Scheme
 - [X] Reinstall Guile.
 - [X] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...
 ** Org
 - [ ] Look into having a central agenda file.
 - [ ] Learn how to use tags!  Seriously, it's been how long?
-- [ ] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
+- [X] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
 ** Elisp / Emacs
 - [X] When running ansi-term, should source ~/.profile. (Doh, I just had shit bash config...)
 - [X] Dig out old Emacs-notes org file, dust off and update with what I learnt on debugging elisp code.
