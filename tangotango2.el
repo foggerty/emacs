@@ -55,7 +55,7 @@
  `(trailing-whitespace ((((class color) (background light)) (:background "red1")) (((class color) (background dark)) (:background "red1")) (t (:inverse-video t))))
  `(font-lock-builtin-face ((t (:foreground "#729fcf"))))
  `(font-lock-comment-delimiter-face ((default (:inherit (font-lock-comment-face)))))
- `(font-lock-comment-face ((t (:foreground "#888a85"))))
+ `(font-lock-comment-face ((t (:foreground "#babcb7"))))
  `(font-lock-constant-face ((t (:foreground "#8ae234"))))
  `(font-lock-doc-face ((t (:foreground "#888a85"))))
  `(font-lock-function-name-face ((t (:weight normal :foreground "#ccddff"))))
