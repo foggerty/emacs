@@ -43,7 +43,7 @@
  ;; - yellow :     "#edd400"
  ;; - green :      "#6ac214"
  ;; - orange/red : "tomato"
- `(default ((t (:weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "#eeeeec" :background "#1a1a20" :stipple nil :inherit nil))))
+ `(default ((t (:weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "#eeeeec" :background "#1a2a3a" :stipple nil :inherit nil))))
  `(cursor ((t (:foreground "#222222" :background "#fce94f"))))
  `(fixed-pitch ((t (:inherit (default)))))
  `(variable-pitch ((t (:family "Sans Serif"))))
