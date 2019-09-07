@@ -1,6 +1,7 @@
 ;; ORG Mode
 
 (require 'org)
+(require 'ob-clojure)
 
 (use-package org-bullets)
 
@@ -13,6 +14,9 @@
                       ("Organising" . ?o)
                       ("Work" . ?w)
                       ("Rennovation" . ?r)))
+
+;; Note to self: (require 'ob-clojure) will automatically enable
+;; Clojure for Babel.  Also, emacs-lisp is enabled by default.
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -32,6 +36,11 @@
         org-use-sub-superscripts '{}
         org-special-ctrl-a/e t
         org-special-ctrl-k t
+        org-edit-src-content-indentation 0
+        org-src-tab-acts-natively t
+        org-confirm-babel-evaluate nil
+        org-support-shift-select 'always
+        org-src-fontify-natively t
         org-blank-before-new-entry
         '((heading . t)
           (plain-list-item auto-coding-alist)))

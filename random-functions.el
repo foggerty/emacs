@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t -*-
+
 (defun foggerty-do-my-tax (rate hours)
   "Calculate how much tax to pay, and how much to put into savings etc."
   (interactive "nRate: \nnHours: ")
@@ -151,3 +153,45 @@ beginning of the logical line."
       (save-buffer)
       (kill-buffer (current-buffer)))))
 
+(defun visit-project-files (action filter)
+  "Using Ivy and Projectile, select a project, and then perform a
+  user-supplied action (which should accept a buffer) on each
+  file.  An optional filter function can be supplied."
+  (let* ((project (ivy-read "Project: " (projectile-open-projects)))
+         (filter-func (lambda (x) (string-match filter x)))
+         (files (seq-filter filter-func (projectile-project-files project))))
+    (dolist (file files)
+      (let ((closing-func (if (get-file-buffer file)
+                              'ignore
+                            'kill-buffer))
+            (buff (or (get-file-buffer file)
+                      (find-file-noselect file))))
+        (with-current-buffer buff
+          (funcall action buff)
+          (funcall closing-func (current-buffer)))))))
+
+(defun visit-extract (extraction-func filter)
+  "Extract from each file in the project, whatever
+  extraction-func returns, and put it all into a temporary buffer.
+
+  extraction-func should take a buffer, and return a string."
+  (let ((tmp (generate-new-buffer "*VISIT*")))
+    (visit-project-files
+     (lambda (buff)
+       (with-current-buffer tmp
+         (insert (concat
+                  (funcall extraction-func buff)
+                  "\n"))))
+     filter)
+    (switch-to-buffer tmp)))
+
+(defun line-x (x)
+  (lambda (buff)
+    (goto-line x)
+    (push-mark)
+    (end-of-line)
+    (let ((result (buffer-substring-no-properties
+                   (region-beginning)
+                   (region-end))))
+      (pop-mark)
+      (buffer-name buff))))

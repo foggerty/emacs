@@ -7,3 +7,4 @@
   (local-set-key (kbd "C-h C-f") 'find-function))
 
 (add-hook 'emacs-lisp-mode-hook 'foggerty-elisp-mode)
+(add-hook 'ielm-mode-hook (lambda () (paredit-mode 1)))
