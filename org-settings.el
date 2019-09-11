@@ -22,32 +22,32 @@
  'org-babel-load-languages
  '((scheme . t)))
 
+(setq org-src-fontify-natively 1
+      org-hide-emphasis-markers t
+      org-export-coding-system 'utf-8
+      org-list-description-max-indent 5
+      org-use-sub-superscripts '{}
+      org-special-ctrl-a/e t
+      org-special-ctrl-k t
+      org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-confirm-babel-evaluate nil
+      org-support-shift-select 'always
+      org-src-fontify-natively t
+      org-babel-clojure-backend 'cider)
+
 (defun my-org-mode ()
   (require 'ox-md nil t)
 
-  (org-indent-mode)
+  (org-indent-mode 1)
   (org-bullets-mode 1)
   (org-toggle-pretty-entities)
-
-  (setq org-src-fontify-natively 1
-        org-hide-emphasis-markers t
-        org-export-coding-system 'utf-8
-        org-list-description-max-indent 5
-        org-use-sub-superscripts '{}
-        org-special-ctrl-a/e t
-        org-special-ctrl-k t
-        org-edit-src-content-indentation 0
-        org-src-tab-acts-natively t
-        org-confirm-babel-evaluate nil
-        org-support-shift-select 'always
-        org-src-fontify-natively t
-        org-blank-before-new-entry
-        '((heading . t)
-          (plain-list-item auto-coding-alist)))
+  (visual-line-mode 1)
+  (visual-fill-column-mode--enable)
   
   (local-set-key (kbd "C-c C-a") 'org-agenda)
-  (local-set-key (kbd "C-<up>") 'outline-previous-visible-heading)
-  (local-set-key (kbd "C-<down>") 'outline-next-visible-heading)
+  (local-set-key (kbd "C-<up>") 'org-backward-heading-same-level)
+  (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
   (local-set-key (kbd "<f5>") 'foggerty-map-maori-vowel)
   (local-set-key (kbd "C-c t") 'set-org-tags-from-anywhere)
 
@@ -59,20 +59,6 @@
   ;; which lists the characters that are forbidden either immediately
   ;; after, or immediately before the verbatim/emphasis tags.
   (setcar (nthcdr 2 org-emphasis-regexp-components) " \t\r\n")
-  (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components)
-
-  ;; Org journal
-  (setq org-journal-dir "~/Google Drive/Documents/Journal Entries")
-
-  ;; Org-capture templates 
-  (setq org-capture-templates
-
-        '(("j" "Journal entry"
-           entry (file+datetree "~/Google Drive/Documents/Journal Entries/journal.org")
-           "* %?")
-
-          ("c" "CBT"
-           entry (file+datetree "~/Google Drive/Documents/Journal Entries/cbt.org")
-           "* What happened: %?\n\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]"))))
+  (org-set-emph-re 'org-emphasis-regexp-components org-emphasis-regexp-components))
 
 (add-hook 'org-mode-hook 'my-org-mode)

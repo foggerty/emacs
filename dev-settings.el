@@ -5,7 +5,6 @@
 (use-package aggressive-indent)
 
 (defun foggerty-dev-mode ()
-  (company-mode-on)
   (flyspell-prog-mode)
   (diminish 'paredit-mode)
   (diminish 'eldoc-mode))

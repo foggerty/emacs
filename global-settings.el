@@ -6,6 +6,10 @@
 (setq-default indent-tabs-mode nil)
 
 
+;; Display line number
+(column-number-mode 1)
+
+
 ;; Use the same path you'd get in a standard shell
 (use-package exec-path-from-shell
   :init 
@@ -135,7 +139,7 @@
 
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount '(2 ((shift) . 1) ((control) . 5)))
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . 5)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -171,4 +175,16 @@
 (use-package golden-ratio
   :init
   (golden-ratio-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; visual-fill-column-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'visual-fill-column)
+
+(defadvice set-fill-column (after refresh-visual-fill-column last activate)
+  "Will check if visual-fill-column-mode is active, and adjust
+margins if so."
+  (visual-fill-column-adjust))
 

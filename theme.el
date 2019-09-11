@@ -7,9 +7,11 @@
 
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(when (display-graphic-p)
+  (progn 
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)))
 
 
 ;;; Highlighting
@@ -35,16 +37,8 @@
          (setq frame-title-format '(" "))
          (setq icon-title-format '(""))))
 
-
-;; OS specific config - WSL
-(setq wsl-specific-config
-      (progn
-        (set-mouse-color "green")
-        (set-cursor-color "green")))
-
-
-(cond ((eq 'ns (window-system)) (eval osx-specific-config)
-       (string-match "Microsoft" operating-system-release) (eval wsl-specific-config)))
+(when (eq 'ns (window-system))
+  (eval osx-specific-config))
 
 
 ;; Theme

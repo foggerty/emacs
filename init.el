@@ -6,12 +6,6 @@
 ;;; other scripts.
 
 
-;; https://www.reddit.com/r/emacs/comments/cdei4p/failed_to_download_gnu_archive_bad_request/
-;; This _should_ be fixed in 26.3.
-
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
-
 ;; Always use newer source over old byte-compiled.
 (setq load-prefer-newer t)
 
@@ -70,3 +64,4 @@
 ;; ToDo - get the absolute path of this file instead of hard-coding
 (dolist (file setup--the-rest)
   (load (concat "~/.emacs.d/" file)))
+

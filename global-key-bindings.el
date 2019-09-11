@@ -7,6 +7,8 @@
 ;; clobbering, so nuke any bindings in its local map, so they can be
 ;; rebound here.
 
+(define-key org-mode-map (kbd "C-<tab>") nil)
+
 ;; Now setup custom mappings...
 
 (global-set-key (kbd "C-<tab>")         'other-window)
