@@ -181,7 +181,7 @@
 ;;;; visual-fill-column-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'visual-fill-column)
+(use-package visual-fill-column)
 
 (defadvice set-fill-column (after refresh-visual-fill-column last activate)
   "Will check if visual-fill-column-mode is active, and adjust

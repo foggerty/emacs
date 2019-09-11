@@ -42,9 +42,9 @@
   (org-indent-mode 1)
   (org-bullets-mode 1)
   (org-toggle-pretty-entities)
-  (visual-line-mode 1)
+  (visual-line-mode -1)
   (visual-fill-column-mode--enable)
-  
+
   (local-set-key (kbd "C-c C-a") 'org-agenda)
   (local-set-key (kbd "C-<up>") 'org-backward-heading-same-level)
   (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
