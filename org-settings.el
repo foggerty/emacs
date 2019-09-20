@@ -42,6 +42,7 @@
   (org-indent-mode 1)
   (org-bullets-mode 1)
   (org-toggle-pretty-entities)
+  (auto-fill-mode nil)
   (visual-fill-column-mode 1)
 
   (local-set-key (kbd "C-c C-a") 'org-agenda)
