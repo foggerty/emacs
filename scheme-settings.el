@@ -3,7 +3,6 @@
 (use-package geiser
   :interpreter "scm"
   :config
-  (eldoc-mode)
   (enable-paredit-mode)
   (show-paren-mode t)
   (aggressive-indent-mode 1)

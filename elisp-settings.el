@@ -1,10 +1,13 @@
-(defun foggerty-elisp-mode ()
-  (enable-paredit-mode)
-  (turn-on-eldoc-mode)
-  (local-set-key (kbd "C-c C-r") 'eval-region)
-  (local-set-key (kbd "C-c C-b") 'eval-buffer)
-  (local-set-key (kbd "C-h C-l") 'find-library)
-  (local-set-key (kbd "C-h C-f") 'find-function))
+(add-hook 'emacs-lisp-mode-hook
+          (qif (enable-paredit-mode)
+               (company-mode-on)
+               (local-set-key (kbd "C-c C-r") 'eval-region)
+               (local-set-key (kbd "C-c C-b") 'eval-buffer)
+               (local-set-key (kbd "C-h C-l") 'find-library)
+               (local-set-key (kbd "C-h C-f") 'find-function)))
 
-(add-hook 'emacs-lisp-mode-hook 'foggerty-elisp-mode)
-(add-hook 'ielm-mode-hook (lambda () (paredit-mode 1)))
+(add-hook 'ielm-mode-hook
+          (qif (company-mode-on)
+               (enable-paredit-mode)))
+
+

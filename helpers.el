@@ -45,9 +45,9 @@ pairs or single strings."
         (warn (concat "Cannot find " name " on path.  Config is unhappy :-("))
       (funcall func path))))
 
-(defmacro q-funk (commands)
-  "Quick-Function: Creates an interactive function that runs COMMANDS."
+(defmacro qif (&rest commands)
+  "Quick-Interactive-Function: create an interactive function that runs COMMANDS."
   `(lambda ()
      (interactive)
-     (progn ,commands)))
+     (progn ,@commands)))
 

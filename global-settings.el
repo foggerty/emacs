@@ -115,7 +115,7 @@
 (use-package company
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
-  (setq company-idle-delay 0)
+  (setq company-idle-delay .5)
   :diminish
   company-mode)
 
