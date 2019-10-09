@@ -1,8 +1,18 @@
 ;; ORG Mode
 
+;; Note to self: need to run list-packages, and manually install the
+;; newer version from org-mode.org.  Just adding the repo won't force
+;; Emacs to download it.
+
+;; Also, if using the more up to date version of Org instead of the
+;; pre-packaged one that comes with Emacs, run the below command to
+;; recompile all packages that were built against the older version.
+
+;; (byte-recompile-directory package-user-dir nil 'force)
+
 (use-package org
 
-  :mode "\\.org\\'"
+  :mode (("\\.org$" . org-mode))
 
   :config
   (add-hook 'org-mode-hook 'org-indent-mode)
@@ -27,7 +37,6 @@
 
 (use-package org-bullets
   :config
-  (add-hook 'org-mode-hook 'org-bullets-mode)
-  :requires org)
+  (add-hook 'org-mode-hook 'org-bullets-mode))
 
 (require 'ob-clojure) ; will automatically enable Clojure in Babel.
