@@ -27,7 +27,7 @@
 
 (use-package org-bullets
   :config
-  (add-hook 'org-mode-hook org-bullets-mode)
+  (add-hook 'org-mode-hook 'org-bullets-mode)
   :requires org)
 
 (require 'ob-clojure) ; will automatically enable Clojure in Babel.
