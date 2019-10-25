@@ -55,6 +55,11 @@
    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
 
 
+;; Powerline
+(use-package powerline
+  :config
+  (powerline-center-theme))
+
 ;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink
 (set-default 'blink-cursor-interval 0.3) ; blink faster!

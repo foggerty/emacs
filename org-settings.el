@@ -12,10 +12,10 @@
 
 (use-package org
 
-  :mode (("\\.org$" . org-mode))
-
   :config
   (add-hook 'org-mode-hook 'org-indent-mode)
+
+  ;; (require 'org-tempo)  - what was this for?!?
 
   (setq org-src-fontify-natively t
         org-hide-emphasis-markers t
@@ -28,7 +28,7 @@
         org-confirm-babel-evaluate nil
         org-babel-clojure-backend 'cider
         org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "BLOCKED(b)" "DONE(d)")))
-  
+
   :bind
   (("C-c C-a" . org-agenda)
    ("C-<up>" . org-backward-heading-same-level)

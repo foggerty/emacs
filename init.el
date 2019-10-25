@@ -50,12 +50,13 @@
         "theme.el"
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
-        "elisp-settings.el" 
+        "elisp-settings.el"
+        "c-settings.el"
         "scheme-settings.el"
         "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
-        "flutter-settings.el"
+;;        "flutter-settings.el"
         "go-settings.el"
         "clojure-settings.el"
         "global-key-bindings.el"))

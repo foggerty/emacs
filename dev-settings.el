@@ -1,21 +1,25 @@
-;; Settings that apply to all programming modes.
+;; Settings that apply to more than one programming mode
 
 (use-package paredit)
 
 (use-package aggressive-indent)
 
-(defun foggerty-dev-mode ()
-  (flyspell-prog-mode)
-  (diminish 'paredit-mode)
-  (diminish 'eldoc-mode))
+(add-hook 'prog-mode-hook (qif (flyspell-prog-mode)
+                               (diminish 'paredit-mode)
+                               (diminish 'eldoc-mode)
+                               (electric-pair-mode)))
 
-(add-hook 'prog-mode-hook 'foggerty-dev-mode)
 
 ;; LSP (Language Server protocol) support.
-(use-package lsp-mode)
-(use-package lsp-ui)
+
+(use-package yasnippet)
+
+(use-package lsp-mode
+  :hook (prog-mode . lsp))
+
 (use-package company-lsp
   :after company
-  :config
-  (setq lsp-auto-guess-root t)
-  (setq lsp-ui-mode nil))
+  :config (push 'company-lsp company-backends))
+
+(use-package lsp-ui
+  :hook (lsp-mode .lsp-ui-mode))

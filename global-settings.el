@@ -6,6 +6,11 @@
 (setq-default indent-tabs-mode nil)
 
 
+;; File beautification
+(setq delete-trailing-lines t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
 ;; Display line number
 (column-number-mode 1)
 
@@ -47,11 +52,10 @@
 ;; Use aspell over ispell
 (require 'ispell)
 
-(setq  ispell-dictionary "british")
-
 (helper-run-if-found "aspell"
                      (lambda (path)
-                       (setq ispell-program-name path)))
+                       (setq ispell-program-name path
+                             ispell-dictionary "british")))
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
