@@ -66,7 +66,7 @@
  `(font-lock-regexp-grouping-construct ((t (:inherit (normal)))))
  `(font-lock-string-face ((t (:slant italic :foreground "#cca0f8"))))
  `(font-lock-type-face ((t (:weight normal :foreground "#8ae234"))))
- `(font-lock-variable-name-face ((t (:foreground "tomato"))))
+ `(font-lock-variable-name-face ((t (:foreground "eeeeec"))))
  `(font-lock-warning-face ((t (:weight normal :foreground "#f57900"))))
  `(button ((t (:inherit (link)))))
  `(link ((t (:foreground "dodger blue" :underline (:color foreground-color :style line)))))
