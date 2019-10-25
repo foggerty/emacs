@@ -11,7 +11,7 @@
 
 
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
-(setq custom-file (make-temp-file "emacs-custom"))
+(setq custom-file "/dev/null")
 
 
 ;; Packages setup
@@ -44,7 +44,7 @@
 
 
 ;; Load global settings and major-mode settings
-(setq setup--the-rest
+(setq setup-the-rest
       '("helpers.el"
         "random-functions.el"
         "theme.el"
@@ -61,8 +61,6 @@
         "clojure-settings.el"
         "global-key-bindings.el"))
 
-
-;; ToDo - get the absolute path of this file instead of hard-coding
-(dolist (file setup--the-rest)
-  (load (concat "~/.emacs.d/" file)))
-
+(let ((init-dir (file-name-directory user-init-file)))
+  (dolist (file setup-the-rest)
+    (load (concat init-dir file))))
