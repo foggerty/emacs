@@ -7,7 +7,10 @@
 ;; clobbering, so nuke any bindings in its local map, so they can be
 ;; rebound here.
 
+;; Always run this file last.
+
 (define-key org-mode-map (kbd "C-<tab>") nil)
+(define-key c-mode-map (kbd "C-c C-q") nil)
 
 ;; Now setup custom mappings...
 
@@ -20,7 +23,8 @@
 (global-set-key (kbd "C-x k")           (qif (kill-buffer (current-buffer))))
 (global-set-key (kbd "C-M-=")           'increase-margin)
 (global-set-key (kbd "C-M--")           'decrease-margin)
-(global-set-key (kbd "M-_")             'decrease-font-size)
-(global-set-key (kbd "M-+")             'increase-font-size)
+(global-set-key (kbd "M--")             'decrease-font-size)
+(global-set-key (kbd "M-=")             'increase-font-size)
 (global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
 (global-set-key (kbd "<f8>")            'treemacs)
+(global-set-key (kbd "C-`")             'company-complete)

@@ -56,10 +56,10 @@
         "ruby-settings.el"
         "text-settings.el"
         "org-settings.el"
-;;        "flutter-settings.el"
+        ;;"flutter-settings.el"
         "go-settings.el"
         "clojure-settings.el"
-        "global-key-bindings.el"))
+        "global-key-bindings.el"))  ; always run last
 
 (let ((init-dir (file-name-directory user-init-file)))
   (dolist (file setup-the-rest)

@@ -4,9 +4,5 @@
   :interpreter "scm"
   :config
   (enable-paredit-mode)
-  (show-paren-mode t)
   (aggressive-indent-mode 1)
   (setq geiser-active-implementations '(guile)))
-
-
-

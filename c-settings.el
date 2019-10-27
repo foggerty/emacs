@@ -5,8 +5,9 @@
   (setq ccls-executable "ccls"
         lsp-prefer-flymake nil)
   :hook ((c-mode) . (lambda () (require 'ccls)
-                      (lsp))))
+                      (lsp)
+                      ))
+  :bind
+  (("C-c C-q" . helper-indent-buffer)))
 ;; ToDo - see if can figure out why qif wont work in this context;
 ;; a macro within a macro probably isn't helping...
-
-
