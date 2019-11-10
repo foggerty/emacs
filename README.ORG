@@ -18,6 +18,10 @@ init.el will:
 A constant work in progress :-)
 
 [[file:emacs.png]]
+* Theme
+I'm constantly tweaking my colour theme, which is based off of TangoTango2.  It's fairly low-contrast, and few colours, as I find too many distracting as hell (I have pretty bad ADHD).  If I ever get it in a finished state, I'll release it as `fango` - Foggerty's Tango :-)
+
+[[file:Theme.png]]
 
 * ToDo!
 ** Golang
@@ -50,12 +54,12 @@ A constant work in progress :-)
 - [X] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.
 - [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it - I hope).  At the least, should be able to evaluate functions/buffer in the Ruby process.
 ** Global
- - [-] Abbrev mode
-   - [X] Turn on.....
-   - [ ] Remind self what this is cos I've forgotten sine I wrote this.....
-   - [ ] Endlessly add new abbreviations
- - [ ] Setup [[http://ergoemacs.org/emacs/emacs_templates.html][YaSnippet]]
-   - [ ] Setup some basic config templates, i.e. gsk -> (glob-set-key (kbd "$1") '$2)
-   - [ ] Create some Golang templates
-   - [ ] Spend far too long playing around with this feature
- - [ ] Update helper-run-if-found to use executable-find
+- [-] Abbrev mode
+  - [X] Turn on.....
+  - [ ] Remind self what this is cos I've forgotten sine I wrote this.....
+  - [ ] Endlessly add new abbreviations
+- [ ] Setup [[http://ergoemacs.org/emacs/emacs_templates.html][YaSnippet]]
+  - [ ] Setup some basic config templates, i.e. gsk -> (glob-set-key (kbd "$1") '$2)
+  - [ ] Create some Golang templates
+  - [ ] Spend far too long playing around with this feature
+- [ ] Update helper-run-if-found to use executable-find
