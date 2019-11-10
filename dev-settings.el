@@ -9,6 +9,14 @@
                                (electric-pair-mode)
                                (show-paren-mode t)))
 
+;; ToDo - some reading on hooks, this is not how I thought they
+;; worked.  The second 'add-hook' will add a hook to the buffer-local
+;; before-save-hook.
+(add-hook 'c-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook
+                      (lambda () (helper-indent-buffer)))))
+
 
 ;; LSP (Language Server protocol) support.
 
@@ -25,4 +33,4 @@
 
 (use-package yasnippet)
 (use-package treemacs)
-(use-package lsp-treemacs)
+;;(use-package lsp-treemacs)

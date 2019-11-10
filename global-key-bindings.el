@@ -10,7 +10,7 @@
 ;; Always run this file last.
 
 (define-key org-mode-map (kbd "C-<tab>") nil)
-(define-key c-mode-map (kbd "C-c C-q") nil)
+;;(define-key c-mode-map (kbd "C-c C-q") nil)
 
 ;; Now setup custom mappings...
 

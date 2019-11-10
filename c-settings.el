@@ -3,11 +3,11 @@
   :config
   (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++check c/c++-gcc))
   (setq ccls-executable "ccls"
-        lsp-prefer-flymake nil)
+        lsp-prefer-flymake nil
+        c-default-style "linux"
+        c-basic-offset 2)
   :hook ((c-mode) . (lambda () (require 'ccls)
                       (lsp)
-                      ))
-  :bind
-  (("C-c C-q" . helper-indent-buffer)))
-;; ToDo - see if can figure out why qif wont work in this context;
-;; a macro within a macro probably isn't helping...
+                      (c-toggle-auto-newline 1)
+                      (c-toggle-auto-state 1)
+                      (subword-mode 1))))

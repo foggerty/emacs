@@ -11,23 +11,18 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
-;; Display line number
-(column-number-mode 1)
-
-
 ;; Use the same path you'd get in a standard shell
 (use-package exec-path-from-shell
-  :init 
+  :init
   (exec-path-from-shell-initialize))
 
 
 ;; On Mac, use Command key as Meta when not in terminal.
-(when (and (eq system-type 'darwin)
-           (display-graphic-p))
+(when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta))
 
 
-;; Save desktop on edit
+;; Save desktop on exit
 (desktop-save-mode 1)
 
 
@@ -59,10 +54,9 @@
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
-;; character.
-(use-package hungry-delete
-  :init
-  (global-hungry-delete-mode))
+;; character.  Don't want it globally enabled however, as it clobbers
+;; things like cc-mode's bindings.
+(use-package hungry-delete)
 
 
 ;; LESS cow-bell.
@@ -91,7 +85,7 @@
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
-  :bind (("C-s" . swiper)
+  :bind (("C-s"     . swiper)
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
          ("C-c g"   . counsel-git-grep)
@@ -119,9 +113,12 @@
 (use-package company
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
-  (setq company-idle-delay .5)
   :diminish
   company-mode)
+
+(use-package company-quickhelp
+  :config
+  (company-quickhelp-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -191,4 +188,3 @@
   "Will check if visual-fill-column-mode is active, and adjust
 margins if so."
   (visual-fill-column-adjust))
-

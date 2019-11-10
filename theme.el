@@ -1,3 +1,7 @@
+;;; Hide window border
+; (set-frame-parameter nil 'undecorated )
+
+
 ;;; Trusted themes
 (custom-set-variables
  '(custom-safe-themes
@@ -8,7 +12,7 @@
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
 (when (display-graphic-p)
-  (progn 
+  (progn
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)))
@@ -55,7 +59,7 @@
    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
 
 
-;; Powerline
+;; Powerline - ToDo: customise colors (can add to Tango theme?)
 (use-package powerline
   :config
   (powerline-center-theme))
