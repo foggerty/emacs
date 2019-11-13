@@ -15,7 +15,11 @@
 (add-hook 'c-mode-hook
           (lambda ()
             (add-hook 'before-save-hook
-                      (lambda () (helper-indent-buffer)))))
+                      (lambda ()
+                        ;; quick-fix until I can figure out how
+                        ;; to un-fuck makefile-mode and submit a patch.
+                        (if (not (eq major-mode 'makefile-gmake-mode))
+                            (helper-indent-buffer))))))
 
 
 ;; LSP (Language Server protocol) support.
