@@ -1,13 +1,18 @@
+;; Note: ccls is an Emacs front-end for use with the CCLS program:
+;; https://github.com/MaskRay/ccls.
+
 (use-package ccls
   :after lsp-mode
   :config
-  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++check c/c++-gcc))
   (setq ccls-executable "ccls"
         lsp-prefer-flymake nil
         c-default-style "linux"
-        c-basic-offset 2)
-  :hook ((c-mode) . (lambda () (require 'ccls)
-                      (lsp)
-                      (c-toggle-auto-newline 1)
-                      (c-toggle-auto-state 1)
-                      (subword-mode 1))))
+        c-basic-offset 2
+        lsp-enable-indentation nil)
+  (c-toggle-auto-newline nil)
+  (c-toggle-auto-state 1))
+
+(use-package flycheck-clang-analyzer
+  :ensure t
+  :after flycheck
+  :config (flycheck-clang-analyzer-setup))

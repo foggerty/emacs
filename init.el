@@ -28,8 +28,7 @@
 
 
 ;; Required packages for boot-strap
-(dolist (package '(diminish
-         use-package))
+(dolist (package '(diminish use-package))
   (unless (package-installed-p package)
     (package-install package)))
 

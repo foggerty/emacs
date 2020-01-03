@@ -1,5 +1,5 @@
 ;;; Hide window border
-; (set-frame-parameter nil 'undecorated )
+                                        ; (set-frame-parameter nil 'undecorated )
 
 
 ;;; Trusted themes
@@ -72,6 +72,6 @@
 
 ;; Fonts/faces
 (when (display-graphic-p)
-  (helper-set-font '("Source code pro" "Monospace Regular" "Hack"))
+  (helper-set-font '("Source Code Pro"))
   (set-face-attribute 'default nil
-                      :height 115))
+                      :height 120))
