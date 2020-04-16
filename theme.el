@@ -1,5 +1,18 @@
-;;; Hide window border
-                                        ; (set-frame-parameter nil 'undecorated )
+;;; Basic tidy ups
+(setq inhibit-startup-screen t)
+
+(menu-bar-mode -1)
+
+(when (display-graphic-p)
+  (progn
+    (fringe-mode '(0 . 0))
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)))
+
+;; This looks and works great on a Unix desktop where I can drag and
+;; resize windows using modifier keys and a mouse, but on a trackpad
+;; it's a no-go.
+;;;     (set-frame-parameter nil 'undecorated 1)
 
 
 ;;; Trusted themes
@@ -7,15 +20,6 @@
  '(custom-safe-themes
    (quote
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
-
-
-;;; Basic tidy ups
-(setq inhibit-startup-screen t)
-(when (display-graphic-p)
-  (progn
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)))
 
 
 ;;; Highlighting

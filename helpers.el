@@ -51,3 +51,8 @@ pairs or single strings."
      (interactive)
      (progn ,@commands)))
 
+(defun helper-eval-region-in-shell ()
+  "Sende the current region to the shell, and inserts the results
+  one line below the region."
+  (interactive)
+  )
