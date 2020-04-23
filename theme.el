@@ -15,13 +15,6 @@
 ;;;     (set-frame-parameter nil 'undecorated 1)
 
 
-;;; Trusted themes
-(custom-set-variables
- '(custom-safe-themes
-   (quote
-    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))
-
-
 ;;; Highlighting
 (use-package highlight-parentheses
   :init
@@ -51,8 +44,9 @@
 
 ;; Theme
 (require 'color)
-
-(load-file "~/.emacs.d/tangotango2.el")
+(custom-set-variables '(custom-safe-themes t))
+(load-file "~/.emacs.d/tangotango2-theme.el")
+(load-theme 'tangotango2)
 
 (let ((bg (face-attribute 'default :background)))
   (custom-set-faces
