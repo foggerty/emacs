@@ -25,7 +25,6 @@
 ;; LSP (Language Server protocol) support.
 
 (use-package lsp-mode
-  :hook (prog-mode . lsp)
   :config (setq lsp-lens-mode nil))
 
 (use-package company-lsp
