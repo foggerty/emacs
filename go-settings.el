@@ -1,8 +1,13 @@
 (use-package company-go
+  :defer t
   :requires go-mode)         ; go get github.com/mdempsky/gocode
+
 (use-package go-eldoc
+  :defer t
   :requires go-mode)
+
 (use-package go-playground
+  :defer t
   :requires go-mode)
 
 (use-package go-mode
@@ -11,7 +16,7 @@
 
   :custom
   (tab-width 3)
-  
+
   :bind
   (:map go-mode-map
         ("C-<return>" . company-go) ; I CANNOT bloody get this to work automatically :-(

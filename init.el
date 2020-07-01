@@ -1,6 +1,8 @@
 ;;; My Emacs config file, by Matt Dee, aged 4 1/2 (ish).
 
 
+;; ToDo - speed up load with defered loading thingie
+
 ;;; This file just sets up package management, makes sure that
 ;;; use-package in installed, and then everything else is setup via
 ;;; other scripts.

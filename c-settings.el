@@ -2,6 +2,7 @@
 ;; https://github.com/MaskRay/ccls.
 
 (use-package ccls
+  :defer t
   :after lsp-mode
   :config
   (setq ccls-executable "ccls"
@@ -13,6 +14,6 @@
   (c-toggle-auto-state 1))
 
 (use-package flycheck-clang-analyzer
-  :ensure t
+  :defer t
   :after flycheck
   :config (flycheck-clang-analyzer-setup))

@@ -28,4 +28,3 @@
 
 (add-hook 'ruby-mode-hook 'flymake-mode)
 (add-hook 'ruby-mode-hook 'ruby-electric-mode) ; why is this needed??
-

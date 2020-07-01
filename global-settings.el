@@ -56,7 +56,8 @@
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
 ;; character.  Don't want it globally enabled however, as it clobbers
 ;; things like cc-mode's bindings.
-(use-package hungry-delete)
+(use-package hungry-delete
+  :defer t)
 
 
 ;; LESS cow-bell.
@@ -111,12 +112,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package company
+  :defer t
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
+  (setq company-idle-delay nil)
   :diminish
   company-mode)
 
 (use-package company-quickhelp
+  :defer t
   :config
   (company-quickhelp-mode))
 
@@ -148,6 +152,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package which-key
+  :defer t
   :init
   (which-key-mode)
   (which-key-setup-side-window-right-bottom))
@@ -157,7 +162,8 @@
 ;;;; Helpful - better help screens.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package helpful)
+(use-package helpful
+  :defer t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -182,7 +188,8 @@
 ;;;; visual-fill-column-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package visual-fill-column)
+(use-package visual-fill-column
+  :defer t)
 
 (defadvice set-fill-column (after refresh-visual-fill-column last activate)
   "Will check if visual-fill-column-mode is active, and adjust

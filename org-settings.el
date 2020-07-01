@@ -11,7 +11,7 @@
 ;; (byte-recompile-directory package-user-dir nil 'force)
 
 (use-package org
-
+  :defer t
   :config
   (add-hook 'org-mode-hook 'org-indent-mode)
 
@@ -36,8 +36,9 @@
    ("C-c t" . set-org-tags-from-anywhere)))
 
 (use-package org-bullets
+  :defer t
   :config
-  (add-hook 'org-mode-hook 'org-bullets-mode))
+  (add-hook 'org-mode-hook 'org-indent-mode))
 
 (require 'ob-clojure) ; will automatically enable Clojure in Babel.
 

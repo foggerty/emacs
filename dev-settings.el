@@ -1,7 +1,10 @@
 ;; Settings that apply to more than one programming mode
 
-(use-package paredit)
-(use-package aggressive-indent)
+(use-package paredit
+  :defer t)
+
+(use-package aggressive-indent
+  :defer t)
 
 (add-hook 'prog-mode-hook (qif (flyspell-prog-mode)
                                (diminish 'paredit-mode)
@@ -25,15 +28,21 @@
 ;; LSP (Language Server protocol) support.
 
 (use-package lsp-mode
+  :defer t
   :config (setq lsp-lens-mode nil))
 
 (use-package company-lsp
+  :defer t
   :after company
   :config (push 'company-lsp company-backends))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode))
 
-(use-package yasnippet)
-(use-package treemacs)
+(use-package yasnippet
+  :defer t)
+
+(use-package treemacs
+  :defer t)
+
 ;;(use-package lsp-treemacs)

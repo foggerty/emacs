@@ -1,6 +1,7 @@
 ;; I'm pretty much conflating Scheme and Geiser here :-)
 
 (use-package geiser
+  :defer t
   :interpreter "scm"
   :config
   (enable-paredit-mode)
