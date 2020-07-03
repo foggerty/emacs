@@ -1,6 +1,6 @@
-(use-package dart-mode  
+(use-package dart-mode
   :after (company)
-  
+
   :hook
   (dart-mode . flycheck-mode)
   (dart-mode . electric-pair-local-mode)

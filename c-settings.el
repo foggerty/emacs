@@ -3,6 +3,7 @@
 
 
 (use-package ccls
+  :defer t
   :after lsp-mode
   :config
   (setq ccls-executable "ccls"
@@ -16,7 +17,7 @@
 
 
 (use-package flycheck-clang-analyzer
-  :ensure t
+  :defer t
   :after flycheck
   :config (flycheck-clang-analyzer-setup))
 

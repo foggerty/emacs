@@ -1,4 +1,5 @@
 (use-package cider
+  :defer t
   :config
   (setq cider-allow-jack-in-without-project t
         cider-inject-dependencies-at-jack-in t
