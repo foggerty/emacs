@@ -39,6 +39,4 @@
   :config
   (add-hook 'org-mode-hook 'org-bullets-mode))
 
-(require 'ob-clojure) ; will automatically enable Clojure in Babel.
-
 (add-hook 'org-mode-hook (qif (adjust-margins 4)))
