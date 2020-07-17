@@ -12,19 +12,6 @@
                                (electric-pair-mode)
                                (show-paren-mode t)))
 
-;; ToDo - some reading on hooks, this is not how I thought they
-;; worked.  The second 'add-hook' will add a hook to the buffer-local
-;; before-save-hook.
-(add-hook 'c-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook
-                      (lambda ()
-                        ;; quick-fix until I can figure out how
-                        ;; to un-fuck makefile-mode and submit a patch.
-                        (if (not (eq major-mode 'makefile-gmake-mode))
-                            (helper-indent-buffer))))))
-
-
 ;; LSP (Language Server protocol) support.
 
 (use-package lsp-mode
@@ -37,7 +24,12 @@
   :config (push 'company-lsp company-backends))
 
 (use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode))
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-doc-max-width 80
+        lsp-ui-doc-use-webkit t
+        lsp-ui-doc-position 'top))
 
 (use-package yasnippet
   :defer t)
@@ -46,3 +38,4 @@
   :defer t)
 
 ;;(use-package lsp-treemacs)
+

@@ -53,14 +53,16 @@
    `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
    `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 50)))))
    `(company-scrollbar-fg ((t (:foreground ,(color-lighten-name bg 10)))))
-   `(company-tooltip-selection ((t (:inherit font-lock-string-face))))
-   `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
+   `(company-tooltip-selection ((t (:inherit font-lock-constant-face))))
+   `(company-tooltip-common ((t (:inherit font-lock-constant-face))))
+   `(company-tooltip-annotation ((t (:inherit font-lock-comment-face))))))
 
 
 ;; Powerline - ToDo: customise colors (can add to Tango theme?)
 (use-package powerline
   :config
   (powerline-center-theme))
+
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink
