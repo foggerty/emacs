@@ -144,7 +144,7 @@
 
 (setq mouse-wheel-tilt-scroll t)
 (setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . 5)))
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
