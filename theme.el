@@ -5,7 +5,7 @@
 
 (when (display-graphic-p)
   (progn
-    (fringe-mode '(0 . 0))
+    (fringe-mode 0)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)))
 
@@ -74,4 +74,4 @@
 (when (display-graphic-p)
   (helper-set-font '("Source Code Pro"))
   (set-face-attribute 'default nil
-                      :height 120))
+                      :height 100))

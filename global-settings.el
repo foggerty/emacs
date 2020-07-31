@@ -146,7 +146,8 @@
   :defer t
   :init
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom))
+  (which-key-setup-side-window-right-bottom)
+  :diminish which-key-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -175,7 +176,8 @@
 
 (use-package golden-ratio
   :init
-  (golden-ratio-mode))
+  (golden-ratio-mode)
+  :diminish golden-ratio-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
