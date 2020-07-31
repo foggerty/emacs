@@ -52,23 +52,6 @@
   (interactive)
   (adjust-margins -1))
 
-(defun adjust-font-size (amount)
-  "Adjust current frame's font by relative amount (percentage)."
-  ;; Maxing out at 310 because I have a stupidly fast key-repeat, and
-  ;; past that it's a) unreadable and b) slows Emacs to a crawl for a
-  ;; wee while :-)
-  (let ((current (face-attribute 'default :height)))
-    (set-face-attribute 'default nil :height
-                        (min 310 (truncate (* (+ amount 1) current))))))
-
-(defun increase-font-size ()
-  (interactive)
-  (adjust-font-size 0.10))
-
-(defun decrease-font-size ()
-  (interactive)
-  (adjust-font-size -0.10))
-
 (setq māori-vowels
       '(("a" . "ā")
         ("e" . "ē")
@@ -88,7 +71,7 @@
     (if test (cdr test)
       char)))
 
-(defun foggerty-map-maori-vowel () 
+(defun foggerty-map-maori-vowel ()
   "Maps a,e,i,o,u to the Māori equivalents."
   (interactive)
   (let ((vowel (foggerty-map-character māori-vowels)))
@@ -134,21 +117,11 @@ beginning of the logical line."
        (1- (search-forward (char-to-string char)))))))
 
 
-;; EShell - always in the same frame
-(defun foggerty-toggle-eshell ()
-  (interactive)
-  (let ((shell (get-buffer "*eshell*")))
-    (cond ((eq shell (current-buffer))
-           (switch-to-buffer (previous-buffer)))
-          (shell
-           (switch-to-buffer shell))
-          (t (eshell)))))
-
 (defun untabify-files (files)
   "Just to remind myself how to batch-process files in Emacs :-)"
   (dolist (file files)
     (with-current-buffer (find-file-noselect file)
-      (indent-region (point-min) (point-max))    
+      (indent-region (point-min) (point-max))
       (untabify (point-min) (point-max))
       (save-buffer)
       (kill-buffer (current-buffer)))))

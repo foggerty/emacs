@@ -23,7 +23,9 @@
 (add-to-list 'package-archives
              '("org" . "https://orgmode.org/elpa/") t)
 
+
 (package-initialize)
+
 
 (unless package-archive-contents
   (package-refresh-contents))
