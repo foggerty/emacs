@@ -47,7 +47,7 @@
 
 
 ;; Load global settings and major-mode settings
-(setq setup-the-rest
+(setq files-to-load
       '("helpers.el"
         "random-functions.el"
         "theme.el"
@@ -61,8 +61,9 @@
         "text-settings.el"
         "go-settings.el"
         "clojure-settings.el"
+        "lilypond.el"
         "global-key-bindings.el"))  ; always run last
 
 (let ((init-dir (file-name-directory user-init-file)))
-  (dolist (file setup-the-rest)
+  (dolist (file files-to-load)
     (load (concat init-dir file))))
