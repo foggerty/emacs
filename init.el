@@ -48,11 +48,11 @@
 
 ;; Load global settings and major-mode settings
 (setq files-to-load
-      '("helpers.el"
+      '("libraries.el"
+        "helpers.el"
         "random-functions.el"
         "theme.el"
         "global-settings.el"
-        "org-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el"
         "c-settings.el"
@@ -62,8 +62,14 @@
         "go-settings.el"
         "clojure-settings.el"
         "lilypond.el"
+        "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 (let ((init-dir (file-name-directory user-init-file)))
   (dolist (file files-to-load)
     (load (concat init-dir file))))
+
+;; Finally, all of the org files I use.
+(setq org-agenda-files '("~/ToDo.org"
+                         "~/RandomNotes.org"
+                         "~/Development/projects/notebooks"))

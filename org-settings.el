@@ -10,13 +10,20 @@
 
 ;; (byte-recompile-directory package-user-dir nil 'force)
 
+(defun org-local-bindings ()  ; this is driving me up the fucking wall.....
+  (local-set-key (kbd "C-c C-a")  'org-agenda)
+  (local-set-key (kbd "C-<up>")   'org-backward-heading-same-level)
+  (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
+  (local-set-key (kbd "C-c t")    'set-org-tags-from-anywhere))
+
 (use-package org
-  :defer t
   :config
+  ;; Seriously, org plus use-package is shite, I should really just
+  ;; set it up without use-package.  Then I wouldn't need the
+  ;; following:
   (add-hook 'org-mode-hook 'org-indent-mode)
-
-  ;; (require 'org-tempo)  - what was this for?!?
-
+  (add-hook 'org-mode-hook (qif (adjust-margins 4)))
+  (add-hook 'org-mode-hook 'org-local-bindings)
   (setq org-src-fontify-natively t
         org-hide-emphasis-markers t
         org-export-coding-system 'utf-8
@@ -27,17 +34,7 @@
         org-src-tab-acts-natively t
         org-confirm-babel-evaluate nil
         org-babel-clojure-backend 'cider
-        org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "BLOCKED(b)" "DONE(d)")))
-
-  :bind
-  (("C-c C-a" . org-agenda)
-   ("C-<up>" . org-backward-heading-same-level)
-   ("C-<down>" . org-forward-heading-same-level)
-   ("C-c t" . set-org-tags-from-anywhere)))
+        org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "BLOCKED(b)" "DONE(d)"))))
 
 (use-package org-bullets
-  :defer t
-  :config
-  (add-hook 'org-mode-hook 'org-indent-mode))
-
-(add-hook 'org-mode-hook (qif (adjust-margins 4)))
+  :defer t)

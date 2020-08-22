@@ -28,3 +28,4 @@
 (global-set-key (kbd "<f8>")            'treemacs)
 (global-set-key (kbd "<f9>")            'counsel-projectile-git-grep)
 (global-set-key (kbd "C-`")             'company-complete)
+(global-set-key (kbd "M-z")             'foggerty-zap-to-char)
