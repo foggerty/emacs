@@ -1,18 +1,10 @@
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
-
-(menu-bar-mode -1)
-
-(when (display-graphic-p)
-  (progn
-    (fringe-mode 0)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)))
-
-;; This looks and works great on a Unix desktop where I can drag and
-;; resize windows using modifier keys and a mouse, but on a trackpad
-;; it's a no-go.
-;;;     (set-frame-parameter nil 'undecorated 1)
+(setq tool-bar-mode nil)
+(add-to-list 'default-frame-alist
+             '(vertical-scroll-bars . nil)
+             '(menu-bar-lines . nil))
+(fringe-mode 0)
 
 
 ;;; Highlighting
