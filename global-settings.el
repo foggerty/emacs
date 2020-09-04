@@ -78,22 +78,13 @@
   :bind (("C-s"     . swiper)
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
-         ("C-c g"   . counsel-git-grep)
-         ("C-c f"   . counsel-projectile-grep))
+         ("C-c g"   . counsel-git-grep))
   :diminish ivy-mode)
-
 
 (use-package flx
   :config
   (setq ivy-re-builders-alist
         '((t . ivy--regex-plus))))
-
-
-;; Treemacs - treeview that hooks into Projectile.
-;; (use-package treemacs)
-;; (use-package treemacs-magit)
-;; (use-package treemacs-projectile
-;;   :requires projectile)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -191,3 +182,11 @@
   "Will check if visual-fill-column-mode is active, and adjust
 margins if so."
   (visual-fill-column-adjust))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; yasnippet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package yasnippet
+  :defer t)

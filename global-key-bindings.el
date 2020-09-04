@@ -4,8 +4,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Sigh, except that org-mode is seriously persistent in its
-;; clobbering, so nuke any bindings in its local map, so they can be
-;; rebound here.
+;; clobbering, so nuke any bindings in its local map so that they can
+;; be rebound here.
 
 ;; Always run this file last.
 
@@ -25,7 +25,6 @@
 (global-set-key (kbd "C-M--")           'decrease-margin)
 (global-set-key (kbd "M-=")             'increase-font-size)
 (global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
-(global-set-key (kbd "<f8>")            'treemacs)
 (global-set-key (kbd "<f9>")            'counsel-projectile-git-grep)
 (global-set-key (kbd "C-`")             'company-complete)
 (global-set-key (kbd "M-z")             'foggerty-zap-to-char)

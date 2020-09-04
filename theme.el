@@ -1,10 +1,12 @@
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
 (setq tool-bar-mode nil)
+(fringe-mode 0)
 (add-to-list 'default-frame-alist
              '(vertical-scroll-bars . nil)
              '(menu-bar-lines . nil))
-(fringe-mode 0)
+
+(setq menu-bar-mode nil)
 
 
 ;;; Highlighting
@@ -17,13 +19,13 @@
   (highlight-quoted-mode))
 
 
-;; Beacon - show where the cursor is after scrolling.
+;;; Beacon - show where the cursor is after scrolling.
 (use-package beacon
   :config
   (beacon-mode 1))
 
 
-;; OS Specific config - OSX
+;;; OS Specific config - OSX
 (setq osx-specific-config
       '(progn
          (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -40,6 +42,8 @@
 (load-file "~/.emacs.d/tangotango2-theme.el")
 (load-theme 'tangotango2)
 
+
+;; ToDo - this looks fugly, fix!
 (let ((bg (face-attribute 'default :background)))
   (custom-set-faces
    `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
@@ -50,19 +54,19 @@
    `(company-tooltip-annotation ((t (:inherit font-lock-comment-face))))))
 
 
-;; Powerline - ToDo: customise colors (can add to Tango theme?)
+;;; Powerline - ToDo: customise colors (can add to Tango theme?)
 (use-package powerline
   :config
   (powerline-center-theme))
 
 
-;; Cursor
+;;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink
 (set-default 'blink-cursor-interval 0.3) ; blink faster!
 (set-default 'cursor-type 'bar)
 
 
-;; Fonts/faces
+;;; Fonts/faces
 (when (display-graphic-p)
   (helper-set-font '("Source Code Pro"))
   (set-face-attribute 'default nil

@@ -2,7 +2,6 @@
   :after (company)
 
   :hook
-  (dart-mode . flycheck-mode)
   (dart-mode . electric-pair-local-mode)
   (dart-mode . lsp)
   (dart-mode . foggerty-flutters)

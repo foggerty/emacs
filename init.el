@@ -1,8 +1,3 @@
-;;; My Emacs config file, by Matt Dee, aged 4 1/2 (ish).
-
-
-;; ToDo - speed up load with defered loading thingie
-
 ;;; This file just sets up package management, makes sure that
 ;;; use-package in installed, and then everything else is setup via
 ;;; other scripts.
@@ -18,14 +13,10 @@
 
 ;; Packages setup
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("org" . "https://orgmode.org/elpa/") t)
-
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
 (package-initialize)
-
 
 (unless package-archive-contents
   (package-refresh-contents))

@@ -25,4 +25,6 @@
         ("C-c C-p" . go-playground)
         ("C-c C-c C-d" . godoc-at-point)))
 
-(add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'go-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook 'gofmt-before-save  nil 'local)))

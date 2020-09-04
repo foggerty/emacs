@@ -13,18 +13,4 @@
   :bind (("C-c r r" . inf-ruby)
          ("C-c C-b" . ruby-send-buffer)))
 
-;;; Todo - enh-ruby-mode
-
-;;; todo - get Robe working!  Looks like it isn't designed for one-off
-;;; scripts though (which is all I want Ruby for), so maybe not worth
-;;; it.
-;; (use-package robe
-;;   :hook ruby-mode)
-
-;; (use-package rvm)
-
-;; (eval-after-load 'company
-;;   '(push 'company-robe company-backends))
-
-(add-hook 'ruby-mode-hook 'flymake-mode)
-(add-hook 'ruby-mode-hook 'ruby-electric-mode) ; why is this needed??
+(add-hook 'ruby-mode-hook 'ruby-electric-mode)
