@@ -9,3 +9,6 @@
                         ;; to un-fuck makefile-mode and submit a patch.
                         (if (not (eq major-mode 'makefile-gmake-mode))
                             (helper-indent-buffer))))))
+
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
