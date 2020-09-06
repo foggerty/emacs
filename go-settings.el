@@ -20,10 +20,9 @@
   :bind
   (:map go-mode-map
         ("C-<return>" . company-go) ; I CANNOT bloody get this to work automatically :-(
-        ("M-." . godef-jump)        ; go get github.com/rogpeppe/godef
-        ("M-," . pop-tag-mark)
         ("C-c C-p" . go-playground)
         ("C-c C-c C-d" . godoc-at-point)))
+
 
 (add-hook 'go-mode-hook
           (lambda ()
