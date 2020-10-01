@@ -2,6 +2,10 @@
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; GC 'optimization' - will see if it actually makes a noticeable
+;;; difference.
+(setq gc-cons-threshold 100000000)
+
 ;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
 
@@ -190,3 +194,31 @@ margins if so."
 
 (use-package yasnippet
   :defer t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; purpose - group windows into frames
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package purpose
+  :config
+  (purpose-mode)
+  (add-to-list 'purpose-user-mode-purposes '(term-mode . term))
+  (add-to-list 'purpose-user-mode-purposes '(helpful-mode . help))
+  (add-to-list 'purpose-user-mode-purposes '(help-mode . help))
+  (add-to-list 'purpose-user-mode-purposes '(dev-mode . code))
+  (purpose-compile-user-configuration))
+
+;; purpose integration with Magit
+(require 'window-purpose-x)
+(purpose-x-magit-single-on)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Visual Regexp
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package visual-regexp
+  :bind
+  (("C-r" . #'vr/replace)))
+
+;; ToDo - check out Prodigy - define and then manage bespoke 'services'.

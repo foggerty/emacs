@@ -14,6 +14,8 @@
 
 ;; Now setup custom mappings...
 
+(global-set-key (kbd "C-S-<up>")        'previous-buffer)
+(global-set-key (kbd "C-S-<down>")      'next-buffer)
 (global-set-key (kbd "C-<tab>")         'other-window)
 (global-set-key (kbd "C-x C-b")         'ibuffer)
 (global-set-key (kbd "C-c C-q")         'helper-indent-buffer)
