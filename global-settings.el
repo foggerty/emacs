@@ -197,23 +197,6 @@ margins if so."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; purpose - group windows into frames
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package purpose
-  :config
-  (purpose-mode)
-  (add-to-list 'purpose-user-mode-purposes '(term-mode . term))
-  (add-to-list 'purpose-user-mode-purposes '(helpful-mode . help))
-  (add-to-list 'purpose-user-mode-purposes '(help-mode . help))
-  (add-to-list 'purpose-user-mode-purposes '(dev-mode . code))
-  (purpose-compile-user-configuration))
-
-;; purpose integration with Magit
-(require 'window-purpose-x)
-(purpose-x-magit-single-on)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Visual Regexp
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
