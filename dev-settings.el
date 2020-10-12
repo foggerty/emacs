@@ -18,5 +18,4 @@
 
 (use-package eglot
   :ensure t
-  :config
-  (setq eglot))
+  :config)
