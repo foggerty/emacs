@@ -64,3 +64,4 @@
 (setq org-agenda-files '("~/ToDo.org"
                          "~/RandomNotes.org"
                          "~/Development/projects/notebooks"))
+(tool-bar-mode -1)

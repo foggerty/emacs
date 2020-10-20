@@ -18,9 +18,6 @@
 
 (use-package org
   :config
-  ;; Seriously, org plus use-package is shite, I should really just
-  ;; set it up without use-package.  Then I wouldn't need the
-  ;; following:
   (add-hook 'org-mode-hook 'org-indent-mode)
   (add-hook 'org-mode-hook (qif (adjust-margins 4)))
   (add-hook 'org-mode-hook 'org-local-bindings)
