@@ -54,6 +54,7 @@
         "clojure-settings.el"
         "lilypond.el"
         "org-settings.el"
+        "flutter-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 (let ((init-dir (file-name-directory user-init-file)))
