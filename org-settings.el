@@ -31,7 +31,15 @@
         org-src-tab-acts-natively t
         org-confirm-babel-evaluate nil
         org-babel-clojure-backend 'cider
-        org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "BLOCKED(b)" "DONE(d)"))))
+        org-todo-keywords '((sequence "TODO(t)" "IN PROGRESS(p)" "BLOCKED(b)" "DONE(d)"))
+        org-capture-templates '(
+                                ("j" "Journal entry"
+                                 entry (file+datetree "~/gdrive/Documents/Journal Entries/journal.org")
+                                 "* %?")
+                                ("c" "CBT"
+                                 entry (file+datetree "~/gdrive/Documents/Journal Entries/cbt.org")
+                                 "* What happened: %?\n\n%[~/Google Drive/Documents/Journal Entries/cbtTemplate.txt]"))))
+
 
 (use-package org-bullets
   :defer t)

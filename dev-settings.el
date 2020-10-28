@@ -19,3 +19,7 @@
 (use-package eglot
   :ensure t
   :config)
+
+(use-package git-timemachine
+  :bind
+  (("C-c t" . git-timemachine-toggle)))
