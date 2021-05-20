@@ -51,10 +51,10 @@
 ;; Use aspell over ispell
 ;; (require 'ispell)
 
-;; (helper-run-if-found "aspell"
-;;                      (lambda (path)
-;;                        (setq ispell-program-name path
-;;                              ispell-dictionary "british")))
+(helper-run-if-found "aspell"
+                     (lambda (path)
+                       (setq ispell-program-name path
+                             ispell-dictionary "british")))
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next

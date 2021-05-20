@@ -14,3 +14,5 @@
         cider-inject-dependencies-at-jack-in t
         cider-repl-display-help-banner nil
         cider-repl-pop-to-buffer-on-connect 'display-only))
+
+(use-package inf-clojure) ; used with babashka
