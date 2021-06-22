@@ -66,3 +66,4 @@
                          "~/RandomNotes.org"
                          "~/Development/projects/notebooks"))
 (tool-bar-mode -1)
+;;

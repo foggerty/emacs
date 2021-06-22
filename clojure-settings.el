@@ -16,3 +16,10 @@
         cider-repl-pop-to-buffer-on-connect 'display-only))
 
 (use-package inf-clojure) ; used with babashka
+
+(use-package flycheck-clj-kondo)
+
+(use-package clojure-mode
+  :ensure t
+  :config
+  (require 'flycheck-clj-kondo))
