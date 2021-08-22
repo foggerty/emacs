@@ -46,9 +46,10 @@ I'm constantly tweaking my colour theme, which is based off of TangoTango2.  It'
 - [ ] Learn how to use tags!  Seriously, it's been how long?
 - [X] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
 ** Elisp / Emacs
+- [ ]Instead of two branches, make the config mode modular and have an auto-detect for environment.
+- [ ] New wrapper function, that only runs config code if it can find the required command-line tool, i.e. goimports.  Should raise a warning that cannot find, and provide the required command to install it if it's a one-liner.
 - [X] When running ansi-term, should source ~/.profile. (Doh, I just had shit bash config...)
 - [X] Dig out old Emacs-notes org file, dust off and update with what I learnt on debugging elisp code.
-- [ ] New wrapper function, that only runs config code if it can find the required command-line tool, i.e. goimports.  Should raise a warning that cannot find, and provide the required command to install it if it's a one-liner.
 ** Ruby
 - [X] Get rid of all bloody versions other than default OSX one.
 - [X] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.

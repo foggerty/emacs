@@ -50,16 +50,10 @@
         "random-functions.el"
         "theme.el"
         "global-settings.el"
-;;        "dev-settings.el" ; should come before all other dev related modes
+        "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el"
-;;        "c-settings.el"
-;;        "scheme-settings.el"
-;;        "ruby-settings.el"
         "text-settings.el"
 ;;        "org-settings.el"
-        ;;"flutter-settings.el"
-;;        "go-settings.el"
-;;        "clojure-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 (let ((init-dir (file-name-directory user-init-file)))

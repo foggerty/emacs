@@ -1,26 +1,5 @@
 ;; -*- lexical-binding: t -*-
 
-(defun foggerty-do-my-tax (rate hours)
-  "Calculate how much tax to pay, and how much to put into savings etc."
-  (interactive "nRate: \nnHours: ")
-  (let* ((total (* rate hours))
-         (gst (* total .15))
-         (withholding (* total .26))
-         (paid (- total withholding))
-         (extra-tax (* total .04))
-         (kiwisaver (* total 0.1))
-         (savings (* total .2))
-         (left-with (- total withholding extra-tax kiwisaver savings)))
-    (helper-messages
-     `(("Total: %#.2f\n" ,total)
-       ("GST: %#.2f\n" ,gst)
-       ("Withholding tax: %#.2f\n" ,withholding)
-       ("Paid (ex GST): %#.2f\n" ,paid)
-       ("Extra tax: %#.2f\n" ,extra-tax)
-       ("Kiwisaver: %#.2f\n" ,kiwisaver)
-       ("Savings: %#.2f\n" ,savings)
-       ("left-with: %#.2f\n" ,left-with)))))
-
 (defun count-bytes (buffer)
   (interactive "bCount bytes in buffer: ")
   (with-current-buffer (get-buffer buffer)
@@ -45,12 +24,14 @@
 (defun increase-margin ()
   "Increase current margin by 1."
   (interactive)
-  (adjust-margins 1))
+  (setq left-margin-width (1+ left-margin-width))
+  (setq right-margin-width (1+ right-margin-width)))
 
 (defun decrease-margin ()
   "Decrease current margin by 1."
   (interactive)
-  (adjust-margins -1))
+    (setq left-margin-width (1- left-margin-width))
+  (setq right-margin-width (1- right-margin-width)))
 
 (defun adjust-font-size (amount)
   "Adjust current frame's font by relative amount (percentage)."
@@ -69,31 +50,6 @@
   (interactive)
   (adjust-font-size -0.10))
 
-(setq māori-vowels
-      '(("a" . "ā")
-        ("e" . "ē")
-        ("i" . "ī")
-        ("o" . "ō")
-        ("u" . "ū")
-        ("A" . "Ā")
-        ("E" . "Ē")
-        ("I" . "Ī")
-        ("O" . "Ō")
-        ("U" . "Ū")))
-
-(defun foggerty-map-character (map)
-  "Maps next key-press using the provided map."
-  (let* ((char (char-to-string (read-key)))
-         (test (assoc char map)))
-    (if test (cdr test)
-      char)))
-
-(defun foggerty-map-maori-vowel () 
-  "Maps a,e,i,o,u to the Māori equivalents."
-  (interactive)
-  (let ((vowel (foggerty-map-character māori-vowels)))
-    (insert vowel)
-    vowel))
 
 (defun foggerty-kill-to-beginning-of-line ()
   "Kills from current point, to the beginning of the line.
@@ -143,55 +99,3 @@ beginning of the logical line."
           (shell
            (switch-to-buffer shell))
           (t (eshell)))))
-
-(defun untabify-files (files)
-  "Just to remind myself how to batch-process files in Emacs :-)"
-  (dolist (file files)
-    (with-current-buffer (find-file-noselect file)
-      (indent-region (point-min) (point-max))    
-      (untabify (point-min) (point-max))
-      (save-buffer)
-      (kill-buffer (current-buffer)))))
-
-(defun visit-project-files (action filter)
-  "Using Ivy and Projectile, select a project, and then perform a
-  user-supplied action (which should accept a buffer) on each
-  file.  An optional filter function can be supplied."
-  (let* ((project (ivy-read "Project: " (projectile-open-projects)))
-         (filter-func (lambda (x) (string-match filter x)))
-         (files (seq-filter filter-func (projectile-project-files project))))
-    (dolist (file files)
-      (let ((closing-func (if (get-file-buffer file)
-                              'ignore
-                            'kill-buffer))
-            (buff (or (get-file-buffer file)
-                      (find-file-noselect file))))
-        (with-current-buffer buff
-          (funcall action buff)
-          (funcall closing-func (current-buffer)))))))
-
-(defun visit-extract (extraction-func filter)
-  "Extract from each file in the project, whatever
-  extraction-func returns, and put it all into a temporary buffer.
-
-  extraction-func should take a buffer, and return a string."
-  (let ((tmp (generate-new-buffer "*VISIT*")))
-    (visit-project-files
-     (lambda (buff)
-       (with-current-buffer tmp
-         (insert (concat
-                  (funcall extraction-func buff)
-                  "\n"))))
-     filter)
-    (switch-to-buffer tmp)))
-
-(defun line-x (x)
-  (lambda (buff)
-    (goto-line x)
-    (push-mark)
-    (end-of-line)
-    (let ((result (buffer-substring-no-properties
-                   (region-beginning)
-                   (region-end))))
-      (pop-mark)
-      (buffer-name buff))))

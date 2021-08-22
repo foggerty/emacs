@@ -1,3 +1,9 @@
+;; Make sure temp buffers don't steal all of the screen
+(temp-buffer-resize-mode t)
+(setq temp-buffer-max-height 20
+      compilation-window-height 20)
+
+
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
 
@@ -20,23 +26,6 @@
   :config
   (beacon-mode 1))
 
-
-;; Theme
-(require 'color)
-
-(let ((bg (face-attribute 'default :background)))
-  (custom-set-faces
-   `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
-   `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 50)))))
-   `(company-scrollbar-fg ((t (:foreground ,(color-lighten-name bg 10)))))
-   `(company-tooltip-selection ((t (:inherit font-lock-string-face))))
-   `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
-
-
-;; Powerline - ToDo: customise colors (can add to Tango theme?)
-(use-package powerline
-  :config
-  (powerline-center-theme))
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink

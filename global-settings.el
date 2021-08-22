@@ -17,23 +17,12 @@
   (exec-path-from-shell-initialize))
 
 
-;; On Mac, use Command key as Meta when not in terminal.
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta))
-
-
 ;; Save desktop on exit
 (desktop-save-mode 1)
 
 
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
-
-
-;; Make sure temp buffers don't steal all of the screen
-(temp-buffer-resize-mode t)
-(setq temp-buffer-max-height 20
-      compilation-window-height 20)
 
 
 ;; Centralised backup directory
@@ -74,6 +63,7 @@
 
 (use-package which-key)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -99,13 +89,6 @@
         '((t . ivy--regex-plus))))
 
 
-;; Treemacs - treeview that hooks into Projectile.
-;; (use-package treemacs)
-;; (use-package treemacs-magit)
-;; (use-package treemacs-projectile
-;;   :requires projectile)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company (auto-complete) settings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -119,19 +102,6 @@
 (use-package company-quickhelp
   :config
   (company-quickhelp-mode))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Projectile - project management
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package projectile)
-(use-package counsel-projectile
-  :config
-  (add-hook 'after-init-hook 'counsel-projectile-mode)
-  (setq projectile-use-git-grep t)
-  :bind
-  ("<f12>" . counsel-projectile-find-file))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -151,13 +121,6 @@
   :init
   (which-key-mode)
   (which-key-setup-side-window-right-bottom))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Helpful - better help screens.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package helpful)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

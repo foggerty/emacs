@@ -23,8 +23,6 @@
 (global-set-key (kbd "C-x k")           (qif (kill-buffer (current-buffer))))
 (global-set-key (kbd "C-M-=")           'increase-margin)
 (global-set-key (kbd "C-M--")           'decrease-margin)
-(global-set-key (kbd "M--")             'decrease-font-size)
-(global-set-key (kbd "M-=")             'increase-font-size)
 (global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
 (global-set-key (kbd "<f8>")            'treemacs)
 (global-set-key (kbd "C-`")             'company-complete)
