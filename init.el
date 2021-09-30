@@ -47,12 +47,12 @@
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el"
         "c-settings.el"
-        "scheme-settings.el"
+;;        "scheme-settings.el"
         "ruby-settings.el"
         "text-settings.el"
-        "go-settings.el"
-        "clojure-settings.el"
-        "lilypond.el"
+;;        "go-settings.el"
+;;        "clojure-settings.el"
+;;        "lilypond.el"
         "org-settings.el"
         ;;"flutter-settings.el"
         "global-key-bindings.el"))  ; always run last

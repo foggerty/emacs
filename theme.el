@@ -1,7 +1,7 @@
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
 (setq tool-bar-mode nil)
-(fringe-mode 0)
+(when (display-graphic-p) (fringe-mode 0))
 (add-to-list 'default-frame-alist
              '(vertical-scroll-bars . nil)
              '(menu-bar-lines . nil))
@@ -11,13 +11,14 @@
 
 
 ;;; Highlighting
-(use-package highlight-parentheses
-  :init
-  (highlight-parentheses-mode))
-
-(use-package highlight-quoted
-  :init
-  (highlight-quoted-mode))
+(when (display-graphic-p)
+  (progn
+    (use-package highlight-parentheses
+      :init
+      (highlight-parentheses-mode))
+    (use-package highlight-quoted
+      :init
+      (highlight-quoted-mode))))
 
 
 ;;; Beacon - show where the cursor is after scrolling.
@@ -39,9 +40,12 @@
 
 ;; Theme
 (require 'color)
-(custom-set-variables '(custom-safe-themes t))
-(load-file "~/.emacs.d/tangotango2-theme.el")
-(load-theme 'tangotango2)
+(if (display-graphic-p)
+    (progn
+      (custom-set-variables '(custom-safe-themes t))
+      (load-file "~/.emacs.d/tangotango2-theme.el")
+      (load-theme 'tangotango2))
+  (load-theme 'wombat))
 
 
 ;; ToDo - this looks fugly, fix!
@@ -56,9 +60,10 @@
 
 
 ;;; Powerline - ToDo: customise colors (can add to Tango theme?)
-(use-package powerline
-  :config
-  (powerline-center-theme))
+(when (display-graphic-p
+       (use-package powerline
+         :config
+         (powerline-center-theme))))
 
 
 ;;; Cursor
