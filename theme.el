@@ -6,7 +6,7 @@
              '(vertical-scroll-bars . nil)
              '(menu-bar-lines . nil))
 
-(setq menu-bar-mode nil)
+(menu-bar-mode nil)
 (tool-bar-mode nil)
 
 
@@ -49,21 +49,21 @@
 
 
 ;; ToDo - this looks fugly, fix!
-(let ((bg (face-attribute 'default :background)))
-  (custom-set-faces
-   `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
-   `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 50)))))
-   `(company-scrollbar-fg ((t (:foreground ,(color-lighten-name bg 10)))))
-   `(company-tooltip-selection ((t (:inherit font-lock-constant-face))))
-   `(company-tooltip-common ((t (:inherit font-lock-constant-face))))
-   `(company-tooltip-annotation ((t (:inherit font-lock-comment-face))))))
+;; (let ((bg (face-attribute 'default :background)))
+;;   (custom-set-faces
+;;    `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
+;;    `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 50)))))
+;;    `(company-scrollbar-fg ((t (:foreground ,(color-lighten-name bg 10)))))
+;;    `(company-tooltip-selection ((t (:inherit font-lock-constant-face))))
+;;    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))
+;;    `(company-tooltip-annotation ((t (:inherit font-lock-comment-face))))))
 
 
 ;;; Powerline - ToDo: customise colors (can add to Tango theme?)
-(when (display-graphic-p
-       (use-package powerline
-         :config
-         (powerline-center-theme))))
+(when (display-graphic-p)
+  (use-package powerline
+    :config
+    (powerline-center-theme)))
 
 
 ;;; Cursor

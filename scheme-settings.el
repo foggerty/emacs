@@ -7,3 +7,5 @@
   (enable-paredit-mode)
   (aggressive-indent-mode 1)
   (setq geiser-active-implementations '(guile)))
+
+(use-package janet-mode)
