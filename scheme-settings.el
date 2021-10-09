@@ -2,8 +2,8 @@
 
 (use-package geiser
   :defer t
-  :interpreter "scm"
+  :interpreter "bb"
   :config
   (enable-paredit-mode)
   (aggressive-indent-mode 1)
-  (setq geiser-active-implementations '(guile)))
+  (setq geiser-active-implementations '(babashka)))
