@@ -48,7 +48,7 @@
         "elisp-settings.el"
         "c-settings.el"
         "scheme-settings.el"
-        "ruby-settings.el"
+        "janet-settings.el"
         "rust-settings.el"
         "text-settings.el"
         "go-settings.el"

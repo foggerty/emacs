@@ -6,4 +6,6 @@
   :config
   (enable-paredit-mode)
   (aggressive-indent-mode 1)
-  (setq geiser-active-implementations '(babashka)))
+  (setq geiser-active-implementations '(janet)))
+
+(use-package janet-mode)

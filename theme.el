@@ -47,17 +47,6 @@
       (load-theme 'tangotango2)))
 
 
-;; ToDo - this looks fugly, fix!
-;; (let ((bg (face-attribute 'default :background)))
-;;   (custom-set-faces
-;;    `(company-tooltip ((t (:inherit default :background ,(color-lighten-name bg 10)))))
-;;    `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 50)))))
-;;    `(company-scrollbar-fg ((t (:foreground ,(color-lighten-name bg 10)))))
-;;    `(company-tooltip-selection ((t (:inherit font-lock-constant-face))))
-;;    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))
-;;    `(company-tooltip-annotation ((t (:inherit font-lock-comment-face))))))
-
-
 ;;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink
 (set-default 'blink-cursor-interval 0.3) ; blink faster!
