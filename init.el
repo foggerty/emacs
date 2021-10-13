@@ -61,16 +61,13 @@
   (dolist (file files-to-load)
     (let* ((f (concat init-dir file))
            (f_c (concat (file-name-sans-extension f) ".elc")))
-
       (load-file f)
-
       (if (not (file-exists-p f_c))
-          (byte-compile-file f))
-
-      (let ((f_t (nth 5 (file-attributes f)))
-            (fc_t (nth 5 (file-attributes f_c))))
-        (if (time-less-p fc_t f_t)
-            (byte-compile-file f))))))
+          (byte-compile-file f)
+        (let ((f_t (nth 5 (file-attributes f)))
+              (fc_t (nth 5 (file-attributes f_c))))
+          (if (time-less-p fc_t f_t)
+              (byte-compile-file f)))))))
 
 
 ;; Finally, all of the org files I use.

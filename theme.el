@@ -39,13 +39,12 @@
 
 
 ;; Theme
-;; (require 'color)
-;; (if (display-graphic-p)
-;;     (progn
-;;       (custom-set-variables '(custom-safe-themes t))
-;;       (load-file "~/.emacs.d/tangotango2-theme.el")
-;;       (load-theme 'tangotango2))
-;;   (load-theme 'wombat))
+(require 'color)
+(if (display-graphic-p)
+    (progn
+      (custom-set-variables '(custom-safe-themes t))
+      (load-file "~/.emacs.d/tangotango2-theme.el")
+      (load-theme 'tangotango2)))
 
 
 ;; ToDo - this looks fugly, fix!

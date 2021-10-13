@@ -3,8 +3,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; GC 'optimization' - will see if it actually makes a noticeable
-;;; difference.
-(setq gc-cons-threshold 100000000)
+;;; difference. Maybe it was causing those pauses....
+;;; (setq gc-cons-threshold 100000000)
 
 ;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
