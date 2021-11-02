@@ -49,7 +49,6 @@
         "c-settings.el"
         "scheme-settings.el"
         "janet-settings.el"
-        "rust-settings.el"
         "text-settings.el"
         "go-settings.el"
         "clojure-settings.el"
@@ -57,6 +56,9 @@
         "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
+;; Byte-compile all config (except for this file)
+;; to-do surely there's an easier way to tell byte-compile
+;; to only compile if newer?
 (let ((init-dir (file-name-directory user-init-file)))
   (dolist (file files-to-load)
     (let* ((f (concat init-dir file))

@@ -38,13 +38,17 @@
   (eval osx-specific-config))
 
 
-;; Theme
+;; Make pretty
 (require 'color)
+
+(custom-set-variables '(custom-safe-themes t))
+
 (if (display-graphic-p)
     (progn
-      (custom-set-variables '(custom-safe-themes t))
       (load-file "~/.emacs.d/tangotango2-theme.el")
-      (load-theme 'tangotango2)))
+      (load-theme 'tangotango2))
+  (progn
+      (load-file "~/.emacs.d/wal-theme.el")))
 
 
 ;;; Cursor
@@ -54,16 +58,9 @@
 
 
 ;;; Powerline - ToDo: customise colors (can add to Tango theme?)
-(when (display-graphic-p)
-       (use-package powerline
-         :config
-         (powerline-center-theme)))
-
-
-;;; Cursor
-(set-default 'blink-cursor-blinks 0) ; always blink
-(set-default 'blink-cursor-interval 0.3) ; blink faster!
-(set-default 'cursor-type 'bar)
+(use-package powerline
+  :config
+  (powerline-default-theme))
 
 
 ;;; Fonts/faces

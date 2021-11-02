@@ -9,3 +9,4 @@
 ;;    (setq inf-janet-program '("localhost" . 5555))
 
 (add-hook 'janet-mode-hook #'inf-janet-minor-mode)
+(add-hook 'janet-mode-hook #'paredit-mode)

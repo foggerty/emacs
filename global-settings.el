@@ -51,10 +51,11 @@
 ;; Use aspell over ispell
 ;; (require 'ispell)
 
-(helper-run-if-found "aspell"
-                     (lambda (path)
-                       (setq ispell-program-name path
-                             ispell-dictionary "british")))
+(helper-run-if-found
+ "aspell"
+ (lambda (path)
+   (setq ispell-program-name path
+         ispell-dictionary "british")))
 
 
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
@@ -99,7 +100,7 @@
   :defer t
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
-  (setq company-idle-delay nil)
+  (setq company-idle-delay 0.2)
   :diminish
   company-mode)
 
