@@ -54,6 +54,7 @@
         "clojure-settings.el"
         "lilypond.el"
         "org-settings.el"
+        "yaml-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 ;; Byte-compile all config (except for this file)

@@ -10,3 +10,5 @@
 
 (add-hook 'janet-mode-hook #'inf-janet-minor-mode)
 (add-hook 'janet-mode-hook #'paredit-mode)
+(add-hook 'janet-mode-hook #'aggressive-indent-mode)
+(add-hook 'inf-janet-mode-hook (qif (company-mode nil)))
