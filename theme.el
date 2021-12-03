@@ -6,7 +6,7 @@
              '(vertical-scroll-bars . nil)
              '(menu-bar-lines . nil))
 
-(menu-bar-mode nil)
+(toggle-menu-bar-mode-from-frame 0)
 (tool-bar-mode nil)
 
 
