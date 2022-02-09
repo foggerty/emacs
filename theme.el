@@ -7,7 +7,6 @@
              '(menu-bar-lines . nil))
 
 (toggle-menu-bar-mode-from-frame 0)
-(tool-bar-mode nil)
 
 
 ;;; Highlighting
@@ -46,9 +45,7 @@
 (if (display-graphic-p)
     (progn
       (load-file "~/.emacs.d/tangotango2-theme.el")
-      (load-theme 'tangotango2))
-  (progn
-      (load-file "~/.emacs.d/wal-theme.el")))
+      (load-theme 'tangotango2)))
 
 
 ;;; Cursor
