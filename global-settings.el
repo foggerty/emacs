@@ -87,7 +87,7 @@
 (use-package flx
   :config
   (setq ivy-re-builders-alist
-        '((t . ivy--regex-plus))))
+        '((t . ivy--regex-fuzzy))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -98,7 +98,7 @@
   :defer t
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
-  (setq company-idle-delay 0.2)
+  (setq company-idle-delay nil)
   :diminish
   company-mode)
 
@@ -107,7 +107,17 @@
   :config
   (company-quickhelp-mode))
 
+(use-package company-fuzzy
+  :hook (company-mode . company-fuzzy-mode)
+  :init
+  (setq company-fuzzy-sorting-backend 'flx
+        company-fuzzy-prefix-on-top nil
+        company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+
+(use-package company-shell)
+
 (global-company-mode)
+(global-company-fuzzy-mode 1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -151,7 +161,7 @@
 
 (use-package helpful
   :bind
-  (("C-h f" . helpful-function)
+ (("C-h f" . helpful-function)
    ("C-h v" . helpful-variable)
    ("C-h k" . helpful-key)))
 

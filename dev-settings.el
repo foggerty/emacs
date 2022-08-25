@@ -18,8 +18,7 @@
 
 (use-package json-mode)
 
-(add-hook 'prog-mode-hook (qif (flyspell-prog-mode)
-                               (diminish 'paredit-mode)
+(add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
                                (show-paren-mode t)))

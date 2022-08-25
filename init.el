@@ -55,10 +55,11 @@
         "lilypond.el"
         "org-settings.el"
         "yaml-settings.el"
+        "elixir-settings.el"
         "global-key-bindings.el"))  ; always run last
 
-;; Byte-compile all config (except for this file)
-;; to-do surely there's an easier way to tell byte-compile
+;; Byte-compile all config (except for this file).
+;; To-do surely there's an easier way to tell byte-compile
 ;; to only compile if newer?
 (let ((init-dir (file-name-directory user-init-file)))
   (dolist (file files-to-load)

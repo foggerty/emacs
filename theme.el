@@ -1,6 +1,7 @@
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
 (setq tool-bar-mode nil)
+(setq fringe-mode 4)
 (when (display-graphic-p) (fringe-mode 0))
 (add-to-list 'default-frame-alist
              '(vertical-scroll-bars . nil)

@@ -18,6 +18,11 @@ init.el will:
 A constant work in progress :-)
 
 [[file:emacs.png]]
+* Note on building emacs
+** Fedora
+Install the following: autoconf texinfo gtk3-devel gnutls-devel giflib-devel libXpm-devel ncurses-devel
+** Arch
+Install the following:
 * Theme
 I'm constantly tweaking my colour theme, which is based off of TangoTango2.  It's fairly low-contrast, and few colours, as I find too many distracting as hell (I have pretty bad ADHD).  If I ever get it in a finished state, I'll release it as `fango` - Foggerty's Tango :-)
 
