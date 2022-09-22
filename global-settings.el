@@ -107,6 +107,8 @@
   :config
   (company-quickhelp-mode))
 
+(use-package company-flx)
+
 (use-package company-fuzzy
   :hook (company-mode . company-fuzzy-mode)
   :init

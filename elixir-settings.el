@@ -1,6 +1,5 @@
 (use-package elixir-mode)
 (use-package exunit)
-(require 'eldoc-box)
 
 (add-hook 'eldoc-mode-hook 'eglot-ensure)
 
