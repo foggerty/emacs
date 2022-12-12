@@ -1,5 +1,11 @@
-;; ToDo - set default frame
-(setq default-frame-alist '((alpha-background . 0.8)))
+;;; This starts to get messy when you want this config to work with
+;;; text, gui and daemon......
+(add-hook 'after-make-frame-functions
+	  (when (display-graphic-p)
+	  (helper-set-font '("Sauce Code Pro Nerd Font"))
+          (set-frame-parameter nil 'alpha-background 0.8)
+          (set-face-attribute 'default nil
+                              :height 120)))
 
 
 ;;; Basic tidy ups
@@ -32,6 +38,3 @@
 
 
 ;;; Fonts/faces
-(helper-set-font '("Saurce Code Pro Nerd Font"))
-(set-face-attribute 'default nil
-                    :height 120)
