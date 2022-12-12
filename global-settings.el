@@ -84,10 +84,10 @@
          ("C-c g"   . counsel-git-grep))
   :diminish ivy-mode)
 
-(use-package flx
-  :config
-  (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy))))
+;; (use-package flx
+;;   :config
+;;   (setq ivy-re-builders-alist
+;;         '((t . ivy--regex-fuzzy))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

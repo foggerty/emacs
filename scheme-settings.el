@@ -1,4 +1,4 @@
-;; I'm pretty much conflating Scheme and Geiser here :-)
+;; I'm pretty much conflating Scheme and Janet here :-)
 
 (use-package geiser
   :defer t

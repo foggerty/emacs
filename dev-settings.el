@@ -8,15 +8,9 @@
 (use-package aggressive-indent
   :defer t)
 
-(use-package eglot
-  :ensure t
-  :config)
-
 (use-package git-timemachine
   :bind
   (("C-c t" . git-timemachine-toggle)))
-
-(use-package json-mode)
 
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)

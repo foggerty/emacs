@@ -3,5 +3,5 @@
 
 (add-hook 'eldoc-mode-hook 'eglot-ensure)
 
-(add-to-list 'eglot-server-programs
-             `(elixir-mode "~/dev/elixir-ls/release/language_server.sh"))
+;; (add-to-list 'eglot-server-programs
+;;              `(elixir-mode "~/dev/elixir-ls/release/language_server.sh"))

@@ -43,36 +43,24 @@
         "helpers.el"
         "random-functions.el"
         "theme.el"
+        "text-settings.el"
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el"
         "c-settings.el"
         "scheme-settings.el"
-        "janet-settings.el"
-        "text-settings.el"
         "go-settings.el"
         "clojure-settings.el"
-        "lilypond.el"
-        "org-settings.el"
         "yaml-settings.el"
         "elixir-settings.el"
+        "lilypond.el"
+        "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
-;; Byte-compile all config (except for this file).
-;; To-do surely there's an easier way to tell byte-compile
-;; to only compile if newer?
-(let ((init-dir (file-name-directory user-init-file)))
-  (dolist (file files-to-load)
-    (let* ((f (concat init-dir file))
-           (f_c (concat (file-name-sans-extension f) ".elc")))
-      (load-file f)
-      (if (not (file-exists-p f_c))
-          (byte-compile-file f)
-        (let ((f_t (nth 5 (file-attributes f)))
-              (fc_t (nth 5 (file-attributes f_c))))
-          (if (time-less-p fc_t f_t)
-              (byte-compile-file f)))))))
 
+(dolist (file files-to-load)
+  (load-file (concat (file-name-directory user-init-file)
+		     file)))
 
 ;; Finally, all of the org files I use.
 (setq org-agenda-files '("~/ToDo.org"
