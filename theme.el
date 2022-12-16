@@ -5,18 +5,23 @@
 
 
 ;;; This starts to get messy when you want this config to work with
-;;; text, gui and daemon......
-(add-hook 'after-make-frame-functions
-	       (progn
-            (toggle-menu-bar-mode-from-frame 0)
-            (toggle-tool-bar-mode-from-frame 0)
-            (load-theme 'ewal-spacemacs-classic))
-	       (when (display-graphic-p)
-	         (helper-set-font '("Sauce Code Pro Nerd Font"))
-            (set-frame-parameter nil 'alpha-background 0.8)
-            (set-face-attribute 'default nil
-                                :height 120)))
+;;; text, gui and daemon.....
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(load-theme 'ewal-spacemacs-classic)
 
+(defun after-frame-create (frame)
+  (with-selected-frame frame
+    (toggle-menu-bar-mode-from-frame 0)
+    (toggle-tool-bar-mode-from-frame 0)))
+
+(add-hook 'after-make-frame-functions #'after-frame-create)
+
+(when (display-graphic-p)
+  (set-frame-parameter (selected-frame) 'alpha-background 0.8)
+  (helper-set-font '("Sauce Code Pro Nerd Font"))
+  (set-face-attribute 'default nil
+                      :height 120))
 
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)

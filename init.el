@@ -2,7 +2,6 @@
 ;;; use-package in installed, and then everything else is setup via
 ;;; other scripts.
 
-
 ;; Always use newer source over old byte-compiled.
 (setq load-prefer-newer t)
 
@@ -39,12 +38,13 @@
 
 ;; Load global settings and major-mode settings
 (setq files-to-load
-      '("libraries.el"
+      '(
+	;;"libraries.el"
         "helpers.el"
         "random-functions.el"
         "theme.el"
         "text-settings.el"
-        "global-settings.el"
+        "global-settings.el"fgjhj
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el"
         "c-settings.el"
