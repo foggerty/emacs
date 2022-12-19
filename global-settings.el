@@ -107,7 +107,7 @@
   :config
   (company-quickhelp-mode))
 
-(use-package company-flx)
+;;(use-package company-flx)
 
 ;; (use-package company-fuzzy
 ;;   :hook (company-mode . company-fuzzy-mode)
@@ -121,7 +121,8 @@
 ;;;; Projectile - project management
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package projectile)
+;;(use-package projectile)
+;;(use-package counsel)
 (use-package counsel-projectile
   :config
   (add-hook 'after-init-hook 'counsel-projectile-mode)
@@ -144,12 +145,12 @@
 ;;;; Let me know what to press next....
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package which-key
-  :defer t
-  :init
-  (which-key-mode)
-  (which-key-setup-side-window-right-bottom)
-  :diminish which-key-mode)
+;; (use-package which-key
+;;   :defer t
+;;   :init
+;;   (which-key-mode)
+;;   (which-key-setup-side-window-right-bottom)
+;;   :diminish which-key-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

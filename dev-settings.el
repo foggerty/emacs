@@ -2,8 +2,8 @@
 ;;;; Settings that apply to more than one programming mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (use-package paredit
-;;   :defer t)
+(use-package paredit
+  :defer t)
 
 (use-package aggressive-indent
   :defer t)
@@ -12,7 +12,7 @@
   :bind
   (("C-c t" . git-timemachine-toggle)))
 
-(add-hook 'prog-mode-hook (qif ;;(diminish 'paredit-mode)
+(add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
                                (show-paren-mode t)))

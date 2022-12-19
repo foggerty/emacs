@@ -44,7 +44,7 @@
         "text-settings.el"
         "global-settings.el"
         ;;"dev-settings.el" ; should come before all other dev related modes
-        ;;"lisp-settings.el"
+        ;;"elisp-settings.el"
         ;;"c-settings.el"
         ;;"scheme-settings.el"
         ;;"go-settings.el"
