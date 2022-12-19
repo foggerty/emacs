@@ -16,9 +16,9 @@
 
 
 ;; Use the same path you'd get in a standard shell
-(use-package exec-path-from-shell
-  :init
-  (exec-path-from-shell-initialize))
+;; (use-package exec-path-from-shell
+;;   :init
+;;   (exec-path-from-shell-initialize))
 
 
 ;; On Mac, use Command key as Meta when not in terminal.
@@ -109,17 +109,12 @@
 
 (use-package company-flx)
 
-(use-package company-fuzzy
-  :hook (company-mode . company-fuzzy-mode)
-  :init
-  (setq company-fuzzy-sorting-backend 'flx
-        company-fuzzy-prefix-on-top nil
-        company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
-
-(use-package company-shell)
-
-(global-company-mode)
-(global-company-fuzzy-mode 1)
+;; (use-package company-fuzzy
+;;   :hook (company-mode . company-fuzzy-mode)
+;;   :init
+;;   (setq company-fuzzy-sorting-backend 'flx
+;;         company-fuzzy-prefix-on-top nil
+;;         company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,16 +173,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Golden-ratio
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package golden-ratio
-  :init
-  (golden-ratio-mode)
-  :diminish golden-ratio-mode)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; visual-fill-column-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -206,14 +191,3 @@ margins if so."
 
 (use-package yasnippet
   :defer t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Visual Regexp
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package visual-regexp
-  :bind
-  (("C-r" . #'vr/replace)))
-
-;; ToDo - check out Prodigy - define and then manage bespoke 'services'.

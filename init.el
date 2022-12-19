@@ -38,23 +38,21 @@
 
 ;; Load global settings and major-mode settings
 (setq files-to-load
-      '(
-	;;"libraries.el"
-        "helpers.el"
+      '("helpers.el"
         "random-functions.el"
         "theme.el"
         "text-settings.el"
-        "global-settings.el"fgjhj
-        "dev-settings.el" ; should come before all other dev related modes
-        "elisp-settings.el"
-        "c-settings.el"
-        "scheme-settings.el"
-        "go-settings.el"
-        "clojure-settings.el"
-        "yaml-settings.el"
-        "elixir-settings.el"
-        "lilypond.el"
-        "org-settings.el"
+        "global-settings.el"
+        ;;"dev-settings.el" ; should come before all other dev related modes
+        ;;"lisp-settings.el"
+        ;;"c-settings.el"
+        ;;"scheme-settings.el"
+        ;;"go-settings.el"
+        ;;"clojure-settings.el"
+        ;;"yaml-settings.el"
+        ;;"elixir-settings.el"
+        ;;"lilypond.el"
+        ;;"org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 

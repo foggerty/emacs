@@ -1,14 +1,14 @@
 ;;; Make pretty with the help of pywal.
 (custom-set-variables '(custom-safe-themes t))
 
-(use-package ewal-spacemacs-themes)
+;;(use-package ewal-spacemacs-themes)
 
 
 ;;; This starts to get messy when you want this config to work with
 ;;; text, gui and daemon.....
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(load-theme 'ewal-spacemacs-classic)
+;;(load-theme 'ewal-spacemacs-classic)
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
@@ -28,12 +28,6 @@
 (add-to-list 'default-frame-alist
              '(vertical-scroll-bars . nil)
              '(menu-bar-lines . nil))
-
-
-;;; Beacon - show where the cursor is after scrolling.
-(use-package beacon
-  :config
-  (beacon-mode 1))
 
 
 ;;; Cursor
