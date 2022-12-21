@@ -2,10 +2,6 @@
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; GC 'optimization' - will see if it actually makes a noticeable
-;;; difference. Maybe it was causing those pauses....
-;;; (setq gc-cons-threshold 100000000)
-
 ;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
 
@@ -71,6 +67,8 @@
 ;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(package-install 'counsel)
+
 (use-package counsel ; will bring in both Ivy and Swiper
   :config
   (ivy-mode 1)
@@ -121,8 +119,8 @@
 ;;;; Projectile - project management
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;(use-package projectile)
-;;(use-package counsel)
+(use-package projectile)
+
 (use-package counsel-projectile
   :config
   (add-hook 'after-init-hook 'counsel-projectile-mode)
@@ -145,12 +143,12 @@
 ;;;; Let me know what to press next....
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (use-package which-key
-;;   :defer t
-;;   :init
-;;   (which-key-mode)
-;;   (which-key-setup-side-window-right-bottom)
-;;   :diminish which-key-mode)
+(use-package which-key
+  :defer t
+  :init
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom)
+  :diminish which-key-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

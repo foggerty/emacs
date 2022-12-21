@@ -1,27 +1,28 @@
 ;;; Make pretty with the help of pywal.
 (custom-set-variables '(custom-safe-themes t))
 
-;;(use-package ewal-spacemacs-themes)
+(use-package ewal-doom-themes)
 
 
 ;;; This starts to get messy when you want this config to work with
 ;;; text, gui and daemon.....
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-;;(load-theme 'ewal-spacemacs-classic)
+(load-theme 'ewal-doom-one)
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (toggle-menu-bar-mode-from-frame 0)
-    (toggle-tool-bar-mode-from-frame 0)))
+    (toggle-tool-bar-mode-from-frame 0)
+    (when (display-graphic-p)
+      (set-frame-parameter (selected-frame) 'alpha-background 0.8)
+      (set-frame-parameter (selected-frame) 'fringes-outside-margins 10)
+      (helper-set-font '("Sauce Code Pro Nerd Font"))
+      (set-face-attribute 'default nil
+                          :height 120))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
 
-(when (display-graphic-p)
-  (set-frame-parameter (selected-frame) 'alpha-background 0.8)
-  (helper-set-font '("Sauce Code Pro Nerd Font"))
-  (set-face-attribute 'default nil
-                      :height 120))
 
 ;;; Basic tidy ups
 (setq inhibit-startup-screen t)
