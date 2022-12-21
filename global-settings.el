@@ -11,12 +11,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
-;; Use the same path you'd get in a standard shell
-;; (use-package exec-path-from-shell
-;;   :init
-;;   (exec-path-from-shell-initialize))
-
-
 ;; On Mac, use Command key as Meta when not in terminal.
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta))
@@ -157,7 +151,7 @@
 
 (use-package helpful
   :bind
- (("C-h f" . helpful-function)
+  (("C-h f" . helpful-function)
    ("C-h v" . helpful-variable)
    ("C-h k" . helpful-key)))
 

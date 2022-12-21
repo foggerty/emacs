@@ -2,11 +2,10 @@
 ;;;; Settings that apply to more than one programming mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package paredit
-  :defer t)
-
 (use-package aggressive-indent
   :defer t)
+
+(use-package highlight-parentheses)
 
 (use-package git-timemachine
   :bind
@@ -15,6 +14,7 @@
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
-                               (show-paren-mode t)))
+                               (show-paren-mode nil)
+                               (highlight-parentheses-mode)))
 
 (setq eldoc-echo-area-use-multiline-p 1)

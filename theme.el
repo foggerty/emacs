@@ -16,7 +16,6 @@
     (toggle-tool-bar-mode-from-frame 0)
     (when (display-graphic-p)
       (set-frame-parameter (selected-frame) 'alpha-background 0.8)
-      (set-frame-parameter (selected-frame) 'fringes-outside-margins 10)
       (helper-set-font '("Sauce Code Pro Nerd Font"))
       (set-face-attribute 'default nil
                           :height 120))))
