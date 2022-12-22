@@ -7,6 +7,9 @@
 
 (use-package highlight-parentheses)
 
+(use-package paredit
+  :ensure t)
+
 (use-package git-timemachine
   :bind
   (("C-c t" . git-timemachine-toggle)))

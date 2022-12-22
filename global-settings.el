@@ -61,8 +61,6 @@
 ;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(package-install 'counsel)
-
 (use-package counsel ; will bring in both Ivy and Swiper
   :config
   (ivy-mode 1)
@@ -111,9 +109,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
+;;;; ToDo - put all projectile bindings behind F12.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package projectile)
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-mode +1))
 
 (use-package counsel-projectile
   :config

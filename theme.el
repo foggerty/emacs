@@ -1,7 +1,8 @@
 ;;; Make pretty with the help of pywal.
 (custom-set-variables '(custom-safe-themes t))
 
-(use-package ewal-doom-themes)
+(use-package ewal-doom-themes
+  :ensure t)
 
 
 ;;; This starts to get messy when you want this config to work with
