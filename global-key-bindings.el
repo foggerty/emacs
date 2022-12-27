@@ -25,7 +25,7 @@
 (global-set-key (kbd "C-x k")           (qif (kill-buffer (current-buffer))))
 (global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
 (global-set-key (kbd "<f9>")            'counsel-projectile-git-grep)
-(global-set-key (kbd "C-`")             'company-complete)
+(global-set-key (kbd "C-<return>")      'company-complete)
 (global-set-key (kbd "M-z")             'foggerty-zap-to-char)
 (global-set-key (kbd "C-x p")           'mark-paragraph)
 (global-set-key (kbd "M-=")             'increase-font-size)

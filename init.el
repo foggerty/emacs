@@ -52,7 +52,7 @@
         ;;"yaml-settings.el"
         ;;"elixir-settings.el"
         ;;"lilypond.el"
-        ;;"org-settings.el"
+        "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 

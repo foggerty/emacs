@@ -29,6 +29,12 @@ I'm constantly tweaking my colour theme, which is based off of TangoTango2.  It'
 [[file:Theme.png]]
 
 * ToDo!
+
+Recreate bloody problems with ~use-package~ and ~projectile~ and submit a bug report.
+
+** General
+ - [ ] Move all projectile commands behind F12.
+
 ** Golang
 - [X] Ensure using latest version of golang.
 - [X] Copy old settings.
@@ -47,6 +53,7 @@ I'm constantly tweaking my colour theme, which is based off of TangoTango2.  It'
 - [X] Reinstall Guile.
 - [X] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...
 ** Org
+- [ ] Get org-bullets working again
 - [ ] Look into having a central agenda file.
 - [ ] Learn how to use tags!  Seriously, it's been how long?
 - [X] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.

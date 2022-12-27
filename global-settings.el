@@ -85,7 +85,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package company
-  :defer t
+  :init
+  (global-company-mode)
   :config
   (add-to-list 'completion-styles 'completion-initials-try-completion t)
   (setq company-idle-delay nil)
