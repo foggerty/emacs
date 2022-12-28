@@ -41,6 +41,7 @@
       '("helpers.el"
         "random-functions.el"
         "theme.el"
+        "libraries.el"
         "text-settings.el"
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
