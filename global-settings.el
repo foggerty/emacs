@@ -31,7 +31,10 @@
 
 
 ;; Centralised backup directory
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(let ((backup-dir "~/.emacs.d/backups"))
+  (if (not (file-exists-p backup-dir))
+      (dired-create-directory backup-dir))
+  (setq backup-directory-alist '(("." . backup-dir))))
 
 
 ;; Yes/no to y/n
@@ -187,3 +190,9 @@ margins if so."
 
 (use-package yasnippet
   :defer t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; treemacs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package treemacs)
