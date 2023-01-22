@@ -195,4 +195,8 @@ margins if so."
 ;;;; treemacs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package treemacs)
+(use-package treemacs
+  :config
+  (setq treemacs-file-follow-delay 0
+        treemacs--project-follow-delay 0)
+  (treemacs-project-follow-mode 1))

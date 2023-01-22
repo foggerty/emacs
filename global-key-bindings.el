@@ -28,7 +28,6 @@
 (global-set-key (kbd "C-<return>")      'company-complete)
 (global-set-key (kbd "M-z")             'foggerty-zap-to-char)
 (global-set-key (kbd "C-x p")           'mark-paragraph)
-(global-set-key (kbd "M-=")             'increase-font-size)
-(global-set-key (kbd "M--")             'decrease-font-size)
 (global-set-key (kbd "C-M-=")           'increase-margin)
 (global-set-key (kbd "C-M--")           'decrease-margin)
+(global-set-key (kbd "<f8>")            'treemacs)
