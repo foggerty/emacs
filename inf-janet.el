@@ -1,27 +1,50 @@
 ;;; inf-janet.el --- Run an external Janet process in an Emacs buffer -*- lexical-binding: t; -*-
 
-;;; Copied from:
-;;;   https://github.com/velkyel/inf-janet
+;; Taken from https://github.com/velkyel/inf-janet/blob/master/inf-janet.el
 
 ;; * Add the following lines to your .emacs file:
 ;;
 ;;    (require 'inf-janet)
+
 ;;    (setq inf-janet-program "~/janet/build/janet")
 ;;    or
 ;;    (setq inf-janet-program '("localhost" . 5555))
+
 ;;    (add-hook 'janet-mode-hook #'inf-janet-minor-mode)
 
 (require 'comint)
 (require 'janet-mode)
-
+(require 'rx)
+(require 's)
+(require 'dash)
 
 (defgroup inf-janet nil
   "Run an external janet process (REPL) in an Emacs buffer."
   :group 'janet-mode)
 
+(defvar inf-janet-syntax-table
+  (let ((table (make-syntax-table)))
+
+    ;; Comments start with a '#' and end with a newline
+    (modify-syntax-entry ?# "<" table)
+    (modify-syntax-entry ?\n ">" table)
+
+    ;; For keywords, make the ':' part of the symbol class
+    (modify-syntax-entry ?: "_" table)
+
+    ;; Backtick is a string delimiter
+    (modify-syntax-entry ?` "\"" table)
+
+    ;; Other chars that are allowed in symbols
+    (modify-syntax-entry ?? "_" table)
+    (modify-syntax-entry ?! "_" table)
+    (modify-syntax-entry ?. "_" table)
+    (modify-syntax-entry ?@ "_" table)
+
+    table))
+
 (defcustom inf-janet-prompt-read-only t
   "If non-nil, the prompt will be read-only.
-
 Also see the description of `ielm-prompt-read-only'."
   :type 'boolean
   :group 'inf-janet)
@@ -59,21 +82,19 @@ single-letter colon-keyword \(as in :a, :c, etc.)"
 ;;;###autoload
 (define-minor-mode inf-janet-minor-mode
   "Minor mode for interacting with the inferior janet process buffer.
-
 The following commands are available:
-
 \\{inf-janet-minor-mode-map}"
   :lighter "" :keymap inf-janet-minor-mode-map
   nil)
 
-(defcustom inf-janet-program "flisp"
+(defcustom inf-janet-program "janet -s"
   "The command used to start an inferior janet process in `inf-janet-mode'.
-
 Alternative you can specify a TCP connection cons pair, instead
 of command, consisting of a host and port
 number (e.g. (\"localhost\" . 5555)).  That's useful if you're
 often connecting to a remote REPL process."
   :type '(choice (string)
+                 (repeat string)
                  (cons string integer))
   :group 'inf-janet)
 
@@ -87,10 +108,12 @@ often connecting to a remote REPL process."
   :type 'regexp
   :group 'inf-janet)
 
-(defcustom inf-janet-subprompt " *#_=> *"
+(defcustom inf-janet-subprompt (rx "repl:" (+ digit) ":(" (opt "`") "> ")
   "Regexp to recognize subprompts in the Inferior janet mode."
   :type 'regexp
   :group 'inf-janet)
+
+(defvar inf-janet-filter-subprompts nil)
 
 (defvar inf-janet-buffer nil)
 
@@ -100,6 +123,8 @@ often connecting to a remote REPL process."
 (put 'inf-janet-mode 'mode-class 'special)
 
 (define-derived-mode inf-janet-mode comint-mode "Inferior janet"
+  :syntax-table inf-janet-syntax-table
+  (setq-local font-lock-defaults '(janet-highlights))
   (setq comint-prompt-regexp inf-janet-prompt)
   (setq mode-line-process '(":%s"))
   ;; (scheme-mode-variables)
@@ -130,11 +155,14 @@ often connecting to a remote REPL process."
 
 (defun inf-janet-preoutput-filter (str)
   "Preprocess the output STR from interactive commands."
-  (cond
-   ((string-prefix-p "inf-janet-" (symbol-name (or this-command last-command)))
-    ;; Remove subprompts and prepend a newline to the output string
-    (inf-janet-chomp (concat "\n" (inf-janet-remove-subprompts str))))
-   (t str)))
+  ;; Capture output as a list of strings, the first item will be
+  ;; printed output (if any) and the second the return value. Matching
+  ;; on ANSI escape codes may not be reliable if the printed output
+  ;; contains them.
+  (if (or inf-janet-filter-subprompts
+          (string-prefix-p "inf-janet-" (symbol-name (or this-command last-command))))
+      (inf-janet-remove-subprompts str)
+    str))
 
 (defvar inf-janet-project-root-files    ;; TODO
   '("_darcs")
@@ -142,9 +170,9 @@ often connecting to a remote REPL process."
 
 (defun inf-janet-project-root ()
   "Retrieve the root directory of a project if available.
-
 Fallback to `default-directory.' if not within a project."
-  (or (car (remove nil
+  (or (when (functionp 'projectile-project-root) (projectile-project-root))
+      (car (remove nil
                    (mapcar (lambda
                              (file)
                              (locate-dominating-file default-directory file))
@@ -159,35 +187,71 @@ Fallback to `default-directory.' if not within a project."
 ;;;###autoload
 (defun inf-janet (cmd)
   (interactive (list (if current-prefix-arg
-                         (read-string "Run janet: " inf-janet-program)
+                         ;; only a string is probably useful here
+                         (read-string "Run janet: " (if (stringp inf-janet-program)
+                                                        inf-janet-program
+                                                      (eval (car (get 'inf-janet-program 'standard-value)))))
                        inf-janet-program)))
-  (if (not (comint-check-proc "*inf-janet*"))
+  (if (not (comint-check-proc inf-janet-buffer))
       ;; run the new process in the project's root when in a project folder
       (let ((default-directory (inf-janet-project-root))
-            (cmdlist (if (consp cmd)
-                         (list cmd)
-                       (split-string cmd))))
-        (set-buffer (apply #'make-comint
-                           "inf-janet" (car cmdlist) nil (cdr cmdlist)))
-        (inf-janet-mode)))
+            (cmdlist (cond ((listp cmd) cmd)
+                           ((consp cmd) (list cmd))
+                           (t (split-string cmd)))))
+        (with-current-buffer (apply #'make-comint
+                                    "inf-janet" (car cmdlist) nil (cdr cmdlist))
+          (inf-janet-mode))))
   (setq inf-janet-buffer "*inf-janet*")
-  (pop-to-buffer-same-window "*inf-janet*"))
+  (display-buffer inf-janet-buffer))
 
 ;;;###autoload
 (defalias 'run-janet 'inf-janet)
+
+;;;###autoload
+(defun inf-janet-connect (host port)
+	"Connect to janet repl over net with HOST:PORT."
+	(interactive (list (read-string "Host: " "127.0.0.1")
+					   (read-number "Port: " 8001)))
+	(run-janet (cons host port)))
 
 (defun inf-janet-eval-region (start end &optional and-go)
   (interactive "r\nP")
   ;; replace multiple newlines at the end of the region by a single one
   ;; or add one if there was no newline
-  (let ((str (replace-regexp-in-string
-              "[\n]*\\'" "\n"
-              (buffer-substring-no-properties start end))))
-    (comint-send-string (inf-janet-proc) str))
+  (comint-simple-send
+   (inf-janet-proc)
+   (string-trim (buffer-substring-no-properties start end)))
   (if and-go (inf-janet-switch-to-repl t)))
 
-(defun inf-janet-eval-string (code)
-  (comint-send-string (inf-janet-proc) (concat code "\n")))
+(defun inf-janet-eval-string (s)
+  "Evaluate a string and return a cons pair of the output and return value."
+  (when-let (s ;; don't eval nil
+             (inf-janet-filter-subprompts t)
+             ;; start process if not running?
+             (p (inf-janet-proc)))
+    (with-current-buffer inf-janet-buffer
+      (let ((start (marker-position (cdr comint-last-prompt))))
+        (comint-simple-send p s)
+        (accept-process-output p)
+        (when-let ((end (save-excursion
+                          ;; skip prompt and back one
+                          (goto-char (point-max))
+                          (forward-line 0)
+                          (backward-char)
+                          (point)))
+                   (res (buffer-substring-no-properties start end))
+                   ;; the last line is the result, everything else
+                   ;; is output - if there is an error it will be
+                   ;; interpreted as the result
+                   (m (string-match (rx (group (* (* nonl) "\n")) (group (* nonl)) eos) res)))
+          (cons (match-string 1 res)
+                (match-string 2 res)))))))
+
+(defun inf-janet-eval-output (s)
+  (car (inf-janet-eval-string s)))
+
+(defun inf-janet-eval-return (s)
+  (cdr (inf-janet-eval-string s)))
 
 (defun inf-janet-eval-defun (&optional and-go)
   (interactive "P")
@@ -278,7 +342,7 @@ Used by this command to determine defaults."
 ;;; Command strings
 ;;; ===============
 
-
+
 (defun inf-janet-proc ()
   "Return the current inferior process.
 See variable `inf-janet-buffer'."

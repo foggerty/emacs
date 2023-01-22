@@ -42,3 +42,7 @@ pairs or single strings."
   `(lambda ()
      (interactive)
      (progn ,@commands)))
+
+(defun load-from-init (file)
+  (let ((init-dir (file-name-directory user-init-file)))
+  (load (concat init-dir file))))

@@ -198,5 +198,7 @@ margins if so."
 (use-package treemacs
   :config
   (setq treemacs-file-follow-delay 0
-        treemacs--project-follow-delay 0)
+        treemacs--project-follow-delay 0
+        treemacs-icons nil
+        treemacs-no-png-images t)
   (treemacs-project-follow-mode 1))
