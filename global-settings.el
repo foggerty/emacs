@@ -40,7 +40,7 @@
 (let ((backup-dir "~/.emacs.d/backups"))
   (if (not (file-exists-p backup-dir))
       (dired-create-directory backup-dir))
-  (setq backup-directory-alist '(("." . backup-dir))))
+  (setq backup-directory-alist (list (cons "." backup-dir))))
 
 
 ;; Yes/no to y/n
