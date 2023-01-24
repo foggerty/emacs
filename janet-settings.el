@@ -1,3 +1,5 @@
+(use-package janet-mode)
+
 (load-from-init  "inf-janet.el")
 
 ;;  (setq inf-janet-program "~/janet/build/janet")

@@ -1,15 +1,14 @@
-;;; Make pretty with the help of pywal.
-(custom-set-variables '(custom-safe-themes t))
+;; Set the frame title
+(setq-default frame-title-format '("%b"))
+
+;;; Make pretty with themes etc.
 
 (use-package ewal-doom-themes
-  :ensure t)
-
-
-;;; This starts to get messy when you want this config to work with
-;;; text, gui and daemon.....
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(load-theme 'ewal-doom-one)
+  :ensure t
+  :config
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
+  (load-theme 'doom-material))
 
 (defun after-frame-create (frame)
   (with-selected-frame frame

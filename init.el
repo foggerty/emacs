@@ -22,7 +22,7 @@
 
 
 ;; Required packages for boot-strap
-(dolist (package '(diminish use-package))
+(dolist (package '(diminish))
   (unless (package-installed-p package)
     (package-install package)))
 
@@ -53,6 +53,7 @@
         ;;"clojure-settings.el"
         ;;"yaml-settings.el"
         "elixir-settings.el"
+        "python-settings.el"
         ;;"lilypond.el"
         "org-settings.el"
         "global-key-bindings.el"))  ; always run last
