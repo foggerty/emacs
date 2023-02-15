@@ -50,7 +50,7 @@
         ;;"c-settings.el"
         ;;"scheme-settings.el"
         ;;"go-settings.el"
-        ;;"clojure-settings.el"
+        "clojure-settings.el"
         ;;"yaml-settings.el"
         "elixir-settings.el"
         "python-settings.el"

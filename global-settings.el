@@ -97,7 +97,6 @@
   :init
   (global-company-mode)
   :config
-  (add-to-list 'completion-styles 'completion-initials-try-completion t)
   (setq company-idle-delay nil)
   :diminish
   company-mode)
@@ -206,5 +205,6 @@ margins if so."
   (setq treemacs-file-follow-delay 0
         treemacs--project-follow-delay 0
         treemacs-icons nil
-        treemacs-no-png-images t)
+        treemacs-no-png-images t
+        treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
   (treemacs-project-follow-mode 1))

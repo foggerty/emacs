@@ -31,3 +31,5 @@
 (global-set-key (kbd "C-M-=")           'increase-margin)
 (global-set-key (kbd "C-M--")           'decrease-margin)
 (global-set-key (kbd "<f8>")            'treemacs)
+(global-set-key (kbd "<mouse-5>")       'scroll-up-line)
+(global-set-key (kbd "<mouse-4>")       'scroll-down-line)
