@@ -37,10 +37,17 @@
 
 
 ;; Centralised backup directory
+<<<<<<< HEAD
 (let ((backup-dir "~/.emacs.d/backups"))
   (if (not (file-exists-p backup-dir))
       (dired-create-directory backup-dir))
   (setq backup-directory-alist (list (cons "." backup-dir))))
+=======
+;; (let ((backup-dir "~/.emacs.d/backups"))
+;;   (if (not (file-exists-p backup-dir))
+;;       (dired-create-directory backup-dir))
+;;   (setq backup-directory-alist '(("." . backup-dir))))
+>>>>>>> 02dc095 (More 29 upgrade tweaks.)
 
 
 ;; Yes/no to y/n
@@ -83,11 +90,6 @@
          ("C-c g"   . counsel-git-grep))
   :diminish ivy-mode)
 
-;; (use-package flx
-;;   :config
-;;   (setq ivy-re-builders-alist
-;;         '((t . ivy--regex-fuzzy))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company (auto-complete) settings.
@@ -105,15 +107,6 @@
   :defer t
   :config
   (company-quickhelp-mode))
-
-;;(use-package company-flx)
-
-;; (use-package company-fuzzy
-;;   :hook (company-mode . company-fuzzy-mode)
-;;   :init
-;;   (setq company-fuzzy-sorting-backend 'flx
-;;         company-fuzzy-prefix-on-top nil
-;;         company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -144,6 +137,7 @@
 (when (not (display-graphic-p))
   (xterm-mouse-mode))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Let me know what to press next....
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -171,9 +165,9 @@
 ;;;; Magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package magit
-  :bind
-  ("C-x g" . magit-status))
+;; (use-package magit
+;;   :bind
+;;   ("C-x g" . magit-status))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -195,6 +189,7 @@ margins if so."
 
 (use-package yasnippet
   :defer t)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; treemacs

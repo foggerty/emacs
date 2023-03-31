@@ -1,7 +1,10 @@
-;;(use-package ruby-end)
+;; (use-package ruby-end)
 
 (use-package ruby-electric
   :hook ruby-mode)
+
+(use-package inf-ruby)
+(use-package company-inf-ruby)
 
 ;; (use-package enh-ruby-mode
 ;;   :hook ruby-mode

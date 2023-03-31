@@ -15,7 +15,8 @@
     (toggle-menu-bar-mode-from-frame 0)
     (toggle-tool-bar-mode-from-frame 0)
     (when (display-graphic-p)
-      (set-frame-parameter (selected-frame) 'alpha-background 0.8)
+      (set-frame-parameter (selected-frame) 'alpha-background 0.80)
+      (load-theme 'ewal-doom-one)
       (helper-set-font '("Sauce Code Pro Nerd Font"))
       (set-face-attribute 'default nil
                           :height 120))))

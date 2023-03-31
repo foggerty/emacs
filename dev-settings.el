@@ -10,9 +10,9 @@
 (use-package paredit
   :ensure t)
 
-(use-package git-timemachine
-  :bind
-  (("C-c t" . git-timemachine-toggle)))
+;; (use-package git-timemachine
+;;   :bind
+;;   (("C-c t" . git-timemachine-toggle)))
 
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
