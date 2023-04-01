@@ -6,9 +6,7 @@
 (use-package ewal-doom-themes
   :ensure t
   :config
-  (menu-bar-mode 0)
-  (tool-bar-mode 0)
-  (load-theme 'doom-material))
+  (load-theme 'ewal-doom-one t))
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
@@ -16,8 +14,7 @@
     (toggle-tool-bar-mode-from-frame 0)
     (when (display-graphic-p)
       (set-frame-parameter (selected-frame) 'alpha-background 0.80)
-      (load-theme 'ewal-doom-one)
-      (helper-set-font '("Sauce Code Pro Nerd Font"))
+      (helper-set-font '("Source Code Pro"))
       (set-face-attribute 'default nil
                           :height 120))))
 
@@ -25,6 +22,8 @@
 
 
 ;;; Basic tidy ups
+(menu-bar-mode 0)
+(tool-bar-mode 0)
 (setq inhibit-startup-screen t)
 (add-to-list 'default-frame-alist
              '(vertical-scroll-bars . nil)

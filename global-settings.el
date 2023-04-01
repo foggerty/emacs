@@ -37,17 +37,10 @@
 
 
 ;; Centralised backup directory
-<<<<<<< HEAD
-(let ((backup-dir "~/.emacs.d/backups"))
-  (if (not (file-exists-p backup-dir))
-      (dired-create-directory backup-dir))
-  (setq backup-directory-alist (list (cons "." backup-dir))))
-=======
 ;; (let ((backup-dir "~/.emacs.d/backups"))
 ;;   (if (not (file-exists-p backup-dir))
 ;;       (dired-create-directory backup-dir))
-;;   (setq backup-directory-alist '(("." . backup-dir))))
->>>>>>> 02dc095 (More 29 upgrade tweaks.)
+;;   (setq backup-directory-alist (list (cons "." backup-dir))))
 
 
 ;; Yes/no to y/n
