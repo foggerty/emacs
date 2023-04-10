@@ -7,7 +7,7 @@
 
 
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
-(setq custom-file "/dev/null")
+(setq custom-file "~/.emacs.d/custom-variables.el")
 
 
 ;; Packages setup
@@ -54,7 +54,7 @@
         "ruby-settings.el"
         ;;"yaml-settings.el"
         "elixir-settings.el"
-        "python-settings.el"
+        ;;"python-settings.el"
         ;;"lilypond.el"
         "org-settings.el"
         "global-key-bindings.el"))  ; always run last

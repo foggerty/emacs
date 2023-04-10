@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq eldoc-idle-delay 0.0)
+(global-eldoc-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
@@ -37,10 +38,17 @@
 
 
 ;; Centralised backup directory
+<<<<<<< HEAD
 ;; (let ((backup-dir "~/.emacs.d/backups"))
 ;;   (if (not (file-exists-p backup-dir))
 ;;       (dired-create-directory backup-dir))
 ;;   (setq backup-directory-alist (list (cons "." backup-dir))))
+=======
+(let ((backup-dir "~/.emacs.d/backups"))
+  (if (not (file-exists-p backup-dir))
+      (dired-create-directory backup-dir))
+  (setq backup-directory-alist (list (cons "." backup-dir))))
+>>>>>>> 065ef1e (Tidy)
 
 
 ;; Yes/no to y/n
@@ -93,8 +101,7 @@
   (global-company-mode)
   :config
   (setq company-idle-delay nil)
-  :diminish
-  company-mode)
+  :diminish company-mode)
 
 (use-package company-quickhelp
   :defer t
@@ -110,14 +117,13 @@
 (use-package projectile
   :ensure t
   :init
-  (projectile-mode +1))
+  (projectile-mode +1)
+  :diminish projectile-mode)
 
 (use-package counsel-projectile
   :config
   (add-hook 'after-init-hook 'counsel-projectile-mode)
-  (setq projectile-use-git-grep t)
-  :bind
-  ("<f12>" . counsel-projectile-find-file))
+  (setq projectile-use-git-grep t))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

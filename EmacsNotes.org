@@ -94,34 +94,34 @@ There are about twenty possible inputs to ~interactive~, and inputs are separate
 Use "P" (raw) or "p" (number) to get the prefix argument.  Still not sure what the difference is.
 
 #+BEGIN_SRC elisp
-  (defun fred (raw)
-    (interactive "P")
-    (message "Prefix value was %s" raw))
+(defun fred (raw)
+  (interactive "P")
+  (message "Prefix value was %s" raw))
 #+END_SRC
 
 ** Let statements
 
 #+BEGIN_SRC elisp
-  (let ((variable1 value1)
-        (variable2 value2)
-        this-will-be-bound-to-nill-and-doesnt-reqire-parenthesies
-        (variable3 value3))
-    (body-expression1)
-    (body-expression2))
+(let ((variable1 value1)
+      (variable2 value2)
+      this-will-be-bound-to-nill-and-doesnt-reqire-parenthesies
+      (variable3 value3))
+  (body-expression1)
+  (body-expression2))
 #+END_SRC
 
 Note that ~let~ will evaluate all of the values, and /then/ assign them to the variables.  To have them all evaluated as they bind, and therefore allow you to use them in subsequent bindings, use ~let*~:
 
 #+BEGIN_SRC elisp
-  (setq x 1)
+(setq x 1)
 
-  (let ((x 2)
-        (y x)) ; will be bound to existing 'x', as no evaluation yet
-    (list x y)) ; (2 1)
+(let ((x 2)
+      (y x)) ; will be bound to existing 'x', as no evaluation yet
+  (list x y)) ; (2 1)
 
-  (let* ((x 2)
-         (y x))
-    (list x y)) ; (2 2)
+(let* ((x 2)
+       (y x))
+  (list x y)) ; (2 2)
 #+END_SRC
 
 ** Equality

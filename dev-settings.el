@@ -14,6 +14,9 @@
 ;;   :bind
 ;;   (("C-c t" . git-timemachine-toggle)))
 
+(use-package eglot)
+(use-package flymake) ; required by eglot?
+
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
