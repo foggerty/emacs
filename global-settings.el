@@ -38,17 +38,10 @@
 
 
 ;; Centralised backup directory
-<<<<<<< HEAD
-;; (let ((backup-dir "~/.emacs.d/backups"))
-;;   (if (not (file-exists-p backup-dir))
-;;       (dired-create-directory backup-dir))
-;;   (setq backup-directory-alist (list (cons "." backup-dir))))
-=======
 (let ((backup-dir "~/.emacs.d/backups"))
   (if (not (file-exists-p backup-dir))
-      (dired-create-directory backup-dir))
+      (make-directory backup-dir))
   (setq backup-directory-alist (list (cons "." backup-dir))))
->>>>>>> 065ef1e (Tidy)
 
 
 ;; Yes/no to y/n
@@ -164,9 +157,9 @@
 ;;;; Magit
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (use-package magit
-;;   :bind
-;;   ("C-x g" . magit-status))
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -194,11 +187,11 @@ margins if so."
 ;;;; treemacs
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package treemacs
-  :config
-  (setq treemacs-file-follow-delay 0
-        treemacs--project-follow-delay 0
-        treemacs-icons nil
-        treemacs-no-png-images t
-        treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
-  (treemacs-project-follow-mode 1))
+;; (use-package treemacs
+;;   :config
+;;   (setq treemacs-file-follow-delay 0
+;;         treemacs--project-follow-delay 0
+;;         treemacs-icons nil
+;;         treemacs-no-png-images t
+;;         treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
+;;   (treemacs-project-follow-mode 1))

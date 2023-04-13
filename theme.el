@@ -6,20 +6,16 @@
 (use-package ewal-doom-themes
   :ensure t
   :config
-<<<<<<< HEAD
-=======
   (menu-bar-mode 0)
-  (tool-bar-mode 0)
->>>>>>> 065ef1e (Tidy)
-  (load-theme 'ewal-doom-one t))
+  (tool-bar-mode 0))
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (toggle-menu-bar-mode-from-frame 0)
     (toggle-tool-bar-mode-from-frame 0)
     (when (display-graphic-p)
-      (set-frame-parameter (selected-frame) 'alpha-background 0.85)
-      (load-theme 'ewal-doom-one)
+      (set-frame-parameter (selected-frame) 'alpha-background 0.9)
+      (load-theme 'ewal-doom-one t)
       (helper-set-font '("Sauce Code Pro Nerd Font"))
       (set-face-attribute 'default nil
                           :height 120))))

@@ -31,9 +31,6 @@
 (global-set-key (kbd "C-M-=")           'increase-margin)
 (global-set-key (kbd "C-M--")           'decrease-margin)
 (global-set-key (kbd "<f8>")            'treemacs)
-<<<<<<< HEAD
 (global-set-key (kbd "<mouse-5>")       'scroll-up-line)
 (global-set-key (kbd "<mouse-4>")       'scroll-down-line)
-=======
 (global-set-key (kbd "<f12>")           'counsel-projectile-find-file)
->>>>>>> 63ded43 (Tweaking etc, for the uses of.)
