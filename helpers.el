@@ -1,6 +1,7 @@
 (defun helper-set-font (flist)
   "Set font to the first that it finds in flist."
-  (if (not (eq nil flist))
+  (if (and (display-graphic-p)
+           (not (eq nil flist)))
       (let ((font (car flist)))
         (if (x-list-fonts font)
             (set-frame-font font)
