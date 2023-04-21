@@ -22,7 +22,7 @@
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
-    (set-frame-parameter (selected-frame) 'alpha-background 0.9)))
+    (set-frame-parameter frame 'alpha-background 0.9)))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
 
