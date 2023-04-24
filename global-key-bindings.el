@@ -34,3 +34,4 @@
 (global-set-key (kbd "<mouse-5>")       'scroll-up-line)
 (global-set-key (kbd "<mouse-4>")       'scroll-down-line)
 (global-set-key (kbd "<f12>")           'counsel-projectile-find-file)
+(global-set-key (kbd "C-<f12>")         'treemacs-projectile)

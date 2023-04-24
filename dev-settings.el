@@ -1,26 +1,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Settings that apply to more than one programming mode
+;;;; Settings/packages that apply to or are used by more than one
+;;;; programming mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package aggressive-indent
-  :defer t)
-
+(use-package flymake)
+(use-package aggressive-indent)
 (use-package highlight-parentheses)
-
-(use-package paredit
-  :ensure t)
+(use-package paredit)
+(use-package markdown-mode)
 
 ;; (use-package git-timemachine
 ;;   :bind
 ;;   (("C-c t" . git-timemachine-toggle)))
 
-(use-package eglot)
-(use-package flymake) ; required by eglot?
+;; See here: https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/
+;; for a complete list ogf LSP settings.
+
+(use-package eglot
+  :config
+  (push :codeLensProvider eglot-ignored-server-capabilities))
 
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
-                               (show-paren-mode nil)
-                               (highlight-parentheses-mode)))
+                               (show-paren-mode 1)
+                               (highlight-parentheses-mode nil)))
 
 (setq eldoc-echo-area-use-multiline-p 1)
