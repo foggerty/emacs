@@ -193,6 +193,7 @@ margins if so."
   (treemacs-git-mode 'simple)
   (treemacs-git-commit-diff-mode t)
   (setq treemacs-follow-mode t
+        treemacs-tag-follow-delay 0
         treemacs-file-follow-delay 0
         treemacs-indentation 4
         treemacs-file-event-delay 500
