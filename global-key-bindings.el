@@ -3,17 +3,6 @@
 ;;;; been loaded, to avoid things like org-mode clobbering them.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Sigh, except that org-mode is seriously persistent in its
-;; clobbering, so nuke any bindings in its local map so that they can
-;; be rebound here.
-
-;; Always run this file last.
-
-;;(define-key org-mode-map (kbd "C-<tab>") nil)
-;;(define-key c-mode-map (kbd "C-c C-q") nil)
-
-;; Now setup custom mappings...
-
 (global-set-key (kbd "C-S-<up>")        'previous-buffer)
 (global-set-key (kbd "C-S-<down>")      'next-buffer)
 (global-set-key (kbd "C-<tab>")         'other-window)
@@ -35,3 +24,7 @@
 (global-set-key (kbd "<mouse-4>")       'scroll-down-line)
 (global-set-key (kbd "<f12>")           'counsel-projectile-find-file)
 (global-set-key (kbd "C-<f12>")         'treemacs-projectile)
+
+(setq text-scale-mode-step 1.1)
+(global-set-key (kbd "C-=")             'text-scale-increase)
+(global-set-key (kbd "C--")             'text-scale-decrease)

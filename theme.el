@@ -17,12 +17,12 @@
   :config
   (load-theme 'ewal-doom-one t))
 
-(helper-set-font '("Sauce Code Pro Nerd Font"))
 (setq-default line-spacing 2) ; 1 extra pixel under lines
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
-    (set-frame-parameter frame 'alpha-background 0.95)))
+    (set-frame-parameter frame 'alpha-background 0.85)
+    (helper-set-font '("Source Code Pro-12"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
 
