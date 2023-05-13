@@ -1,6 +1,8 @@
-(use-package elixir-mode)
-;;(use-package exunit)
 (use-package inf-elixir)
 (use-package mix)
+(use-package elixir-mode
+  :hook ((elixir-mode . inf-elixir-minor-mode)
+         (elixir-mode . eglot-ensure)))
 
-(add-hook 'elixir-mode-hook 'eglot-ensure)
+(add-to-list 'eglot-server-programs
+             '(elixir-mode "~/dev/elixir/elixir-ls/language_server.sh"))

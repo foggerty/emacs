@@ -9,13 +9,17 @@
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; <tab> will first indent, then complete if hit again.
+(setq tab-always-indent 'complete)
+
 ;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 
 ;; File beautification
 (setq delete-trailing-lines t)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
 ;; On Mac, use Command key as Meta when not in terminal.

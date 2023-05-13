@@ -7,9 +7,9 @@
   "Given x/y coordinates, will calculate the bit in RAM."
   (interactive "nX: \nnY: ")
   (message "%d"
-	        (+ 16384
-	           (* y 32)
-	           (% x 16))))
+	   (+ 16384
+	      (* y 32)
+	      (% x 16))))
 
 
 (defun n2t-asm-align-buffer ()
@@ -51,10 +51,9 @@
   (save-excursion
     (beginning-of-line)
     ;; loop symbol and one-line comments
-    (if (or
-	      (looking-at "^[ \t]*(")
-	      (looking-at "^[ \t]*//"))
-	     (indent-line-to 0)
+    (if (or (looking-at "^[ \t]*(")
+	    (looking-at "^[ \t]*//"))
+	(indent-line-to 0)
       ;; everything else
       (indent-line-to default-tab-width))))
 

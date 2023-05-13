@@ -17,12 +17,14 @@
   :config
   (load-theme 'ewal-doom-one t))
 
+;;(load-theme 'tango-dark)
+
 (setq-default line-spacing 2) ; 1 extra pixel under lines
 
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (set-frame-parameter frame 'alpha-background 0.85)
-    (helper-set-font '("Source Code Pro-12"))))
+    (helper-set-font '("Source Code Pro-10"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
 
