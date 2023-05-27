@@ -17,7 +17,7 @@
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
-                               (show-paren-mode nil)
-                               (highlight-parentheses-mode)))
+                               (show-paren-mode 1)
+                               (highlight-parentheses-mode 1)))
 
 (setq eldoc-echo-area-use-multiline-p 1)

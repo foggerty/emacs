@@ -14,7 +14,7 @@
 
 ;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq-default tab-width 8)
 
 
 ;; File beautification
@@ -42,10 +42,9 @@
 
 
 ;; Centralised backup directory
-(let ((backup-dir "~/.emacs.d/backups"))
-  (if (not (file-exists-p backup-dir))
-      (make-directory backup-dir))
-  (setq backup-directory-alist (list (cons "." backup-dir))))
+;; Note: need absolute path 
+(setq backup-directory-alist
+      `(("." . "~/.emacs.d/backups"))) 
 
 
 ;; Yes/no to y/n
