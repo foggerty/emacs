@@ -44,7 +44,7 @@
 ;; Centralised backup directory
 ;; Note: need absolute path 
 (setq backup-directory-alist
-      `(("." . "~/.emacs.d/backups"))) 
+      `((".*" . "~/.emacs.d/backups"))) 
 
 
 ;; Yes/no to y/n
