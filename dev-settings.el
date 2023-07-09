@@ -7,6 +7,8 @@
 
 (use-package highlight-parentheses)
 
+(use-package markdown-mode)
+
 (use-package paredit
   :ensure t)
 
@@ -21,3 +23,17 @@
                                (highlight-parentheses-mode 1)))
 
 (setq eldoc-echo-area-use-multiline-p 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Tree-sitter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq major-mode-remap-alist
+      '((c++-mode . c++-ts-mode)
+        '(c-mode .  c-ts-mode)
+        '(go-mode . go-ts-mode)
+        '(yaml-mode . yaml-ts-mode)
+        '(bash-mode . bash-ts-mode)
+        '(js-mode . js-ts-mode)
+        '(css-mode . css-ts-mode)
+        '(ruby-mode . ruby-ts-mode)))

@@ -30,6 +30,7 @@ Simplify all the things!  Use ~ewal~ to use the same theme as wot's as being use
 
 ** General
  - [ ] Move all projectile commands behind F12.
+ - [ ] Get company mode working in org-mode, switch to using ctrl-space for company-complete, now that 
 
 ** Golang
 - [X] Ensure using latest version of golang.

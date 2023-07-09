@@ -1,4 +1,8 @@
-(use-package janet-mode)
+(use-package janet-mode
+  :bind
+  (:map janet-mode-map
+        ("C-c C-b" . inf-janet-eval-buffer)))
 
-(add-hook 'janet-mode-hook #'paredit-mode)
-(add-hook 'janet-mode-hook #'aggressive-indent-mode)
+(add-hook 'janet-mode-hook (qif (paredit-mode)
+                                (aggressive-indent-mode)
+                                (inf-janet-minor-mode-hook)))
