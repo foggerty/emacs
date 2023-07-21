@@ -33,3 +33,8 @@
 (set-default 'blink-cursor-blinks 0) ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
 (set-default 'cursor-type 'bar)
+
+
+;;; Italic comments.
+(custom-set-faces
+ '(font-lock-comment-face ((t (:foreground "#a0a2a5" :slant italic)))))
