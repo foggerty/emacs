@@ -46,18 +46,18 @@
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev related modes
         "elisp-settings.el"
-;;        "janet-settings.el"
+	"janet-settings.el"
         "inf-janet.el"
         "c-settings.el"
-        ;;"scheme-settings.el"
-        ;;"go-settings.el"
+        "scheme-settings.el"
+        "go-settings.el"
         "clojure-settings.el"
         "neo4j-settings.el"
         "ruby-settings.el"
-        ;;"yaml-settings.el"
-        ;;"elixir-settings.el"
-        ;;"python-settings.el"
-        ;;"lilypond.el"
+        "yaml-settings.el"
+        "elixir-settings.el"
+        "python-settings.el"
+        "lilypond.el"
         "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
@@ -66,7 +66,3 @@
   (load-file (concat (file-name-directory user-init-file)
 		     file)))
 
-;; Finally, all of the org files I use.
-(setq org-agenda-files '("~/ToDo.org"
-                         "~/RandomNotes.org"
-                         "~/Development/projects/notebooks"))

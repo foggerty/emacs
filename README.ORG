@@ -18,6 +18,7 @@ init.el will:
 A constant work in progress :-)
 
 [[file:emacs.png]]
+
 * Note on building emacs:
 ** Fedora
 Install the following: ~autoconf texinfo gtk3-devel gnutls-devel giflib-devel libXpm-devel ncurses-devel librsvg2-devel systemd-devel libgccjit libgccjit-devel libtree-sitter libtree-sitter-devel~

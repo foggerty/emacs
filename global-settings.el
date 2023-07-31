@@ -12,9 +12,10 @@
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
 
+
 ;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 8)
+(setq-default tab-width 4)
 
 
 ;; File beautification
