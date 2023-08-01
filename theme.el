@@ -38,3 +38,8 @@
 ;;; Italic comments.
 (custom-set-faces
  '(font-lock-comment-face ((t (:foreground "#a0a2a5" :slant italic)))))
+
+
+;; Sexy(ish) scrolling
+(setq pixel-scroll-precision-momentum-seconds 0.75
+      pixel-scroll-precision-momentum-tick 0.01)
