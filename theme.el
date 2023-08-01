@@ -41,5 +41,7 @@
 
 
 ;; Sexy(ish) scrolling
-(setq pixel-scroll-precision-momentum-seconds 0.75
+(pixel-scroll-precision-mode t) 
+(setq pixel-scroll-precision-use-momentum t
+      pixel-scroll-precision-momentum-seconds 0.75
       pixel-scroll-precision-momentum-tick 0.01)
