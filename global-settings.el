@@ -37,9 +37,9 @@
 
 
 ;; Make sure temp buffers don't steal all of the screen
-(temp-buffer-resize-mode t)
-(setq temp-buffer-max-height 20
-      compilation-window-height 20)
+;; (temp-buffer-resize-mode t)
+;; (setq temp-buffer-max-height 40
+;;       compilation-window-height 40)
 
 
 ;; Centralised backup directory
