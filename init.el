@@ -2,6 +2,7 @@
 ;;; use-package in installed, and then everything else is setup via
 ;;; other scripts.
 
+
 ;; Always use newer source over old byte-compiled.
 (setq load-prefer-newer t)
 
@@ -44,10 +45,10 @@
         "libraries.el"
         "text-settings.el"
         "global-settings.el"
-        "dev-settings.el" ; should come before all other dev related modes
+        "dev-settings.el" ; should come before all other dev-related modes
         "elisp-settings.el"
-	     "janet-settings.el"
         "inf-janet.el"
+    	"janet-settings.el"
         "c-settings.el"
         "scheme-settings.el"
         "go-settings.el"
@@ -61,8 +62,7 @@
         "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
-
 (dolist (file files-to-load)
   (load-file (concat (file-name-directory user-init-file)
-		     file)))
+		               file)))
 

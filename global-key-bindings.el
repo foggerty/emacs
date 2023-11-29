@@ -24,7 +24,6 @@
 (global-set-key (kbd "<mouse-4>")       'scroll-down-line)
 (global-set-key (kbd "<f12>")           'counsel-projectile-find-file)
 (global-set-key (kbd "C-<f12>")         'treemacs-projectile)
-
-(setq text-scale-mode-step 1.1)
 (global-set-key (kbd "C-=")             'text-scale-increase)
 (global-set-key (kbd "C--")             'text-scale-decrease)
+(global-set-key (kbd "C-c m")           'counsel-imenu)

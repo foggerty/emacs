@@ -2,6 +2,8 @@
 ;;;; Settings that apply to more than one programming mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
 (use-package aggressive-indent
   :defer t)
 

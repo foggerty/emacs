@@ -195,7 +195,6 @@ margins if so."
 
 ;; After installation, will need to run the
 ;; all-the-icons-install-fonts
-
 (use-package neotree
   :bind
   (("<f8>" . neotree-toggle)))

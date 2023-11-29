@@ -15,7 +15,7 @@
         cider-repl-display-help-banner nil
         cider-repl-pop-to-buffer-on-connect 'display-only))
 
-(use-package flycheck-clj-kondo) ;; remember to install clj-kondo!
+(use-package flycheck-clj-kondo)
 
 (use-package clojure-mode
   :ensure t

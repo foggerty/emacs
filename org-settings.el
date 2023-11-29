@@ -1,5 +1,7 @@
 ;; ORG Mode
 
+(use-package org-bullets)
+
 (defun org-setup ()
   (org-indent-mode)
   (org-bullets-mode)
