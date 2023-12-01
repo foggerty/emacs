@@ -30,7 +30,7 @@
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (set-frame-parameter frame 'undecoraded 1)
-    (set-frame-parameter frame 'alpha-background 0.70)
+    (set-frame-parameter frame 'alpha-background 0.90)
     (helper-set-font '("Source Code Pro-12"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)

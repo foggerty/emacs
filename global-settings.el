@@ -188,24 +188,18 @@ margins if so."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; treemacs
+;;;; neotree
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package all-the-icons)
 
-(use-package treemacs
-  :config
-  (treemacs-git-mode 'simple)
-  (treemacs-git-commit-diff-mode t)
-  (setq treemacs-follow-mode t
-        treemacs-tag-follow-delay 0
-        treemacs-file-follow-delay 0
-        treemacs-indentation 4
-        treemacs-file-event-delay 500
-        treemacs-file-follow-delay 0
-        treemacs--project-follow-delay 0
-        treemacs-icons nil
-        treemacs-no-png-images t
-        treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
-  (treemacs-project-follow-mode 1))
+;; After installation, will need to run the
+;; all-the-icons-install-fonts
 
-(use-package treemacs-projectile)
+(use-package neotree
+  :bind
+  (("<f8>" . neotree-toggle)))
+
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow)
+      neo-smart-open t
+      projectile-switch-project-action 'neotree-projectile-action)
