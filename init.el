@@ -47,10 +47,10 @@
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev-related modes
         "elisp-settings.el"
-        "inf-janet.el"
-    	"janet-settings.el"
+        ;;"inf-janet.el"
+    	  ;;"janet-settings.el"
         "c-settings.el"
-        "scheme-settings.el"
+        ;;"scheme-settings.el"
         "go-settings.el"
         "clojure-settings.el"
         "neo4j-settings.el"

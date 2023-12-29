@@ -1,4 +1,4 @@
-(require 'inf-janet)
+;(require 'inf-janet)
 
 (use-package janet-mode
   :bind
