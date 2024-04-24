@@ -36,12 +36,6 @@
 (delete-selection-mode 1)
 
 
-;; Make sure temp buffers don't steal all of the screen
-;; (temp-buffer-resize-mode t)
-;; (setq temp-buffer-max-height 40
-;;       compilation-window-height 40)
-
-
 ;; Centralised backup directory
 ;; Note: need absolute path 
 (setq backup-directory-alist
@@ -127,11 +121,17 @@
 ;;;; Mouse settings - one day this will be intuitive...
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq mouse-wheel-tilt-scroll t)
-(setq mouse-wheel-progressive-speed nil)
-(setq mouse-wheel-scroll-amount '(3 ((shift) . 1)))
-(when (not (display-graphic-p))
-  (xterm-mouse-mode))
+(setq mouse-wheel-tilt-scroll t
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+
+(setq pixel-scroll-precision-use-momentum t
+      pixel-scroll-precision-momentum-seconds 0.75
+      pixel-scroll-precision-momentum-tick 0.01
+      pixel-scroll-precision-mode t)
+
+;; (when (not (display-graphic-p))
+;; (xterm-mouse-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

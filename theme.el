@@ -46,9 +46,3 @@
 (custom-set-faces
  '(font-lock-comment-face ((t (:foreground "#a0a2a5" :slant italic)))))
 
-
-;; Sexy(ish) scrolling
-(pixel-scroll-precision-mode t) 
-(setq pixel-scroll-precision-use-momentum t
-      pixel-scroll-precision-momentum-seconds 0.75
-      pixel-scroll-precision-momentum-tick 0.01)

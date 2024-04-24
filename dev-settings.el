@@ -26,6 +26,7 @@
 
 (setq eldoc-echo-area-use-multiline-p 1)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Tree-sitter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -38,4 +39,7 @@
         '(bash-mode . bash-ts-mode)
         '(js-mode . js-ts-mode)
         '(css-mode . css-ts-mode)
-        '(ruby-mode . ruby-ts-mode)))
+        '(ruby-mode . ruby-ts-mode)
+        '(csharp-mode . csharp-ts-mode)
+        '(bash-mode . bash-ts-mode)
+        '(python-mode . python-ts-mode)))
