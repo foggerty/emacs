@@ -46,3 +46,6 @@
 (custom-set-faces
  '(font-lock-comment-face ((t (:foreground "#a0a2a5" :slant italic)))))
 
+
+;;;; Smooth scrolling (GUI only)
+(pixel-scroll-precision-mode)
