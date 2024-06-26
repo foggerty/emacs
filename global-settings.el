@@ -9,6 +9,9 @@
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Mouse-mode in terminals
+(xterm-mouse-mode)
+
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
 
