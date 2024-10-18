@@ -2,17 +2,15 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (setq inhibit-startup-screen t)
-(add-to-list 'default-frame-alist
-             '(vertical-scroll-bars . nil)
-             '(menu-bar-lines . nil))
+(add-to-list 'default-frame-alist '(vertical-scroll-bars . nil))
+(add-to-list 'default-frame-alist '(menu-bar-lines . nil))
+(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+(add-to-list 'default-frame-alist '(internal-border-width . 5))
 
 
-;; Set the frame title
+;;; Set the frame title
 (setq-default frame-title-format '("%b"))
-
-
-;; Window manager stuff
-(setq-default )
 
 
 ;;; Make pretty with themes etc.
@@ -30,7 +28,7 @@
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (set-frame-parameter frame 'undecoraded 1)
-    (set-frame-parameter frame 'alpha-background 0.90)
+    (set-frame-parameter frame 'alpha-background 0.80)
     (helper-set-font '("Source Code Pro-12"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
