@@ -41,6 +41,7 @@
 (setq files-to-load
       '("helpers.el"
         "random-functions.el"
+	"tangotango2-theme.el"
         "theme.el"
         "libraries.el"
         "text-settings.el"

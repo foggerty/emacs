@@ -14,21 +14,19 @@
 
 
 ;;; Make pretty with themes etc.
-(use-package ewal-doom-themes
-  :ensure t
-  :config
-  (if (daemonp) ;; doesn't work out of daemon mode in terminal?
-      (load-theme 'ewal-doom-one t)
-    (load-theme 'wombat)))
 
-;;(load-theme 'tango-dark)
+(load-theme 'tango-dark)
 
+
+;;; Line spacing
 (setq-default line-spacing 2) ; 1 extra pixel under lines
 
+
+;;; Default for new frames
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (set-frame-parameter frame 'undecoraded 1)
-    (set-frame-parameter frame 'alpha-background 0.80)
+    (set-frame-parameter frame 'alpha-background 0.95)
     (helper-set-font '("Source Code Pro-12"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
