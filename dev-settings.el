@@ -31,15 +31,37 @@
 ;;;; Tree-sitter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setq major-mode-remap-alist
-      '((c++-mode . c++-ts-mode)
-        '(c-mode .  c-ts-mode)
-        '(go-mode . go-ts-mode)
-        '(yaml-mode . yaml-ts-mode)
-        '(bash-mode . bash-ts-mode)
-        '(js-mode . js-ts-mode)
-        '(css-mode . css-ts-mode)
-        '(ruby-mode . ruby-ts-mode)
-        '(csharp-mode . csharp-ts-mode)
-        '(bash-mode . bash-ts-mode)
-        '(python-mode . python-ts-mode)))
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (setq treesit-auto-langs
+        '(awk
+          bash
+          c
+          c-sharp
+          clojure
+          cmake
+          commonlisp
+          cpp
+          css
+          elixir
+          go
+          gomod
+          html
+          ;; janet
+          javascript
+          json
+          lua
+          make
+          ;; markdown
+          org
+          proto
+          python
+          sql
+          toml
+          yaml))
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (treesit-auto-install-all)
+  (global-treesit-auto-mode))
+

@@ -14,8 +14,13 @@
 
 
 ;;; Make pretty with themes etc.
+(use-package ewal-doom-themes)
+(load-theme 'ewal-doom-one t)
 
-(load-theme 'tango-dark)
+(use-package powerline)
+(powerline-default-theme)
+(set-face-attribute 'mode-line nil
+                    :box '(:line-width 1))
 
 
 ;;; Line spacing
@@ -26,7 +31,7 @@
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (set-frame-parameter frame 'undecoraded 1)
-    (set-frame-parameter frame 'alpha-background 0.95)
+    (set-frame-parameter frame 'alpha-background 0.9)
     (helper-set-font '("Source Code Pro-12"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
