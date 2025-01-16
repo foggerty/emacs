@@ -14,14 +14,13 @@
 
 
 ;;; Make pretty with themes etc.
-(use-package ewal-doom-themes)
+(use-package ewal-doom-theme)
 (load-theme 'ewal-doom-one t)
 
 (use-package powerline)
 (powerline-default-theme)
 (set-face-attribute 'mode-line nil
                     :box '(:line-width 1))
-
 
 ;;; Line spacing
 (setq-default line-spacing 2) ; 1 extra pixel under lines

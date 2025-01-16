@@ -18,11 +18,14 @@
   :bind
   (("C-c t" . git-timemachine-toggle)))
 
+(use-package rainbow-mode)
+
 (add-hook 'prog-mode-hook (qif (diminish 'paredit-mode)
                                (diminish 'eldoc-mode)
                                (electric-pair-mode)
                                (show-paren-mode 1)
-                               (highlight-parentheses-mode 1)))
+                               (highlight-parentheses-mode 1)
+                               (rainbow-mode)))
 
 (setq eldoc-echo-area-use-multiline-p 1)
 
@@ -49,19 +52,19 @@
           go
           gomod
           html
-          ;; janet
+          janet
           javascript
           json
           lua
           make
-          ;; markdown
+          ;;markdown
           org
           proto
           python
           sql
           toml
           yaml))
+  
   (treesit-auto-add-to-auto-mode-alist 'all)
   (treesit-auto-install-all)
-  (global-treesit-auto-mode))
-
+  mode)

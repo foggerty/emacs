@@ -205,3 +205,11 @@ margins if so."
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow)
       neo-smart-open t
       projectile-switch-project-action 'neotree-projectile-action)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Standard regex-replace
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package visual-regexp-steroids
+  :config
+  (advice-add 'replace-regexp :override #'vr/query-replace))
