@@ -5,6 +5,7 @@
 (setq eldoc-idle-delay 0.0)
 (global-eldoc-mode)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -82,7 +83,10 @@
   :bind (("C-s"     . swiper)
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
-         ("C-c g"   . counsel-git-grep))
+         ("C-c g"   . counsel-git-grep)
+         :map ivy-mode-map
+         ("<next>" . ivy-scroll-up-command)
+         ("<prior>" . ivy-scroll-down-command))
   :diminish ivy-mode)
 
 
@@ -117,7 +121,9 @@
 (use-package counsel-projectile
   :config
   (add-hook 'after-init-hook 'counsel-projectile-mode)
-  (setq projectile-use-git-grep t))
+  (setq projectile-use-git-grep t)
+  :bind
+  (("<f12>" . counsel-projectile-find-file)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -191,20 +197,17 @@ margins if so."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; neotree
+;;;; treemace
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package all-the-icons)
 
 ;; After installation, will need to run the
 ;; all-the-icons-install-fonts
-(use-package neotree
+(use-package treemacs
   :bind
-  (("<f8>" . neotree-toggle)))
+  (("<f8>" . treemacs)))
 
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow)
-      neo-smart-open t
-      projectile-switch-project-action 'neotree-projectile-action)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace
@@ -213,3 +216,4 @@ margins if so."
 (use-package visual-regexp-steroids
   :config
   (advice-add 'replace-regexp :override #'vr/query-replace))
+

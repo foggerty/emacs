@@ -17,13 +17,14 @@
 (use-package ewal-doom-theme)
 (load-theme 'ewal-doom-one t)
 
-(use-package powerline)
-(powerline-default-theme)
-(set-face-attribute 'mode-line nil
-                    :box '(:line-width 1))
+(use-package spaceline
+  :config
+  (require 'spaceline-config)
+  (spaceline-emacs-theme))
+
 
 ;;; Line spacing
-(setq-default line-spacing 2) ; 1 extra pixel under lines
+(setq-default line-spacing 3) ; 1 extra pixel under lines
 
 
 ;;; Default for new frames
