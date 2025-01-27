@@ -84,7 +84,7 @@
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
          ("C-c g"   . counsel-git-grep)
-         :map ivy-mode-map
+         :map ivy-minibuffer-map
          ("<next>" . ivy-scroll-up-command)
          ("<prior>" . ivy-scroll-down-command))
   :diminish ivy-mode)

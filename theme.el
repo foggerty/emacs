@@ -15,7 +15,11 @@
 
 ;;; Make pretty with themes etc.
 (use-package ewal-doom-themes)
-(load-theme 'ewal-doom-one t)
+(if (daemonp)
+    (load-theme 'ewal-doom-one t)
+  (if (display-graphic-p)
+      (load-theme 'ewal-doom-one t)
+    (load-theme 'doom-badger t)))
 
 (use-package spaceline
   :config
@@ -24,15 +28,15 @@
 
 
 ;;; Line spacing
-(setq-default line-spacing 3) ; 1 extra pixel under lines
+(setq-default line-spacing 2) ; 2 extra pixels under lines
 
 
 ;;; Default for new frames
 (defun after-frame-create (frame)
   (with-selected-frame frame
     (set-frame-parameter frame 'undecoraded 1)
-    (set-frame-parameter frame 'alpha-background 0.9))
-  (helper-set-font '("Source Code Pro-12")))
+    (set-frame-parameter frame 'alpha-background 0.9)
+    (helper-set-font '("Source Code Pro-12"))))
 
 (add-hook 'after-make-frame-functions #'after-frame-create)
 
