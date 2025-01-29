@@ -19,7 +19,7 @@
     (load-theme 'ewal-doom-one t)
   (if (display-graphic-p)
       (load-theme 'ewal-doom-one t)
-    (load-theme 'doom-badger t)))
+    (load-theme 'wombat t)))
 
 (use-package spaceline
   :config

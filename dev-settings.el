@@ -48,7 +48,6 @@
           go
           gomod
           html
-          janet
           javascript
           json
           lua
