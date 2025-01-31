@@ -41,14 +41,14 @@
 (setq files-to-load
       '("helpers.el"
         "random-functions.el"
-	     "tangotango2-theme.el"
+	    "tangotango2-theme.el"
         "theme.el"
         "libraries.el"
         "text-settings.el"
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev-related modes
         "elisp-settings.el"
-	     "janet-settings.el"
+	    "janet-settings.el"
         "c-settings.el"        
         "go-settings.el"
         "clojure-settings.el"

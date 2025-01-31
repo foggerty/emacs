@@ -21,11 +21,6 @@
       (load-theme 'ewal-doom-one t)
     (load-theme 'wombat t)))
 
-(use-package spaceline
-  :config
-  (require 'spaceline-config)
-  (spaceline-emacs-theme))
-
 
 ;;; Line spacing
 (setq-default line-spacing 2) ; 2 extra pixels under lines
