@@ -81,6 +81,7 @@
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
   :bind (("C-s"     . swiper)
+         ("C-<S-S>" . isearch-forward)  ;; doesn't work in terminal
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
          ("C-c g"   . counsel-git-grep)
