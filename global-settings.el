@@ -218,3 +218,10 @@ margins if so."
   :config
   (advice-add 'replace-regexp :override #'vr/query-replace))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Golden-ratio
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package golden-ratio-scroll-screen
+  :config
+  (golden-ratio-mode))
