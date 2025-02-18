@@ -7,7 +7,7 @@
 (global-set-key (kbd "C-S-<down>")      'next-buffer)
 (global-set-key (kbd "C-<tab>")         'other-window)
 (global-set-key (kbd "C-x C-b")         'ibuffer)
-(global-set-key (kbd "C-c C-q")         'helper-indent-buffer)
+(global-set-key (kbd "C-c C-q")         'indent-buffer)
 (global-set-key (kbd "C-z")             'undo)
 (global-set-key (kbd "C-c c")           'org-capture)
 (global-set-key (kbd "C-x C-k")         'foggerty-other-window-kill-buffer)

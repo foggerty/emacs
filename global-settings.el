@@ -24,7 +24,6 @@
 
 ;; File beautification
 (setq delete-trailing-lines t)
-;;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 
 ;; On Mac, use Command key as Meta when not in terminal.
@@ -41,7 +40,6 @@
 
 
 ;; Centralised backup directory
-;; Note: need absolute path 
 (setq backup-directory-alist
       `((".*" . "~/.emacs.d/backups"))) 
 
@@ -145,18 +143,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Let me know what to press next....
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package which-key
-  :defer t
-  :init
-  (which-key-mode)
-  (which-key-setup-side-window-right-bottom)
-  :diminish which-key-mode)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Helpful - better help screens.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -216,7 +202,8 @@ margins if so."
 
 (use-package visual-regexp-steroids
   :config
-  (advice-add 'replace-regexp :override #'vr/query-replace))
+  (advice-add 'replace-regexp-as-diff :override #'vr/query-replace))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio
