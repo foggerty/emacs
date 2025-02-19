@@ -4,6 +4,7 @@
 
 
 ;; Always use newer source over old byte-compiled.
+;; (Will then ben byte-compiled/jited in the background.)
 (setq load-prefer-newer t)
 
 
@@ -12,23 +13,16 @@
 
 
 ;; Packages setup.
-(require 'package)
+(require 'use-package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
-(add-to-list 'display-buffer-alist
-             '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-               (display-buffer-no-window)
-               (allow-no-window . t)))
 
 (setq use-package-always-ensure t
-      package-user-dir "~/.emacs.d/pckages"
+      package-user-dir "~/.emacs.d/packages"
       package--init-file-ensured t)
+(make-directory package-user-dir t)
 
-(unless (file-directory-p package-user-dir)
-  (make-directory package-user-dir t))
-
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
 ;; Required packages for boot-strap.
 (dolist (package '(diminish

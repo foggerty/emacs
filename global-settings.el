@@ -15,9 +15,6 @@
 
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
-
-
-;; Fine, I'll go with spaces :-(
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
@@ -33,15 +30,17 @@
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
-
-
-;; Highlighted region is deleted when typing
-(delete-selection-mode 1)
+(setq desktop-dirname "~/.emacs.d/desktop")
+(make-directory desktop-dirname t)
 
 
 ;; Centralised backup directory
 (setq backup-directory-alist
       `((".*" . "~/.emacs.d/backups"))) 
+(make-directory "~/.emacs.d/backups" t)
+
+;; Highlighted region is deleted when typing
+(delete-selection-mode 1)
 
 
 ;; Yes/no to y/n
@@ -65,6 +64,13 @@
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Show less pop-ups when compiling
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq native-comp-async-report-warnings-errors 'silent)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

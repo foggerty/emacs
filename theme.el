@@ -44,7 +44,7 @@
 
 ;;; Italic comments.
 (custom-set-faces
- '(font-lock-comment-face ((t (:foreground "#a0a2a5" :slant italic)))))
+ '(font-lock-comment-face ((t (:slant italic)))))
 
 
 ;;;; Smooth scrolling (GUI only)
