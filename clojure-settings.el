@@ -4,7 +4,6 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 (use-package cider
-  :defer t
   :bind
   (:map cider-mode-map
         ("C-c C-b" . cider-load-buffer)
@@ -18,6 +17,5 @@
 (use-package flycheck-clj-kondo)
 
 (use-package clojure-mode
-  :ensure t
   :config
   (require 'flycheck-clj-kondo))

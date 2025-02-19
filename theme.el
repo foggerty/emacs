@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (menu-bar-mode 0)
 (tool-bar-mode 0)
+(scroll-bar-mode 0)
 
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
@@ -34,11 +35,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Make pretty with themes etc.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package ewal-spacemacs-themes
-  :config
-  (cond ((or (daemonp) (display-graphic-p))
-         (load-theme 'ewal-spacemacs-classic t))
-        (t (load-theme 'wombat)))) ; combat-wombat
+(use-package ewal-spacemacs-themes)
+
+(cond ((or (daemonp) (display-graphic-p))
+       (load-theme 'ewal-spacemacs-classic t))
+      (t (load-theme 'wombat)))
 
 ;;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink

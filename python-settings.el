@@ -1,6 +1,3 @@
-;;(use-package elpy)
-;;(use-package pyenv-mode)
-
 (use-package python
   :config
   ;; Remove guess indent python message

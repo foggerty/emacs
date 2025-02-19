@@ -66,8 +66,7 @@
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
 ;; character.  Don't want it globally enabled however, as it clobbers
 ;; things like cc-mode's bindings.
-(use-package hungry-delete
-  :defer t)
+(use-package hungry-delete)
 
 
 ;; LESS cow-bell.
@@ -124,7 +123,6 @@
   :diminish company-mode)
 
 (use-package company-quickhelp
-  :defer t
   :config
   (company-quickhelp-mode))
 
@@ -189,8 +187,7 @@
 ;;;; visual-fill-column-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package visual-fill-column
-  :defer t)
+(use-package visual-fill-column)
 
 (defadvice set-fill-column (after refresh-visual-fill-column last activate)
   "Will check if visual-fill-column-mode is active, and adjust
@@ -202,8 +199,7 @@ margins if so."
 ;;;; yasnippet
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package yasnippet
-  :defer t)
+(use-package yasnippet)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -211,9 +207,8 @@ margins if so."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package all-the-icons)
+;(all-the-icons-install-fonts t)
 
-;; After installation, will need to run the
-;; all-the-icons-install-fonts
 (use-package treemacs
   :bind
   (("<f8>" . treemacs)))
@@ -229,9 +224,9 @@ margins if so."
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Golden-ratio
+;;;; Golden-ratio - give active window more space.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package golden-ratio-scroll-screen
+(use-package golden-ratio
   :config
   (golden-ratio-mode))

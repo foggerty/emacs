@@ -1,5 +1,4 @@
 (use-package geiser
-  :defer t
   :interpreter "bb"
   :config
   (enable-paredit-mode)

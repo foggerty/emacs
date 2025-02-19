@@ -1,18 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Settings that apply to more than one programming mode
+;;;; Settings that apply to more than one programming mode, and modes
+;;;; without much setup required.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-(use-package aggressive-indent
-  :defer t)
-
-(use-package highlight-parentheses)
-
+(use-package aggressive-indent)
 (use-package markdown-mode)
-
-(use-package paredit
-  :ensure t)
+(use-package paredit)
 
 (use-package git-timemachine
   :bind
