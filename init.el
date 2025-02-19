@@ -1,24 +1,20 @@
-;;; This file just sets up package management, makes sure that
-;;; use-package in installed, and then everything else is setup via
-;;; other scripts.
+;;; This file just sets up package management, everything else is
+;;; setup via other scripts.
 
 
-;; Always use newer source over old byte-compiled.
-;; (Will then ben byte-compiled/jited in the background.)
-(setq load-prefer-newer t)
+(require 'package)
+(require 'use-package-ensure)
 
-
-;; Stop Emacs from writing that bloody custom-set-variables stuff.
-(setq custom-file "~/.emacs.d/custom-variables.el")
-
-
-;; Packages setup.
-(require 'use-package)
 (package-initialize)
 
-(setq use-package-always-ensure t
-      package-user-dir "~/.emacs.d/packages"
-      package--init-file-ensured t)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(setq load-prefer-newer t
+      use-package-always-ensure t
+      use-package-always-defer t
+      package-user-dir "~/.emacs.d/packages")
+
 (make-directory package-user-dir t)
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -31,12 +27,6 @@
     (package-install package)))
 
 
-;; Copy ENV variables if running as a daemon.
-(when (daemonp)
-  (exec-path-from-shell-initialize))
-
-
-;; Load global settings and major-mode settings.
 (setq files-to-load
       '("helpers.el"
         "random-functions.el"

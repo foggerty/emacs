@@ -1,4 +1,6 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Basic tidy ups
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
@@ -29,7 +31,9 @@
 ;;   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Make pretty with themes etc.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package ewal-spacemacs-themes
   :config
   (cond ((or (daemonp) (display-graphic-p))
@@ -49,3 +53,11 @@
 
 ;;;; Smooth scrolling (GUI only)
 (pixel-scroll-precision-mode)
+
+
+;;; Highlight current line
+(global-hl-line-mode)
+
+;;;; Nicer modeline
+
+

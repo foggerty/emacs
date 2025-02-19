@@ -13,6 +13,13 @@
 ;; Mouse-mode in terminals
 (xterm-mouse-mode)
 
+
+;; Stop Emacs from "jumping" the screen when scrolling, and leave the
+;; cursor where it is when scrolling (kinda).
+(setq scroll-conservatively 100)
+(setq scroll-preserve-screen-position nil)
+;; ToDo - use package scroll-restore
+
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
 (setq-default indent-tabs-mode nil)
@@ -39,6 +46,7 @@
       `((".*" . "~/.emacs.d/backups"))) 
 (make-directory "~/.emacs.d/backups" t)
 
+
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
 
@@ -64,6 +72,15 @@
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
+
+
+;; Stop Emacs from writing that bloody custom-set-variables stuff.
+(setq custom-file "~/.emacs.d/custom-variables.el")
+
+
+;; Copy ENV variables if running as a daemon.
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
