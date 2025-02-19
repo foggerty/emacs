@@ -2,4 +2,4 @@
 
 (add-hook 'text-mode-hook (qif (flyspell-mode)
                                (company-mode -1)
-                               (visual-wrap-prefix-mode)))
+                               (visual-line-mode)))

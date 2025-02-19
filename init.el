@@ -7,7 +7,7 @@
 
 (setq load-prefer-newer t
       use-package-always-ensure t
-      use-package-always-defer t)
+      use-package-always-defer nil)
 
 (make-directory package-user-dir t)
 
@@ -35,13 +35,13 @@
         "c-settings.el"
         ;;"go-settings.el"
         ;;"clojure-settings.el"
-        ;;"neo4j-settings.el"
+        "neo4j-settings.el"
         "ruby-settings.el"
         "yaml-settings.el"
         "elixir-settings.el"
         ;;"python-settings.el"
         ;;"lilypond.el"
-        ;;"org-settings.el"
+        "org-settings.el"
         "global-key-bindings.el"))  ; always run last
 
 (dolist (file files-to-load)

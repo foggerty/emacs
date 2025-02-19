@@ -24,13 +24,6 @@
                    "Monospace"
                    "Courier New-12"))
 
-;; ToDo - set propertional fonts in org-mode and text-mode.
-;; (let ((mono-spaced-font "Source Code Pro")
-;;       (proportionately-spaced-font "Cantarell"))
-;;   (set-face-attribute 'default nil :family mono-spaced-font :height 120)
-;;   (set-face-attribute 'fixed-pitch nil :family mono-spaced-font :height 1.2)
-;;   (set-face-attribute 'variable-pitch nil :family proportionately-spaced-font :height 1.2))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Make pretty with themes etc.
@@ -46,19 +39,39 @@
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
 (set-default 'cursor-type 'bar)
 
+;;;; Smooth scrolling (GUI only)
+(pixel-scroll-precision-mode)
+
+;;; Highlight current line
+(global-hl-line-mode)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Specific fonts for specific modes
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Italic comments.
 (custom-set-faces
  '(font-lock-comment-face ((t (:slant italic)))))
 
-
-;;;; Smooth scrolling (GUI only)
-(pixel-scroll-precision-mode)
+;;; Make org-mode pretty.
 
 
-;;; Highlight current line
-(global-hl-line-mode)
-
-;;;; Nicer modeline
-
-
+(custom-theme-set-faces
+ 'user
+ '(variable-pitch ((t (:family "Verdana" :height 1.25 ))))
+ '(fixed-pitch ((t ( :family "Source Code Pro" :height 1.25 :inherit 'default))))
+ '(org-level-1 ((t (:height 1.0))))
+ '(org-level-2 ((t (:height 1.0))))
+ '(org-block ((t (:inherit fixed-pitch))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(org-document-info ((t (:foreground "dark orange"))))
+ '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+ '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+ '(org-link ((t (:underline t))))
+ '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-property-value ((t (:inherit fixed-pitch))) t)
+ '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+ '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+ '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+ '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))

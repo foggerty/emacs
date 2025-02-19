@@ -1,12 +1,12 @@
 ;; ORG Mode
 
-(package-upgrade 'org)
+(use-package org)
 (use-package org-bullets)
 
 (defun org-setup ()
   (org-indent-mode)
   (org-bullets-mode)
-  (org-local-bindings)
+  (variable-pitch-mode)
   (local-set-key (kbd "C-<up>")   'org-backward-heading-same-level)
   (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
   (local-set-key (kbd "C-c t")    'set-org-tags-from-anywhere))

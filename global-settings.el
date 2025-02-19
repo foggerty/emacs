@@ -1,17 +1,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; eldoc
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(setq eldoc-idle-delay 0.0)
-(global-eldoc-mode)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Hide minor modes in modeline.
+(use-package minions)
+(minions-mode 1)
+
+
 ;; Mouse-mode in terminals
 (xterm-mouse-mode)
+
+
+;; Save location in files.
+(save-place-mode 1)
 
 
 ;; Stop Emacs from "jumping" the screen when scrolling, and leave the
@@ -19,6 +20,7 @@
 (setq scroll-conservatively 100)
 (setq scroll-preserve-screen-position nil)
 ;; ToDo - use package scroll-restore
+
 
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
@@ -42,9 +44,10 @@
 
 
 ;; Centralised backup directory
-(setq backup-directory-alist
-      `((".*" . "~/.emacs.d/backups"))) 
-(make-directory "~/.emacs.d/backups" t)
+(let ((backup-dir "~/.emacs.d/backups/"))
+  (setq backup-directory-alist
+        `((".*" . backup-dir))) 
+  (make-directory backup-dir t))
 
 
 ;; Highlighted region is deleted when typing
@@ -169,18 +172,9 @@
 
 (use-package helpful
   :bind
-  (("C-h f" . helpful-function)
+  (("C-h f" . helpful-callable)
    ("C-h v" . helpful-variable)
    ("C-h k" . helpful-key)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Magit
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(use-package magit
-  :bind
-  ("C-x g" . magit-status))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -206,12 +200,21 @@ margins if so."
 ;;;; treemace
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package all-the-icons)
-;(all-the-icons-install-fonts t)
-
 (use-package treemacs
+  :config
+  (setq treemacs-no-png-images t
+        treemacs-tag-follow-delay 0
+        treemacs-indent-guide-style 'line
+        treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
+  (treemacs-follow-mode)
+  (treemacs-fringe-indicator-mode)
+  (treemacs-git-mode 'simple)
+  (treemacs-filewatch-mode)
+  (treemacs-indent-guide-mode)
   :bind
   (("<f8>" . treemacs)))
+
+(use-package treemacs-magit)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -230,3 +233,4 @@ margins if so."
 (use-package golden-ratio
   :config
   (golden-ratio-mode))
+

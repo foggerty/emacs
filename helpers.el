@@ -21,7 +21,7 @@
       (let ((font (car flist)))
         (if (x-list-fonts font)
             (set-frame-font font nil t)
-          (helper-set-font (cdr flist))))))
+          (global-set-font (cdr flist))))))
 
 
 (defun indent-buffer ()

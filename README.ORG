@@ -3,10 +3,9 @@ Global settings are in the init.el file, specific modes have their own files.
 
 init.el will:
 
-1. Check that all required packages for boot-strap are installed (basically, use-package), installing them if not (usually).
+1. Check that all required packages for boot-strap are installed (basically, diminish), installing them if not (usually).
 2. Load all settings from their individual files.
 3. That's pretty much it.
-
 
 - globals.el :: use for anything that has global use.
 - helpers.el :: helper functions for config.
@@ -14,62 +13,16 @@ init.el will:
 - theme.el :: not just the visual theme, but settings like hiding tool bars etc.
 - dev-settings.el :: anything that effects the top-level development config.
 
-
 A constant work in progress :-)
 
 [[file:emacs.png]]
 
-* Note on building emacs:
-** Fedora
-Install the following: ~autoconf texinfo gtk3-devel gnutls-devel giflib-devel libXpm-devel ncurses-devel librsvg2-devel systemd-devel libgccjit libgccjit-devel libtree-sitter libtree-sitter-devel~
-** Arch
-Install the following:
 * Theme
-Simplify all the things!  Use ~ewal~ to use the same theme as wot's as being used in the terminal.
+Simplify all the things!  I'm using ~ewal~ to use the same theme as wot's as being used in the terminal.  That said, here's the theme that I occasionally work on, a modified ~tango-2~ theme, which in itself is a mod of the ~tango~ theme:
 
-* ToDo
+[[file:Theme.png]]
 
+* Todo
 ** General
  - [ ] Move all projectile commands behind F12.
- - [ ] Get company mode working in org-mode, switch to using ctrl-space for company-complete, now that 
 
-** Golang
-- [X] Ensure using latest version of golang.
-- [X] Copy old settings.
-- [X] Update to use use-package for the basics.
-- [X] Test.
-- [ ] Add in the more complex stuff like popup menu etc.
-- [ ] Test again.
-- [X] Sadly wonder if I'll ever get to use an interesting language like this or Clojure professionally :-(
-** Dart / Flutter
-- [X] Nuke it all!
-- [X] Get /just/ Dart up and running with a demo console app.
-- [X] Get the bloody language server running.
-- [X] Get Flutter up and running.
-- [X] Demo app.
-** Scheme
-- [X] Reinstall Guile.
-- [X] Setup Geiser (again); geiser-version currently returns @PACKAGE-STRING@...
-** Org
-- [ ] Get org-bullets working again
-- [ ] Look into having a central agenda file.
-- [ ] Learn how to use tags!  Seriously, it's been how long?
-- [X] Turn of the key-binding C-TAB in org mode.  I never archive things, so would rather have it for switching windows.
-** Elisp / Emacs
-- [X] When running ansi-term, should source ~/.profile. (Doh, I just had shit bash config...)
-- [X] Dig out old Emacs-notes org file, dust off and update with what I learnt on debugging elisp code.
-- [ ] New wrapper function, that only runs config code if it can find the required command-line tool, i.e. goimports.  Should raise a warning that cannot find, and provide the required command to install it if it's a one-liner.
-** Ruby
-- [X] Get rid of all bloody versions other than default OSX one.
-- [X] If that's not recent enough, install the latest /only/ - fecking RVM is an absolute pain, I don't actually need it for what I want to do.
-- [ ] Setup enough for a nice REPL experience (don't worry about Rails, never going to use it - I hope).  At the least, should be able to evaluate functions/buffer in the Ruby process.
-** Global
-- [-] Abbrev mode
-  - [X] Turn on.....
-  - [ ] Remind self what this is cos I've forgotten sine I wrote this.....
-  - [ ] Endlessly add new abbreviations
-- [ ] Setup [[http://ergoemacs.org/emacs/emacs_templates.html][YaSnippet]]
-  - [ ] Setup some basic config templates, i.e. gsk -> (glob-set-key (kbd "$1") '$2)
-  - [ ] Create some Golang templates
-  - [ ] Spend far too long playing around with this feature
-- [ ] Update helper-run-if-found to use executable-find
