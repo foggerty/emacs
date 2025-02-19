@@ -44,10 +44,10 @@
 
 
 ;; Centralised backup directory
-(let ((backup-dir "~/.emacs.d/backups/"))
-  (setq backup-directory-alist
-        `((".*" . backup-dir))) 
-  (make-directory backup-dir t))
+
+(setq backup-directory-alist
+      `((".*" . "~/.emacs.d/backups"))) 
+(make-directory "~/.emacs.d/backups" t)
 
 
 ;; Highlighted region is deleted when typing
@@ -81,6 +81,7 @@
 
 
 ;; Copy ENV variables if running as a daemon.
+(use-package exec-path-from-shell)
 (when (daemonp)
   (exec-path-from-shell-initialize))
 
