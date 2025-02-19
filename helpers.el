@@ -29,8 +29,8 @@
   (interactive)
   (save-excursion
     (delete-trailing-whitespace)
-    (indent-region (point-min) (point-max))
-    (untabify (point-min) (point-max))))
+    (untabify (point-min) (point-max))
+    (indent-region (point-min) (point-max))))
 
 
 ;;; TODO - write a sting-interpolation function to automatically add

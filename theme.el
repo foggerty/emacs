@@ -42,9 +42,6 @@
 ;;;; Smooth scrolling (GUI only)
 (pixel-scroll-precision-mode)
 
-;;; Highlight current line
-(global-hl-line-mode)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Specific fonts for specific modes

@@ -3,19 +3,20 @@
 ;;;; without much setup required.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(use-package aggressive-indent)
+(use-package paredit)
+(use-package systemd)
+(use-package yaml-mode)
+
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
 
-(setq eldoc-echo-area-use-multiline-p 1)
-(setq eldoc-idle-delay 0.0)
+(add-hook 'prog-mode-hook (qif (electric-pair-mode)
+                               (show-paren-mode 1)))
 
 (global-eldoc-mode)
-
-(use-package aggressive-indent)
-
-(use-package paredit)
-
-(use-package systemd)
+(setq eldoc-echo-area-use-multiline-p 1)
+(setq eldoc-idle-delay 0.0)
 
 (use-package magit
   :bind
@@ -25,13 +26,9 @@
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
-
 (use-package git-timemachine
   :bind
   (("C-c t" . git-timemachine-toggle)))
-
-(add-hook 'prog-mode-hook (qif (electric-pair-mode)
-                               (show-paren-mode 1)))
 
 (use-package flycheck
   :config
@@ -46,4 +43,3 @@
 (use-package sql-indent
   :hook
   (sql-mode . sqlind-minor-mode))
-

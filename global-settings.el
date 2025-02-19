@@ -1,19 +1,20 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Human-readable file sizes in dired.
+
+(setq dired-listing-switches "-a -l -h")
 
 ;; Hide minor modes in modeline.
-(use-package minions)
-(minions-mode 1)
-
+(use-package minions
+  :config
+  (minions-mode 1))
 
 ;; Mouse-mode in terminals
 (xterm-mouse-mode)
 
-
 ;; Save location in files.
 (save-place-mode 1)
-
 
 ;; Stop Emacs from "jumping" the screen when scrolling, and leave the
 ;; cursor where it is when scrolling (kinda).
@@ -21,42 +22,33 @@
 (setq scroll-preserve-screen-position nil)
 ;; ToDo - use package scroll-restore
 
-
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-
 ;; File beautification
 (setq delete-trailing-lines t)
-
 
 ;; On Mac, use Command key as Meta when not in terminal.
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta))
-
 
 ;; Save desktop on exit
 (desktop-save-mode 1)
 (setq desktop-dirname "~/.emacs.d/desktop")
 (make-directory desktop-dirname t)
 
-
 ;; Centralised backup directory
-
 (setq backup-directory-alist
-      `((".*" . "~/.emacs.d/backups"))) 
+      `((".*" . "~/.emacs.d/backups")))
 (make-directory "~/.emacs.d/backups" t)
-
 
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
 
-
 ;; Yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
-
 
 ;; Use aspell over ispell
 (helper-run-if-found
@@ -65,20 +57,16 @@
    (setq ispell-program-name path
          ispell-dictionary "british")))
 
-
 ;; Hungry-delete: backspace kills all whitespace until it reaches next
 ;; character.  Don't want it globally enabled however, as it clobbers
 ;; things like cc-mode's bindings.
 (use-package hungry-delete)
 
-
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
 
-
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file "~/.emacs.d/custom-variables.el")
-
 
 ;; Copy ENV variables if running as a daemon.
 (use-package exec-path-from-shell)
@@ -97,22 +85,20 @@
 ;;;; navigation / searching.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package counsel ; will bring in both Ivy and Swiper
+(use-package counsel    
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
-  :bind (("C-s"     . swiper)
-         ("C-<S-S>" . isearch-forward)  ;; doesn't work in terminal
+  :bind (("C-s"   . swiper)
+         ("C-r"   . swiper-isearch-backward)
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
-         ("C-c g"   . counsel-git-grep)
-         :map ivy-minibuffer-map
-         ("<next>" . ivy-scroll-up-command)
-         ("<prior>" . ivy-scroll-down-command))
-  :diminish ivy-mode)
+         ("C-c g" . counsel-git-grep)))
+
+;; ToDo - look into phi-search
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -234,4 +220,3 @@ margins if so."
 (use-package golden-ratio
   :config
   (golden-ratio-mode))
-

@@ -24,3 +24,6 @@
 (global-set-key (kbd "C-=")             'text-scale-increase)
 (global-set-key (kbd "C--")             'text-scale-decrease)
 (global-set-key (kbd "M-SPC")           'cycle-spacing)
+
+;; "Thank you, I prefer it my way."
+(define-key aggressive-indent-mode-map (kbd "C-c C-q") nil)

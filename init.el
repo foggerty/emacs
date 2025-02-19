@@ -37,7 +37,6 @@
         ;;"clojure-settings.el"
         "neo4j-settings.el"
         "ruby-settings.el"
-        "yaml-settings.el"
         "elixir-settings.el"
         ;;"python-settings.el"
         ;;"lilypond.el"
