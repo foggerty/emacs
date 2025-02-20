@@ -43,3 +43,24 @@
 (use-package sql-indent
   :hook
   (sql-mode . sqlind-minor-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Tree-sitter
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (setq treesit-auto-langs
+        '(c
+          clojure 
+          elixir
+          go
+          gomod
+          ruby
+          sql))
+  
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (treesit-auto-install-all))

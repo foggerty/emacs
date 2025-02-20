@@ -92,11 +92,12 @@
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
-  :bind (("C-s"   . swiper)
-         ("C-r"   . swiper-isearch-backward)
+  :bind (("C-s"     . swiper)
+         ("C-M-s"   . swiper-isearch)
+         ("C-r"     . swiper-isearch-backward)
          ("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
-         ("C-c g" . counsel-git-grep)))
+         ("C-c g"   . counsel-git-grep)))
 
 ;; ToDo - look into phi-search
 
