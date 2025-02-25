@@ -109,8 +109,8 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Completion.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Completion.
+;;
 
 (use-package corfu
   :bind (:map corfu-map
@@ -125,4 +125,22 @@
   (corfu-popupinfo-mode 1)
   (corfu-echo-mode))
 
-(use-package corfu-terminal)
+(use-package corfu-terminal
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
+
+(use-package fussy
+  :config
+  (fussy-setup)
+  (fussy-company-setup)
+  (fussy-eglot-setup))
+
+;; For cache functionality.
+(advice-add 'corfu--capf-wrapper :before 'fussy-wipe-cache)
+
+(add-hook 'corfu-mode-hook
+          (lambda ()
+            (setq-local fussy-max-candidate-limit 5000
+                        fussy-default-regex-fn 'fussy-pattern-first-letter
+                        fussy-prefer-prefix nil)))

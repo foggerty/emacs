@@ -2,12 +2,13 @@
 ;;;;    rubocop, erb, solargraph
 ;;;; via gem install.
 
-(use-package robe)
-(use-package flymake-ruby)
+(use-package robe
+  :hook
+  ;; ToDO - setup bindings
+  (ruby-mode . robe-mode))
 
 (use-package ruby-electric
   :hook
-  (ruby-mode . ruby-electric-mode)
-  (ruby-mode . robe-mode)
-  (ruby-mode . eglot))
+  (ruby-mode . ruby-electric-mode))
 
+(add-hook 'ruby-mode 'eglot-ensure)
