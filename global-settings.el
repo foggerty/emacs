@@ -1,8 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups / tweaks.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Human-readable file sizes in dired.
 
+;; Human-readable file sizes in dired.
 (setq dired-listing-switches "-a -l -h")
 
 ;; Hide minor modes in modeline.
@@ -30,11 +30,8 @@
 ;; File beautification
 (setq delete-trailing-lines t)
 
-;; On Mac, use Command key as Meta when not in terminal.
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta))
-
 ;; Save desktop on exit
+(require 'desktop)
 (desktop-save-mode 1)
 (setq desktop-dirname "~/.emacs.d/desktop")
 (make-directory desktop-dirname t)
@@ -51,6 +48,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Use aspell over ispell
+(require 'ispell)
 (helper-run-if-found
  "aspell"
  (lambda (path)
@@ -78,6 +76,7 @@
 ;;;; Show less pop-ups when compiling
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'comp-run)
 (setq native-comp-async-report-warnings-errors 'silent)
 
 
@@ -92,31 +91,40 @@
         ivy-count-format "(%d/%d) "
         ivy-initial-inputs-alist nil
         ivy-use-selectable-prompt t)
-  :bind (("C-s"     . swiper)
-         ("C-M-s"   . swiper-isearch)
-         ("C-r"     . swiper-isearch-backward)
-         ("C-x C-f" . counsel-find-file)
-         ("M-x"     . counsel-M-x)
-         ("C-c g"   . counsel-git-grep)))
+  :bind
+  (("C-s"     . swiper)
+   ("C-M-s"   . swiper-isearch)
+   ("C-r"     . swiper-isearch-backward)
+   ("C-x C-f" . counsel-find-file)
+   ("M-x"     . counsel-M-x)
+   ("C-c g"   . counsel-git-grep)
+   :map ivy-minibuffer-map
+   (("<next>"  . ivy-scroll-down-command)
+    ("<prior>" . ivy-scroll-up-command))))
 
-;; ToDo - look into phi-search
-
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Company (auto-complete) settings.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package company
-  :init
-  (global-company-mode)
-  :config
-  (setq company-idle-delay nil)
-  :diminish company-mode)
+;; (use-package company
+;;   :after company-mode
+;;   :hook
+;;   ((eglot-mode . copmany-mode)
+;;    (emacs-lisp-mode . company-mode))
+;;   :config
+;;   (setq company-idle-delay nil
+;;         company-minimum-prefix-length 1)
+;;   :diminish company-mode)
 
-(use-package company-quickhelp
-  :config
-  (company-quickhelp-mode))
-
+;; (use-package company-quickhelp
+;;   :config
+;;   (company-quickhelp-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
@@ -140,6 +148,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings - one day this will be intuitive...
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'pixel-scroll)
 
 (setq mouse-wheel-tilt-scroll t
       mouse-wheel-progressive-speed nil

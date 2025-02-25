@@ -1,8 +1,5 @@
 (require 'ob-clojure) ; will automatically enable Clojure in Babel.
 
-(add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'cider-repl-mode-hook 'paredit-mode)
-
 (use-package cider
   :bind
   (:map cider-mode-map

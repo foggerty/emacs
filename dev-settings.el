@@ -3,20 +3,57 @@
 ;;;; without much setup required.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(require 'eglot)
+
 (use-package aggressive-indent)
-(use-package paredit)
 (use-package systemd)
 (use-package yaml-mode)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
 
-(add-hook 'prog-mode-hook (qif (electric-pair-mode)
-                               (show-paren-mode 1)))
-
 (global-eldoc-mode)
 (setq eldoc-echo-area-use-multiline-p 1)
 (setq eldoc-idle-delay 0.0)
+
+(use-package smartparens
+  :hook
+  (prog-mode)
+  :config
+  (require 'smartparens-config)
+  :bind (
+         :map emacs-lisp-mode-map
+         (";"                 . sp-comment)
+
+         :map smartparens-mode-map
+         ("C-M-f"             . sp-forward-sexp)
+         ("C-M-b"             . sp-backward-sexp)
+         ("C-M-d"             . sp-down-sexp)
+         ("C-M-a"             . sp-backward-down-sexp)
+         ("M-<up>"            . sp-beginning-of-sexp)
+         ("M-<down>"          . sp-end-of-sexp)
+         ("C-M-e"             . sp-up-sexp)
+         ("C-M-u"             . sp-backward-up-sexp)
+         ("C-M-t"             . sp-transpose-sexp)
+         ("C-k"               . sp-kill-hybrid-sexp)
+         ("C-M-w"             . sp-copy-sexp)
+         ("M-<delete>"        . sp-unwrap-sexp)
+         ("M-<backspace>"     . sp-backward-unwrap-sexp)
+         ("C-<right>"         . sp-forward-slurp-sexp)
+         ("C-<left>"          . sp-forward-barf-sexp)  
+         ("C-M-<left>"        . sp-backward-slurp-sexp)
+         ("C-M-<right>"       . sp-backward-barf-sexp)
+         ("M-D"               . sp-splice-sexp)
+         ("C-M-<delete>"      . sp-splice-sexp-killing-forward)
+         ("C-M-<backspace>"   . sp-splice-sexp-killing-backward)
+         ("C-S-<backspace>"   . sp-splice-sexp-killing-around)
+         ("C-]"               . sp-select-next-thing-exchange)
+         ("C-<left_bracket>"  . sp-select-previous-thing)
+         ("C-M-]"             . sp-select-next-thing)
+         ("M-F"               . sp-forward-symbol)
+         ("M-B"               . sp-backward-symbol)
+         ("C-\""              . sp-changeinner)
+         ("M-i"               . sp-change-enclosing)))
 
 (use-package magit
   :bind
@@ -28,7 +65,7 @@
 
 (use-package git-timemachine
   :bind
-  (("C-c t" . git-timemachine-toggle)))
+  ("C-c t" . git-timemachine-toggle))
 
 (use-package flycheck
   :config
@@ -52,15 +89,40 @@
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
+  :hook
+  (shel-mode-hook . bash-ts-mode)
   :config
   (setq treesit-auto-langs
-        '(c
-          clojure 
+        '(bash
+          c
+          clojure
           elixir
           go
           gomod
           ruby
-          sql))
-  
-  (treesit-auto-add-to-auto-mode-alist 'all)
-  (treesit-auto-install-all))
+          sql)))
+
+(require 'treesit-auto)
+
+(treesit-auto-add-to-auto-mode-alist 'all)
+(treesit-auto-install-all)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Completion.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package corfu
+  :bind (:map corfu-map
+              ("<next>"  . corfu-scroll-up)
+              ("<prior>" . corfu-scroll-down))
+  :init
+  (setq corfu-quit-at-boundry nil
+        corfu-quit-no-match nil
+        corfu-auto nil
+        corfu-echo-delay 0)
+  (global-corfu-mode)
+  (corfu-popupinfo-mode 1)
+  (corfu-echo-mode))
+
+(use-package corfu-terminal)

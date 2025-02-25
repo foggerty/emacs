@@ -32,7 +32,7 @@
 
 (cond ((or (daemonp) (display-graphic-p))
        (load-theme 'ewal-spacemacs-classic t))
-      (t (load-theme 'wombat)))
+      (t (load-theme 'spacemacs-dark t)))
 
 ;;; Cursor
 (set-default 'blink-cursor-blinks 0) ; always blink
