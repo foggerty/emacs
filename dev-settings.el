@@ -81,6 +81,9 @@
   :hook
   (sql-mode . sqlind-minor-mode))
 
+(use-package hyprlang-ts-mode
+  :custom
+  (hyprlang-ts-mode-indent-offset 4))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Tree-sitter
@@ -99,8 +102,13 @@
           elixir
           go
           gomod
+          hyprlang
+          json
           ruby
           sql)))
+
+(add-to-list 'treesit-language-source-alist
+             '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
 
 (require 'treesit-auto)
 
