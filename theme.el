@@ -53,7 +53,7 @@
 
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "Cantarell" :height 1.0 ))))
+ '(variable-pitch ((t (:family "Source Code Pro" :height 1.0 ))))
  '(fixed-pitch ((t ( :family "Source Code Pro" :height 1.0 :inherit 'default))))
  '(font-lock-comment-face ((t (:slant italic))))
  '(org-level-1 ((t (:height 1.0))))

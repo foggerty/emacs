@@ -149,6 +149,8 @@
   (fussy-setup)
   (fussy-eglot-setup))
 
+(require 'fussy)
+
 ;; For cache functionality.
 (advice-add 'corfu--capf-wrapper :before 'fussy-wipe-cache)
 
