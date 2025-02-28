@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (defun get-parent-modes (mode)
   "Returns a list containing mode, and its parent modes."
   (if mode
@@ -30,14 +32,20 @@
     vowel))
 
 
-(defun untabify-files (files)
-  "Just to remind myself how to batch-process files in Emacs :-)"
+(defun edit-files (files)
   (dolist (file files)
     (with-current-buffer (find-file-noselect file)
-      (indent-region (point-min) (point-max))
-      (untabify (point-min) (point-max))
+      (beginning-of-buffer)
+      (insert ";;; -*- lexical-binding: t; -*-")
+      (insert ?\n)
       (save-buffer)
       (kill-buffer (current-buffer)))))
+
+(setq files (directory-files "/home/matt/.emacs.d"
+                             nil
+                             "\\.el$"))
+
+(edit-files files)
 
 (defun visit-project-files (action filter)
   "Using Ivy and Projectile, select a project, and then perform a

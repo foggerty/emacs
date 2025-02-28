@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;;; NOTE install:
 ;;;;    rubocop, erb, solargraph
 ;;;; via gem install.

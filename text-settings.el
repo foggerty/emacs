@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package visual-fill-column)
 
 (defadvice set-fill-column (after refresh-visual-fill-column last activate)

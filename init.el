@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;; This file just sets up package management, everything else is
 ;;; setup via other scripts.
 

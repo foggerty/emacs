@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Settings that apply to more than one programming mode, and modes
 ;;;; without much setup required.
@@ -108,6 +110,8 @@
           json
           ruby
           sql)))
+
+(require 'treesit)
 
 (add-to-list 'treesit-language-source-alist
              '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))

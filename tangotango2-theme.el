@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;; tangotango-theme.el --- Tango Palette color theme for Emacs 24.
 
 ;; First derived from color-theme-tango.el,  created by danranx@gmail.com :

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;;; Major mode for Nans2Tetris assembler files.  (symbol) is always
 ;;;; hard left, everything else except for comment lines indented by a
 ;;;; single tab.
@@ -7,9 +9,9 @@
   "Given x/y coordinates, will calculate the bit in RAM."
   (interactive "nX: \nnY: ")
   (message "%d"
-	   (+ 16384
-	      (* y 32)
-	      (% x 16))))
+	       (+ 16384
+	          (* y 32)
+	          (% x 16))))
 
 
 (defun n2t-asm-align-buffer ()

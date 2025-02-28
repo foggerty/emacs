@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; ToDo - some reading on hooks, this is not how I thought they
 ;; worked.  The second 'add-hook' will add a hook to the buffer-local
 ;; before-save-hook.

@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t; -*-
 
 (defun foggerty-do-my-tax (rate hours)
   "Calculate how much tax to pay, and how much to put into savings etc."

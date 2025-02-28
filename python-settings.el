@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package python
   :config
   ;; Remove guess indent python message

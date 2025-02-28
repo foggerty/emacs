@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package go-ts-mode
   :config
   (setq gofmt-command "goimports") ; go get golang.org/x/tools/cmd/goimports

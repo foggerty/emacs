@@ -1,5 +1,7 @@
+;;; -*- lexical-binding: t; -*-
+
 (add-hook 'emacs-lisp-mode-hook
-          (qif ;;(enable-paredit-mode)
+          (qif 
            (aggressive-indent-mode)
            (hungry-delete-mode)
            (local-set-key (kbd "C-c C-r") 'eval-region)

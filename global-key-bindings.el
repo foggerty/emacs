@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Global key bindings.  Run these after ALL other packages have
 ;;;; been loaded, to avoid things like org-mode clobbering them.

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;;;; I've just copied the elisp from lilypond's source tree, as it's
 ;;;; not in any of the repositories.
 
