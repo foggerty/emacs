@@ -1,10 +1,7 @@
-(require 'ob-clojure) ; will automatically enable Clojure in Babel.
-
 (use-package cider
   :bind
   (:map cider-mode-map
-        ("C-c C-b" . cider-load-buffer)
-        ("C-c C-q" . helper-indent-buffer))
+        ("C-c C-b" . cider-load-buffer))
   :config
   (setq cider-allow-jack-in-without-project t
         cider-inject-dependencies-at-jack-in t

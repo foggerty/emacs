@@ -10,7 +10,6 @@
 (global-set-key (kbd "C-x C-k")         'foggerty-other-window-kill-buffer)
 (global-set-key (kbd "C-x k")           (qif (kill-buffer (current-buffer))))
 (global-set-key (kbd "<M-S-backspace>") 'foggerty-kill-to-beginning-of-line)
-;;(global-set-key (kbd "C-<return>")      'company-complete)
 (global-set-key (kbd "M-z")             'foggerty-zap-to-char)
 (global-set-key (kbd "C-x p")           'mark-paragraph)
 (global-set-key (kbd "C-M-=")           'increase-margin)

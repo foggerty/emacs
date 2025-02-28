@@ -1,13 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Settings that apply to more than one programming mode, and modes
 ;;;; without much setup required.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (require 'eglot)
-
-(use-package aggressive-indent)
-(use-package systemd)
-(use-package yaml-mode)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
@@ -55,6 +51,12 @@
          ("C-\""              . sp-changeinner)
          ("M-i"               . sp-change-enclosing)))
 
+(use-package aggressive-indent)
+
+(use-package systemd)
+
+(use-package yaml-mode)
+
 (use-package magit
   :bind
   ("C-x g" . magit-status))
@@ -87,7 +89,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Tree-sitter
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (use-package treesit-auto
   :custom
@@ -125,7 +127,7 @@
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down))
   :init
-  (setq corfu-quit-at-boundry nil
+  (setq corfu-quit-at-boundry t
         corfu-quit-no-match nil
         corfu-auto nil
         corfu-echo-delay 0)
@@ -141,7 +143,6 @@
 (use-package fussy
   :config
   (fussy-setup)
-  (fussy-company-setup)
   (fussy-eglot-setup))
 
 ;; For cache functionality.

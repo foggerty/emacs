@@ -1,5 +1,10 @@
-;; Text mode
+(use-package visual-fill-column)
+
+(defadvice set-fill-column (after refresh-visual-fill-column last activate)
+  "Will check if visual-fill-column-mode is active, and adjust
+margins if so."
+  (visual-fill-column-adjust))
 
 (add-hook 'text-mode-hook (qif (flyspell-mode)
-                               (company-mode -1)
-                               (visual-line-mode)))
+                               (visual-line-mode)
+                               (visual-fill-column-mode)))

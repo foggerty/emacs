@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Basic tidy ups
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Basic tidy ups
+;;
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -26,8 +27,9 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Make pretty with themes etc.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Make pretty with themes etc.
+;;
+
 (use-package ewal-spacemacs-themes)
 
 (cond ((or (daemonp) (display-graphic-p))
@@ -45,12 +47,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Font overrides
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "Verdana" :height 1.25 ))))
- '(fixed-pitch ((t ( :family "Source Code Pro" :height 1.25 :inherit 'default))))
+ '(variable-pitch ((t (:family "Cantarell" :height 1.0 ))))
+ '(fixed-pitch ((t ( :family "Source Code Pro" :height 1.0 :inherit 'default))))
  '(font-lock-comment-face ((t (:slant italic))))
  '(org-level-1 ((t (:height 1.0))))
  '(org-level-2 ((t (:height 1.0))))

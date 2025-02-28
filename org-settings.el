@@ -1,5 +1,3 @@
-;; ORG Mode
-
 (use-package org)
 (use-package org-bullets)
 
@@ -11,12 +9,9 @@
   (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
   (local-set-key (kbd "C-c t")    'set-org-tags-from-anywhere))
 
-(setq org-babel-clojure-backend 'cider
-      org-confirm-babel-evaluate nil
+(setq org-confirm-babel-evaluate nil
       org-edit-src-content-indentation 0
-      org-export-coding-system 'utf-8
       org-hide-emphasis-markers t
-      org-list-description-max-indent 5
       org-special-ctrl-a/e t
       org-special-ctrl-k t
       org-src-tab-acts-natively t

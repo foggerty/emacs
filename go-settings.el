@@ -1,13 +1,4 @@
-(use-package company-go
-  :requires go-mode)         ; go get github.com/mdempsky/gocode
-
-(use-package go-eldoc
-  :requires go-mode)
-
-(use-package go-playground
-  :requires go-mode)
-
-(use-package go-mode
+(use-package go-ts-mode
   :config
   (setq gofmt-command "goimports") ; go get golang.org/x/tools/cmd/goimports
 
@@ -16,13 +7,15 @@
 
   :bind
   (:map go-mode-map
-        ("C-<return>" . company-go) ; I CANNOT bloody get this to work automatically :-(
         ("C-c C-p" . go-playground)
         ("C-c C-c C-d" . godoc-at-point)))
 
+(use-package go-eldoc)
 
-(add-hook 'go-mode-hook
+(use-package go-playground)
+
+(add-hook 'go-ts-mode-hook
           (lambda ()
             (add-hook 'before-save-hook 'gofmt-before-save  nil 'local)))
 
-(add-hook 'go-mode-hook 'eglot-ensure)
+(add-hook 'go-ts-mode-hook 'eglot-ensure)

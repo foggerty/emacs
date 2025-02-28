@@ -1,6 +1,8 @@
 (use-package inf-elixir)
 (use-package mix)
 
+(require 'eglot)
+
 (use-package elixir-ts-mode
   :hook ((elixir-mode . inf-elixir-minor-mode)
          (elixir-mode . eglot-ensure)))
