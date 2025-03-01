@@ -89,6 +89,9 @@
   :custom
   (hyprlang-ts-mode-indent-offset 4))
 
+(require 'hyprlang-ts-mode)
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Tree-sitter
 ;;
