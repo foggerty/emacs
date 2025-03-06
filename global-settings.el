@@ -31,11 +31,15 @@
 
 ;; File beautification
 (setq delete-trailing-lines t)
+(add-hook 'after-save-hook 'delete-trailing-whitespace)
 
 ;; Save desktop on exit
 (require 'desktop)
 (desktop-save-mode 1)
+(setq desktop-load-locked-desktop 'check-pid)
 (setq desktop-dirname "~/.emacs.d/desktop")
+
+(add-hook 'server-after-make-frame-hook 'desktop-read)
 
 ;; Centralised backup directory
 (setq backup-directory-alist
@@ -56,10 +60,17 @@
    (setq ispell-program-name path
          ispell-dictionary "british")))
 
-;; Hungry-delete: backspace kills all whitespace until it reaches next
-;; character.  Don't want it globally enabled however, as it clobbers
-;; things like cc-mode's bindings.
-(use-package hungry-delete)
+;; Hungry-delete: backspace/delete kill up to next char.
+(use-package hungry-delete
+  :hook
+  (emacs-lisp-mode
+   bash-mode
+   bash-ts-mode
+   elixir-mode
+   ruby-mode
+   ruby-ts-mode
+   go-mode
+   go-ts-mode))
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
@@ -85,7 +96,7 @@
 ;;; navigation / searching.
 ;;
 
-(use-package counsel    
+(use-package counsel
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t
@@ -102,6 +113,8 @@
    :map ivy-minibuffer-map
    (("<next>"  . ivy-scroll-down-command)
     ("<prior>" . ivy-scroll-up-command))))
+
+(require 'counsel)
 
 (use-package orderless
   :ensure t
@@ -156,8 +169,8 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; treemace
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Treemacs
+;;
 
 (use-package treemacs
   :config
@@ -178,7 +191,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (use-package visual-regexp-steroids
   :config
@@ -187,7 +200,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio - give active window more space.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
 
 (use-package golden-ratio
   :config

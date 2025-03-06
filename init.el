@@ -32,7 +32,6 @@
         "global-settings.el"
         "dev-settings.el" ; should come before all other dev modes.
         "elisp-settings.el"
-        ;;"janet-settings.el"
         "c-settings.el"
         ;;"go-settings.el"
         ;;"clojure-settings.el"

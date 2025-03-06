@@ -20,7 +20,6 @@
                 (internal-border-width . 5)
                 (alpha-background . 0.85)))
 
-
 (global-set-font '("Source Code Pro-12"
                    "Liberation Mono-12"
                    "Consolas-12"
@@ -33,17 +32,27 @@
 ;;
 
 (use-package ewal-spacemacs-themes)
+(use-package atom-one-dark-theme)
 
 (cond ((or (daemonp) (display-graphic-p))
        (load-theme 'ewal-spacemacs-classic t))
-      (t (load-theme 'spacemacs-dark t)))
+      (t (load-theme 'atom-one-dark t)))
 
-;;; Cursor
-(set-default 'blink-cursor-blinks 0) ; always blink
+(defun on-frame-open (&optional frame)
+  "If the FRAME created in terminal don't load background color."
+  (unless (display-graphic-p frame)
+    (set-face-background 'default "unspecified-bg" frame)
+    (set-face-background 'font-lock-comment-face "unspecified-bg frame")))
+
+(add-hook 'after-make-frame-functions 'on-frame-open)
+
+;; Cursor
+(set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
+
 (set-default 'cursor-type 'bar)
 
-;;;; Smooth scrolling (GUI only)
+;; Smooth scrolling (GUI only)
 (pixel-scroll-precision-mode)
 
 
@@ -53,12 +62,15 @@
 
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "Source Code Pro" :height 1.0 ))))
+ '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
  '(fixed-pitch ((t ( :family "Source Code Pro" :height 1.0 :inherit 'default))))
- '(font-lock-comment-face ((t (:slant italic))))
+ '(font-lock-comment-face ((t (:slant italic :weight semi-bold))))
+ `(org-defult ((t (:inherit fixed-pitch))))
  '(org-level-1 ((t (:height 1.0))))
  '(org-level-2 ((t (:height 1.0))))
  '(org-block ((t (:inherit fixed-pitch))))
+ `(org-block-begin-line ((t :background nil)))
+ `(org-block-end-line ((t (:background nil))))
  '(org-code ((t (:inherit (shadow fixed-pitch)))))
  '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
  '(org-indent ((t (:inherit (org-hide fixed-pitch)))))

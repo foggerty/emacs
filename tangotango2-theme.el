@@ -235,8 +235,7 @@
  `(font-lock-negation-char-face ((t (:foreground "#6ac214"))))
  `(font-lock-regexp-grouping-construct ((t (:foreground "#edd400"))))
  `(font-lock-regexp-grouping-backslash ((t (:foreground "#888a85"))))
- `(which-func ((t (:inherit (font-lock-function-name-face) :weight normal))))
- )
+ `(which-func ((t (:inherit (font-lock-function-name-face) :weight normal)))))
 
 
 ;; Autoload for MELPA

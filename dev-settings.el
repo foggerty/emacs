@@ -22,7 +22,6 @@
   :bind (
          :map emacs-lisp-mode-map
          (";"                 . sp-comment)
-
          :map smartparens-mode-map
          ("C-M-f"             . sp-forward-sexp)
          ("C-M-b"             . sp-backward-sexp)
@@ -109,6 +108,7 @@
           elixir
           go
           gomod
+          heex
           hyprlang
           json
           ruby
