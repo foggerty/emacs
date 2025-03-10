@@ -18,8 +18,6 @@
 (global-set-key (kbd "C-M--")           'decrease-margin)
 (global-set-key (kbd "<mouse-5>")       'scroll-up-line)
 (global-set-key (kbd "<mouse-4>")       'scroll-down-line)
-(global-set-key (kbd "C-=")             'text-scale-increase)
-(global-set-key (kbd "C--")             'text-scale-decrease)
 (global-set-key (kbd "M-SPC")           'cycle-spacing)
 
 ;; "Thank you, I prefer it my way."

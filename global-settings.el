@@ -1,14 +1,20 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Basic tidy ups / tweaks.
+;;;; Basic tidy ups / tweaks.
+;;;
 ;;
+
+;; Refresh buffers when changed on disk, if there are no edits.
+(global-auto-revert-mode 1)
 
 ;; Human-readable file sizes in dired.
 (setq dired-listing-switches "-a -l -h")
 
 ;; Hide minor modes in modeline.
 (use-package minions
+  :custom
+  (minions-mode-line-ligher "--")
   :config
   (minions-mode 1))
 
@@ -67,6 +73,7 @@
    bash-mode
    bash-ts-mode
    elixir-mode
+   elixir-ts-mode
    ruby-mode
    ruby-ts-mode
    go-mode
@@ -80,69 +87,104 @@
 
 ;; Copy ENV variables if running as a daemon.
 (use-package exec-path-from-shell)
-(when (daemonp)
-  (exec-path-from-shell-initialize))
+(exec-path-from-shell-initialize)
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Show less pop-ups when compiling
-;;
-
+;; Show less pop-ups when compiling.
 (require 'comp-run)
 (setq native-comp-async-report-warnings-errors 'silent)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; navigation / searching.
+;;; Mini-buffer / Code completion.
 ;;
 
-(use-package counsel
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format "(%d/%d) "
-        ivy-initial-inputs-alist nil
-        ivy-use-selectable-prompt t)
-  :bind
-  (("C-s"     . swiper)
-   ("C-M-s"   . swiper-isearch)
-   ("C-r"     . swiper-isearch-backward)
-   ("C-x C-f" . counsel-find-file)
-   ("M-x"     . counsel-M-x)
-   ("C-c g"   . counsel-git-grep)
-   :map ivy-minibuffer-map
-   (("<next>"  . ivy-scroll-down-command)
-    ("<prior>" . ivy-scroll-up-command))))
-
-(require 'counsel)
-
-(use-package orderless
-  :ensure t
+;; Code completion
+(use-package corfu
+  :bind (:map corfu-map
+              ("<next>"  . corfu-scroll-up)
+              ("<prior>" . corfu-scroll-down))
   :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  (corfu-quit-at-boundry t)
+  (corfu-quit-no-match) nil
+  (corfu-auto nil)
+  (corfu-echo-delay 0)
+  :init
+  (global-corfu-mode)
+  (corfu-popupinfo-mode 1)
+  (corfu-echo-mode))
+
+(use-package corfu-terminal
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
+
+;; Mini-buffer completion that uses default Emacs completion (see
+;; Orderless below)
+(use-package vertico
+  :custom
+  (vertico-scroll-margin 0)
+  (vertico-count 10)
+  (vertico-resize 'grow-only)
+  (vertico-cycle t)
+  :init
+  (vertico-mode)
+  :bind (:map vertico-map
+              ("<next>" . vertico-scroll-up)
+              ("<prior>" . vertico-scroll-down)))
+
+;; Replaces Emac's default copmletion with Orderless
+(use-package orderless
+  :custom
+  (completion-styles '(orderless flex basic))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles basic partial-completion))))
+  (orderless-component-separator "[ &]"))
+
+;; Use Orderless with Eglot.
+(setq completion-category-overrides '((eglot (styles orderless))
+                                      (eglot-capf (styles orderless))))
+
+;; Show help text in margin on mini-buffer.
+(use-package marginalia
+  :init
+  (marginalia-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Ripgrep
+;;;
+;;
+
+(use-package wgrep)
+
+(use-package rg)
+(rg-enable-default-bindings)   ; or rg-enable-menu
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Consult - uses ripgrep etc
+;;;
+;;
+
+(use-package consult
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
-;;;; ToDo - put all projectile bindings behind F12.
+;;;
 ;;
 
 (use-package projectile
-  :ensure t
   :init
-  (projectile-mode +1))
-
-(use-package counsel-projectile
-  :config
-  (add-hook 'after-init-hook 'counsel-projectile-mode)
-  (setq projectile-use-git-grep t)
-  :bind
-  (("<f12>" . counsel-projectile-find-file)))
+  (projectile-mode +1)
+  :bind (:map projectile-mode-map
+              ("<f12>" . 'projectile-command-map)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings - one day this will be intuitive...
+;;;
 ;;
 
 (require 'pixel-scroll)
@@ -159,6 +201,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Helpful - better help screens.
+;;;
 ;;
 
 (use-package helpful
@@ -169,7 +212,18 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Which-key, tell me what to press next
+;;;
+;;
+
+(require 'which-key)
+(setq which-key-idle-delay 0.5)
+(which-key-mode t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Treemacs
+;;;
 ;;
 
 (use-package treemacs
@@ -191,6 +245,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace
+;;;
 ;;
 
 (use-package visual-regexp-steroids
@@ -200,8 +255,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio - give active window more space.
+;;;
 ;;
 
 (use-package golden-ratio
   :config
-  (golden-ratio-mode))
+  (golden-ratio-mode 1))
