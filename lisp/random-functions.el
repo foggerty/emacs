@@ -85,7 +85,7 @@ Ripped from Stack Overflow"
 
 
 ;; Want a zap-to-char that doesn't kill the char!
-(defun foggerty-zap-to-char (arg char)
+(defun foggerty-zap-to-char (char)
   "Replacement for zap-to-char that doesn't also kill char."
   (interactive "p\ncZap to char: ")
   (save-excursion
@@ -94,3 +94,5 @@ Ripped from Stack Overflow"
      (if current-prefix-arg
          (1+ (search-backward (char-to-string char)))
        (1- (search-forward (char-to-string char)))))))
+
+(provide 'random-functions)

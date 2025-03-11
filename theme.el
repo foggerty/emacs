@@ -2,7 +2,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups
+;;;
 ;;
+
+(require 'helpers)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -22,34 +25,18 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Fonts
+;;;
 ;;
 
-(global-set-font '("Source Code Pro Nerd-13"
-                   "Liberation Mono-13"
+(global-set-font '("Source Code Pro-12"
+                   "Liberation Mono-12"
                    "Consolas-12"
-                   "Monospace"
-                   "Courier New-13"))
-
-(defvar face-attribute-height 125)
-
-(defun change-global-font (amount)
-  (setq face-attribute-height (+ amount face-attribute-height))
-  (set-face-attribute 'default nil :height face-attribute-height))
-
-(defun increase-global-font ()
-  (interactive)
-  (change-global-font +10))
-
-(defun decrease-global-font ()
-  (interactive)
-  (change-global-font -10))
-
-(global-set-key (kbd "C-=")             'increase-global-font)
-(global-set-key (kbd "C--")             'decrease-global-font)
-
+                   "Monospace-12"
+                   "Courier New-12"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Font overrides
+;;;
 ;;
 
 (custom-theme-set-faces
@@ -62,13 +49,14 @@
  '(org-level-1 ((t (:height 1.0))))
  '(org-level-2 ((t (:height 1.0))))
  '(org-block ((t (:inherit fixed-pitch))))
- `(org-block-begin-line ((t :background nil)))
- `(org-block-end-line ((t (:background nil))))
+ `(org-block-begin-line ((t :background unspecified)))
+ `(org-block-end-line ((t (:background unspecified))))
  '(org-code ((t (:inherit (shadow fixed-pitch))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Make pretty with themes etc.
+;;;
 ;;
 
 (use-package ewal-spacemacs-themes)
@@ -76,7 +64,7 @@
 
 (cond ((or (daemonp) (display-graphic-p))
        (load-theme 'ewal-spacemacs-classic t))
-      (t (load-theme 'atom-one-dark t)))
+      (t (load-theme 'wombat t)))
 
 (defun on-frame-open (&optional frame)
   "Used when emacsclient is run in a terminal, in a graphical environment."

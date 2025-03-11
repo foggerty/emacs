@@ -5,6 +5,8 @@
 ;;;
 ;;
 
+(require 'helpers)
+
 ;; Refresh buffers when changed on disk, if there are no edits.
 (global-auto-revert-mode 1)
 
@@ -15,7 +17,7 @@
 (use-package minions
   :custom
   (minions-mode-line-ligher "--")
-  :config
+  :init
   (minions-mode 1))
 
 ;; Mouse-mode in terminals
@@ -105,7 +107,7 @@
               ("<prior>" . corfu-scroll-down))
   :custom
   (corfu-quit-at-boundry t)
-  (corfu-quit-no-match) nil
+  (corfu-quit-no-match nil)
   (corfu-auto nil)
   (corfu-echo-delay 0)
   :init
@@ -166,8 +168,7 @@
 ;;;
 ;;
 
-(use-package consult
-  )
+(use-package consult)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -1,8 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; This file just sets up package management, everything else is
-;;; setup via other scripts.
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Package setup
+;;;
+;;
 
 (require 'package)
 (require 'use-package-ensure)
@@ -21,33 +22,32 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(setq files-to-load
-      '("helpers.el"
-        "random-functions.el"
-        ;;"tangotango2-theme.el"
-        "text-settings.el"
-        "global-settings.el"
-        "theme.el"
-        "dev-settings.el" ; should come before all other dev modes.
-        "elisp-settings.el"
-        "c-settings.el"
-        ;;"go-settings.el"
-        ;;"clojure-settings.el"
-        "neo4j-settings.el"
-        "ruby-settings.el"
-        "elixir-settings.el"
-        ;;"python-settings.el"
-        ;;"lilypond.el"
-        "org-settings.el"
-        "global-key-bindings.el"))  ; always run last
 
-(dolist (file files-to-load)
-  (load-file (concat (file-name-directory user-init-file)
-                     file)))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Custom config loading
+;;;
+;;
 
-(use-package emacs
-  :custom
-  (enable-recursive-minibuffers t)
-  (read-extended-command-predicate #'command-completion-default-include-p)
-  (minibuffer-prompt-properties
-   '(read-only t cusror-intangible t face minibuffer-prompt)))
+(add-to-list 'load-path
+             (expand-file-name "~/.emacs.d/lisp"))
+
+(let ((files-to-load
+       '("global-settings.el"
+         "consult.el"
+         "tangotango2-theme.el"
+         "theme.el"
+         "consult.el"
+         "dev-settings.el" ; should come before all other dev modes.
+         "misc-dev-settings.el"
+         "text-settings.el"
+         "elisp-settings.el"
+         "c-settings.el"
+         "neo4j-settings.el"
+         "ruby-settings.el"
+         "elixir-settings.el"
+         "org-settings.el"
+         "global-key-bindings.el"))) ; always comes last
+
+  (dolist (file files-to-load)
+    (load-file (concat (file-name-directory user-init-file)
+                       file))))

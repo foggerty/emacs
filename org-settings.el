@@ -3,6 +3,8 @@
 (use-package org)
 (use-package org-bullets)
 
+(require 'org-indent)
+
 (defun org-setup ()
   (org-indent-mode)
   (org-bullets-mode)

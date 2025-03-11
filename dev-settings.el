@@ -7,12 +7,34 @@
 
 (require 'eglot)
 
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-(add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
+;; Don't enable globally, it's a pain in text/org mode.
+(use-package aggressive-indent)
 
-(global-eldoc-mode)
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
+(use-package git-timemachine
+  :bind
+  ("C-c t" . git-timemachine-toggle))
+
+(use-package flycheck
+  :config
+  (setq-default flycheck-disabled-checkers
+                '(emacs-lisp-checkdoc))
+  (global-flycheck-mode))
+
+(use-package subword
+  :config
+  (global-subword-mode 1))
+
+;; Automatically make scripts executable.
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;; Setup eldoc.
 (setq eldoc-echo-area-use-multiline-p 1)
 (setq eldoc-idle-delay 0.0)
+(global-eldoc-mode)
 
 (use-package smartparens
   :hook
@@ -66,6 +88,7 @@
   (setq treesit-auto-langs
         '(bash
           c
+          cpp
           clojure
           elixir
           go
@@ -86,47 +109,3 @@
 
 (treesit-auto-add-to-auto-mode-alist 'all)
 (treesit-auto-install-all)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Programming modes without much setup required.
-;;;
-;;
-
-(use-package aggressive-indent)
-
-(use-package systemd)
-
-(use-package yaml-mode)
-
-(use-package magit
-  :bind
-  ("C-x g" . magit-status))
-
-(use-package markdown-mode
-  :config
-  (setq markdown-fontify-code-blocks-natively t))
-
-(use-package git-timemachine
-  :bind
-  ("C-c t" . git-timemachine-toggle))
-
-(use-package flycheck
-  :config
-  (setq-default flycheck-disabled-checkers
-                '(emacs-lisp-checkdoc))
-  (global-flycheck-mode))
-
-(use-package subword
-  :config
-  (global-subword-mode 1))
-
-(use-package sql-indent
-  :hook
-  (sql-mode . sqlind-minor-mode))
-
-(use-package hyprlang-ts-mode
-  :custom
-  (hyprlang-ts-mode-indent-offset 4))
-
-(require 'hyprlang-ts-mode)

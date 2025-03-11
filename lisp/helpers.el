@@ -66,3 +66,14 @@ pairs or single strings."
 (defun load-from-init (file)
   (let ((init-dir (file-name-directory user-init-file)))
     (load (concat init-dir file))))
+
+(require 'face-remap)
+
+(defun adjust-global-font(increment)
+  (interactive)
+  (let* ((height (face-attribute 'default :height))
+         (new (+ height
+                 (* increment global-text-scale-adjust--increment-factor))))
+    (set-face-attribute 'default nil :height new)))
+
+(provide 'helpers)
