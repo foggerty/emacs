@@ -64,21 +64,17 @@
 
 (cond ((or (daemonp) (display-graphic-p))
        (load-theme 'ewal-spacemacs-classic t))
-      (t (load-theme 'wombat t)))
+      (t (load-theme 'tangotango2 t)))
 
 (defun on-frame-open (&optional frame)
   "Used when emacsclient is run in a terminal, in a graphical environment."
   (unless (display-graphic-p frame)
     (set-face-background 'default "unspecified-bg" frame)
-    (set-face-background 'font-lock-comment-face "unspecified-bg frame")))
+    (set-face-background 'font-lock-comment-face "unspecified-bg" frame)))
 
 (add-hook 'after-make-frame-functions 'on-frame-open)
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
-
 (set-default 'cursor-type 'bar)
-
-;; Smooth scrolling (GUI only)
-(pixel-scroll-precision-mode)

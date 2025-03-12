@@ -10,6 +10,4 @@
            (local-set-key (kbd "C-h C-f") 'find-function)
            (local-set-key (kbd "C-C C-b") 'eval-buffer)))
 
-(add-hook 'ielm-mode-hook (qif
-                           (aggressive-indent-mode)
-                           (hungry-delete-mode)))
+(add-hook 'ielm-mode-hook (qif (aggressive-indent-mode)))

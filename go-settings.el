@@ -1,12 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package go-ts-mode
-  :config
-  (setq gofmt-command "goimports") ; go get golang.org/x/tools/cmd/goimports
-
   :custom
-  (tab-width 3)
-
+  (gofmt-command "goimports") ; go get golang.org/x/tools/cmd/goimports
+  :defines (go-mode-map)
   :bind
   (:map go-mode-map
         ("C-c C-p" . go-playground)

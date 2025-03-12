@@ -16,9 +16,9 @@
 ;; Hide minor modes in modeline.
 (use-package minions
   :custom
-  (minions-mode-line-ligher "--")
-  :init
-  (minions-mode 1))
+  (minions-mode-line-ligher "--"))
+
+(minions-mode 1)
 
 ;; Mouse-mode in terminals
 (xterm-mouse-mode)
@@ -71,15 +71,16 @@
 ;; Hungry-delete: backspace/delete kill up to next char.
 (use-package hungry-delete
   :hook
-  (emacs-lisp-mode
-   bash-mode
+  (bash-mode
    bash-ts-mode
    elixir-mode
    elixir-ts-mode
-   ruby-mode
-   ruby-ts-mode
+   emacs-lisp-mode
    go-mode
-   go-ts-mode))
+   go-ts-mode
+   ielm-mode
+   ruby-mode
+   ruby-ts-mode))
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
@@ -98,27 +99,29 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Mini-buffer / Code completion.
+;;;
 ;;
 
 ;; Code completion
 (use-package corfu
-  :bind (:map corfu-map
-              ("<next>"  . corfu-scroll-up)
-              ("<prior>" . corfu-scroll-down))
   :custom
   (corfu-quit-at-boundry t)
   (corfu-quit-no-match nil)
   (corfu-auto nil)
   (corfu-echo-delay 0)
-  :init
+  :bind (:map corfu-map
+              ("<next>"  . corfu-scroll-up)
+              ("<prior>" . corfu-scroll-down)))
+
+(progn
   (global-corfu-mode)
   (corfu-popupinfo-mode 1)
   (corfu-echo-mode))
 
-(use-package corfu-terminal
-  :config
-  (unless (display-graphic-p)
-    (corfu-terminal-mode +1)))
+(use-package corfu-terminal)
+
+(unless (display-graphic-p)
+  (corfu-terminal-mode +1))
 
 ;; Mini-buffer completion that uses default Emacs completion (see
 ;; Orderless below)
@@ -128,13 +131,14 @@
   (vertico-count 10)
   (vertico-resize 'grow-only)
   (vertico-cycle t)
-  :init
-  (vertico-mode)
   :bind (:map vertico-map
               ("<next>" . vertico-scroll-up)
               ("<prior>" . vertico-scroll-down)))
 
+(vertico-mode)
+
 ;; Replaces Emac's default copmletion with Orderless
+
 (use-package orderless
   :custom
   (completion-styles '(orderless flex basic))
@@ -148,7 +152,7 @@
 
 ;; Show help text in margin on mini-buffer.
 (use-package marginalia
-  :init
+  :config
   (marginalia-mode))
 
 
@@ -157,89 +161,87 @@
 ;;;
 ;;
 
-(use-package projectile
-  :init
-  (projectile-mode +1)
-  :bind) (:map projectile-mode-map
+(use-package projectile)
+(projectile-mode +1)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings - one day this will be intuitive...
 ;;;
-            ;;
+;;
 
-            (require 'pixel-scroll)
+(require 'pixel-scroll)
 
-            (setq mouse-wheel-tilt-scroll t
-                  mouse-wheel-progressive-speed nil
-                  mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+(setq mouse-wheel-tilt-scroll t
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
-            (setq pixel-scroll-precision-mode t
-                  pixel-scroll-precision-use-momentum t
-                  pixel-scroll-precision-momentum-seconds 0.75
-                  pixel-scroll-precision-momentum-tick 0.01
-                  pixel-scroll-precision-interpolate-page t)
+(setq pixel-scroll-precision-mode t
+      pixel-scroll-precision-use-momentum t
+      pixel-scroll-precision-momentum-seconds 0.75
+      pixel-scroll-precision-momentum-tick 0.01
+      pixel-scroll-precision-interpolate-page t)
+
+(pixel-scroll-precision-mode t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Helpful - better help screens.
 ;;;
-            ;;
+;;
 
-            (use-package helpful
-              :bind
-              (("C-h f" . helpful-callable)
-               ("C-h v" . helpful-variable)
-               ("C-h k" . helpful-key)))
+(use-package helpful
+  :bind
+  (("C-h f" . helpful-callable)
+   ("C-h v" . helpful-variable)
+   ("C-h k" . helpful-key)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Which-key, tell me what to press next
 ;;;
-            ;;
+;;
 
-            (require 'which-key)
-            (setq which-key-idle-delay 0.5)
-            (which-key-mode t)
+(require 'which-key)
+(setq which-key-idle-delay 0.5)
+(which-key-mode t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Treemacs
 ;;;
-            ;;
+;;
 
-            (use-package treemacs
-              :config
-              (setq treemacs-no-png-images t
-                    treemacs-tag-follow-delay 0
-                    treemacs-indent-guide-style 'line
-                    treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
-              (treemacs-follow-mode)
-              (treemacs-fringe-indicator-mode)
-              (treemacs-git-mode 'simple)
-              (treemacs-filewatch-mode)
-              (treemacs-indent-guide-mode)
-              :bind
-              (("<f8>" . treemacs)))
-
-            (use-package treemacs-magit)
+(use-package treemacs
+  :custom
+  (treemacs-no-png-images t)
+  (treemacs-tag-follow-delay 0)
+  (treemacs-indent-guide-style 'line)
+  (treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
+  :config
+  (treemacs-follow-mode)
+  (treemacs-fringe-indicator-mode)
+  (treemacs-git-mode 'simple)
+  (treemacs-filewatch-mode)
+  (treemacs-indent-guide-mode)
+  :bind
+  (("<f8>" . treemacs)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace
 ;;;
-            ;;
+;;
 
-            (use-package visual-regexp-steroids
-              :config
-              (advice-add 'replace-regexp-as-diff :override #'vr/query-replace))
+(use-package visual-regexp-steroids)
+
+(advice-add 'replace-regexp-as-diff :override #'vr/query-replace)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio - give active window more space.
 ;;;
-            ;;
+;;
 
-            (use-package golden-ratio
-              :config
-              (golden-ratio-mode 1))
+(use-package golden-ratio)
+(golden-ratio-mode 1)

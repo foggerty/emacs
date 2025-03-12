@@ -35,7 +35,6 @@
        '("global-settings.el"
          "consult.el"
          "tangotango2-theme.el"
-         "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
          "text-settings.el"

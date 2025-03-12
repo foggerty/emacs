@@ -19,14 +19,15 @@
   ("C-c t" . git-timemachine-toggle))
 
 (use-package flycheck
-  :config
-  (setq-default flycheck-disabled-checkers
-                '(emacs-lisp-checkdoc))
-  (global-flycheck-mode))
+  :custom
+  (flycheck-disabled-checkers
+   '(emacs-lisp-checkdoc)))
 
-(use-package subword
-  :config
-  (global-subword-mode 1))
+(global-flycheck-mode)
+
+(use-package subword)
+
+(global-subword-mode 1)
 
 ;; Automatically make scripts executable.
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
@@ -82,23 +83,23 @@
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
+  (treesit-auto-langs
+   '(bash
+     c
+     cpp
+     clojure
+     elixir
+     go
+     gomod
+     heex
+     hyprlang
+     javascript
+     json
+     ruby
+     sql))
   :hook
   (shel-mode-hook . bash-ts-mode)
-  :config
-  (setq treesit-auto-langs
-        '(bash
-          c
-          cpp
-          clojure
-          elixir
-          go
-          gomod
-          heex
-          hyprlang
-          javascript
-          json
-          ruby
-          sql)))
+  :config)
 
 (require 'treesit)
 
