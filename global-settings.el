@@ -153,25 +153,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Ripgrep
-;;;
-;;
-
-(use-package wgrep)
-
-(use-package rg)
-(rg-enable-default-bindings)   ; or rg-enable-menu
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Consult - uses ripgrep etc
-;;;
-;;
-
-(use-package consult)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Projectile - project management
 ;;;
 ;;
@@ -179,86 +160,86 @@
 (use-package projectile
   :init
   (projectile-mode +1)
-  :bind (:map projectile-mode-map
-              ("<f12>" . 'projectile-command-map)))
+  :bind) (:map projectile-mode-map
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Mouse settings - one day this will be intuitive...
 ;;;
-;;
+            ;;
 
-(require 'pixel-scroll)
+            (require 'pixel-scroll)
 
-(setq mouse-wheel-tilt-scroll t
-      mouse-wheel-progressive-speed nil
-      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+            (setq mouse-wheel-tilt-scroll t
+                  mouse-wheel-progressive-speed nil
+                  mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
-(setq pixel-scroll-precision-use-momentum t
-      pixel-scroll-precision-momentum-seconds 0.75
-      pixel-scroll-precision-momentum-tick 0.01
-      pixel-scroll-precision-mode t)
+            (setq pixel-scroll-precision-mode t
+                  pixel-scroll-precision-use-momentum t
+                  pixel-scroll-precision-momentum-seconds 0.75
+                  pixel-scroll-precision-momentum-tick 0.01
+                  pixel-scroll-precision-interpolate-page t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Helpful - better help screens.
 ;;;
-;;
+            ;;
 
-(use-package helpful
-  :bind
-  (("C-h f" . helpful-callable)
-   ("C-h v" . helpful-variable)
-   ("C-h k" . helpful-key)))
+            (use-package helpful
+              :bind
+              (("C-h f" . helpful-callable)
+               ("C-h v" . helpful-variable)
+               ("C-h k" . helpful-key)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Which-key, tell me what to press next
 ;;;
-;;
+            ;;
 
-(require 'which-key)
-(setq which-key-idle-delay 0.5)
-(which-key-mode t)
+            (require 'which-key)
+            (setq which-key-idle-delay 0.5)
+            (which-key-mode t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Treemacs
 ;;;
-;;
+            ;;
 
-(use-package treemacs
-  :config
-  (setq treemacs-no-png-images t
-        treemacs-tag-follow-delay 0
-        treemacs-indent-guide-style 'line
-        treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
-  (treemacs-follow-mode)
-  (treemacs-fringe-indicator-mode)
-  (treemacs-git-mode 'simple)
-  (treemacs-filewatch-mode)
-  (treemacs-indent-guide-mode)
-  :bind
-  (("<f8>" . treemacs)))
+            (use-package treemacs
+              :config
+              (setq treemacs-no-png-images t
+                    treemacs-tag-follow-delay 0
+                    treemacs-indent-guide-style 'line
+                    treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
+              (treemacs-follow-mode)
+              (treemacs-fringe-indicator-mode)
+              (treemacs-git-mode 'simple)
+              (treemacs-filewatch-mode)
+              (treemacs-indent-guide-mode)
+              :bind
+              (("<f8>" . treemacs)))
 
-(use-package treemacs-magit)
+            (use-package treemacs-magit)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace
 ;;;
-;;
+            ;;
 
-(use-package visual-regexp-steroids
-  :config
-  (advice-add 'replace-regexp-as-diff :override #'vr/query-replace))
+            (use-package visual-regexp-steroids
+              :config
+              (advice-add 'replace-regexp-as-diff :override #'vr/query-replace))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio - give active window more space.
 ;;;
-;;
+            ;;
 
-(use-package golden-ratio
-  :config
-  (golden-ratio-mode 1))
+            (use-package golden-ratio
+              :config
+              (golden-ratio-mode 1))

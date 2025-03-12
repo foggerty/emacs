@@ -22,6 +22,7 @@
 (global-set-key (kbd "M-SPC")           'cycle-spacing)
 (global-set-key (kbd "C-=")             (qif (adjust-global-font +1)))
 (global-set-key (kbd "C--")             (qif (adjust-global-font -1)))
+(global-set-key (kbd "<f12>")           'projectile-find-file)
 
 ;; "Thank you, I prefer it my way."
 (require 'aggressive-indent)
