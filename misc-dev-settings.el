@@ -7,7 +7,8 @@
 
 (use-package systemd
   :config
-  (add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode)))
+  (add-to-list 'auto-mode-alist
+               '("\\.service\\'" . systemd-mode)))
 
 (use-package yaml-mode)
 
@@ -24,3 +25,12 @@
   (hyprlang-ts-mode-indent-offset 4))
 
 (use-package ron-mode)
+
+(use-package json-mode
+  :mode "\\.json\\'")
+
+(require 'nxml-mode)
+(setq nxml-slash-auto-complete-flag t)
+(add-hook 'nxml-mode-hook (qif (aggressive-indent-mode)
+                               (hungry-delete-mode)
+                               (smartparens-mode)))

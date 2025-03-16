@@ -24,5 +24,6 @@ Simplify all the things!  I'm using ~ewal~ to use the same theme as wot's as bei
 
 * Todo
 ** General
- - [ ] Move all projectile commands behind F12.
-
+- [ ] Get flycheck working with eglot.
+- [ ] Learn some basic magit!
+- [ ] Look into ediff and if it works with magit.

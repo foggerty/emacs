@@ -10,7 +10,8 @@
 
 (setq load-prefer-newer t
       use-package-always-ensure t
-      use-package-always-defer t)
+      use-package-always-defer t
+      package-native-compile t)
 
 (make-directory package-user-dir t)
 

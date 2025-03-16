@@ -7,9 +7,9 @@
 
 (defun add-to-alist (alist elements)
   (cond ((not (alistp (symbol-value alist)))
-	 (error "'alist' is not an alist."))
-	((not (alistp elements))
-	 (error "'elements' is not an alist."))
+         (error "'alist' is not an alist."))
+        ((not (alistp elements))
+         (error "'elements' is not an alist."))
         (t (dolist (element elements)
              (add-to-list alist element)))))
 

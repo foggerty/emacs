@@ -138,7 +138,6 @@
 (vertico-mode)
 
 ;; Replaces Emac's default copmletion with Orderless
-
 (use-package orderless
   :custom
   (completion-styles '(orderless flex basic))
@@ -245,3 +244,26 @@
 
 (use-package golden-ratio)
 (golden-ratio-mode 1)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Move-where-I-mean
+;;;
+;;
+
+(use-package mwim
+  :bind
+  ("C-a" . mwim-beginning-of-code-or-line)
+  ("C-e" . mwim-end-of-code-or-line))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Avy-jump
+;;;
+;;
+
+(use-package avy
+  :init
+  (setq avy-background t)
+  :bind
+  ("C-\`" . avy-goto-char))

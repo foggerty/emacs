@@ -1,8 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;; NOTE install:
-;;;;    rubocop, erb, solargraph
+;;;; NOTE install: rubocop, erb, solargraph
 ;;;; via gem install.
+
+(require 'helpers)
 
 (use-package robe
   :hook
@@ -17,3 +18,13 @@
 
 (add-hook 'ruby-mode 'eglot-ensure)
 (add-hook 'ruby-ts-mode 'eglot-ensure)
+
+(setq auto-mode-alist
+      (append '(("\\.rxml\\'"    . ruby-ts-mode)
+                ("\\.rjs\\'"     . ruby-ts-mode)
+                ("\\.irbrc\\'"   . ruby-ts-mode)
+                ("\\.pryrc\\'"   . ruby-ts-mode)
+                ("\\.builder\\'" . ruby-ts-mode)
+                ("\\.gemspec\\'" . ruby-ts-mode)
+                ("Kirkfile\\'"   . ruby-ts-mode))
+              auto-mode-alist))

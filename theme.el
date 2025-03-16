@@ -10,6 +10,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+(fringe-mode '(12 . 0)) ; 12px left, 0p right.
 
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
@@ -51,7 +52,9 @@
  '(org-block ((t (:inherit fixed-pitch))))
  `(org-block-begin-line ((t :background unspecified)))
  `(org-block-end-line ((t (:background unspecified))))
- '(org-code ((t (:inherit (shadow fixed-pitch))))))
+ '(org-code ((t (:inherit (shadow fixed-pitch)))))
+ '(avy-lead-face ((t (:background unspecified))))
+ '(avy-lead-face-0 ((t (:background unspecified)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
