@@ -24,7 +24,3 @@
 (global-set-key (kbd "C--")             (qif (adjust-global-font -1)))
 (global-set-key (kbd "<f12>")           'consult-projectile)
 (global-set-key (kbd "C-<return>")      'execute-extended-command)
-
-;; "Thank you, I prefer it my way."
-(require 'aggressive-indent)
-(define-key aggressive-indent-mode-map (kbd "C-c C-q") nil)

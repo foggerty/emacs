@@ -1,20 +1,19 @@
 ;;; -*- lexical-binding: t; -*-
 
-(use-package go-ts-mode
-  :custom
-  (gofmt-command "goimports") ; go get golang.org/x/tools/cmd/goimports
-  :defines (go-mode-map)
-  :bind
-  (:map go-mode-map
-        ("C-c C-p" . go-playground)
-        ("C-c C-c C-d" . godoc-at-point)))
+;;;; go install golang.org/x/tools/gopls@latest
+;;;; go install golang.org/x/tools/cmd/goimports@latest
 
 (use-package go-eldoc)
+(require 'go-mode)
 
-(use-package go-playground)
-
-(add-hook 'go-ts-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook 'gofmt-before-save  nil 'local)))
-
-(add-hook 'go-ts-mode-hook 'eglot-ensure)
+(use-package go-ts-mode
+  :config
+  (setq gofmt-command "goimports"
+        go-ts-mode-indent-offset 4)
+  :hook
+  ((go-ts-mode . eglot-ensure)
+   (go-ts-mode . electric-pair-mode))
+  :bind
+  (:map go-ts-mode-map
+        ("C-c C-q" . gofmt)
+        ("C-c C-d" . godoc-at-point)))

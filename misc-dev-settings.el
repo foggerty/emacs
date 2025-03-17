@@ -31,6 +31,3 @@
 
 (require 'nxml-mode)
 (setq nxml-slash-auto-complete-flag t)
-(add-hook 'nxml-mode-hook (qif (aggressive-indent-mode)
-                               (hungry-delete-mode)
-                               (smartparens-mode)))

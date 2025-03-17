@@ -5,22 +5,14 @@
 
 (require 'helpers)
 
-(use-package robe
-  :hook
-  ;; ToDO - setup bindings
-  (ruby-mode    . robe-mode)
-  (ruby-ts-mode . robe-mode))
-
 (use-package ruby-electric
   :hook
-  (ruby-mode    . ruby-electric-mode)
-  (ruby-ts-mode . ruby-electric-mode))
-
-(add-hook 'ruby-mode 'eglot-ensure)
-(add-hook 'ruby-ts-mode 'eglot-ensure)
+  (ruby-ts-mode . ruby-electric-mode)
+  (ruby-ts-mode . eglot-ensure))
 
 (setq auto-mode-alist
-      (append '(("\\.rxml\\'"    . ruby-ts-mode)
+      (append '(("\\.rb\\'"      . ruby-ts-mode)
+                ("\\.rxml\\'"    . ruby-ts-mode)
                 ("\\.rjs\\'"     . ruby-ts-mode)
                 ("\\.irbrc\\'"   . ruby-ts-mode)
                 ("\\.pryrc\\'"   . ruby-ts-mode)
@@ -28,3 +20,18 @@
                 ("\\.gemspec\\'" . ruby-ts-mode)
                 ("Kirkfile\\'"   . ruby-ts-mode))
               auto-mode-alist))
+
+(add-to-list 'major-mode-remap-alist '(ruby-mode . ruby-ts-mode))
+
+;; Electric-mode is stoooopid when it comes to handling
+;; parens and quotes.
+(require 'ruby-electric)
+
+(define-key ruby-electric-mode-map (kbd "\"") nil)
+(define-key ruby-electric-mode-map (kbd "'") nil)
+(define-key ruby-electric-mode-map (kbd "(") nil)
+(define-key ruby-electric-mode-map (kbd "[") nil)
+(define-key ruby-electric-mode-map (kbd "`") nil)
+
+(define-key ruby-electric-mode-map (kbd ")") nil)
+(define-key ruby-electric-mode-map (kbd "]") nil)

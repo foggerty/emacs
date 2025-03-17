@@ -5,19 +5,40 @@
 ;;;
 ;;
 
+;; Code completion etc.
 (require 'eglot)
 
-;; Don't enable globally, it's a pain in text/org mode.
-(use-package aggressive-indent)
+(setq eglot-autoshutdown t
+      eglot-report-progress t)
 
+;; Don't enable globally, it's a pain in text/org mode.
+(use-package aggressive-indent
+  :hook
+  (bash-ts-mode
+   elixir-ts-mode
+   go-ts-mode
+   ielm-mode
+   ruby-ts-mode
+   ruby-electric-mode
+   emacs-lisp-mode
+   nxml-mode))
+
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+
+(require 'aggressive-indent)
+(define-key aggressive-indent-mode-map (kbd "C-c C-q") nil)
+
+;; Magit - todo, LEARN!
 (use-package magit
   :bind
   ("C-x g" . magit-status))
 
+;; Tardis mode.
 (use-package git-timemachine
   :bind
   ("C-c t" . git-timemachine-toggle))
 
+;; FLycheck - need to look into how this integrates with ruby etc.
 (use-package flycheck
   :custom
   (flycheck-disabled-checkers
@@ -25,8 +46,8 @@
 
 (global-flycheck-mode)
 
+;; Subword mode.
 (use-package subword)
-
 (global-subword-mode 1)
 
 ;; Automatically make scripts executable.
@@ -37,9 +58,30 @@
 (setq eldoc-idle-delay 0.0)
 (global-eldoc-mode)
 
+;; Hungry-delete: backspace/delete kill up to next char.
+(use-package hungry-delete
+  :hook
+  (bash-ts-mode
+   elixir-ts-mode
+   emacs-lisp-mode
+   go-ts-mode
+   ielm-mode
+   nxml-mode
+   ruby-ts-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Smartparens
+;;;
+;;
+
 (use-package smartparens
   :hook
-  (prog-mode . smartparens-strict-mode)
+  (bash-ts-mode
+   elixir-ts-mode
+   emacs-lisp-mode
+   go-ts-mode
+   nxml-mode
+   ruby-ts-mode)
   :config
   (require 'smartparens-config)
   :bind (:map smartparens-mode-map

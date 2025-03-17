@@ -45,8 +45,9 @@
 (require 'desktop)
 (desktop-save-mode 1)
 (setq desktop-load-locked-desktop 'check-pid)
-(setq desktop-dirname "~/.emacs.d/desktop")
+(setq desktop-dirname "~/.emacs.d")
 
+;; ToDo - Not working?
 (add-hook 'server-after-make-frame-hook 'desktop-read)
 
 ;; Centralised backup directory
@@ -67,20 +68,6 @@
  (lambda (path)
    (setq ispell-program-name path
          ispell-dictionary "british")))
-
-;; Hungry-delete: backspace/delete kill up to next char.
-(use-package hungry-delete
-  :hook
-  (bash-mode
-   bash-ts-mode
-   elixir-mode
-   elixir-ts-mode
-   emacs-lisp-mode
-   go-mode
-   go-ts-mode
-   ielm-mode
-   ruby-mode
-   ruby-ts-mode))
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
