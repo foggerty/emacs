@@ -17,6 +17,7 @@
   (bash-ts-mode
    elixir-ts-mode
    go-ts-mode
+   json-ts-mode
    ielm-mode
    ruby-ts-mode
    ruby-electric-mode
@@ -38,7 +39,7 @@
   :bind
   ("C-c t" . git-timemachine-toggle))
 
-;; FLycheck - need to look into how this integrates with ruby etc.
+;; FLycheck - need to look into how this integrates with eglot.
 (use-package flycheck
   :custom
   (flycheck-disabled-checkers
@@ -80,6 +81,7 @@
    elixir-ts-mode
    emacs-lisp-mode
    go-ts-mode
+   json-ts-mode
    nxml-mode
    ruby-ts-mode)
   :config
