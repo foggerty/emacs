@@ -96,6 +96,8 @@
   (corfu-quit-no-match nil)
   (corfu-auto nil)
   (corfu-echo-delay 0)
+  (corfu-auto-delay 0)
+  (corfu-popupinfo-delay 0)
   :bind (:map corfu-map
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down)))
@@ -137,9 +139,8 @@
                                       (eglot-capf (styles orderless))))
 
 ;; Show help text in margin on mini-buffer.
-(use-package marginalia
-  :config
-  (marginalia-mode))
+(use-package marginalia)
+(marginalia-mode)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

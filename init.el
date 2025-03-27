@@ -59,3 +59,4 @@
   (read-extended-command-predicate #'command-completion-default-include-p)
   (minibuffer-prompt-properties
    '(read-only t cusror-intangible t face minibuffer-prompt)))
+

@@ -9,12 +9,14 @@
 (require 'eglot)
 
 (setq eglot-autoshutdown t
-      eglot-report-progress t)
+      eglot-report-progress t
+      eglot-doc)
 
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
   :hook
   (bash-ts-mode
+   css-ts-mode
    elixir-ts-mode
    go-ts-mode
    json-ts-mode
@@ -132,6 +134,7 @@
      c
      cpp
      clojure
+     css
      elixir
      go
      gomod
