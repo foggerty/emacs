@@ -9,8 +9,7 @@
 (require 'eglot)
 
 (setq eglot-autoshutdown t
-      eglot-report-progress t
-      eglot-doc)
+      eglot-report-progress t)
 
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
@@ -19,6 +18,7 @@
    css-ts-mode
    elixir-ts-mode
    go-ts-mode
+   js-ts-mode
    json-ts-mode
    ielm-mode
    ruby-ts-mode
@@ -70,7 +70,9 @@
    go-ts-mode
    ielm-mode
    nxml-mode
-   ruby-ts-mode))
+   ruby-ts-mode
+   json-ts-mode
+   js-ts-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Smartparens
