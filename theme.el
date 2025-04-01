@@ -10,7 +10,7 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
-(fringe-mode '(12 . 0)) ; 12px left, 0p right.
+(fringe-mode '(8 . 0))
 
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
@@ -63,11 +63,11 @@
 ;;
 
 (use-package ewal-spacemacs-themes)
-(use-package atom-one-dark-theme)
+(use-package atom-dark-theme)
 
 (cond ((or (daemonp) (display-graphic-p))
        (load-theme 'ewal-spacemacs-classic t))
-      (t (load-theme 'tangotango2 t)))
+      (t (load-theme 'atom-dark t)))
 
 (defun on-frame-open (&optional frame)
   "Used when emacsclient is run in a terminal, in a graphical environment."

@@ -16,6 +16,7 @@
   :hook
   (bash-ts-mode
    css-ts-mode
+   elixir-mode
    elixir-ts-mode
    go-ts-mode
    js-ts-mode
@@ -27,6 +28,7 @@
    nxml-mode))
 
 (add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+(add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode))
 
 (require 'aggressive-indent)
 (define-key aggressive-indent-mode-map (kbd "C-c C-q") nil)
@@ -65,6 +67,7 @@
 (use-package hungry-delete
   :hook
   (bash-ts-mode
+   elixir-mode
    elixir-ts-mode
    emacs-lisp-mode
    go-ts-mode
@@ -82,6 +85,7 @@
 (use-package smartparens
   :hook
   (bash-ts-mode
+   elixir-mode
    elixir-ts-mode
    emacs-lisp-mode
    go-ts-mode

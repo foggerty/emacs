@@ -33,7 +33,8 @@
              (expand-file-name "~/.emacs.d/lisp"))
 
 (let ((files-to-load
-       '("global-settings.el"
+       '("theme.el"
+         "global-settings.el"
          "consult.el"
          "tangotango2-theme.el"
          "dev-settings.el" ; should come before all other dev modes.
@@ -46,7 +47,6 @@
          "ruby-settings.el"
          "elixir-settings.el"
          "org-settings.el"
-         "theme.el"
          "global-key-bindings.el"))) ; always comes last
 
   (dolist (file files-to-load)
@@ -59,4 +59,3 @@
   (read-extended-command-predicate #'command-completion-default-include-p)
   (minibuffer-prompt-properties
    '(read-only t cusror-intangible t face minibuffer-prompt)))
-
