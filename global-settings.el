@@ -69,7 +69,7 @@
 ;; Yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-Use aspell over ispell
+;; Use aspell over ispell
 (require 'ispell)
 (helper-run-if-found
  "aspell"
