@@ -16,7 +16,8 @@
 (make-directory package-user-dir t)
 
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/")
+             '("elpa"  . "https://"))
 
 (package-initialize)
 

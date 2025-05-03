@@ -5,6 +5,15 @@
 ;;;
 ;;
 
+;; Always keep comments to 80 columns.
+(advice-add 'prog-fill-reindent-defun
+            :around
+            (lambda (original &rest args)
+              (let ((original-fill fill-column))
+                (setq fill-column 80)
+                (apply original args)
+                (setq fill-column original-fill))))
+
 ;; Code completion etc.
 (require 'eglot)
 

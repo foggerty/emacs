@@ -7,11 +7,19 @@
 
 (require 'helpers)
 
+;; Less warnings at startup.
+(setq warning-minimum-level :emergency)
+
 ;; Refresh buffers when changed on disk, if there are no edits.
 (global-auto-revert-mode 1)
 
-;; Human-readable file sizes in dired.
-(setq dired-listing-switches "-a -l -h")
+;; Tweaks to dired
+(setq dired-listing-switches "-l -a -h -hv --group-directories-first"
+      dired-movement-style 'cycle
+      dired-always-read-filesystem t
+      dired-kill-when-opening-new-dired-buffer t)
+
+(add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
 ;; Hide minor modes in modeline.
 (use-package minions
@@ -61,7 +69,7 @@
 ;; Yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Use aspell over ispell
+Use aspell over ispell
 (require 'ispell)
 (helper-run-if-found
  "aspell"
@@ -76,8 +84,9 @@
 (setq custom-file "~/.emacs.d/custom-variables.el")
 
 ;; Copy ENV variables if running as a daemon.
-(use-package exec-path-from-shell)
-(exec-path-from-shell-initialize)
+(when (daemonp)
+  (use-package exec-path-from-shell)
+  (exec-path-from-shell-initialize))
 
 ;; Show less pop-ups when compiling.
 (require 'comp-run)
@@ -240,9 +249,9 @@
 ;;
 
 (use-package mwim
-  :bind
-  ("C-a" . mwim-beginning-of-code-or-line)
-  ("C-e" . mwim-end-of-code-or-line))
+  :bind (:map prog-mode-map
+              ("C-a" . mwim-beginning-of-code-or-line)
+              ("C-e" . mwim-end-of-code-or-line)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -251,7 +260,7 @@
 ;;
 
 (use-package avy
-  :init
-  (setq avy-background t)
+  :custom
+  s  (avy-background t)
   :bind
   ("C-\`" . avy-goto-char))

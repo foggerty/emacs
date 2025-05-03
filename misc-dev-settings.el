@@ -5,6 +5,8 @@
 ;;;
 ;;
 
+(use-package pandoc-mode)
+
 (use-package systemd
   :config
   (add-to-list 'auto-mode-alist

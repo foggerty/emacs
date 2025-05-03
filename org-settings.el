@@ -1,17 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package org)
-(use-package org-bullets)
+(use-package org-modern)
 
 (require 'org-indent)
 
 (defun org-setup ()
   (org-indent-mode)
-  (org-bullets-mode)
+  (org-modern-mode)
   (local-set-key (kbd "C-<up>")   'org-backward-heading-same-level)
   (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
-  (local-set-key (kbd "C-c t")    'set-org-tags-from-anywhere)
-  (local-set-key (kbd "S-<tab>")  'org-cycle-overview))
+  (local-set-key (kbd "C-c t")    'set-org-tags-from-anywhere))
 
 (setq org-confirm-babel-evaluate nil
       org-edit-src-content-indentation 0

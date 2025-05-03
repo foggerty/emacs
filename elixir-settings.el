@@ -3,6 +3,8 @@
 (require 'eglot)
 (require 'helpers)
 
+(use-package elixir-mode)
+
 (use-package elixir-ts-mode
   :hook ((elixir-ts-mode . inf-elixir-minor-mode)
          (elixir-ts-mode . eglot-ensure)
@@ -10,9 +12,10 @@
   :bind
   (:map elixir-ts-mode-map
         (("C-x C-e"  . #'inf-elixir-send-line)
-         ("C-c -C-r" . #'inf-elixir-send-region)
+         ("C-c C-r" . #'inf-elixir-send-region)
          ("C-c C-b"  . #'inf-elixir-send-buffer)))
   :config
+  (setq inf-elixir-switch-to-repl-on-send nil)
   (add-to-alist 'auto-mode-alist
                 '(("\\.ex\\'" . elixir-ts-mode)
                   ("\\.exs\\'" . elixir-ts-mode))))

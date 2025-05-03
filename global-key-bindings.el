@@ -24,3 +24,5 @@
 (global-set-key (kbd "C--")             (qif (adjust-global-font -1)))
 (global-set-key (kbd "<f12>")           'consult-projectile)
 (global-set-key (kbd "C-<return>")      'execute-extended-command)
+(global-set-key (kbd "C-<prior>")       'previous-buffer)
+(global-set-key (kbd "C-<next>")        'next-buffer)
