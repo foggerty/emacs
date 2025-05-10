@@ -111,15 +111,14 @@
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down)))
 
-(progn
-  (global-corfu-mode)
-  (corfu-popupinfo-mode 1)
-  (corfu-echo-mode))
-
-(use-package corfu-terminal)
-
-(unless (display-graphic-p)
-  (corfu-terminal-mode +1))
+(if (display-graphic-p)
+    (progn
+      (global-corfu-mode)
+      (corfu-popupinfo-mode 1)
+      (corfu-echo-mode))
+  (progn
+    (use-package corfu-terminal)    
+    (corfu-terminal-mode +1)))
 
 ;; Mini-buffer completion that uses default Emacs completion (see
 ;; Orderless below)

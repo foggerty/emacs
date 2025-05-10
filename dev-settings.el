@@ -76,6 +76,7 @@
 (use-package hungry-delete
   :hook
   (bash-ts-mode
+   css-ts-mode
    elixir-mode
    elixir-ts-mode
    emacs-lisp-mode

@@ -34,10 +34,8 @@
              (expand-file-name "~/.emacs.d/lisp"))
 
 (let ((files-to-load
-       '("theme.el"
-         "global-settings.el"
+       '("global-settings.el"
          "consult.el"
-         "tangotango2-theme.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
          "text-settings.el"
@@ -48,6 +46,7 @@
          "ruby-settings.el"
          "elixir-settings.el"
          "org-settings.el"
+         "theme.el"
          "global-key-bindings.el"))) ; always comes last
 
   (dolist (file files-to-load)
