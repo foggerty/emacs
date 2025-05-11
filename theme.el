@@ -22,19 +22,8 @@
                 (undecorated . t)
                 (drag-internal-border . 1)
                 (internal-border-width . 5)
-                (alpha-background . 0.85)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Fonts
-;;;
-;;
-
-(global-set-font '("Source Code Pro-12"
-                   "Liberation Mono-12"
-                   "Consolas-12"
-                   "Monospace-12"
-                   "Courier New-12"))
+                (alpha-background . 90)
+                (font . "Source Code Pro-12")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -77,7 +66,7 @@
     (set-face-background 'default "unspecified-bg" frame)
     (set-face-background 'font-lock-comment-face "unspecified-bg" frame)))
 
-(add-hook 'after-make-frame-functions 'on-frame-open)
+(add-hook 'server-after-make-frame-hook 'on-frame-open)
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0)      ; always blink

@@ -46,8 +46,8 @@
          "ruby-settings.el"
          "elixir-settings.el"
          "org-settings.el"
-         "theme.el"
-         "global-key-bindings.el"))) ; always comes last
+         "global-key-bindings.el"
+         "theme.el")))
 
   (dolist (file files-to-load)
     (load-file (concat (file-name-directory user-init-file)
