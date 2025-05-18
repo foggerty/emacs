@@ -27,6 +27,7 @@
    css-ts-mode
    elixir-mode
    elixir-ts-mode
+   geiser-mode
    go-ts-mode
    js-ts-mode
    json-ts-mode
@@ -80,6 +81,7 @@
    elixir-mode
    elixir-ts-mode
    emacs-lisp-mode
+   geiser-mode
    go-ts-mode
    ielm-mode
    nxml-mode
@@ -98,6 +100,7 @@
    elixir-mode
    elixir-ts-mode
    emacs-lisp-mode
+   geiser-mode
    go-ts-mode
    json-ts-mode
    nxml-mode

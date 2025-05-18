@@ -63,6 +63,11 @@
       `((".*" . "~/.emacs.d/backups")))
 (make-directory "~/.emacs.d/backups" t)
 
+;; Save lock-files in a central directory
+(setq lock-file-name-transforms
+      `((".*" "~/.emacs.d/lockfiles/" t)))
+(make-directory "~/.emacs.d/lockfiles" t)
+
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
 
@@ -111,13 +116,14 @@
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down)))
 
-(if (display-graphic-p)
+(if (or (daemonp)
+        (display-graphic-p))
     (progn
       (global-corfu-mode)
       (corfu-popupinfo-mode 1)
       (corfu-echo-mode))
   (progn
-    (use-package corfu-terminal)    
+    (use-package corfu-terminal)
     (corfu-terminal-mode +1)))
 
 ;; Mini-buffer completion that uses default Emacs completion (see
