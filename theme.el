@@ -56,15 +56,16 @@
 (use-package ewal-spacemacs-themes)
 (use-package atom-dark-theme)
 
-(cond ((or (daemonp) (display-graphic-p))
-       (load-theme 'ewal-spacemacs-classic t))
-      (t (load-theme 'atom-dark t)))
+(if (or (daemonp) (display-graphic-p))
+    (load-theme 'ewal-spacemacs-classic t)
+  (progn (load-theme 'wombat t)
+         (set-face-background 'default "unspecified-bg" (selected-frame))))
 
-(defun on-frame-open (&optional frame)
+(defun on-frame-open (&optional _)
   "Used when emacsclient is run in a terminal, in a graphical environment."
-  (unless (display-graphic-p frame)
-    (set-face-background 'default "unspecified-bg" frame)
-    (set-face-background 'font-lock-comment-face "unspecified-bg" frame)))
+  (when (not (display-graphic-p (selected-frame)))
+    (set-face-background 'default "unspecified-bg" (selected-frame))
+    (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))
 
 (add-hook 'server-after-make-frame-hook 'on-frame-open)
 
