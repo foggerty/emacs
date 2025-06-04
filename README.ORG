@@ -8,8 +8,8 @@ init.el will:
 3. That's pretty much it.
 
 - globals.el :: use for anything that has global use.
-- helpers.el :: helper functions for config.
-- random-functions.el :: as it says, stuff I occasionally use :-)
+- lsip/helpers.el :: helper functions, mostly for config.
+- lisp/random-functions.el :: as it says, stuff I occasionally use :-)
 - theme.el :: not just the visual theme, but settings like hiding tool bars etc.
 - dev-settings.el :: anything that effects the top-level development config.
 
@@ -24,8 +24,7 @@ Simplify all the things!  I'm using ~ewal~ to use the same theme as wot's as bei
 
 * Todo
 ** General
-- [ ] Get =foggerty-other-window-kill-buffer= working again.
+- [ ] Look into [[https://www.masteringemacs.org/article/combobulate-structured-movement-editing-treesitter][Combobulate]] - AST manipulation of your source.
 - [ ] Setup and configure =lsp-booster=.
 - [ ] Get flycheck working with eglot.
-- [ ] Learn some basic magit!
-- [ ] Look into ediff and if it works with magit, I want side-by-side diff plz.
+- [ ] Learn some basic magit!  Then incorporate Mergarif/disstastic.

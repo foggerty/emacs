@@ -79,15 +79,16 @@ Ripped from Stack Overflow"
   ;; if more than 2 windows are present
   (let ((win-curr (selected-window))
         (win-other (next-window)))
-    (select-window win-other)
-    (kill-buffer-and-window)
-    (select-window win-curr)))
+    (unless (eq win-curr win-other)
+      (select-window win-other)
+      (kill-buffer-and-window)
+      (select-window win-curr))))
 
 
 ;; Want a zap-to-char that doesn't kill the char!
 (defun foggerty-zap-to-char (char)
   "Replacement for zap-to-char that doesn't also kill char."
-  (interactive "p\ncZap to char: ")
+  (interactive "c Zap to char: ")
   (save-excursion
     (kill-region
      (point)

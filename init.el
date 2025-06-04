@@ -46,6 +46,8 @@
          "ruby-settings.el"
          "elixir-settings.el"
          "org-settings.el"
+         "lisp/random-functions.el"
+         "lisp/helpers.el"
          "global-key-bindings.el"
          "theme.el")))
 
