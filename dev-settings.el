@@ -37,9 +37,6 @@
    emacs-lisp-mode
    nxml-mode))
 
-(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
-(add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode))
-
 (require 'aggressive-indent)
 (define-key aggressive-indent-mode-map (kbd "C-c C-q") nil)
 
@@ -53,13 +50,19 @@
   :bind
   ("C-c t" . git-timemachine-toggle))
 
-;; FLycheck - need to look into how this integrates with eglot.
+;; Flycheck
 (use-package flycheck
   :custom
   (flycheck-disabled-checkers
-   '(emacs-lisp-checkdoc)))
+   '(emacs-lisp-checkdoc))
+  :config
+  (global-flycheck-mode))
 
-(global-flycheck-mode)
+(use-package flycheck-eglot
+  :ensure t
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))
 
 ;; Subword mode.
 (use-package subword)
@@ -176,3 +179,6 @@
 
 (treesit-auto-add-to-auto-mode-alist 'all)
 (treesit-auto-install-all)
+
+(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
+(add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode))

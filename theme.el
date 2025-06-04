@@ -34,7 +34,7 @@
 (custom-theme-set-faces
  'user
  '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
- '(fixed-pitch ((t ( :family "Source Code Pro" :height 1.0 :inherit 'default))))
+ '(fixed-pitch ((t ( :family "Saurce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
  '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
  '(show-paren-match ((t (:underline nil :foreground "red"))))
  `(org-defult ((t (:inherit fixed-pitch))))
@@ -53,13 +53,11 @@
 ;;;
 ;;
 
-(use-package ewal-spacemacs-themes)
-(use-package atom-dark-theme)
+(load-theme 'tangotango2 t)
 
 (if (or (daemonp) (display-graphic-p))
-    (load-theme 'ewal-spacemacs-classic t)
-  (progn (load-theme 'wombat t)
-         (set-face-background 'default "unspecified-bg" (selected-frame))))
+    (global-set-font '("Sauce Code Pro Nerd Font-13"))
+  (set-face-background 'default "unspecified-bg" (selected-frame)))
 
 (defun on-frame-open (&optional _)
   "Used when emacsclient is run in a terminal, in a graphical environment."

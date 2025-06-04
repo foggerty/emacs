@@ -24,6 +24,7 @@ Simplify all the things!  I'm using ~ewal~ to use the same theme as wot's as bei
 
 * Todo
 ** General
+- [ ] Make a TTY theme using EWAL.
 - [ ] Look into [[https://www.masteringemacs.org/article/combobulate-structured-movement-editing-treesitter][Combobulate]] - AST manipulation of your source.
 - [ ] Setup and configure =lsp-booster=.
 - [ ] Get flycheck working with eglot.
