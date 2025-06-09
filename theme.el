@@ -53,7 +53,8 @@
 ;;;
 ;;
 
-(load-theme 'tangotango2 t)
+(use-package ewal-spacemacs-themes)
+(load-theme 'ewal-spacemacs-classic t)
 
 (if (or (daemonp) (display-graphic-p))
     (global-set-font '("Sauce Code Pro Nerd Font-13"))
