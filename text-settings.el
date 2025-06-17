@@ -2,7 +2,9 @@
 
 (require 'helpers)
 
-(use-package visual-fill-column)
+(use-package visual-fill-column
+  :config
+  (setq visual-fill-column-width 120))
 
 (add-hook 'text-mode-hook (qif (flyspell-mode)
                                (visual-line-mode)

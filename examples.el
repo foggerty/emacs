@@ -5,32 +5,43 @@
   (if mode
       (cons mode (helper-parent-modes (get mode 'derived-mode-parent)))))
 
-(setq māori-vowels
-      '(("a" . "ā")
-        ("e" . "ē")
-        ("i" . "ī")
-        ("o" . "ō")
-        ("u" . "ū")
-        ("A" . "Ā")
-        ("E" . "Ē")
-        ("I" . "Ī")
-        ("O" . "Ō")
-        ("U" . "Ū")))
+(defvar māori-vowels
+  '(("a" . "ā")
+    ("e" . "ē")
+    ("i" . "ī")
+    ("o" . "ō")
+    ("u" . "ū")
+    ("A" . "Ā")
+    ("E" . "Ē")
+    ("I" . "Ī")
+    ("O" . "Ō")
+    ("U" . "Ū")))
+
+(defvar arabic-letters
+  '(("d" . "ḍ")
+    ("h" . "ḥ")
+    ("s" . "ṣ")
+    ("t" . "ṭ")
+    ("z" . "ẓ")))
+
 
 (defun foggerty-map-character (map)
-  "Maps next key-press using the provided map."
-  (let* ((char (char-to-string (read-key)))
-         (test (assoc char map)))
-    (if test (cdr test)
-      char)))
-
-(defun foggerty-map-maori-vowel ()
-  "Maps a,e,i,o,u to the Māori equivalents."
   (interactive)
-  (let ((vowel (foggerty-map-character māori-vowels)))
-    (insert vowel)
-    vowel))
+  (let* ((char (char-to-string (read-key)))
+         (test (assoc char map))
+         (replacement (if test (cdr test) char)))
+    (insert replacement)
+    replacement))
 
+(defun foggerty-map-arabic-letter ()
+  "Maps d, h, s, ? and z to arabic equivalencies."
+  (interactive)
+  (foggerty-map-character arabic-letters))
+
+(defun foggerty-map-māori-vowels ()
+  "Maps vowels to Māori long-vowels."
+  (interactive)
+  (foggerty-map-character māori-vowels))
 
 (defun edit-files (files)
   (dolist (file files)
