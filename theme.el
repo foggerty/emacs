@@ -22,7 +22,7 @@
                 (undecorated . t)
                 (drag-internal-border . 1)
                 (internal-border-width . 5)
-                (alpha-background . 80)
+                (alpha-background . 65)
                 (font . "Sauce Code Pro Nerd Font-12")))
 
 
