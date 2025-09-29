@@ -14,9 +14,5 @@
 (require 'flycheck-janet)
 (require 'ajrepl)
 
-(setq auto-mode-alist
-      (append '(("\\.janet\\'" . janet-ts-mode))
-              auto-mode-alist))
-
 (add-hook 'janet-ts-mode-hook #'janet-ts-load-helpers)
 (add-hook 'janet-ts-mode-hook #'ajrepl-interaction-mode)
