@@ -148,6 +148,13 @@
 ;;;
 ;;
 
+(require 'treesit)
+
+(add-to-list 'treesit-language-source-alist
+             '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
+(add-to-list 'treesit-language-source-alist
+             '(janet-simple "https://github.com/sogaiu/tree-sitter-janet-simple"))
+
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
@@ -163,17 +170,13 @@
      heex
      hyprlang
      javascript
+     janet-simple
      json
      ruby
      sql))
   :hook
   (shel-mode-hook . bash-ts-mode)
   :config)
-
-(require 'treesit)
-
-(add-to-list 'treesit-language-source-alist
-             '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
 
 (require 'treesit-auto)
 

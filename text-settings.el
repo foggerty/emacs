@@ -7,8 +7,7 @@
   (setq visual-fill-column-width 120))
 
 (add-hook 'text-mode-hook (qif (flyspell-mode)
-                               (visual-line-mode)
-                               (visual-fill-column-mode)))
+                               (visual-line-mode)))
 
 (defun txt-remove-soft-returns ()
   "Replaces soft-returns (a single return with a character ether side of

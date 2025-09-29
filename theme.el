@@ -34,10 +34,10 @@
 (custom-theme-set-faces
  'user
  '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
- '(fixed-pitch ((t ( :family "Saurce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
+ '(fixed-pitch ((t ( :family "Sauce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
  '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
  '(show-paren-match ((t (:underline nil :foreground "red"))))
- `(org-defult ((t (:inherit fixed-pitch))))
+ `(org-defult ((t (:inherit variable-pitch))))
  '(org-level-1 ((t (:height 1.0))))
  '(org-level-2 ((t (:height 1.0))))
  '(org-block ((t (:inherit fixed-pitch))))

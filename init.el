@@ -45,6 +45,7 @@
          "neo4j-settings.el"
          "ruby-settings.el"
          "elixir-settings.el"
+         "janet-settings.el"
          "org-settings.el"
          "lisp/random-functions.el"
          "lisp/helpers.el"

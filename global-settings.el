@@ -58,16 +58,6 @@
 ;; ToDo - Not working?
 (add-hook 'server-after-make-frame-hook 'desktop-read)
 
-;; Centralised backup directory
-(setq backup-directory-alist
-      `((".*" . "~/.emacs.d/backups")))
-(make-directory "~/.emacs.d/backups" t)
-
-;; Save lock-files in a central directory
-(setq lock-file-name-transforms
-      `((".*" "~/.emacs.d/lockfiles/" t)))
-(make-directory "~/.emacs.d/lockfiles" t)
-
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
 
@@ -87,6 +77,11 @@
 
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file "~/.emacs.d/custom-variables.el")
+;; Uncomment the following to enable reading if the customise file:
+;; I prefer not to use it, as I'd rather have everything in my config ready to
+;; go if I'm working on another machine.
+
+;; (load custom-file t)
 
 ;; Copy ENV variables if running as a daemon.
 (when (daemonp)
@@ -96,6 +91,31 @@
 ;; Show less pop-ups when compiling.
 (require 'comp-run)
 (setq native-comp-async-report-warnings-errors 'silent)
+
+;; Always add a final newline
+(setq require-final-newline t)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Temp directories
+;;;
+;;
+
+;; Centralised backup directory
+(make-directory "~/.emacs.d/backups" t)
+(setq backup-by-copying t)
+(setq backup-directory-alist
+      `((".*" . "~/.emacs.d/backups")))
+
+;; Centralsied lock-files difectory
+(make-directory "~/.emacs.d/lockfiles" t)
+(setq lock-file-name-transforms
+      `((".*" "~/.emacs.d/lockfiles/" t)))
+
+;; Centralised auto-save directory
+(make-directory "~/.emacs.d/autosave" t)
+(setq auto-save-file-name-transforms
+      '((".*" "~/.emacd.d/autosave")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
