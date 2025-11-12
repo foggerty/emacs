@@ -34,11 +34,12 @@
 ;; Save location in files.
 (save-place-mode 1)
 
-;; Stop Emacs from "jumping" the screen when scrolling, and leave the
-;; cursor where it is when scrolling (kinda).
-(setq scroll-conservatively 100)
-(setq scroll-preserve-screen-position nil)
-;; ToDo - use package scroll-restore
+;; Stop Emacs from "jumping" the screen when scrolling.
+(setq redisplay-dont-pause t
+      scroll-margin 8
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 ;; <tab> will first indent, then complete if hit again.
 (setq tab-always-indent 'complete)
@@ -77,7 +78,8 @@
 
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file "~/.emacs.d/custom-variables.el")
-;; Uncomment the following to enable reading if the customise file:
+
+;; Uncomment the following to enable reading of the customise file:
 ;; I prefer not to use it, as I'd rather have everything in my config ready to
 ;; go if I'm working on another machine.
 

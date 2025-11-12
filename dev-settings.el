@@ -30,6 +30,7 @@
    geiser-mode
    go-ts-mode
    js-ts-mode
+   janet-ts-mode
    json-ts-mode
    ielm-mode
    ruby-ts-mode
@@ -89,6 +90,7 @@
    ielm-mode
    nxml-mode
    ruby-ts-mode
+   janet-ts-mode
    json-ts-mode
    js-ts-mode))
 
@@ -105,6 +107,7 @@
    emacs-lisp-mode
    geiser-mode
    go-ts-mode
+   janet-ts-mode
    json-ts-mode
    nxml-mode
    ruby-ts-mode)

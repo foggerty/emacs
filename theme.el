@@ -9,43 +9,22 @@
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(scroll-bar-mode 0)
 (fringe-mode '(8 . 0))
+
+(scroll-bar-mode 1)
+(set-window-scroll-bars (minibuffer-window) 0 'none nil nil t)
 
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
 (setq-default line-spacing 2) ; 2 extra pixels under lines
 
 (add-to-alist 'default-frame-alist
-              '((vertical-scroll-bars . nil)
-                (menu-bar-lines . nil)
+              '((menu-bar-lines . nil)
                 (undecorated . t)
                 (drag-internal-border . 1)
                 (internal-border-width . 5)
-                (alpha-background . 65)
+                (alpha-background . 80)
                 (font . "Sauce Code Pro Nerd Font-12")))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Font overrides
-;;;
-;;
-
-(custom-theme-set-faces
- 'user
- '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
- '(fixed-pitch ((t ( :family "Sauce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
- '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
- '(show-paren-match ((t (:underline nil :foreground "red"))))
- `(org-defult ((t (:inherit variable-pitch))))
- '(org-level-1 ((t (:height 1.0))))
- '(org-level-2 ((t (:height 1.0))))
- '(org-block ((t (:inherit fixed-pitch))))
- `(org-block-begin-line ((t :background unspecified)))
- `(org-block-end-line ((t (:background unspecified))))
- '(org-code ((t (:inherit (shadow fixed-pitch)))))
- '(avy-lead-face ((t (:background unspecified))))
- '(avy-lead-face-0 ((t (:background unspecified)))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -72,3 +51,28 @@
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
 (set-default 'cursor-type 'bar)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Font overrides
+;;;
+;;
+
+(let ((bground (alist-get 'bg1 ewal-spacemacs-themes-colors))
+      (fground (alist-get 'border ewal-spacemacs-themes-colors)))
+  (custom-theme-set-faces
+   'user
+   '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
+   '(fixed-pitch ((t ( :family "Sauce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
+   '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
+   '(show-paren-match ((t (:underline nil :foreground "red"))))
+   '(org-defult ((t (:inherit variable-pitch))))
+   '(org-level-1 ((t (:height 1.0))))
+   '(org-level-2 ((t (:height 1.0))))
+   '(org-block ((t (:inherit fixed-pitch))))
+   '(org-block-begin-line ((t :background unspecified)))
+   '(org-block-end-line ((t (:background unspecified))))
+   '(org-code ((t (:inherit (shadow fixed-pitch)))))
+   '(avy-lead-face ((t (:background unspecified))))
+   '(avy-lead-face-0 ((t (:background unspecified))))
+   `(scroll-bar ((t (:foreground ,fground :background ,bground))))))

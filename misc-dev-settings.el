@@ -29,7 +29,11 @@
 (use-package ron-mode)
 
 (use-package json-mode
-  :mode "\\.json\\'")
+  :mode "\\.json\\'"
+  :hook
+  (json-mode . electric-pair-mode))
+
+(use-package qml-mode)
 
 (require 'nxml-mode)
 (setq nxml-slash-auto-complete-flag t)
