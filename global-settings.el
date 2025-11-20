@@ -117,21 +117,23 @@
 ;;
 
 ;; Code completion
+(use-package corfu-popupinfo)
+(use-package corfu-echo)
+
 (use-package corfu
   :config
   (global-corfu-mode)
   (corfu-popupinfo-mode 1)
   (corfu-echo-mode)
-  (corfu-quit-at-boundry t)
-  (corfu-quit-no-match nil)
-  (corfu-auto nil)
-  (corfu-echo-delay 0)
-  (corfu-auto-delay 0)
-  (corfu-popupinfo-delay 0)
+  (setq corfu-quit-at-boundry t
+        corfu-quit-no-match nil
+        corfu-auto nil
+        corfu-echo-delay 0
+        corfu-auto-delay 0
+        corfu-popupinfo-delay 0) 
   :bind (:map corfu-map
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down)))
-
 
 ;; Mini-buffer completion that uses default Emacs completion (see
 ;; Orderless below)
