@@ -6,13 +6,14 @@
 ;;
 
 (use-package pandoc-mode)
+(use-package yaml-mode)
+(use-package ron-mode)
+(use-package qml-mode)
 
 (use-package systemd
   :config
   (add-to-list 'auto-mode-alist
                '("\\.service\\'" . systemd-mode)))
-
-(use-package yaml-mode)
 
 (use-package markdown-mode
   :config
@@ -26,16 +27,17 @@
   :custom
   (hyprlang-ts-mode-indent-offset 4))
 
-(use-package ron-mode)
-
 (use-package json-mode
   :mode "\\.json\\'"
   :hook
   (json-mode . electric-pair-mode))
 
-(use-package qml-mode)
-
 (require 'nxml-mode)
 (setq nxml-slash-auto-complete-flag t)
 
-(use-package geiser-racket)
+(use-package flymake-shell)
+(use-package flymake-css)
+(use-package flymake-yaml)
+(use-package flymake-markdownlint)
+(use-package flymake-sql)
+(use-package flymake-json)

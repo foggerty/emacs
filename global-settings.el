@@ -76,12 +76,6 @@
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file "~/.emacs.d/custom-variables.el")
 
-;; Uncomment the following to enable reading of the customise file:
-;; I prefer not to use it, as I'd rather have everything in my config ready to
-;; go if I'm working on another machine.
-
-;; (load custom-file t)
-
 ;; Copy ENV variables if running as a daemon.
 (when (daemonp)
   (use-package exec-path-from-shell)
@@ -124,7 +118,10 @@
 
 ;; Code completion
 (use-package corfu
-  :custom
+  :config
+  (global-corfu-mode)
+  (corfu-popupinfo-mode 1)
+  (corfu-echo-mode)
   (corfu-quit-at-boundry t)
   (corfu-quit-no-match nil)
   (corfu-auto nil)
@@ -135,12 +132,6 @@
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down)))
 
-(if (or (daemonp)
-        (display-graphic-p))
-    (progn
-      (global-corfu-mode)
-      (corfu-popupinfo-mode 1)
-      (corfu-echo-mode)))
 
 ;; Mini-buffer completion that uses default Emacs completion (see
 ;; Orderless below)
@@ -218,7 +209,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Which-key, tell me what to press next
+;;;; Which-key, tell me what to press next.
 ;;;
 ;;
 
@@ -288,15 +279,3 @@
   :bind (:map prog-mode-map
               ("C-a" . mwim-beginning-of-code-or-line)
               ("C-e" . mwim-end-of-code-or-line)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Avy-jump
-;;;
-;;
-
-(use-package avy
-  :custom
-  s  (avy-background t)
-  :bind
-  ("C-\`" . avy-goto-char))

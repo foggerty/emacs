@@ -41,6 +41,7 @@
          "text-settings.el"
          "elisp-settings.el"
          "c-settings.el"
+         "c-plus-settings.el"
          "go-settings.el"
          "neo4j-settings.el"
          "ruby-settings.el"

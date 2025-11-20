@@ -6,6 +6,8 @@
 (use-package go-eldoc)
 (require 'go-mode)
 
+(use-package flymake-go)
+
 (use-package go-ts-mode
   :config
   (setq gofmt-command "goimports"

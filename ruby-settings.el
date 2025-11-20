@@ -5,6 +5,8 @@
 
 (require 'helpers)
 
+(use-package flymake-ruby)
+
 (use-package ruby-electric
   :hook
   (ruby-ts-mode . ruby-electric-mode)

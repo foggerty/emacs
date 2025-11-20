@@ -14,6 +14,8 @@
                 (apply original args)
                 (setq fill-column original-fill))))
 
+
+
 ;; Code completion etc.
 (require 'eglot)
 
@@ -51,20 +53,6 @@
   :bind
   ("C-c t" . git-timemachine-toggle))
 
-;; Flycheck
-(use-package flycheck
-  :custom
-  (flycheck-disabled-checkers
-   '(emacs-lisp-checkdoc))
-  :config
-  (global-flycheck-mode))
-
-(use-package flycheck-eglot
-  :ensure t
-  :after (flycheck eglot)
-  :config
-  (global-flycheck-eglot-mode 1))
-
 ;; Subword mode.
 (use-package subword)
 (global-subword-mode 1)
@@ -93,6 +81,46 @@
    janet-ts-mode
    json-ts-mode
    js-ts-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Flymake
+;;;
+;;
+
+(require 'flymake)
+(require 'window)
+(flymake-mode)
+
+(defun my/flymake-toggle-buffer ()
+  "Toggle flymake disgnostics buffer.  Ripped from here:
+https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
+  (interactive)
+  (if (string-search "*Flymake diagnostics" (buffer-name))
+      (delete-window)
+    (progn
+      (flymake-show-buffer-diagnostics)
+      (let ((name (flymake--diagnostics-buffer-name)))
+        (if (get-buffer name)
+            (switch-to-buffer-other-window name)
+          (error "No Flymake diagnostics buffer found"))))))
+
+(add-hook 'prog-mode-hook #'flymake-mode)
+(global-set-key (kbd "<f7>") 'my/flymake-toggle-buffer)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; IMenu-List
+;;;
+;;
+
+(use-package imenu-list
+  :config
+  (setq imenu-list-focus-after-activation t
+        imenu-use-popup-menu t)
+  (add-hook 'imenu-after-jump-hook #'imenu-list-smart-toggle)
+  (global-set-key (kbd "C-/") #'imenu-list-smart-toggle))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Smartparens

@@ -4,6 +4,7 @@
 (require 'helpers)
 
 (use-package elixir-mode)
+(use-package flymake-elixir)
 
 (use-package elixir-ts-mode
   :hook ((elixir-ts-mode . inf-elixir-minor-mode)

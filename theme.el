@@ -9,9 +9,9 @@
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(fringe-mode '(8 . 0))
+(fringe-mode '(0 . 0))
 
-(scroll-bar-mode 1)
+(scroll-bar-mode 0)
 (set-window-scroll-bars (minibuffer-window) 0 'none nil nil t)
 
 (setq inhibit-startup-screen t)
@@ -19,12 +19,15 @@
 (setq-default line-spacing 2) ; 2 extra pixels under lines
 
 (add-to-alist 'default-frame-alist
-              '((menu-bar-lines . nil)
-                (undecorated . t)
-                (drag-internal-border . 1)
-                (internal-border-width . 5)
-                (alpha-background . 80)
-                (font . "Sauce Code Pro Nerd Font-12")))
+              `((drag-internal-border . 1)
+                (internal-border-width . 5)))
+
+;; Corfu's popup isn't detected as such by hyprland, so turn off transparency
+;; because it's not being blurred.
+(add-hook 'server-after-make-frame-hook
+          #'(lambda ()
+              (let ((alpha (if (frame-parent) 0.0 0.8)))
+                (modify-frame-parameters nil `((alpha-background . ,alpha))))))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
