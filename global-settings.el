@@ -36,7 +36,7 @@
 
 ;; Stop Emacs from "jumping" the screen when scrolling.
 (setq redisplay-dont-pause t
-      scroll-margin 8
+      scroll-margin 0
       scroll-step 1
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
@@ -55,9 +55,6 @@
 (desktop-save-mode 1)
 (setq desktop-load-locked-desktop 'check-pid)
 (setq desktop-dirname "~/.emacs.d")
-
-;; ToDo - Not working?
-(add-hook 'server-after-make-frame-hook 'desktop-read)
 
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
@@ -143,10 +140,7 @@
     (progn
       (global-corfu-mode)
       (corfu-popupinfo-mode 1)
-      (corfu-echo-mode))
-  (progn
-    (use-package corfu-terminal)
-    (corfu-terminal-mode +1)))
+      (corfu-echo-mode)))
 
 ;; Mini-buffer completion that uses default Emacs completion (see
 ;; Orderless below)
@@ -186,6 +180,9 @@
 
 (use-package projectile)
 (projectile-mode +1)
+(define-key projectile-mode-map
+            (kbd "C-c p")
+            'projectile-command-map)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -237,7 +234,7 @@
 
 (use-package treemacs
   :custom
-  (treemacs-no-png-images t)
+  ;;(treemacs-no-png-images t)
   (treemacs-tag-follow-delay 0)
   (treemacs-indent-guide-style 'line)
   (treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
@@ -249,6 +246,18 @@
   (treemacs-indent-guide-mode)
   :bind
   (("<f8>" . treemacs)))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile)
+  :ensure t)
+
+(use-package nerd-icons
+  :config
+  (setq nerd-icons-font-family "SauceCodePro Nerd Font"))
+
+(use-package treemacs-nerd-icons
+  :config
+  (treemacs-nerd-icons-config))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
