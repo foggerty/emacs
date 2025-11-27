@@ -39,5 +39,4 @@
 (use-package flymake-css)
 (use-package flymake-yaml)
 (use-package flymake-markdownlint)
-(use-package flymake-sql)
 (use-package flymake-json)
