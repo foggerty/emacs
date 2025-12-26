@@ -50,7 +50,7 @@
  `(fixed-pitch ((t (:inherit (default)))))
  `(variable-pitch ((t (:family "Courier"))))
  `(escape-glyph ((((background dark)) (:foreground "cyan")) (((type pc)) (:foreground "#eeeeec")) (t (:foreground "brown"))))
- `(highlight ((t (:background "green"))))
+ `(highlight ((t (:background "black"))))
  `(region ((t (:background "#789c78"))))
  `(shadow ((((class color grayscale) (min-colors 88) (background light)) (:foreground "grey50")) (((class color grayscale) (min-colors 88) (background dark)) (:foreground "grey70")) (((class color) (min-colors 8) (background light)) (:foreground "green")) (((class color) (min-colors 8) (background dark)) (:foreground "yellow"))))
  `(secondary-selection ((((class color) (min-colors 88) (background light)) (:background "yellow1")) (((class color) (min-colors 88) (background dark)) (:background "SkyBlue4")) (((class color) (min-colors 16) (background light)) (:background "yellow")) (((class color) (min-colors 16) (background dark)) (:background "SkyBlue4")) (((class color) (min-colors 8)) (:foreground "black" :background "cyan")) (t (:inverse-video t))))

@@ -14,12 +14,15 @@
 (global-auto-revert-mode 1)
 
 ;; Tweaks to dired
-(setq dired-listing-switches "-l -a -h -hv --group-directories-first"
+(require 'dired-x)
+
+(setq dired-listing-switches "-l -a -h -v --group-directories-first"
       dired-movement-style 'cycle
       dired-always-read-filesystem t
       dired-kill-when-opening-new-dired-buffer t)
 
-(add-hook 'dired-mode-hook #'dired-hide-details-mode)
+(keymap-set dired-mode-map (kbd "q")
+            (qif (quit-window t)))
 
 ;; Hide minor modes in modeline.
 (use-package minions
@@ -276,3 +279,19 @@
   :bind (:map prog-mode-map
               ("C-a" . mwim-beginning-of-code-or-line)
               ("C-e" . mwim-end-of-code-or-line)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Multiple cursors
+;;;
+;;
+
+(use-package multiple-cursors)
+
+(global-set-key (kbd "C->") 'mc/mark-next-like-this-symbol)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this-symbol)
+(global-set-key (kbd "C-c >") 'mc/mark-all-words-like-this)
+
+(provide 'global-settings)
+
+;;; global-settings.el ends here.

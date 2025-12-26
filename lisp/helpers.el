@@ -15,7 +15,7 @@
 
 
 (defun global-set-font (flist)
-  "Set font to the first that it finds in flist."
+  "Set font to the first that is found in FLIST."
   (if (and (display-graphic-p)
            (not (eq nil flist)))
       (let ((font (car flist)))
@@ -47,8 +47,8 @@ pairs or single strings."
 
 
 (defun helper-run-if-found (name func)
-  "Will call test to see if name is found on the current path,
-  and will pass in the full path to func if so.  Otherwise logs a
+  "Will call test to see if NAME is found on the current path,
+  passing in the full path to FUNC if so.  Otherwise logs a
   warning."
   (let ((path (shell-command-to-string (concat "printf \"$(which " name ")\""))))
     (if (string= "" path)
@@ -57,7 +57,7 @@ pairs or single strings."
 
 
 (defmacro qif (&rest commands)
-  "Quick-Interactive-Function: create an interactive function that runs COMMANDS."
+  "Create an interactive function that run COMMANDS."
   `(lambda ()
      (interactive)
      (progn ,@commands)))
@@ -77,3 +77,5 @@ pairs or single strings."
     (set-face-attribute 'default nil :height new)))
 
 (provide 'helpers)
+
+;;; helpers.el ends here.

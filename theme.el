@@ -38,6 +38,8 @@
 (use-package ewal-spacemacs-themes)
 (load-theme 'ewal-spacemacs-classic t)
 
+;; (load-theme 'tangotango2 t)
+
 (if (or (daemonp) (display-graphic-p))
     (global-set-font '("Sauce Code Pro Nerd Font-13"))
   (set-face-background 'default "unspecified-bg" (selected-frame)))
@@ -62,7 +64,8 @@
 ;;
 
 (let ((bground (alist-get 'bg1 ewal-spacemacs-themes-colors))
-      (fground (alist-get 'border ewal-spacemacs-themes-colors)))
+      (fground (alist-get 'border ewal-spacemacs-themes-colors))
+      (bar (alist-get 'highlight-dim ewal-spacemacs-themes-colors)))
   (custom-theme-set-faces
    'user
    '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
@@ -78,4 +81,5 @@
    '(org-code ((t (:inherit (shadow fixed-pitch)))))
    '(avy-lead-face ((t (:background unspecified))))
    '(avy-lead-face-0 ((t (:background unspecified))))
-   `(scroll-bar ((t (:foreground ,fground :background ,bground))))))
+   `(scroll-bar ((t (:foreground ,fground :background ,bground))))
+   `(corfu-current ((t (:background ,bar))))))

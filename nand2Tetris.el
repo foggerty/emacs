@@ -35,7 +35,7 @@
     (define-key map (kbd "C-M-q") 'n2t-asm-align-buffer)
     (define-key map (kbd "M-s M-s") 'n2t-screen-address)
     map)
-  "Keymap for n2t-asm-mode")
+  "Keymap for n2t-asm-mode.")
 
 
 ;; Syntax highlighting

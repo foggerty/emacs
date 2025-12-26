@@ -6,6 +6,7 @@
 ;;
 
 ;; Always keep comments to 80 columns.
+
 (advice-add 'prog-fill-reindent-defun
             :around
             (lambda (original &rest args)
@@ -16,7 +17,7 @@
 
 
 
-;; Code completion etc.
+;; Code completion
 (require 'eglot)
 
 (setq eglot-autoshutdown t
@@ -90,6 +91,9 @@
 
 (require 'flymake)
 (require 'window)
+
+(setq flymake-indicator-type 'fringe)
+
 (flymake-mode)
 
 (defun my/flymake-toggle-buffer ()
@@ -190,7 +194,8 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
   :custom
   (treesit-auto-install 'prompt)
   (treesit-auto-langs
-   '(bash
+   '(ada
+     bash
      c
      cpp
      clojure
