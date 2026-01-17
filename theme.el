@@ -16,7 +16,7 @@
 
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
-(setq-default line-spacing 2) ; 2 extra pixels under lines
+(setq-default line-spacing 3) ; 3 extra pixels under lines
 
 (add-to-alist 'default-frame-alist
               `((drag-internal-border . 1)
@@ -41,7 +41,7 @@
 ;; (load-theme 'tangotango2 t)
 
 (if (or (daemonp) (display-graphic-p))
-    (global-set-font '("Sauce Code Pro Nerd Font-13"))
+    (global-set-font '("SauceCodePro Nerd Font Mono-13"))
   (set-face-background 'default "unspecified-bg" (selected-frame)))
 
 (defun on-frame-open (&optional _)
