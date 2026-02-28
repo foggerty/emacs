@@ -23,6 +23,9 @@
 (setq eglot-autoshutdown t
       eglot-report-progress t)
 
+;; EDiff help window doen't play nicely with a tiling window-manager.
+(setq ediff-no-emacs-help-in-control-buffer t)
+
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
   :hook

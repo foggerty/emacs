@@ -128,7 +128,7 @@
         corfu-quit-no-match nil
         corfu-auto nil
         corfu-auto-delay 0
-        corfu-popupinfo-delay '(1 . .5)) set
+        corfu-popupinfo-delay '(1 . .5))
   :bind (:map corfu-map
               ("<next>"  . corfu-scroll-up)
               ("<prior>" . corfu-scroll-down)))
@@ -218,38 +218,7 @@
 (which-key-mode t)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Treemacs
-;;;
-;;
-
-(use-package treemacs
-  :custom
-  ;;(treemacs-no-png-images t)
-  (treemacs-tag-follow-delay 0)
-  (treemacs-indent-guide-style 'line)
-  (treemacs-default-visit-action 'treemacs-visit-node-close-treemacs)
-  :config
-  (treemacs-follow-mode)
-  (treemacs-fringe-indicator-mode)
-  (treemacs-git-mode 'simple)
-  (treemacs-filewatch-mode)
-  (treemacs-indent-guide-mode)
-  :bind
-  (("<f8>" . treemacs)))
-
-(use-package treemacs-projectile
-  :after (treemacs projectile)
-  :ensure t)
-
-(use-package nerd-icons
-  :config
-  (setq nerd-icons-font-family "SauceCodePro Nerd Font"))
-
-(use-package treemacs-nerd-icons
-  :config
-  (treemacs-nerd-icons-config))
-
+(custom-set-variables '(ediff-split-window-function (quote split-window-horizontally)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace

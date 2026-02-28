@@ -5,6 +5,7 @@
       (and (listp alist)
            (cl-every #'consp alist))))
 
+
 (defun add-to-alist (alist elements)
   (cond ((not (alistp (symbol-value alist)))
          (error "'alist' is not an alist."))
@@ -12,16 +13,6 @@
          (error "'elements' is not an alist."))
         (t (dolist (element elements)
              (add-to-list alist element)))))
-
-
-(defun global-set-font (flist)
-  "Set font to the first that is found in FLIST."
-  (if (and (display-graphic-p)
-           (not (eq nil flist)))
-      (let ((font (car flist)))
-        (if (x-list-fonts font)
-            (set-frame-font font nil t)
-          (global-set-font (cdr flist))))))
 
 
 (defun indent-buffer ()
@@ -33,17 +24,15 @@
     (indent-region (point-min) (point-max))))
 
 
-;;; TODO - write a sting-interpolation function to automatically add
-;;; newlines - or figure out how to use build-in string formatting.
 (defun helper-messages (messages)
   "Uses the message function to display a list of format-value
 pairs or single strings."
-  (message (apply 'concat (mapcar
-                           (lambda (msg)
-                             (if (atom msg)
-                                 msg
-                               (format (car msg) (cadr msg))))
-                           messages))))
+  (message (string (apply 'concat (mapcar
+                                   (lambda (msg)
+                                     (if (atom msg)
+                                         msg
+                                       (format (car msg) (cadr msg))))
+                                   messages)))))
 
 
 (defun helper-run-if-found (name func)

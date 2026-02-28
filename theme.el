@@ -1,6 +1,20 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Helpers
+;;;
+;;
+
+(defun on-frame-open (&optional _)
+  "Used when emacsclient is run in a terminal, in a graphical environment."
+  (if (not (display-graphic-p))
+      (progn
+        (set-face-background 'default "unspecified-bg" (selected-frame))
+        (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame)))
+    (set-frame-font "SauceCodePro Nerd Font Mono-13" nil t t)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups
 ;;;
 ;;
@@ -26,9 +40,10 @@
 ;; because it's not being blurred.
 (add-hook 'server-after-make-frame-hook
           #'(lambda ()
-              (let ((alpha (if (frame-parent) 0.0 0.8)))
-                (modify-frame-parameters nil `((alpha-background . ,alpha))))))
-
+              (let ((alpha (if (frame-parent) 0.0 0.6)))
+                (modify-frame-parameters nil `((alpha-background . ,alpha)))
+                (on-frame-open))))
+(add-hook 'server-after-make-frame-hook #'on-frame-open)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Make pretty with themes etc.
@@ -40,17 +55,7 @@
 
 ;; (load-theme 'tangotango2 t)
 
-(if (or (daemonp) (display-graphic-p))
-    (global-set-font '("SauceCodePro Nerd Font Mono-13"))
-  (set-face-background 'default "unspecified-bg" (selected-frame)))
-
-(defun on-frame-open (&optional _)
-  "Used when emacsclient is run in a terminal, in a graphical environment."
-  (when (not (display-graphic-p (selected-frame)))
-    (set-face-background 'default "unspecified-bg" (selected-frame))
-    (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))
-
-(add-hook 'server-after-make-frame-hook 'on-frame-open)
+(message (format "Hooray!"))
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0)      ; always blink

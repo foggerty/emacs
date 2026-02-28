@@ -34,7 +34,8 @@
              (expand-file-name "~/.emacs.d/lisp"))
 
 (let ((files-to-load
-       '("global-settings.el"
+       '("theme.el"
+         "global-settings.el"
          "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
@@ -50,10 +51,9 @@
          "org-settings.el"
          "lisp/random-functions.el"
          "lisp/helpers.el"
-         "global-key-bindings.el"
-         "theme.el")))
+         "global-key-bindings.el")))
 
-  (dolist (file files-to-load)
+ (dolist (file files-to-load)
     (load-file (concat (file-name-directory user-init-file)
                        file))))
 

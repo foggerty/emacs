@@ -7,9 +7,9 @@
 
 (require 'helpers)
 
-(global-set-key (kbd "C-<tab>")         'other-window)
+(global-set-key (kbd "C-<tab>")        'other-window)
 (global-set-key (kbd "C-x C-b")         'ibuffer)
-(global-set-key (kbd "C-c C-q")         'indent-buffer)
+(global-set-key (kbd "C-c C-q")         'indent)
 (global-set-key (kbd "C-z")             'undo)
 (global-set-key (kbd "C-x C-k")         'foggerty-other-window-kill-buffer)
 (global-set-key (kbd "C-x k")           (qif (kill-buffer (current-buffer))))
@@ -23,6 +23,6 @@
 (global-set-key (kbd "C-=")             (qif (adjust-global-font +1)))
 (global-set-key (kbd "C--")             (qif (adjust-global-font -1)))
 (global-set-key (kbd "<f12>")           'consult-projectile)
-(global-set-key (kbd "C-<return>")      'execute-extended-command)
+(global-set-key (kbd "C-<return>")      'complete-symbol)
 (global-set-key (kbd "C-<prior>")       'previous-buffer)
 (global-set-key (kbd "C-<next>")        'next-buffer)
