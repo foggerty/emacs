@@ -95,7 +95,8 @@
 (require 'flymake)
 (require 'window)
 
-(setq flymake-indicator-type 'fringe)
+(setq flymake-indicator-type nil)
+(setq flymake-fringe-indicator-position nil)
 
 (flymake-mode)
 

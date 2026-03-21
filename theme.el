@@ -50,41 +50,16 @@
 ;;;
 ;;
 
-(use-package ewal-spacemacs-themes)
-(load-theme 'ewal-spacemacs-classic t)
+;;(use-package ewal-spacemacs-themes)
+;;(load-theme 'ewal-spacemacs-classic t)
+;; (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
+;; (load-theme 'noctalia t)
 
-;; (load-theme 'tangotango2 t)
-
-(message (format "Hooray!"))
+(load-file (concat (file-name-directory user-init-file)
+                   "matugen-theme.el"))
+(load-theme 'matugen t)
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
 (set-default 'cursor-type 'bar)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Font overrides
-;;;
-;;
-
-(let ((bground (alist-get 'bg1 ewal-spacemacs-themes-colors))
-      (fground (alist-get 'border ewal-spacemacs-themes-colors))
-      (bar (alist-get 'highlight-dim ewal-spacemacs-themes-colors)))
-  (custom-theme-set-faces
-   'user
-   '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
-   '(fixed-pitch ((t ( :family "Sauce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
-   '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
-   '(show-paren-match ((t (:underline nil :foreground "red"))))
-   '(org-defult ((t (:inherit variable-pitch))))
-   '(org-level-1 ((t (:height 1.0))))
-   '(org-level-2 ((t (:height 1.0))))
-   '(org-block ((t (:inherit fixed-pitch))))
-   '(org-block-begin-line ((t :background unspecified)))
-   '(org-block-end-line ((t (:background unspecified))))
-   '(org-code ((t (:inherit (shadow fixed-pitch)))))
-   '(avy-lead-face ((t (:background unspecified))))
-   '(avy-lead-face-0 ((t (:background unspecified))))
-   `(scroll-bar ((t (:foreground ,fground :background ,bground))))
-   `(corfu-current ((t (:background ,bar))))))
