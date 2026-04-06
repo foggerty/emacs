@@ -3,6 +3,8 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        electric-pair-delete-pair
+        hungry-delete-backward
         kill-region
         ))
 

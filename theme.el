@@ -50,14 +50,9 @@
 ;;;
 ;;
 
-;;(use-package ewal-spacemacs-themes)
-;;(load-theme 'ewal-spacemacs-classic t)
-;; (add-to-list 'custom-theme-load-path "~/.config/emacs/themes/")
-;; (load-theme 'noctalia t)
+(use-package ewal-spacemacs-themes)
+(load-theme 'ewal-spacemacs-classic t)
 
-(load-file (concat (file-name-directory user-init-file)
-                   "matugen-theme.el"))
-(load-theme 'matugen t)
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0)      ; always blink
