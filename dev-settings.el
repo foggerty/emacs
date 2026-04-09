@@ -191,6 +191,7 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 
 (add-to-list 'treesit-language-source-alist
              '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
+
 (add-to-list 'treesit-language-source-alist
              '(janet-simple "https://github.com/sogaiu/tree-sitter-janet-simple"))
 

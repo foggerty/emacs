@@ -26,6 +26,8 @@
 (use-package hyprlang-ts-mode
   :custom
   (hyprlang-ts-mode-indent-offset 4))
+;; I thought was automatic...?  Or have I bollixd something up?
+(require 'hyprlang-ts-mode)
 
 (use-package json-mode
   :mode "\\.json\\'"
