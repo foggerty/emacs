@@ -24,6 +24,7 @@
   (sql-mode . sqlind-minor-mode))
 
 (use-package hyprlang-ts-mode
+  :mode "~\\./config/hypr/*.conf"
   :custom
   (hyprlang-ts-mode-indent-offset 4))
 ;; I thought was automatic...?  Or have I bollixd something up?
