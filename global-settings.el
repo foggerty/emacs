@@ -7,6 +7,19 @@
 
 (require 'helpers)
 
+;; Don't bother with right-to-left rendering checks.
+(setq-default bidi-display-reordering 'left-to-right
+              bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
+
+;; Repeat mode - replace C-x o, X-x o with C-x o, o.
+;; Note that key-chord has to have been added to a repeat-map.
+(repeat-mode 1)
+(setq set-mark-command-repeat-pop t)
+
+;; No fontification on input (smoother editing/scrolling).
+(setq redisplay-skip-fontification-on-input t)
+
 ;; Less warnings at startup.
 (setq warning-minimum-level :emergency)
 
@@ -220,15 +233,17 @@
 
 (custom-set-variables '(ediff-split-window-function (quote split-window-horizontally)))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Standard regex-replace
 ;;;
 ;;
 
+(require 're-builder)
 (use-package visual-regexp-steroids)
 
 (advice-add 'replace-regexp-as-diff :override #'vr/query-replace)
-
+(setq reb-re-syntax 'string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio - give active window more space.

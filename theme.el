@@ -40,7 +40,7 @@
 ;; because it's not being blurred.
 (add-hook 'server-after-make-frame-hook
           #'(lambda ()
-              (let ((alpha (if (frame-parent) 0.0 0.7)))
+              (let ((alpha (if (frame-parent) 0.0 0.65)))
                 (modify-frame-parameters nil `((alpha-background . ,alpha)))
                 (on-frame-open))))
 (add-hook 'server-after-make-frame-hook #'on-frame-open)
@@ -50,9 +50,11 @@
 ;;;
 ;;
 
-(use-package ewal-spacemacs-themes)
-(load-theme 'ewal-spacemacs-classic t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'doom-wallust-dark t)
 
+;; (use-package ewal-spacemacs-themes)
+;; (load-theme 'ewal-spacemacs-classic t)
 
 ;; Cursor
 (set-default 'blink-cursor-blinks 0)      ; always blink

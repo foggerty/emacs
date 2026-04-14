@@ -41,6 +41,7 @@
          "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
+         "clojure-settings.el"
          "text-settings.el"
          "elisp-settings.el"
          "c-settings.el"
@@ -55,7 +56,7 @@
          "lisp/helpers.el"
          "global-key-bindings.el")))
 
- (dolist (file files-to-load)
+  (dolist (file files-to-load)
     (load-file (concat (file-name-directory user-init-file)
                        file))))
 

@@ -20,11 +20,27 @@
 ;; Code completion
 (require 'eglot)
 
+(setq read-process-output-max (* 4 1024 1024)) ; lsp read-buffer.
 (setq eglot-autoshutdown t
       eglot-report-progress t)
 
+
+;; Add clipboard contents to kill-ring.
+(setq save-interprogram-paste-before-kill t)
+
+
+;; No duplicates in kill-ring.
+(setq kill-do-not-save-duplicates t)
+
+
 ;; EDiff help window doen't play nicely with a tiling window-manager.
 (setq ediff-no-emacs-help-in-control-buffer t)
+
+
+;; Don't render cursors in non-focused windows:
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
 
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
