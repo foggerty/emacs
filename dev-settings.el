@@ -89,6 +89,7 @@
 (use-package hungry-delete
   :hook
   (bash-ts-mode
+   cider-mdoe
    css-ts-mode
    elixir-mode
    elixir-ts-mode
@@ -154,6 +155,7 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 (use-package smartparens
   :hook
   (bash-ts-mode
+   cider-mode
    elixir-mode
    elixir-ts-mode
    emacs-lisp-mode

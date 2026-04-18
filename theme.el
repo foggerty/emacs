@@ -40,7 +40,7 @@
 ;; because it's not being blurred.
 (add-hook 'server-after-make-frame-hook
           #'(lambda ()
-              (let ((alpha (if (frame-parent) 0.0 0.65)))
+              (let ((alpha (if (frame-parent) 0.0 0.75)))
                 (modify-frame-parameters nil `((alpha-background . ,alpha)))
                 (on-frame-open))))
 (add-hook 'server-after-make-frame-hook #'on-frame-open)
