@@ -5,4 +5,5 @@
 !emacs.png
 !Theme.png
 !lilypondcustom-variables.el
+!themes/*
 custom-variables.el

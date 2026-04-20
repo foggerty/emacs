@@ -36,14 +36,6 @@
               `((drag-internal-border . 1)
                 (internal-border-width . 5)))
 
-;; Corfu's popup isn't detected as such by hyprland, so turn off transparency
-;; because it's not being blurred.
-(add-hook 'server-after-make-frame-hook
-          #'(lambda ()
-              (let ((alpha (if (frame-parent) 0.0 0.75)))
-                (modify-frame-parameters nil `((alpha-background . ,alpha)))
-                (on-frame-open))))
-(add-hook 'server-after-make-frame-hook #'on-frame-open)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Make pretty with themes etc.

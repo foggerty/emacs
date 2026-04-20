@@ -16,6 +16,15 @@
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;; Code:
 
+;; Corfu's popup isn't detected as such by hyprland, so turn off transparency
+;; because it's not being blurred.
+(add-hook 'server-after-make-frame-hook
+          #'(lambda ()
+              (let ((alpha (if (frame-parent) 0.0 0.75)))
+                (modify-frame-parameters nil `((alpha-background . ,alpha)))
+                (on-frame-open))))
+(add-hook 'server-after-make-frame-hook #'on-frame-open)
+
 (use-package doom-themes)
 (require 'doom-themes)
 
@@ -56,15 +65,15 @@ Can be an integer to determine the exact padding."
   :background-mode 'dark
 
   ;; name        default   256       16
-  ((bg         '("#141317" nil       nil))
-   (fg         '("#EDF1E4" nil       nil))
+  ((bg         '("#00010A" nil       nil))
+   (fg         '("#E3F0F9" nil       nil))
 
    ;; Alternatives for solaire-mode
-   (bg-alt     '("#3E3D43" nil       nil))
-   (fg-alt     '("#9A9F92" nil       nil))
+   (bg-alt     '("#00010C" nil       nil))
+   (fg-alt     '("#909EA7" nil       nil))
 
    ;; Base colors - spectrum from bg to fg
-   (base0      '("#3E3D43" nil "black"))
+   (base0      '("#00010C" nil "black"))
    (base1      (doom-darken bg 0.05))
    (base2      (doom-darken bg 0.1))
    (base3      (doom-darken bg 0.15))
@@ -72,19 +81,19 @@ Can be an integer to determine the exact padding."
    (base5      (doom-lighten bg 0.2))
    (base6      (doom-lighten bg 0.3))
    (base7      (doom-lighten fg 0.1))
-   (base8      '("#DDE3D0" nil "white"))
+   (base8      '("#CEE1EE" nil "white"))
 
    (grey       base5)
-   (red        '("#6C6459" nil "red"))
-   (orange     '("#7D7263" nil "brightred"))
-   (green      '("#4F6C77" nil "green"))
-   (teal       '("#98A286" nil "brightgreen"))
-   (yellow     '("#947B4D" nil "yellow"))
-   (blue       '("#5F8772" nil "brightblue"))
-   (dark-blue  '("#4E906D" nil "blue"))
-   (magenta    '("#4B8B94" nil "magenta"))
-   (violet     '("#2D95A6" nil "brightmagenta"))
-   (cyan       '("#CBD8B2" nil "brightcyan"))
+   (red        '("#405C6F" nil "red"))
+   (orange     '("#416781" nil "brightred"))
+   (green      '("#456E8C" nil "green"))
+   (teal       '("#839FB3" nil "brightgreen"))
+   (yellow     '("#477C9E" nil "yellow"))
+   (blue       '("#3F7C9A" nil "brightblue"))
+   (dark-blue  '("#2988B7" nil "blue"))
+   (magenta    '("#3480A6" nil "magenta"))
+   (violet     '("#37A1D6" nil "brightmagenta"))
+   (cyan       '("#AED4EE" nil "brightcyan"))
    (dark-cyan  (doom-darken cyan 0.3))
 
    ;; Face categories
@@ -114,7 +123,7 @@ Can be an integer to determine the exact padding."
    (vc-deleted     red)
 
    ;; Custom categories
-   (modeline-fg                fg)
+   (modeline-fg              fg)
    (modeline-fg-alt          base5)
    (modeline-bg              (if doom-wallust-dark-brighter-modeline
                                  (doom-darken blue 0.45)
