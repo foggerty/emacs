@@ -231,7 +231,14 @@
 (which-key-mode t)
 
 
-(custom-set-variables '(ediff-split-window-function (quote split-window-horizontally)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Diff setup
+;;;
+;;
+
+(custom-set-variables
+ '(ediff-split-window-function (quote split-window-horizontally)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -270,11 +277,13 @@
 ;;;
 ;;
 
-(use-package multiple-cursors)
+;;; Todo - make this work.
 
-(global-set-key (kbd "C->") 'mc/mark-next-like-this-symbol)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this-symbol)
-(global-set-key (kbd "C-c >") 'mc/mark-all-words-like-this)
+;; (use-package multiple-cursors)
+
+;; (global-set-key (kbd "C->") 'mc/mark-next-like-this-symbol)
+;; (global-set-key (kbd "C-<") 'mc/mark-previous-like-this-symbol)
+;; (global-set-key (kbd "C-c >") 'mc/mark-all-words-like-this)
 
 (provide 'global-settings)
 

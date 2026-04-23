@@ -16,7 +16,6 @@
                 (setq fill-column original-fill))))
 
 
-
 ;; Code completion
 (require 'eglot)
 
@@ -217,8 +216,7 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
   :custom
   (treesit-auto-install 'prompt)
   (treesit-auto-langs
-   '(ada
-     bash
+   '(bash
      c
      cpp
      clojure

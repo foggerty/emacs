@@ -37,7 +37,7 @@
 
 (let ((files-to-load
        '("theme.el"
-         "global-settings.el"
+	     "global-settings.el"
          "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"

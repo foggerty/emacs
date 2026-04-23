@@ -16,16 +16,8 @@
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;; Code:
 
-;; Corfu's popup isn't detected as such by hyprland, so turn off transparency
-;; because it's not being blurred.
-(add-hook 'server-after-make-frame-hook
-          #'(lambda ()
-              (let ((alpha (if (frame-parent) 0.0 0.75)))
-                (modify-frame-parameters nil `((alpha-background . ,alpha)))
-                (on-frame-open))))
-(add-hook 'server-after-make-frame-hook #'on-frame-open)
+(add-to-list 'default-frame-alist '(alpha-background . 60))
 
-(use-package doom-themes)
 (require 'doom-themes)
 
 ;;
@@ -107,14 +99,14 @@ Can be an integer to determine the exact padding."
    (doc-comments   (doom-lighten comments 0.15))
    (constants      violet)
    (functions      magenta)
-   (keywords       cyan)
+   (keywords       blue)
    (methods        cyan)
    (operators      blue)
    (type           yellow)
-   (strings        (doom-lighten green 0.3))
-   (variables      magenta)
-   (numbers        (doom-lighten orange 0.3))
-   (region         bg-alt)
+   (strings        green)
+   (variables      (doom-lighten magenta 0.4))
+   (numbers        orange)
+   (region         (doom-lighten bg-alt 0.15))
    (error          red)
    (warning        yellow)
    (success        green)
@@ -169,7 +161,7 @@ Can be an integer to determine the exact padding."
    (elscreen-tab-other-screen-face :background base2 :foreground base0)
    ;;;; highlight-symbol
    (highlight-symbol-face :background (doom-lighten base4 0.1) :distant-foreground fg-alt)
-    ;;;; highlight-thing
+   ;;;; highlight-thing
    (highlight-thing :background (doom-lighten base4 0.1) :distant-foreground fg-alt)
    ;;;; ivy
    (ivy-current-match :background dark-blue :distant-foreground base0 :weight 'normal)
@@ -179,6 +171,10 @@ Can be an integer to determine the exact padding."
    (markdown-markup-face :foreground base5)
    (markdown-header-face :inherit 'bold :foreground red)
    ((markdown-code-face &override) :background (doom-lighten base3 0.05))
+   ;;;; org <built-in>
+   (org-hide :foreground bg)
+   (org-block :background (doom-darken bg 0.02))
+   (org-block-begin-line :foreground comments :background (doom-darken bg 0.04))
    ;;;; rjsx-mode
    (rjsx-tag :foreground red)
    (rjsx-attr :foreground orange)
@@ -186,7 +182,14 @@ Can be an integer to determine the exact padding."
    (solaire-mode-line-face
     :inherit 'mode-line
     :background modeline-bg-alt
-    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-alt))))
+    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-alt)))
+   (solaire-mode-line-inactive-face
+    :inherit 'mode-line-inactive
+    :background modeline-bg-inactive-alt
+    :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-alt)))
+   ;;;; vimish-fold
+   ((vimish-fold-overlay &override) :inherit 'font-lock-comment-face :background base3 :weight 'light)
+   ((vimish-fold-fringe &override)  :foreground teal))
 
   ;;;; Base theme variable overrides
   ())

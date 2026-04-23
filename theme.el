@@ -1,20 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Helpers
-;;;
-;;
-
-(defun on-frame-open (&optional _)
-  "Used when emacsclient is run in a terminal, in a graphical environment."
-  (if (not (display-graphic-p))
-      (progn
-        (set-face-background 'default "unspecified-bg" (selected-frame))
-        (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame)))
-    (set-frame-font "SauceCodePro Nerd Font Mono-13" nil t t)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Basic tidy ups
 ;;;
 ;;
@@ -36,19 +22,38 @@
               `((drag-internal-border . 1)
                 (internal-border-width . 5)))
 
+(set-default 'blink-cursor-blinks 0)      ; always blink
+(set-default 'blink-cursor-interval 0.25) ; blink faster!
+(set-default 'cursor-type 'bar)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Make pretty with themes etc.
 ;;;
 ;;
 
+;;(load-theme 'tangotango2 t)
+
+;; Alpha values are set in the theme template, so evaluate file to reset it.
+(load-file (concat (file-name-directory user-init-file)
+                   "themes/"
+                   "doom-wallust-dark.el"))
+
+(add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font Mono-13"))
+
+;; This is where it starts to go wrong....
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'doom-wallust-dark t)
+(load-theme 'doom-wilmersdorf t)
 
-;; (use-package ewal-spacemacs-themes)
-;; (load-theme 'ewal-spacemacs-classic t)
+;; (defun on-frame-open (&optional _)
+;;   "Used when emacsclient is run in a terminal, in a graphical environment."
+;;   (if (not (display-graphic-p))
+;;       (progn
+;;         (let ((alpha (if (frame-parent) 0.0 0.6)))
+;;           (modify-frame-parameters nil `((alpha-background . ,alpha))))
+;;         (set-face-background 'default "unspecified-bg" (selected-frame))
+;;         (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame)))
+;;     (set-frame-font "SauceCodePro Nerd Font Mono-13" nil t t)))
 
-;; Cursor
-(set-default 'blink-cursor-blinks 0)      ; always blink
-(set-default 'blink-cursor-interval 0.25) ; blink faster!
-(set-default 'cursor-type 'bar)
+;; (add-hook 'server-after-make-frame-hook #'on-frame-open)
