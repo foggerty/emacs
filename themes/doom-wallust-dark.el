@@ -16,8 +16,6 @@
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;; Code:
 
-(add-to-list 'default-frame-alist '(alpha-background . 60))
-
 (require 'doom-themes)
 
 ;;
@@ -57,15 +55,15 @@ Can be an integer to determine the exact padding."
   :background-mode 'dark
 
   ;; name        default   256       16
-  ((bg         '("#00010A" nil       nil))
-   (fg         '("#E3F0F9" nil       nil))
+  ((bg         '("#161718" nil       nil))
+   (fg         '("#D2E9E5" nil       nil))
 
    ;; Alternatives for solaire-mode
-   (bg-alt     '("#00010C" nil       nil))
-   (fg-alt     '("#909EA7" nil       nil))
+   (bg-alt     '("#404143" nil       nil))
+   (fg-alt     '("#7F9793" nil       nil))
 
    ;; Base colors - spectrum from bg to fg
-   (base0      '("#00010C" nil "black"))
+   (base0      '("#404143" nil "black"))
    (base1      (doom-darken bg 0.05))
    (base2      (doom-darken bg 0.1))
    (base3      (doom-darken bg 0.15))
@@ -73,19 +71,19 @@ Can be an integer to determine the exact padding."
    (base5      (doom-lighten bg 0.2))
    (base6      (doom-lighten bg 0.3))
    (base7      (doom-lighten fg 0.1))
-   (base8      '("#CEE1EE" nil "white"))
+   (base8      '("#B6D8D2" nil "white"))
 
    (grey       base5)
-   (red        '("#405C6F" nil "red"))
-   (orange     '("#416781" nil "brightred"))
-   (green      '("#456E8C" nil "green"))
-   (teal       '("#839FB3" nil "brightgreen"))
-   (yellow     '("#477C9E" nil "yellow"))
-   (blue       '("#3F7C9A" nil "brightblue"))
-   (dark-blue  '("#2988B7" nil "blue"))
-   (magenta    '("#3480A6" nil "magenta"))
-   (violet     '("#37A1D6" nil "brightmagenta"))
-   (cyan       '("#AED4EE" nil "brightcyan"))
+   (red        '("#46494F" nil "red"))
+   (orange     '("#4A4F56" nil "brightred"))
+   (green      '("#645C5E" nil "green"))
+   (teal       '("#5E9188" nil "brightgreen"))
+   (yellow     '("#5B6E72" nil "yellow"))
+   (blue       '("#7D7E84" nil "brightblue"))
+   (dark-blue  '("#82828C" nil "blue"))
+   (magenta    '("#75887F" nil "magenta"))
+   (violet     '("#678778" nil "brightmagenta"))
+   (cyan       '("#7EC1B6" nil "brightcyan"))
    (dark-cyan  (doom-darken cyan 0.3))
 
    ;; Face categories

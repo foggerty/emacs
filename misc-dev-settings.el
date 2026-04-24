@@ -16,6 +16,8 @@
                '("\\.service\\'" . systemd-mode)))
 
 (use-package markdown-mode
+  :hook
+  ((markdown-mode . visual-line-mode))
   :config
   (setq markdown-fontify-code-blocks-natively t))
 

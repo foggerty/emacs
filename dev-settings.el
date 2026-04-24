@@ -17,7 +17,13 @@
 
 
 ;; Code completion
-(require 'eglot)
+(use-package 'eglot
+  :config
+  (fset #'jsonrpc--log-event #'ignore))
+
+;; (add-to-list 'eglot-server-programs
+;;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
+
 
 (setq read-process-output-max (* 4 1024 1024)) ; lsp read-buffer.
 (setq eglot-autoshutdown t
@@ -44,7 +50,9 @@
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
   :hook
-  (bash-ts-mode
+  (bash-mode
+   bash-ts-mode
+   css-mode
    css-ts-mode
    elixir-mode
    elixir-ts-mode
@@ -53,7 +61,9 @@
    js-ts-mode
    janet-ts-mode
    json-ts-mode
+   json-ts-mode
    ielm-mode
+   ruby-mode
    ruby-ts-mode
    ruby-electric-mode
    emacs-lisp-mode
@@ -153,17 +163,7 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 
 (use-package smartparens
   :hook
-  (bash-ts-mode
-   cider-mode
-   elixir-mode
-   elixir-ts-mode
-   emacs-lisp-mode
-   geiser-mode
-   go-ts-mode
-   janet-ts-mode
-   json-ts-mode
-   nxml-mode
-   ruby-ts-mode)
+  ((prog-mode . smartparens-mode))
   :config
   (require 'smartparens-config)
   :bind (:map smartparens-mode-map
@@ -240,5 +240,7 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 (treesit-auto-add-to-auto-mode-alist 'all)
 (treesit-auto-install-all)
 
-(add-to-list 'major-mode-remap-alist '(sh-mode . bash-ts-mode))
-(add-to-list 'major-mode-remap-alist '(elixir-mode . elixir-ts-mode))
+(setq major-mode-remap-alist
+      '((sh-mode . bash-ts-mode)
+        (elixir-mode . elixir-ts-mode)
+        (ruby-mode . ruby-ts-mode)))

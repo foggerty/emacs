@@ -5,7 +5,14 @@
 ;;;
 ;;
 
+;; Loook at some stuff from here: https://codeberg.org/ashton314/emacs-bedrock/src/branch/main/init.el
+
 (require 'helpers)
+
+;; Sensible context menu
+(when (or server-mode
+          (display-graphic-p))
+  (context-menu-mode))
 
 ;; Don't bother with right-to-left rendering checks.
 (setq-default bidi-display-reordering 'left-to-right
@@ -36,6 +43,11 @@
 
 (keymap-set dired-mode-map (kbd "q")
             (qif (quit-window t)))
+
+;; DWIM for commenting.
+(use-package comment-dwim-2
+  :bind
+  ("M-;" . comment-dwim-2))
 
 ;; Hide minor modes in modeline.
 (use-package minions

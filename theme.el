@@ -28,23 +28,35 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;
+;;
+
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Make pretty with themes etc.
 ;;;
 ;;
 
-;;(load-theme 'tangotango2 t)
+(add-to-list 'default-frame-alist
+             '(font . "SauceCodePro Nerd Font Mono-13"))
 
 ;; Alpha values are set in the theme template, so evaluate file to reset it.
 (load-file (concat (file-name-directory user-init-file)
-                   "themes/"
+		           "themes/"
                    "doom-wallust-dark.el"))
-
-(add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font Mono-13"))
 
 ;; This is where it starts to go wrong....
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'doom-wilmersdorf t)
+(modify-all-frames-parameters '((alpha-background . 68)))
+
+(add-to-list 'custom-theme-load-path "/home/matt/.emacs.d/themes")
+(load-theme 'tangotango2 t)
+;;(load-theme 'doom-wallust-dark t)
 
 ;; (defun on-frame-open (&optional _)
 ;;   "Used when emacsclient is run in a terminal, in a graphical environment."
