@@ -34,6 +34,7 @@
 
 (use-package doom-modeline
   :init
+  (setq doom-themes-padded-modeline t)
   (doom-modeline-mode))
 
 
@@ -42,30 +43,28 @@
 ;;;
 ;;
 
-(add-to-list 'default-frame-alist
-             '(font . "SauceCodePro Nerd Font Mono-13"))
-
-;; Alpha values are set in the theme template, so evaluate file to reset it.
-(load-file (concat (file-name-directory user-init-file)
-		           "themes/"
-                   "doom-wallust-dark.el"))
-
-;; This is where it starts to go wrong....
-
-(modify-all-frames-parameters '((alpha-background . 68)))
-
 (add-to-list 'custom-theme-load-path "/home/matt/.emacs.d/themes")
-(load-theme 'tangotango2 t)
-;;(load-theme 'doom-wallust-dark t)
 
-;; (defun on-frame-open (&optional _)
-;;   "Used when emacsclient is run in a terminal, in a graphical environment."
-;;   (if (not (display-graphic-p))
-;;       (progn
-;;         (let ((alpha (if (frame-parent) 0.0 0.6)))
-;;           (modify-frame-parameters nil `((alpha-background . ,alpha))))
-;;         (set-face-background 'default "unspecified-bg" (selected-frame))
-;;         (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame)))
-;;     (set-frame-font "SauceCodePro Nerd Font Mono-13" nil t t)))
+(modify-all-frames-parameters
+ '((font . "SauceCodePro Nerd Font Mono-13")))
 
-;; (add-hook 'server-after-make-frame-hook #'on-frame-open)
+(use-package ewal-doom-themes)
+(load-theme 'ewal-doom-one t)
+
+;; (load-theme 'tangotango2 t)
+
+
+(let ((alpha (if (frame-parent) 0.0 0.68)))
+  (modify-frame-parameters nil `((alpha-background . ,alpha))))
+
+(defun on-frame-open (&optional _)
+  "Background is 'tricky' when mixing/matching graphical and TTY clients."
+  (progn
+    (if (display-graphic-p)
+        (let ((alpha (if (frame-parent) 0.0 0.68)))
+          (modify-frame-parameters nil `((alpha-background . ,alpha))))
+      (progn
+        (set-face-background 'default "unspecified-bg" (selected-frame))
+        (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))))
+
+(add-hook 'server-after-make-frame-hook #'on-frame-open)
