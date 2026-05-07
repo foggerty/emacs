@@ -5,10 +5,11 @@
 ;;;
 ;;
 
+(use-package ascii-table)
 (use-package pandoc-mode)
-(use-package yaml-mode)
-(use-package ron-mode)
 (use-package qml-mode)
+(use-package ron-mode)
+(use-package yaml-mode)
 
 (use-package systemd
   :config
@@ -35,7 +36,7 @@
 (use-package json-mode
   :mode "\\.json\\'"
   :hook
-  (json-mode . electric-pair-mode))
+  (json-ts-mode . electric-pair-mode))
 
 (require 'nxml-mode)
 (setq nxml-slash-auto-complete-flag t)
@@ -45,3 +46,10 @@
 (use-package flymake-yaml)
 (use-package flymake-markdownlint)
 (use-package flymake-json)
+
+(use-package kdl-mode
+  :hook
+  ((kdl-mode . aggressive-indent-mode)
+   (kdl-mode . hungry-delete-mode)))
+
+(use-package zig-ts-mode)

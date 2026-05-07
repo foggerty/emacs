@@ -243,4 +243,5 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 (setq major-mode-remap-alist
       '((sh-mode . bash-ts-mode)
         (elixir-mode . elixir-ts-mode)
-        (ruby-mode . ruby-ts-mode)))
+        (ruby-mode . ruby-ts-mode)
+        (json-mode . json-ts-mode)))

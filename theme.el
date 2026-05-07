@@ -9,10 +9,9 @@
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(fringe-mode '(0 . 0))
-
 (scroll-bar-mode 0)
-(set-window-scroll-bars (minibuffer-window) 0 'none nil nil t)
+
+;; (set-window-scroll-bars (minibuffer-window) 0 'none nil nil t)
 
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
@@ -26,16 +25,14 @@
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
 (set-default 'cursor-type 'bar)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;
+;;;; Mood Line
 ;;;
 ;;
 
-(use-package doom-modeline
+(use-package mood-line
   :init
-  (setq doom-themes-padded-modeline t)
-  (doom-modeline-mode))
+  (mood-line-mode))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -43,19 +40,19 @@
 ;;;
 ;;
 
-(add-to-list 'custom-theme-load-path "/home/matt/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path
+             "/home/matt/.emacs.d/themes")
 
 (modify-all-frames-parameters
- '((font . "SauceCodePro Nerd Font Mono-13")))
+ '((font . "SauceCodePro Nerd Font Mono-13")
+   (alpha-background . 0.68)))
 
 (use-package ewal-doom-themes)
+(setq ewal-doom-one-padded-modeline 1
+      ewal-doom-one-brighter-modeline 1)
 (load-theme 'ewal-doom-one t)
 
 ;; (load-theme 'tangotango2 t)
-
-
-(let ((alpha (if (frame-parent) 0.0 0.68)))
-  (modify-frame-parameters nil `((alpha-background . ,alpha))))
 
 (defun on-frame-open (&optional _)
   "Background is 'tricky' when mixing/matching graphical and TTY clients."
