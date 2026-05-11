@@ -54,14 +54,14 @@
 
 ;; (load-theme 'tangotango2 t)
 
-(defun on-frame-open (&optional _)
-  "Background is 'tricky' when mixing/matching graphical and TTY clients."
-  (progn
-    (if (display-graphic-p)
-        (let ((alpha (if (frame-parent) 0.0 0.68)))
-          (modify-frame-parameters nil `((alpha-background . ,alpha))))
-      (progn
-        (set-face-background 'default "unspecified-bg" (selected-frame))
-        (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))))
+;; (defun on-frame-open (&optional _)
+;;   "Background is 'tricky' when mixing/matching graphical and TTY clients."
+;;   (progn
+;;     (if (display-graphic-p)
+;;         (let ((alpha (if (frame-parent) 0.0 0.68)))
+;;           (modify-frame-parameters nil `((alpha-background . ,alpha))))
+;;       (progn
+;;         (set-face-background 'default "unspecified-bg" (selected-frame))
+;;         (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))))
 
-(add-hook 'server-after-make-frame-hook #'on-frame-open)
+;; (add-hook 'server-after-make-frame-hook #'on-frame-open)

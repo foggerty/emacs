@@ -7,9 +7,9 @@
 
 (require 'helpers)
 
-(global-set-key (kbd "C-<tab>")        'other-window)
+(global-set-key (kbd "C-<tab>")         'other-window)   
 (global-set-key (kbd "C-x C-b")         'ibuffer)
-(global-set-key (kbd "C-c C-q")         'indent)
+(global-set-key (kbd "C-c C-q")         'indent-buffer)
 (global-set-key (kbd "C-z")             'undo)
 (global-set-key (kbd "C-x C-k")         'foggerty-other-window-kill-buffer)
 (global-set-key (kbd "C-x k")           (qif (kill-buffer (current-buffer))))
