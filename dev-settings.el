@@ -17,13 +17,9 @@
 
 
 ;; Code completion
-(use-package 'eglot
+(use-package eglot
   :config
   (fset #'jsonrpc--log-event #'ignore))
-
-;; (add-to-list 'eglot-server-programs
-;;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
-
 
 (setq read-process-output-max (* 4 1024 1024)) ; lsp read-buffer.
 (setq eglot-autoshutdown t
