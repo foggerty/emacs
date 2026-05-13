@@ -28,6 +28,42 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Optimise native-code compiling
+;;;
+;;
+
+;;; Use this to determine architecture.
+;; (string-trim
+;;  (shell-command-to-string "gcc -march=native -Q --help=target | grep -- '-march=   ' | cut -f 3"))
+
+(setq my-arch "skylake"
+
+      native-comp-compiler-options
+      `("-O2"
+        ,(format "-mtune=%s" my-arch)
+        ,(format "-march=%s" my-arch)
+        ;; Reduce .eln size and compilation overhead.
+        "-g0"
+        ;; Good defensive choice for Emacs stability.
+        "-fno-omit-frame-pointer"
+        "-fno-finite-math-only")
+
+      native-comp-driver-options
+      `(;; -Wl,-z,pack-relative-relocs compresses
+        ;; relocation tables to reduce file size and
+        ;; slightly improve load times.
+        "-Wl,-z,pack-relative-relocs"
+        ;; -Wl,-O2 applies standard linker-level
+        ;; optimizations (like string merging) to the
+        ;; generated shared object.
+        "-Wl,-O2"
+        ;; -Wl,--as-needed prevents the linker from
+        ;; recording dependencies on libraries that
+        ;; are not actually used by the code.
+        "-Wl,--as-needed"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Custom config loading
 ;;;
 ;;
@@ -38,8 +74,8 @@
 (let ((files-to-load
        '(
          "theme.el"
-	     "global-settings.el"
-	     "consult.el"
+         "global-settings.el"
+         "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
          "clojure-settings.el"
