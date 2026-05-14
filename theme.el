@@ -44,7 +44,9 @@
              "/home/matt/.emacs.d/themes")
 
 (modify-all-frames-parameters
- '((alpha-background . 0.68)))
+ '((font . "SauceCodePro Nerd Font Mono-15")
+   (alpha-background . 0.68)))
+
 
 (use-package ewal-doom-themes)
 (setq ewal-doom-one-padded-modeline 4
@@ -71,13 +73,12 @@
 
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "Sans" :width expanded :height 1.0 ))))
- '(fixed-pitch ((t ( :family "Sauce Code Pro Nerd Font" :height 1.0 :inherit 'default))))
+ '(variable-pitch ((t (:family "Cantarell" :width expanded :height 1.0 ))))
+ '(fixed-pitch ((t ( :family "SauceCodePro Nerd Font Mono" :height 1.0))))
  '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
  '(show-paren-match ((t (:underline nil :foreground "red")))))
 
 (use-package org
-  :hook ((org-mode . variable-pitch-mode))
   :config
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
@@ -91,3 +92,4 @@
   (set-face-attribute 'org-code :inherit (shadow fixed-pitch))
   (set-face-attribute 'avy-lead-face :background unspecified)
   (set-face-attribute 'avy-lead-face-0 :background unspecified))
+
