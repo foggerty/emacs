@@ -4,7 +4,8 @@
 
 (use-package visual-fill-column
   :config
-  (setq visual-fill-column-width 120))
+  (setq visual-fill-column-width 90)
+  (setq fill-column 90))
 
 (add-hook 'text-mode-hook (qif (flyspell-mode)
                                (visual-line-mode)))
