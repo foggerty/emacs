@@ -51,5 +51,3 @@
   :hook
   ((kdl-mode . aggressive-indent-mode)
    (kdl-mode . hungry-delete-mode)))
-
-(use-package zig-ts-mode)

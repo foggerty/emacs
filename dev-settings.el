@@ -15,7 +15,6 @@
                 (apply original args)
                 (setq fill-column original-fill))))
 
-
 ;; Code completion
 (use-package eglot
   :config
@@ -25,23 +24,12 @@
 (setq eglot-autoshutdown t
       eglot-report-progress t)
 
-
-;; Add clipboard contents to kill-ring.
-(setq save-interprogram-paste-before-kill t)
-
-
-;; No duplicates in kill-ring.
-(setq kill-do-not-save-duplicates t)
-
-
 ;; EDiff help window doen't play nicely with a tiling window-manager.
 (setq ediff-no-emacs-help-in-control-buffer t)
-
 
 ;; Don't render cursors in non-focused windows:
 (setq-default cursor-in-non-selected-windows nil)
 (setq highlight-nonselected-windows nil)
-
 
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
@@ -237,7 +225,7 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 (treesit-auto-install-all)
 
 (setq major-mode-remap-alist
-      '((sh-mode . bash-ts-mode)
+      '((sh-mode     . bash-ts-mode)
         (elixir-mode . elixir-ts-mode)
-        (ruby-mode . ruby-ts-mode)
-        (json-mode . json-ts-mode)))
+        (ruby-mode   . ruby-ts-mode)
+        (json-mode   . json-ts-mode)))

@@ -9,6 +9,12 @@
 
 (require 'helpers)
 
+;; Add clipboard contents to kill-ring.
+(setq save-interprogram-paste-before-kill t)
+
+;; No duplicates in kill-ring.
+(setq kill-do-not-save-duplicates t)
+
 ;; Sensible context menu
 (when (or server-mode
           (display-graphic-p))
@@ -42,7 +48,7 @@
       dired-kill-when-opening-new-dired-buffer t)
 
 (keymap-set dired-mode-map (kbd "q")
-            (qif (quit-window t)))
+            (qif (kill-buffer-and-window)))
 
 ;; DWIM for commenting.
 (use-package comment-dwim-2
@@ -208,17 +214,15 @@
 
 (require 'pixel-scroll)
 
-(setq mouse-wheel-tilt-scroll t
-      mouse-wheel-progressive-speed nil
-      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
-
 (setq pixel-scroll-precision-mode t
       pixel-scroll-precision-use-momentum t
       pixel-scroll-precision-momentum-seconds 0.75
       pixel-scroll-precision-momentum-tick 0.01
       pixel-scroll-precision-interpolate-page t)
 
-(pixel-scroll-precision-mode t)
+(setq mouse-wheel-tilt-scroll t
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

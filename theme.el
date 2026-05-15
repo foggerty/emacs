@@ -19,7 +19,9 @@
 
 (add-to-alist 'default-frame-alist
               `((drag-internal-border . 1)
-                (internal-border-width . 5)))
+                (internal-border-width . 5)
+                (alpha-background . 0.75)
+                (font . "mono-15")))
 
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
@@ -43,11 +45,6 @@
 (add-to-list 'custom-theme-load-path
              "/home/matt/.emacs.d/themes")
 
-(modify-all-frames-parameters
- '((font . "monospace-16")
-   (alpha-background . 0.75)))
-
-
 (use-package ewal-doom-themes)
 (setq ewal-doom-one-padded-modeline 4
       ewal-doom-one-brighter-modeline 1)
@@ -56,9 +53,7 @@
 (defun on-frame-open (&optional _)
   "Background is 'tricky' when mixing/matching graphical and TTY clients."
   (progn
-    (if (display-graphic-p)
-        (let ((alpha (if (frame-parent) 0.0 0.68)))
-          (modify-frame-parameters nil `((alpha-background . ,alpha))))
+    (unless (display-graphic-p)
       (progn
         (set-face-background 'default "unspecified-bg" (selected-frame))
         (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))))

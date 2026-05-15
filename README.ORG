@@ -4,13 +4,14 @@ Global settings are in the init.el file, specific modes have their own files.
 init.el will:
 
 1. Check that all required packages for boot-strap are installed (basically, diminish), installing them if not (usually).
-2. Load all settings from their individual files.
-3. That's pretty much it.
+2. Set some optimisations for the JIT compiler.
+3. Load all settings from their individual files.
+4. That's pretty much it.
 
 - globals.el :: use for anything that has global use.
 - lsip/helpers.el :: helper functions, mostly for config.
 - lisp/random-functions.el :: as it says, stuff I occasionally use :-)
-- theme.el :: not just the visual theme, but settings like hiding tool bars etc.
+- theme.el :: make things pretty.
 - dev-settings.el :: anything that effects the top-level development config.
 
 A constant work in progress :-)
@@ -24,7 +25,7 @@ Simplify all the things!  I'm using ~ewal~ to use the same theme as wot's as bei
 
 * Todo
 ** General
-- [ ] Look into [[https://www.masteringemacs.org/article/combobulate-structured-movement-editing-treesitter][Combobulate]] - AST manipulation of your source.
 - [ ] Setup and configure =lsp-booster=.
 - [ ] Get flycheck working with eglot.
 - [ ] Learn some basic magit!  Then incorporate Mergarif/disstastic.
+- [ ] Look into [[https://www.masteringemacs.org/article/combobulate-structured-movement-editing-treesitter][Combobulate]] - AST manipulation of your source.
