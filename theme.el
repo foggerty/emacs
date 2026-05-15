@@ -44,8 +44,8 @@
              "/home/matt/.emacs.d/themes")
 
 (modify-all-frames-parameters
- '(
-   (alpha-background . 0.68)))
+ '((font . "monospace-16")
+   (alpha-background . 0.75)))
 
 
 (use-package ewal-doom-themes)
