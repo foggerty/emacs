@@ -9,6 +9,7 @@
 (use-package flymake-go)
 
 (use-package go-ts-mode
+  :defer t
   :config
   (setq gofmt-command "goimports"
         go-ts-mode-indent-offset 4)

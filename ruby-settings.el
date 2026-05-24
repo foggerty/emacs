@@ -23,17 +23,15 @@
                 ("Kirkfile\\'"   . ruby-ts-mode))
               auto-mode-alist))
 
-(add-to-list 'major-mode-remap-alist '(ruby-mode . ruby-ts-mode))
+;; ;; Electric-mode is stoooopid when it comes to handling
+;; ;; parens and quotes.
+;; (require 'ruby-electric)
 
-;; Electric-mode is stoooopid when it comes to handling
-;; parens and quotes.
-(require 'ruby-electric)
+;; (define-key ruby-electric-mode-map (kbd "\"") nil)
+;; (define-key ruby-electric-mode-map (kbd "'") nil)
+;; (define-key ruby-electric-mode-map (kbd "(") nil)
+;; (define-key ruby-electric-mode-map (kbd "[") nil)
+;; (define-key ruby-electric-mode-map (kbd "`") nil)
 
-(define-key ruby-electric-mode-map (kbd "\"") nil)
-(define-key ruby-electric-mode-map (kbd "'") nil)
-(define-key ruby-electric-mode-map (kbd "(") nil)
-(define-key ruby-electric-mode-map (kbd "[") nil)
-(define-key ruby-electric-mode-map (kbd "`") nil)
-
-(define-key ruby-electric-mode-map (kbd ")") nil)
-(define-key ruby-electric-mode-map (kbd "]") nil)
+;; (define-key ruby-electric-mode-map (kbd ")") nil)
+;; (define-key ruby-electric-mode-map (kbd "]") nil)

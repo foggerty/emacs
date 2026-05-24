@@ -4,7 +4,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (qif
-           (smartparens-strict-mode)
+           (smartparens-mode)
            (local-set-key (kbd "C-c C-r") 'eval-region)
            (local-set-key (kbd "C-h C-l") 'find-library)
            (local-set-key (kbd "C-h C-f") 'find-function)

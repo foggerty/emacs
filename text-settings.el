@@ -3,6 +3,7 @@
 (require 'helpers)
 
 (use-package visual-fill-column
+  :defer t
   :config
   (setq visual-fill-column-width 90)
   (setq fill-column 90))

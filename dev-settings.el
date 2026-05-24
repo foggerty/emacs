@@ -17,6 +17,7 @@
 
 ;; Code completion
 (use-package eglot
+  :defer t
   :config
   (fset #'jsonrpc--log-event #'ignore))
 
@@ -42,11 +43,12 @@
    elixir-ts-mode
    geiser-mode
    go-ts-mode
+   ielm-mode
    js-ts-mode
    janet-ts-mode
    json-ts-mode
    json-ts-mode
-   ielm-mode
+   kdl-mode
    ruby-mode
    ruby-ts-mode
    ruby-electric-mode
@@ -90,6 +92,7 @@
    geiser-mode
    go-ts-mode
    ielm-mode
+   kdl-mode
    nxml-mode
    ruby-ts-mode
    janet-ts-mode
@@ -125,19 +128,6 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 
 (add-hook 'prog-mode-hook #'flymake-mode)
 (global-set-key (kbd "<f7>") 'my/flymake-toggle-buffer)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; IMenu-List
-;;;
-;;
-
-(use-package imenu-list
-  :config
-  (setq imenu-list-focus-after-activation t
-        imenu-use-popup-menu t)
-  (add-hook 'imenu-after-jump-hook #'imenu-list-smart-toggle)
-  (global-set-key (kbd "C-/") #'imenu-list-smart-toggle))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -180,49 +170,43 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
               ("C-\""              . sp-changeinner)
               ("M-i"               . sp-change-enclosing)))
 
-(require 'smartparens)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Tree-sitter
 ;;;
 ;;
 
-(require 'treesit)
+;; (require 'treesit)
 
-(add-to-list 'treesit-language-source-alist
-             '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
+;; (add-to-list 'treesit-language-source-alist
+;;              '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
 
-(add-to-list 'treesit-language-source-alist
-             '(janet-simple "https://github.com/sogaiu/tree-sitter-janet-simple"))
+;; (add-to-list 'treesit-language-source-alist
+;;              '(janet-simple "https://github.com/sogaiu/tree-sitter-janet-simple"))
 
-(use-package treesit-auto
-  :custom
-  (treesit-auto-install 'prompt)
-  (treesit-auto-langs
-   '(bash
-     c
-     cpp
-     clojure
-     css
-     elixir
-     go
-     gomod
-     heex
-     hyprlang
-     javascript
-     janet-simple
-     json
-     ruby
-     sql))
-  :hook
-  (shel-mode-hook . bash-ts-mode)
-  :config)
+;; (use-package treesit-auto
+;;   :config
+;;   (setq treesit-auto-install 'prompt
+;;         treesit-auto-langs '(bash
+;;                              c
+;;                              cpp
+;;                              clojure
+;;                              css
+;;                              elixir
+;;                              go
+;;                              gomod
+;;                              heex
+;;                              hyprlang
+;;                              javascript
+;;                              janet-simple
+;;                              json
+;;                              ruby
+;;                              sql)))
 
-(require 'treesit-auto)
+;; (require 'treesit-auto)
 
-(treesit-auto-add-to-auto-mode-alist 'all)
-(treesit-auto-install-all)
+;; (treesit-auto-add-to-auto-mode-alist 'all)
+;; (treesit-auto-install-all)
 
 (setq major-mode-remap-alist
       '((sh-mode     . bash-ts-mode)

@@ -15,10 +15,10 @@
 ;; No duplicates in kill-ring.
 (setq kill-do-not-save-duplicates t)
 
-;; Sensible context menu
-(when (or server-mode
-          (display-graphic-p))
-  (context-menu-mode))
+;; ;; Sensible context menu
+;; (when (or server-mode
+;;           (display-graphic-p))
+;;   (context-menu-mode))
 
 ;; Don't bother with right-to-left rendering checks.
 (setq-default bidi-display-reordering 'left-to-right
@@ -36,19 +36,19 @@
 ;; Less warnings at startup.
 (setq warning-minimum-level :emergency)
 
-;; Refresh buffers when changed on disk, if there are no edits.
-(global-auto-revert-mode 1)
+;; ;; ;; Refresh buffers when changed on disk, if there are no edits.
+;; (global-auto-revert-mode 1)
 
-;; Tweaks to dired
-(require 'dired-x)
+;; ;; Tweaks to dired
+;; (require 'dired-x)
 
-(setq dired-listing-switches "-l -a -h -v --group-directories-first"
-      dired-movement-style 'cycle
-      dired-always-read-filesystem t
-      dired-kill-when-opening-new-dired-buffer t)
+;; (setq dired-listing-switches "-l -a -h -v --group-directories-first"
+;;       dired-movement-style 'cycle
+;;       dired-always-read-filesystem t
+;;       dired-kill-when-opening-new-dired-buffer t)
 
-(keymap-set dired-mode-map (kbd "q")
-            (qif (kill-buffer-and-window)))
+;; (keymap-set dired-mode-map (kbd "q")
+;;             (qif (kill-buffer-and-window)))
 
 ;; DWIM for commenting.
 (use-package comment-dwim-2
@@ -96,13 +96,10 @@
 ;; Yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Use aspell over ispell
-(require 'ispell)
-(helper-run-if-found
- "aspell"
- (lambda (path)
-   (setq ispell-program-name path
-         ispell-dictionary "british")))
+;; ;; Use aspell over ispell
+;; (require 'ispell)
+;; (setq ispell-program-name "aspell"
+;;       ispell-dictionary "british")
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
@@ -110,10 +107,10 @@
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file "~/.emacs.d/custom-variables.el")
 
-;; Copy ENV variables if running as a daemon.
-(when (daemonp)
-  (use-package exec-path-from-shell)
-  (exec-path-from-shell-initialize))
+;; ;; ;; Copy ENV variables if running as a daemon.
+;; ;; (when (daemonp)
+;; ;;   (use-package exec-path-from-shell)
+;; ;;   (exec-path-from-shell-initialize))
 
 ;; Show less pop-ups when compiling.
 (require 'comp-run)
