@@ -37,12 +37,13 @@
 ;; (string-trim
 ;;  (shell-command-to-string "gcc -march=native -Q --help=target | grep -- '-march=   ' | cut -f 3"))
 
-(setq my-arch "skylake"
+(setq arch "skylake"
+      tune "native"
 
       native-comp-compiler-options
       `("-O2"
-        ,(format "-mtune=%s" my-arch)
-        ,(format "-march=%s" my-arch)
+        ,(format "-mtune=%s" tune)
+        ,(format "-march=%s" arch)
         ;; Reduce .eln size and compilation overhead.
         "-g0"
         ;; Good defensive choice for Emacs stability.
