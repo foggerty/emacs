@@ -62,9 +62,6 @@
 
 (minions-mode 1)
 
-;; Mouse-mode in terminals
-(xterm-mouse-mode)
-
 ;; Save location in files.
 (save-place-mode 1)
 

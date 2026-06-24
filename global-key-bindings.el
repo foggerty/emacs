@@ -7,7 +7,7 @@
 
 (require 'helpers)
 
-(global-set-key (kbd "C-<tab>")         'other-window)   
+(global-set-key (kbd "C-<tab>")         'other-window)
 (global-set-key (kbd "C-x C-b")         'ibuffer)
 (global-set-key (kbd "C-c C-q")         'indent-buffer)
 (global-set-key (kbd "C-z")             'undo)
@@ -26,3 +26,5 @@
 (global-set-key (kbd "C-<return>")      'complete-symbol)
 (global-set-key (kbd "C-<prior>")       'previous-buffer)
 (global-set-key (kbd "C-<next>")        'next-buffer)
+(global-set-key (kbd "<f8>")            'speedbar-window)
+(global-set-key (kbd "C-c d")           'duplicate-dwim)

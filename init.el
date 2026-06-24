@@ -1,4 +1,3 @@
-
 ;;; -*- lexical-binding: t; -*-
 
 ;;; Code:
@@ -19,8 +18,7 @@
 (make-directory package-user-dir t)
 
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             '("elpa"  . "https://"))
+             '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
 
@@ -33,36 +31,27 @@
 ;;;
 ;;
 
-;;; Use this to determine architecture.
-;; (string-trim
-;;  (shell-command-to-string "gcc -march=native -Q --help=target | grep -- '-march=   ' | cut -f 3"))
+;; (setq native-comp-compiler-options
+;;       `("-O2 -mtune=native -march=native"
+;;         ;; Reduce .eln size and compilation overhead.
+;;         "-g0"
+;;         ;; Good defensive choice for Emacs stability.
+;;         "-fno-omit-frame-pointer"
+;;         "-fno-finite-math-only")
 
-(setq arch "skylake"
-      tune "native"
-
-      native-comp-compiler-options
-      `("-O2"
-        ,(format "-mtune=%s" tune)
-        ,(format "-march=%s" arch)
-        ;; Reduce .eln size and compilation overhead.
-        "-g0"
-        ;; Good defensive choice for Emacs stability.
-        "-fno-omit-frame-pointer"
-        "-fno-finite-math-only")
-
-      native-comp-driver-options
-      `(;; -Wl,-z,pack-relative-relocs compresses
-        ;; relocation tables to reduce file size and
-        ;; slightly improve load times.
-        "-Wl,-z,pack-relative-relocs"
-        ;; -Wl,-O2 applies standard linker-level
-        ;; optimizations (like string merging) to the
-        ;; generated shared object.
-        "-Wl,-O2"
-        ;; -Wl,--as-needed prevents the linker from
-        ;; recording dependencies on libraries that
-        ;; are not actually used by the code.
-        "-Wl,--as-needed"))
+;;       native-comp-driver-options
+;;       `(;; -Wl,-z,pack-relative-relocs compresses
+;;         ;; relocation tables to reduce file size and
+;;         ;; slightly improve load times.
+;;         "-Wl,-z,pack-relative-relocs"
+;;         ;; -Wl,-O2 applies standard linker-level
+;;         ;; optimizations (like string merging) to the
+;;         ;; generated shared object.
+;;         "-Wl,-O2"
+;;         ;; -Wl,--as-needed prevents the linker from
+;;         ;; recording dependencies on libraries that
+;;         ;; are not actually used by the code.
+;;         "-Wl,--as-needed"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -76,8 +65,8 @@
 (let ((files-to-load
        '(
          "theme.el"
-	     "global-settings.el"
-	     "consult.el"
+	 "global-settings.el"
+	 "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
          "clojure-settings.el"
@@ -85,11 +74,11 @@
          "elisp-settings.el"
          "c-settings.el"
          "c-plus-settings.el"
-         "go-settings.el"
-         "neo4j-settings.el"
+         ;; "go-settings.el"
+         ;; "neo4j-settings.el"
          "ruby-settings.el"
-         "elixir-settings.el"
-         "janet-settings.el"
+         ;; "elixir-settings.el"
+         ;; "janet-settings.el"
          "org-settings.el"
          "lisp/random-functions.el"
          "lisp/helpers.el"

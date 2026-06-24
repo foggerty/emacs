@@ -11,17 +11,15 @@
 (tool-bar-mode 0)
 ;;(scroll-bar-mode 0)
 
-;; (set-window-scroll-bars (minibuffer-window) 0 'none nil nil t)
-
 (setq inhibit-startup-screen t)
 (setq-default frame-title-format '("%b"))
-(setq-default line-spacing 0.1)
+(setq-default line-spacing 0.2)
 
 (add-to-alist 'default-frame-alist
               `((drag-internal-border . 1)
                 (internal-border-width . 5)
                 (alpha-background . 0.75)
-                (font . "mono-15")))
+                (font . "monospace-15")))
 
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
@@ -42,13 +40,10 @@
 ;;;
 ;;
 
-(add-to-list 'custom-theme-load-path
-             "/home/matt/.emacs.d/themes")
+(use-package doom-themes)
 
-(use-package ewal-doom-themes)
-(setq ewal-doom-one-padded-modeline 4
-      ewal-doom-one-brighter-modeline 1)
-(load-theme 'ewal-doom-one t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'doom-wallust-dark t)
 
 (defun on-frame-open (&optional _)
   "Background is 'tricky' when mixing/matching graphical and TTY clients."
@@ -56,9 +51,30 @@
     (unless (display-graphic-p)
       (progn
         (set-face-background 'default "unspecified-bg" (selected-frame))
-        (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))))))
+        (set-face-background 'font-lock-comment-face "unspecified-bg" (selected-frame))
+        (set-face-background 'mode-line-emphasis "unspecifiec-bg" (selected-frame))))))
 
 (add-hook 'server-after-make-frame-hook #'on-frame-open)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Pulse
+;;;
+;;
+
+(require 'pulse)
+
+(defun pulse-line (&rest _)
+  "Pulse the current line."
+  (pulse-momentary-highlight-one-line (point)))
+
+(dolist (command '(scroll-up-command
+                   scroll-down-command
+                   recenter-top-bottom
+                   other-window
+                   pixel-scroll-interpolate-up
+                   pixel-scroll-interpolate-down))
+  (advice-add command :after #'pulse-line))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -76,18 +92,16 @@
  '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
  '(show-paren-match ((t (:underline nil :foreground "red")))))
 
-(use-package org
-  :defer t
-  :config
-  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
-  (set-face-attribute 'org-level-1 :height 1.0)
-  (set-face-attribute 'org-level-2 :height 1.0)
-  (set-face-attribute 'org-block :inherit fixed-pitch)
-  (set-face-attribute 'org-block-begin-line :background unspecified)
-  (set-face-attribute 'org-block-end-line :background unspecified)
-  (set-face-attribute 'org-code :inherit (shadow fixed-pitch))
-  (set-face-attribute 'avy-lead-face :background unspecified)
-  (set-face-attribute 'avy-lead-face-0 :background unspecified))
+(require 'org)
+(require 'org-indent)
+
+(set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-code nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-indent nil :inherit '(org-hide fixed-pitch))
+(set-face-attribute 'org-level-1 nil :height 1.0)
+(set-face-attribute 'org-level-2 nil :height 1.0)
+(set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+(set-face-attribute 'org-block-begin-line nil :background 'unspecified)
+(set-face-attribute 'org-block-end-line nil :background 'unspecified)
+(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))

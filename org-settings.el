@@ -17,12 +17,5 @@
 
 (require 'org-indent)
 
-(defun org-setup ()
-  (org-indent-mode)
-  (org-modern-mode)
-  (local-set-key (kbd "C-<up>")   'org-backward-heading-same-level)
-  (local-set-key (kbd "C-<down>") 'org-forward-heading-same-level)
-  (local-set-key (kbd "C-c t")    'set-org-tags-from-anywhere))
-
-
-(add-hook 'org-mode-hook 'org-setup)
+(add-hook 'org-mode-hook (qif (org-modern-mode)
+                              (org-indent-mode)))

@@ -33,9 +33,9 @@
   :config
   (setq markdown-fontify-code-blocks-natively t))
 
-(use-package sql-indent
-  :hook
-  (sql-mode . sqlind-minor-mode))
+;; (use-package sql-indent
+;;   :hook
+;;   (sql-mode . sqlind-minor-mode))
 
 (use-package hyprlang-ts-mode
   :defer t

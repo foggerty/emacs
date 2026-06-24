@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package janet-ts-mode
   :vc (:url "https://github.com/sogaiu/janet-ts-mode"
             :rev :newest))

@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package consult
   :bind (
          ("C-o"     . consult-outline)

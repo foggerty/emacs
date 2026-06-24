@@ -6,7 +6,6 @@
 ;;
 
 ;; Always keep comments to 80 columns.
-
 (advice-add 'prog-fill-reindent-defun
             :around
             (lambda (original &rest args)
@@ -35,23 +34,16 @@
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent
   :hook
-  (bash-mode
-   bash-ts-mode
-   css-mode
+  (bash-ts-mode
    css-ts-mode
-   elixir-mode
    elixir-ts-mode
-   geiser-mode
    go-ts-mode
    ielm-mode
    js-ts-mode
    janet-ts-mode
    json-ts-mode
-   json-ts-mode
    kdl-mode
-   ruby-mode
    ruby-ts-mode
-   ruby-electric-mode
    emacs-lisp-mode
    nxml-mode))
 
@@ -76,8 +68,9 @@
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Setup eldoc.
-(setq eldoc-echo-area-use-multiline-p 1)
-(setq eldoc-idle-delay 0.0)
+(setq eldoc-echo-area-use-multiline-p 1
+      eldoc-idle-delay 0.0
+      eldoc-help-at-pt t)
 (global-eldoc-mode)
 
 ;; Hungry-delete: backspace/delete kill up to next char.
@@ -176,37 +169,9 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 ;;;
 ;;
 
-;; (require 'treesit)
-
-;; (add-to-list 'treesit-language-source-alist
-;;              '(hyprlang "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang"))
-
-;; (add-to-list 'treesit-language-source-alist
-;;              '(janet-simple "https://github.com/sogaiu/tree-sitter-janet-simple"))
-
-;; (use-package treesit-auto
-;;   :config
-;;   (setq treesit-auto-install 'prompt
-;;         treesit-auto-langs '(bash
-;;                              c
-;;                              cpp
-;;                              clojure
-;;                              css
-;;                              elixir
-;;                              go
-;;                              gomod
-;;                              heex
-;;                              hyprlang
-;;                              javascript
-;;                              janet-simple
-;;                              json
-;;                              ruby
-;;                              sql)))
-
-;; (require 'treesit-auto)
-
-;; (treesit-auto-add-to-auto-mode-alist 'all)
-;; (treesit-auto-install-all)
+(require 'treesit)
+(setq treesit-auto-install-grammar t
+      treesit-enabled-modes t)
 
 (setq major-mode-remap-alist
       '((sh-mode     . bash-ts-mode)
