@@ -11,7 +11,7 @@
 ;; To install, add this to your wallust templates section:
 ;; doom-wallust-dark = { template = 'doom-wallust-dark-theme.el', target = '/home/gabriel/.emacs.d/themes/doom-wallust-dark-theme.el' }
 ;;
-;;
+;; 
 ;; You must also copy this template file to your $EMACS_DIR or $DOOM_DIR custom themes directory so that Wallust can replace it. If in vanilla emacs, you can set it like this:
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;; Code:
@@ -55,15 +55,15 @@ Can be an integer to determine the exact padding."
   :background-mode 'dark
 
   ;; name        default   256       16
-  ((bg         '("#232921" nil       nil))
-   (fg         '("#EDDBB2" nil       nil))
+  ((bg         '("#1D1F1B" nil       nil))
+   (fg         '("#DEE6C4" nil       nil))
 
    ;; Alternatives for solaire-mode
-   (bg-alt     '("#4D554B" nil       nil))
-   (fg-alt     '("#9A895F" nil       nil))
+   (bg-alt     '("#474B45" nil       nil))
+   (fg-alt     '("#8C9471" nil       nil))
 
    ;; Base colors - spectrum from bg to fg
-   (base0      '("#4D554B" nil "black"))
+   (base0      '("#474B45" nil "black"))
    (base1      (doom-darken bg 0.05))
    (base2      (doom-darken bg 0.1))
    (base3      (doom-darken bg 0.15))
@@ -71,19 +71,19 @@ Can be an integer to determine the exact padding."
    (base5      (doom-lighten bg 0.2))
    (base6      (doom-lighten bg 0.3))
    (base7      (doom-lighten fg 0.1))
-   (base8      '("#DDC488" nil "white"))
+   (base8      '("#C8D3A2" nil "white"))
 
    (grey       base5)
-   (red        '("#3A593B" nil "red"))
-   (orange     '("#3B643B" nil "brightred"))
-   (green      '("#3B7A3B" nil "green"))
-   (teal       '("#AB8D44" nil "brightgreen"))
-   (yellow     '("#717B4B" nil "yellow"))
-   (blue       '("#9D6E49" nil "brightblue"))
-   (dark-blue  '("#BE7F4F" nil "blue"))
-   (magenta    '("#419D40" nil "magenta"))
-   (violet     '("#0DAA0B" nil "brightmagenta"))
-   (cyan       '("#CB9922" nil "brightcyan"))
+   (red        '("#5A6765" nil "red"))
+   (orange     '("#657774" nil "brightred"))
+   (green      '("#667252" nil "green"))
+   (teal       '("#80904A" nil "brightgreen"))
+   (yellow     '("#717D86" nil "yellow"))
+   (blue       '("#798C52" nil "brightblue"))
+   (dark-blue  '("#749335" nil "blue"))
+   (magenta    '("#759088" nil "magenta"))
+   (violet     '("#729F92" nil "brightmagenta"))
+   (cyan       '("#A1B855" nil "brightcyan"))
    (dark-cyan  (doom-darken cyan 0.3))
 
    ;; Face categories
@@ -91,7 +91,7 @@ Can be an integer to determine the exact padding."
    (vertical-bar   (doom-darken base1 0.2))
    (selection      dark-blue)
    (builtin        magenta)
-   (comments       (if doom-wallust-dark-brighter-comments
+   (comments       (if doom-wallust-dark-brighter-comments 
                        (doom-lighten teal 0.2)
                      (doom-darken fg 0.4)))
    (doc-comments   (doom-lighten comments 0.15))
@@ -126,8 +126,8 @@ Can be an integer to determine the exact padding."
 
    (-modeline-pad
     (when doom-wallust-dark-padded-modeline
-      (if (integerp doom-wallust-dark-padded-modeline)
-          doom-wallust-dark-padded-modeline
+      (if (integerp doom-wallust-dark-padded-modeline) 
+          doom-wallust-dark-padded-modeline 
         4))))
 
   ;;;; Base theme face overrides
@@ -142,7 +142,7 @@ Can be an integer to determine the exact padding."
     :background modeline-bg-inactive :foreground modeline-fg-alt
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
    (mode-line-emphasis :foreground (if doom-wallust-dark-brighter-modeline base8 highlight))
-
+   
    (hl-line :background (doom-lighten bg 0.05))
    (region :background region :foreground nil :distant-foreground fg)
 
@@ -191,7 +191,5 @@ Can be an integer to determine the exact padding."
 
   ;;;; Base theme variable overrides
   ())
-
-(provide-theme 'doom-wallust-dark)
 
 ;;; doom-wallust-dark-theme.el ends here
