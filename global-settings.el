@@ -1,11 +1,11 @@
-;;; -*- lexical-binding: t; -*-
+;; ;;; -*- lexical-binding: t; -*-
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Basic tidy ups / tweaks.
-;;;
-;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;; Basic tidy ups / tweaks.
+;; ;;;
+;; ;;
 
-;; Loook at some stuff from here: https://codeberg.org/ashton314/emacs-bedrock/src/branch/main/init.el
+;; ;; Loook at some stuff from here: https://codeberg.org/ashton314/emacs-bedrock/src/branch/main/init.el
 
 (require 'helpers)
 
@@ -36,19 +36,19 @@
 ;; Less warnings at startup.
 (setq warning-minimum-level :emergency)
 
-;; ;; ;; Refresh buffers when changed on disk, if there are no edits.
-;; (global-auto-revert-mode 1)
+;; Refresh buffers when changed on disk, if there are no edits.
+(global-auto-revert-mode 1)
 
-;; ;; Tweaks to dired
-;; (require 'dired-x)
+;; Tweaks to dired
+(require 'dired-x)
 
-;; (setq dired-listing-switches "-l -a -h -v --group-directories-first"
-;;       dired-movement-style 'cycle
-;;       dired-always-read-filesystem t
-;;       dired-kill-when-opening-new-dired-buffer t)
+(setq dired-listing-switches "-l -a -h -v --group-directories-first"
+      dired-movement-style 'cycle
+      dired-always-read-filesystem t
+      dired-kill-when-opening-new-dired-buffer t)
 
-;; (keymap-set dired-mode-map (kbd "q")
-;;             (qif (kill-buffer-and-window)))
+(keymap-set dired-mode-map (kbd "q")
+            (qif (kill-buffer-and-window)))
 
 ;; DWIM for commenting.
 (use-package comment-dwim-2
@@ -82,10 +82,10 @@
 (add-hook 'after-save-hook 'delete-trailing-whitespace)
 
 ;; Save desktop on exit
-(require 'desktop)
-(desktop-save-mode 1)
-(setq desktop-load-locked-desktop 'check-pid)
-(setq desktop-dirname "~/.emacs.d")
+;; (require 'desktop)
+;; (desktop-save-mode 1)
+;; (setq desktop-load-locked-desktop 'check-pid)
+;; (setq desktop-dirname "~/.emacs.d")
 
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
@@ -93,10 +93,10 @@
 ;; Yes/no to y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; ;; Use aspell over ispell
-;; (require 'ispell)
-;; (setq ispell-program-name "aspell"
-;;       ispell-dictionary "british")
+;; Use aspell over ispell
+(require 'ispell)
+(setq ispell-program-name "aspell"
+      ispell-dictionary "british")
 
 ;; LESS cow-bell.
 (setq ring-bell-function 'ignore)
@@ -104,10 +104,10 @@
 ;; Stop Emacs from writing that bloody custom-set-variables stuff.
 (setq custom-file "~/.emacs.d/custom-variables.el")
 
-;; ;; ;; Copy ENV variables if running as a daemon.
-;; ;; (when (daemonp)
-;; ;;   (use-package exec-path-from-shell)
-;; ;;   (exec-path-from-shell-initialize))
+;; Copy ENV variables if running as a daemon.
+(when (daemonp)
+  (use-package exec-path-from-shell)
+  (exec-path-from-shell-initialize))
 
 ;; Show less pop-ups when compiling.
 (require 'comp-run)
@@ -117,10 +117,10 @@
 (setq require-final-newline t)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Temp directories
-;;;
-;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;; Temp directories
+;; ;;;
+;; ;;
 
 ;; Centralised backup directory
 (make-directory "~/.emacs.d/backups" t)
@@ -251,16 +251,16 @@
  '(ediff-split-window-function (quote split-window-horizontally)))
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Standard regex-replace
-;;;
-;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;; Standard regex-replace
+;; ;;;
+;; ;;
 
-(require 're-builder)
-(use-package visual-regexp-steroids)
+;; (require 're-builder)
+;; (use-package visual-regexp-steroids)
 
-(advice-add 'replace-regexp-as-diff :override #'vr/query-replace)
-(setq reb-re-syntax 'string)
+;; (advice-add 'replace-regexp-as-diff :override #'vr/query-replace)
+;; (setq reb-re-syntax 'string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Golden-ratio - give active window more space.
