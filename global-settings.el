@@ -55,7 +55,7 @@
   :bind
   ("M-;" . comment-dwim-2))
 
-;; Hide minor modes in modeline.
+;; ;; Hide minor modes in modeline.
 (use-package minions
   :custom
   (minions-mode-line-ligher "--"))
@@ -82,10 +82,10 @@
 (add-hook 'after-save-hook 'delete-trailing-whitespace)
 
 ;; Save desktop on exit
-;; (require 'desktop)
-;; (desktop-save-mode 1)
-;; (setq desktop-load-locked-desktop 'check-pid)
-;; (setq desktop-dirname "~/.emacs.d")
+(require 'desktop)
+(desktop-save-mode 1)
+(setq desktop-load-locked-desktop 'check-pid)
+(setq desktop-dirname "~/.emacs.d")
 
 ;; Highlighted region is deleted when typing
 (delete-selection-mode 1)
