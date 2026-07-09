@@ -37,6 +37,7 @@
 (let ((files-to-load
        '(
          "global-settings.el"
+	 "themes/matugen.el"
          "theme.el"
          "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
