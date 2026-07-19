@@ -1,7 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
 (defun foggerty-do-my-tax (rate hours)
-  "Calculate how much tax to pay, and how much to put into savings etc."
+  "Calculate how much tax to pay, and how much to put into savings etc.
+RATE: Hourly rate.
+HOURS: Number of hours worked."
   (interactive "nRate: \nnHours: ")
   (let* ((total (* rate hours))
          (total-inc-gst (* 1.15 total))

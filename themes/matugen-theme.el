@@ -1,4 +1,4 @@
-;;; matugen-theme.el --- Theme using Matugen CSS variables
+;;; matugen-theme.el --- Theme using Matugen CSS variables -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2025
 

@@ -18,7 +18,7 @@
 (add-to-alist 'default-frame-alist
               `((drag-internal-border . 1)
                 (internal-border-width . 5)
-                (alpha-background . 0.75)
+                (alpha-background . 0.85)
                 (font . "SauceCodePro Nerd Font Mono-15")))
 
 (set-default 'blink-cursor-blinks 0)      ; always blink
