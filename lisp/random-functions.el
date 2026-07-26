@@ -16,9 +16,9 @@ HOURS: Number of hours worked."
     (helper-messages
      `(("Total: %#.2f\n" ,total)
        ("GST: %#.2f\n" ,gst)
-       ("Total (inc GST): %#.2f\n", total-inc-gst)
+       ("Total (inc GST): %#.2f\n" ,total-inc-gst)
        ("Withholding tax: %#.2f\n" ,withholding)
-       ("Paid (ex GST): %#.2f\n" ,paid)
+       ("Paid (ex GST and withholding): %#.2f\n" ,paid)
        ("Kiwisaver: %#.2f\n" ,kiwisaver)
        ("Savings: %#.2f\n" ,savings)
        ("left-with: %#.2f\n" ,left-with)))))

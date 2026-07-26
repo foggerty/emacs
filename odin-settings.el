@@ -309,8 +309,8 @@
 
 ;; Add OLS to the list of available programs
 ;; NOTE: As of Emacs 30, this is not needed.
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs '((odin-mode odin-ts-mode) . ("ols"))))
+;; (with-eval-after-load 'eglot
+;;   (add-to-list 'eglot-server-programs '((odin-mode odin-ts-mode) . ("ols"))))
 
 
 ;;; odin-mode.el ends here

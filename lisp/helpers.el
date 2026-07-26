@@ -8,15 +8,15 @@
 
 (defun add-to-alist (alist elements)
   (cond ((not (alistp (symbol-value alist)))
-         (error "'alist' is not an alist."))
+         (error "'alist' is not an alist"))
         ((not (alistp elements))
-         (error "'elements' is not an alist."))
+         (error "'elements' is not an alist"))
         (t (dolist (element elements)
              (add-to-list alist element)))))
 
 
 (defun indent-buffer ()
-  "Indents the entire buffer."
+  "Indent the entire buffer."
   (interactive)
   (save-excursion
     (delete-trailing-whitespace)
@@ -25,14 +25,15 @@
 
 
 (defun helper-messages (messages)
-  "Uses the message function to display a list of format-value
-pairs or single strings."
-  (message (string (apply 'concat (mapcar
-                                   (lambda (msg)
-                                     (if (atom msg)
-                                         msg
-                                       (format (car msg) (cadr msg))))
-                                   messages)))))
+  "Display in the message buffer.
+MESSAGES: A list of 1 or 2-item lists, containing string, or a format
+string and a value to apply to it."
+  (message (apply 'concat (mapcar
+                           (lambda (msg)
+                             (if (atom msg)
+                                 msg
+                               (format (car msg) (cadr msg))))
+                           messages))))
 
 
 (defun helper-run-if-found (name func)
