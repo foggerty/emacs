@@ -37,15 +37,16 @@
   (bash-ts-mode
    css-ts-mode
    elixir-ts-mode
+   emacs-lisp-mode
    go-ts-mode
    ielm-mode
-   js-ts-mode
    janet-ts-mode
+   js-ts-mode
    json-ts-mode
    kdl-mode
-   ruby-ts-mode
-   emacs-lisp-mode
-   nxml-mode))
+   nxml-mode
+   odin-mode
+   ruby-ts-mode))
 
 (require 'aggressive-indent)
 (define-key aggressive-indent-mode-map (kbd "C-c C-q") nil)
@@ -87,6 +88,7 @@
    ielm-mode
    kdl-mode
    nxml-mode
+   odin-mode
    ruby-ts-mode
    janet-ts-mode
    json-ts-mode
@@ -103,8 +105,6 @@
 
 (setq flymake-indicator-type nil)
 (setq flymake-fringe-indicator-position nil)
-
-(flymake-mode)
 
 (defun my/flymake-toggle-buffer ()
   "Toggle flymake disgnostics buffer.  Ripped from here:
@@ -173,8 +173,15 @@ https://olddeuteronomy.github.io/post/cpp-programming-in-emacs/"
 (setq treesit-auto-install-grammar t
       treesit-enabled-modes t)
 
-(setq major-mode-remap-alist
+(setq treesit-language-remap-alist
       '((sh-mode     . bash-ts-mode)
         (elixir-mode . elixir-ts-mode)
         (ruby-mode   . ruby-ts-mode)
         (json-mode   . json-ts-mode)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Hideshow
+;;;
+
+;; ToDo - setup, bind to <backtab>

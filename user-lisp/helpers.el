@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
+;;;###autoload
 
 (defun alistp (alist)
   (or (null alist)
@@ -67,5 +68,6 @@ string and a value to apply to it."
     (set-face-attribute 'default nil :height new)))
 
 (provide 'helpers)
+(require 'helpers)
 
 ;;; helpers.el ends here.

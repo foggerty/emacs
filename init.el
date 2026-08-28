@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Code:
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Package setup
 ;;;
@@ -41,7 +39,7 @@
          "consult.el"
          "dev-settings.el" ; should come before all other dev modes.
          "misc-dev-settings.el"
-         ;; "odin-settings.el"
+         "odin-settings.el"
          "clojure-settings.el"
          "text-settings.el"
          "elisp-settings.el"
@@ -53,8 +51,8 @@
          ;; "elixir-settings.el"
          ;; "janet-settings.el"
          "org-settings.el"
-         "lisp/random-functions.el"
-         "lisp/helpers.el"
+         ;; "lisp/random-functions.el"
+         ;; "lisp/helpers.el"
          "global-key-bindings.el"
          )))
 

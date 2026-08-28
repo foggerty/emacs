@@ -1,4 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
+;;;###autoload
+
+(load "helpers.el")
 
 (defun foggerty-do-my-tax (rate hours)
   "Calculate how much tax to pay, and how much to put into savings etc.
@@ -31,7 +34,7 @@ HOURS: Number of hours worked."
 
 
 (defun adjust-margins (amount)
-  "Adjust current buffer's margin by +/- amount."
+  "Adjust current buffer's margin by +/- AMOUNT."
   ;; note to self: the margins set by the set-window-margins function
   ;; will no longer be applied once the current buffer loses focus
   ;; focus.  Instead, set the buffer-local variables
@@ -99,3 +102,4 @@ Ripped from Stack Overflow"
        (1- (search-forward (char-to-string char)))))))
 
 (provide 'random-functions)
+(require 'random-functions)

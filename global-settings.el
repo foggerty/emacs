@@ -55,12 +55,8 @@
   :bind
   ("M-;" . comment-dwim-2))
 
-;; ;; Hide minor modes in modeline.
-(use-package minions
-  :custom
-  (minions-mode-line-ligher "--"))
-
-(minions-mode 1)
+;; Tame the mode-line
+(setopt mode-line-collapse-minor-modes 1)
 
 ;; Save location in files.
 (save-place-mode 1)

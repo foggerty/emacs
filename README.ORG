@@ -26,6 +26,5 @@ Simplify all the things!  I'm using ~ewal~ to use the same theme as wot's as bei
 * Todo
 ** General
 - [ ] Setup and configure =lsp-booster=.
-- [ ] Get flycheck working with eglot.
 - [ ] Learn some basic magit!  Then incorporate Mergarif/disstastic.
 - [ ] Look into [[https://www.masteringemacs.org/article/combobulate-structured-movement-editing-treesitter][Combobulate]] - AST manipulation of your source.
