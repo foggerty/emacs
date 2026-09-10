@@ -51,8 +51,6 @@
          ;; "elixir-settings.el"
          ;; "janet-settings.el"
          "org-settings.el"
-         ;; "lisp/random-functions.el"
-         ;; "lisp/helpers.el"
          "global-key-bindings.el"
          )))
 
