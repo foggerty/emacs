@@ -18,8 +18,7 @@
 (add-to-alist 'default-frame-alist
               `((drag-internal-border . 1)
                 (internal-border-width . 5)
-                (alpha-background . 0.85)
-                (font . "SauceCodePro Nerd Font Mono-15")))
+                (alpha-background . 0.85)))
 
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
@@ -58,11 +57,6 @@
 ;; the custom-set-variables file doesn't call it.  FUCK.
 (custom-theme-set-faces
  'user
- '(variable-pitch ((t (:family "sans"
-                               :width expanded
-                               :height 1.0 ))))
- '(fixed-pitch ((t (:family "monospace"
-                            :height 1.0))))
  '(font-lock-comment-face ((t (:slant italic :weight semi-bold :background unspecified))))
  '(show-paren-match ((t (:underline nil :foreground "red")))))
 
@@ -70,6 +64,7 @@
 (require 'org-indent)
 
 (set-face-attribute 'mode-line nil :box '(:line-width 2 :color "gray"))
+(set-face-attribute 'mode-line-inactive nil :box '(:line-width 1 :color "gray"))
 
 (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
 (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
