@@ -30,9 +30,6 @@
 ;;;
 ;;
 
-;; (use-package doom-themes)
-;; (setq doom-wallust-dark-padded-modeline 4)
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'matugen t)
 

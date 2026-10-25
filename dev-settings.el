@@ -22,7 +22,8 @@
 
 (setq read-process-output-max (* 4 1024 1024)) ; lsp read-buffer.
 (setq eglot-autoshutdown t
-      eglot-report-progress t)
+      eglot-report-progress t
+      )
 
 ;; EDiff help window doen't play nicely with a tiling window-manager.
 (setq ediff-no-emacs-help-in-control-buffer t)

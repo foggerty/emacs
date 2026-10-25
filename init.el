@@ -16,7 +16,8 @@
 (make-directory package-user-dir t)
 
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/")
+             '("elpa"  . "https://"))
 
 (package-initialize)
 
@@ -45,7 +46,7 @@
          "elisp-settings.el"
          "c-settings.el"
          "c-plus-settings.el"
-         "go-settings.el"
+         ;; "go-settings.el"
          ;; "neo4j-settings.el"
          "ruby-settings.el"
          ;; "elixir-settings.el"
