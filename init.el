@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
+(exec-path-from-shell-initialize)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Package setup
 ;;;
@@ -58,3 +60,5 @@
   (dolist (file files-to-load)
     (load-file (concat (file-name-directory user-init-file)
                        file))))
+
+(exec-path-from-shell)
