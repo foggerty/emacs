@@ -7,6 +7,9 @@
 
 (require 'helpers)
 
+;;  Default font-size.
+(set-frame-font "mono 13" t t)
+
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 
@@ -18,7 +21,8 @@
 (add-to-alist 'default-frame-alist
               `((drag-internal-border . 1)
                 (internal-border-width . 5)
-                (alpha-background . 0.85)))
+                (alpha-background . 0.85)
+                (font . "mono 13")))
 
 (set-default 'blink-cursor-blinks 0)      ; always blink
 (set-default 'blink-cursor-interval 0.25) ; blink faster!

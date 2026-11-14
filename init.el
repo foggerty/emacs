@@ -1,6 +1,12 @@
 ;;; -*- lexical-binding: t; -*-
 
-(exec-path-from-shell-initialize)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Copy user shell preferences (i.e. Bash settings).
+;;;
+;;
+
+;;(use-package exec-path-from-shell)
+;;(exec-path-from-shell-initialize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Package setup
@@ -18,8 +24,7 @@
 (make-directory package-user-dir t)
 
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             '("elpa"  . "https://"))
+             '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
 
@@ -60,5 +65,3 @@
   (dolist (file files-to-load)
     (load-file (concat (file-name-directory user-init-file)
                        file))))
-
-(exec-path-from-shell)
