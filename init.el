@@ -38,7 +38,7 @@
 ;;
 
 (add-to-list 'load-path
-             (expand-file-name "~/.emacs.d/lisp"))
+             (expand-file-name "~/.emacs.d/user-lisp"))
 
 (let ((files-to-load
        '(
