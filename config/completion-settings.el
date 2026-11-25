@@ -27,6 +27,9 @@
 
 (use-package corfu
   :hook (after-init . global-corfu-mode)
+  :bind (:map corfu-map
+              ("<next>" . corfu-scroll-up)
+              ("<prior>" . corfu-scroll-down))
   :custom
   (corfu-cycle t) ; cycle around to first entry after reaching the last
   (corfu-preview-current nil) ; don't expand text at point until I press return
@@ -61,8 +64,8 @@
 (use-package vertico
   :demand t
   :bind (:map minibuffer-local-map
-              ("<tab>" . vertico-next)
-              ("<backtab>" . vertico-previous))
+              ("<next>" . vertico-next)
+              ("<prior>" . vertico-previous))
   :custom
   (vertico-cycle t) ; C-n at the bottom of the list loops around to the top
   :config
