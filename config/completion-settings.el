@@ -1,97 +1,118 @@
 ;; -*- lexical-binding: t; -*-
 
+;; Everything comes from this one person: https://github.com/minad
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Completion-at-point
+;;;; Orderless - completion styles.
 ;;;
 ;;
 
-;; Code completion
-(use-package corfu
-  :config
-  (require 'corfu)
-  (global-corfu-mode)
-  (corfu-popupinfo-mode 1)
-  (setq corfu-quit-no-match nil)
-  :bind (:map corfu-map
-              ("<next>"  . corfu-scroll-up)
-              ("<prior>" . corfu-scroll-down)))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;; Mini-buffer completion
-;;;
-;;
-
-;; Display mini-buffer selections as a vertical list.
-(use-package vertico
-  :custom
-  (vertico-scroll-margin 0)
-  (vertico-count 10)
-  (vertico-resize 'grow-only)
-  (vertico-cycle t)
-  :bind (:map vertico-map
-              ("<next>" . vertico-scroll-up)
-              ("<prior>" . vertico-scroll-down)))
-
-(vertico-mode)
-
-;; Replaces Emac's default copmletion with Orderless
 (use-package orderless
   :custom
-  (completion-styles '(orderless flex basic))
-  (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles basic partial-completion))))
-  (orderless-component-separator "[ &]"))
+  (orderless-matching-styles '(orderless-prefixes))
+  (completion-ignore-case t))
 
-;; Use Orderless with Eglot.
-(setq completion-category-overrides '((eglot (styles orderless))
-                                      (eglot-capf (styles orderless))))
+(setq completion-styles '(basic substring initials orderless)
+      completion-category-overrides '((file (styles basic partial-completion))))
 
 
-;; Consult - uses vertico to make the mini-buffer more user-friendly (for me,
-;; anyway).
-(use-package consult
-  :bind (
-         ("C-o"     . consult-outline)
-         ("C-s"     . consult-line)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Completion-at-point using Corfu.
+;;;
+;;
 
-         ("C-x b"   . consult-buffer)
-         ("C-x p b" . consult-project-buffer)
+;; TAB key: fix indentation if needed, otherwise perform completion
 
-         ("C-c g"   . consult-git-grep)
-         ("C-c m"   . consult-mode-command)
+(setq tab-always-indent 'complete)
 
-         ("M-g g"   . consult-goto-line)
-         ("M-g M-g" . consult-goto-line)
-         ("M-g e"   . consult-compile-error)
-
-         ("M-y"     . consult-yank-pop))
-
-  ;; Enable automatic preview at point in the *Completions* buffer. This is
-  ;; relevant when you use the default completion UI.
-  :hook
-  (completion-list-mode . consult-preview-at-point-mode)
-
-  ;; The :init configuration is always executed (Not lazy)
-  :init
-
-  ;; Use Consult to select xref locations with preview
-  (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
-
+(use-package corfu
+  :hook (after-init . global-corfu-mode)
+  :custom
+  (corfu-cycle t) ; cycle around to first entry after reaching the last
+  (corfu-preview-current nil) ; don't expand text at point until I press return
+  (corfu-min-width 20)
+  (corfu-on-exact-match 'insert) ; complete if there is only a single candidate
+  (corfu-quit-no-match t)
+  (corfu-quit-at-boundary t)
   :config
+  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode 1) ; shows documentation next to completions
+  ;; sort by input history
+  (with-eval-after-load 'savehist
+    (corfu-history-mode 1)
+    (add-to-list 'savehist-additional-variables 'corfu-history)))
 
-  (consult-customize
-   consult-theme :preview-key '(:debounce 0.0 any)
-   consult-ripgrep consult-git-grep consult-grep consult-man
-   consult-bookmark consult-recent-file consult-xref
-   consult--source-bookmark consult--source-file-register
-   consult--source-recent-file consult--source-project-recent-file
-   ;; :preview-key "M-."
-   :preview-key '(:debounce 0.4 any))
+(use-package cape
+  :defer 1
+  :config
+  (add-hook 'completion-at-point-functions #'cape-file 20))
 
-  ;; Optionally configure the narrowing key.
-  ;; Both < and C-+ work reasonably well.
-  (setq consult-narrow-key "<"))
+(use-package kind-icon
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
-(use-package consult-projectile)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Mini-buffer completion (Completing-read)
+;;;
+;;
+
+(use-package vertico
+  :demand t
+  :bind (:map minibuffer-local-map
+              ("<tab>" . vertico-next)
+              ("<backtab>" . vertico-previous))
+  :custom
+  (vertico-cycle t) ; C-n at the bottom of the list loops around to the top
+  :config
+  (vertico-mode t)
+  (vertico-reverse-mode t)
+  ;; Verticos highlight font was clashing with my comletion part, so adjust the font faces
+  (set-face-attribute 'vertico-current nil
+                      :weight 'bold
+                      :inverse-video nil)
+  (set-face-attribute 'completions-common-part nil
+                      :weight 'bold))
+
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Marginalia - info in mini-buffer margin,
+;;;
+;;
+
+(use-package marginalia
+  :custom
+  (marginalia-align 'right)
+  :config
+  (marginalia-mode t)
+  (set-face-attribute 'marginalia-documentation nil
+                      :inherit nil
+                      :slant 'italic))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Consult - nicer UI alternatives using the above functionality.
+;;;
+;;
+
+(use-package consult
+  :bind (;; new functionality
+         ("M-g l" . consult-line)
+         ("M-g m" . consult-mark)
+         ("H-r" . consult-ripgrep)
+         ;; replace built-in functions with superior versions
+         ("M-y" . consult-yank-pop)
+         ("C-x 4 b" . consult-buffer-other-window)
+         ("C-x t b" . consult-buffer-other-tab)
+         ([remap Info-search] . consult-info)
+         ([remap list-buffers] . ibuffer)))
