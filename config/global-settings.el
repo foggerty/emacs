@@ -15,11 +15,6 @@
 ;; No duplicates in kill-ring.
 (setq kill-do-not-save-duplicates t)
 
-;; ;; Sensible context menu
-;; (when (or server-mode
-;;           (display-graphic-p))
-;;   (context-menu-mode))
-
 ;; Don't bother with right-to-left rendering checks.
 (setq-default bidi-display-reordering 'left-to-right
               bidi-paragraph-direction 'left-to-right)
@@ -62,8 +57,7 @@
 (save-place-mode 1)
 
 ;; Stop Emacs from "jumping" the screen when scrolling.
-(setq redisplay-dont-pause t
-      scroll-margin 0
+(setq scroll-margin 0
       scroll-step 1
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
@@ -133,52 +127,6 @@
 (make-directory "~/.emacs.d/autosave" t)
 (setq auto-save-file-name-transforms
       '((".*" "~/.emacd.d/autosave")))
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Mini-buffer / Code completion.
-;;;
-;;
-
-;; Code completion
-(use-package corfu
-  :config
-  (global-corfu-mode)
-  (corfu-popupinfo-mode 1)
-  (setq corfu-quit-at-boundry t
-        corfu-quit-no-match nil
-        corfu-auto nil
-        corfu-auto-delay 0
-        corfu-popupinfo-delay '(1 . .5))
-  :bind (:map corfu-map
-              ("<next>"  . corfu-scroll-up)
-              ("<prior>" . corfu-scroll-down)))
-
-;; Mini-buffer completion that uses default Emacs completion (see
-;; Orderless below)
-(use-package vertico
-  :custom
-  (vertico-scroll-margin 0)
-  (vertico-count 10)
-  (vertico-resize 'grow-only)
-  (vertico-cycle t)
-  :bind (:map vertico-map
-              ("<next>" . vertico-scroll-up)
-              ("<prior>" . vertico-scroll-down)))
-
-(vertico-mode)
-
-;; Replaces Emac's default copmletion with Orderless
-(use-package orderless
-  :custom
-  (completion-styles '(orderless flex basic))
-  (completion-category-defaults nil)
-  (completion-category-overrides '((file (styles basic partial-completion))))
-  (orderless-component-separator "[ &]"))
-
-;; Use Orderless with Eglot.
-(setq completion-category-overrides '((eglot (styles orderless))
-                                      (eglot-capf (styles orderless))))
 
 ;; Show help text in margin on mini-buffer.
 (use-package marginalia)

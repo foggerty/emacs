@@ -7,7 +7,7 @@
 (require 'org-indent)
 
 (setq org-confirm-babel-evaluate nil
-      org-edit-src-content-indentation 0
+      org-src-content-indentation 0
       org-hide-emphasis-markers t
       org-hide-leading-stars t
       org-special-ctrl-a/e t

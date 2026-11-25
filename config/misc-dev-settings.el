@@ -20,12 +20,13 @@
 (use-package systemd
   :defer t
   :config
-  (append '(("\\.service\\'" . systemd-mode)
-            ("\\.slice\\'" . systemd-mode)
-            ("\\.socket\\'" . systemd-mode)
-            ("\\.target\\'" . systemd-mode)
-            ("\\.timer\\'" . systemd-mode))
-          auto-mode-alist))
+  (setq auto-mode-alist
+	(append '(("\\.service\\'" . systemd-mode)
+		  ("\\.slice\\'" . systemd-mode)
+		  ("\\.socket\\'" . systemd-mode)
+		  ("\\.target\\'" . systemd-mode)
+		  ("\\.timer\\'" . systemd-mode))
+		auto-mode-alist)))
 
 (use-package markdown-mode
   :hook

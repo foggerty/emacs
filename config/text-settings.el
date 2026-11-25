@@ -16,6 +16,6 @@
 it) with a single space.  Also, I fucking HATE Emacs regexs."
   (interactive)
   (save-excursion
-    (beginning-of-buffer)
-    (replace-regexp "\\(.\\)\n\\(.\\)"
+    (goto-char (point-min))
+    (replace-match "\\(.\\)\n\\(.\\)"
                     "\\1 \\2")))

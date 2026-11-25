@@ -42,24 +42,23 @@
 
 (let ((files-to-load
        '(
-         "global-settings.el"
-         "theme.el"
-         "consult.el"
-         "dev-settings.el" ; should come before all other dev modes.
-         "misc-dev-settings.el"
-         "odin-settings.el"
-         "clojure-settings.el"
-         "text-settings.el"
-         "elisp-settings.el"
-         "c-settings.el"
-         "c-plus-settings.el"
-         ;; "go-settings.el"
-         ;; "neo4j-settings.el"
-         "ruby-settings.el"
-         ;; "elixir-settings.el"
-         ;; "janet-settings.el"
-         "org-settings.el"
-         "global-key-bindings.el"
+         "config/global-settings.el"
+         "config/theme.el"
+         "config/completion-settings.el"
+         "config/dev-settings.el" ; should come before all other dev modes.
+         "config/misc-dev-settings.el"
+         "config/odin-settings.el"
+         "config/clojure-settings.el"
+         "config/text-settings.el"
+         "config/elisp-settings.el"
+         "config/c-plus-settings.el"
+         "config/go-settings.el"
+         "config/neo4j-settings.el"
+         "config/ruby-settings.el"
+         "config/elixir-settings.el"
+         "config/janet-settings.el"
+         "config/org-settings.el"
+         "config/global-key-bindings.el" ; always run last
          )))
 
   (dolist (file files-to-load)

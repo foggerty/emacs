@@ -12,7 +12,7 @@
   :defer t
   :config
   (setq gofmt-command "goimports"
-        go-ts-mode-indent-offset 4)
+        go-ts-indent-offset 4)
   :hook
   ((go-ts-mode . eglot-ensure)
    (go-ts-mode . electric-pair-mode))
