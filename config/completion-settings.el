@@ -38,7 +38,7 @@
   (corfu-quit-no-match t)
   (corfu-quit-at-boundary t)
   :config
-  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (setq corfu-popupinfo-delay '(0.75 . 0.25))
   (corfu-popupinfo-mode 1) ; shows documentation next to completions
   ;; sort by input history
   (with-eval-after-load 'savehist
@@ -63,9 +63,9 @@
 
 (use-package vertico
   :demand t
-  :bind (:map minibuffer-local-map
-              ("<next>" . vertico-next)
-              ("<prior>" . vertico-previous))
+  :bind (:map vertico-map
+              ("<prior>" . vertico-scroll-up)
+              ("<next>" . vertico-scroll-down))
   :custom
   (vertico-cycle t) ; C-n at the bottom of the list loops around to the top
   :config
@@ -119,3 +119,5 @@
          ("C-x t b" . consult-buffer-other-tab)
          ([remap Info-search] . consult-info)
          ([remap list-buffers] . ibuffer)))
+
+(use-package consult-projectile)

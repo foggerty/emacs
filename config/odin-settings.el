@@ -14,3 +14,5 @@
 ;; Add a hook to autostart OLS
 (add-hook 'odin-mode-hook #'eglot-ensure)
 (add-hook 'odin-ts-mode-hook #'eglot-ensure) ;; If you're using the TS mode
+
+;; ToDo - run odinfmt over current buffer.
