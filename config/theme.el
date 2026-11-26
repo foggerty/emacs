@@ -28,6 +28,10 @@
 (set-default 'blink-cursor-interval 0.25) ; blink faster!
 (set-default 'cursor-type 'bar)
 
+;; Don't render cursors in non-focused windows:
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Make pretty with themes etc.
@@ -76,4 +80,3 @@
 (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
 (set-face-attribute 'org-block-begin-line nil :background 'unspecified)
 (set-face-attribute 'org-block-end-line nil :background 'unspecified)
-(set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))

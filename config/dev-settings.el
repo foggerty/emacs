@@ -5,6 +5,11 @@
 ;;;
 ;;
 
+;; DWIM for commenting.
+(use-package comment-dwim-2
+  :bind
+  ("M-;" . comment-dwim-2))
+
 ;; Always keep comments to 80 columns.
 (advice-add 'prog-fill-reindent-defun
             :around
@@ -28,10 +33,6 @@
 ;; EDiff help window doen't play nicely with a tiling window-manager.
 (require 'ediff)
 (setq ediff-no-emacs-help-in-control-buffer t)
-
-;; Don't render cursors in non-focused windows:
-(setq-default cursor-in-non-selected-windows nil)
-(setq highlight-nonselected-windows nil)
 
 ;; Don't enable globally, it's a pain in text/org mode.
 (use-package aggressive-indent

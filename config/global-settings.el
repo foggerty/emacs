@@ -1,11 +1,10 @@
 ;; ;;; -*- lexical-binding: t; -*-
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;; Basic tidy ups / tweaks.
-;; ;;;
-;; ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Basic tidy ups / tweaks.
+;;;
+;;
 
-;; ;; Loook at some stuff from here: https://codeberg.org/ashton314/emacs-bedrock/src/branch/main/init.el
 
 (require 'helpers)
 
@@ -44,11 +43,6 @@
 
 (keymap-set dired-mode-map (kbd "q")
             (qif (kill-buffer-and-window)))
-
-;; DWIM for commenting.
-(use-package comment-dwim-2
-  :bind
-  ("M-;" . comment-dwim-2))
 
 ;; Tame the mode-line
 (setopt mode-line-collapse-minor-modes 1)

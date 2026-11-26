@@ -110,13 +110,18 @@
 
 (use-package consult
   :bind (;; new functionality
-         ("M-g l" . consult-line)
-         ("M-g m" . consult-mark)
-         ("H-r" . consult-ripgrep)
-         ;; replace built-in functions with superior versions
-         ("M-y" . consult-yank-pop)
-         ("C-x 4 b" . consult-buffer-other-window)
-         ("C-x t b" . consult-buffer-other-tab)
+
+         ("C-o"     . consult-outline)
+         b("C-s"     . consult-line)
+         ("C-x b"   . consult-buffer)
+         ("C-x p b" . consult-project-buffer)
+         ("C-c g"   . consult-git-grep)
+         ("C-c m"   . consult-mode-command)
+         ("M-g M-g" . consult-goto-line)
+         ("M-g e"   . consult-compile-error)
+         ("M-y"     . consult-yank-pop)
+         ("C-c r" . consult-ripgrep)
+
          ([remap Info-search] . consult-info)
          ([remap list-buffers] . ibuffer)))
 
